@@ -1,0 +1,26 @@
+## Misc
+startup_message off
+term xterm-256color
+escape ^Zz
+
+## Message
+msgwait 2
+msgminwait 1
+
+## Scrollbuffer
+defscrollback 10000
+markkeys h=^B:l=^F:$=^E
+
+## Keybind
+bindkey ^t focus
+bind ^w windowlist
+bind ^s colon 'number '
+bind 1 only
+bind 2 split
+
+## Local
+source .screenrc.local
+
+## Default
+shell $SHELL
+chdir

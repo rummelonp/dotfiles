@@ -1,0 +1,96 @@
+[user]
+  name  = Kazuya Takeshima
+  email = mail@mitukiii.jp
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf     = input
+  quotepath    = false
+[color]
+  ui = auto
+[color "diff"]
+  plain      = normal
+  meta       = bold green
+  frag       = bold cyan
+  func       = bold magenta
+  old        = bold red
+  new        = bold blue
+  commit     = bold white
+  whitespace = normal magenta
+[push]
+  default = tracking
+[branch]
+  autosetuprebase = always
+[merge]
+  ff = false
+[pull]
+  rebase = true
+[help]
+  autocorrect = 1
+[alias]
+  # status
+  s  = status
+  st = status
+  ss = status -s
+  sh = show
+  # commit
+  a    = add
+  ad   = add
+  ap   = add -p
+  c    = commit
+  ca   = commit -a
+  cam  = commit --amend
+  caam = commit -a --amend
+  cp   = cherry-pick
+  cpn  = cherry-pick -n
+  co   = checkout
+  cb   = checkout -b
+  cm   = checkout master
+  # rebase
+  rb  = rebase
+  rbm = rebase master
+  rbi = rebase -i
+  rbo = rebase --onto
+  rbc = rebase --continue
+  rba = rebase --abort
+  # reset
+  rs   = reset
+  rss  = reset --soft
+  rssh = reset --soft HEAD^
+  rsh  = reset --hard
+  rshh = reset --hard HEAD^
+  # merge
+  m  = merge
+  mn = merge --no-ff
+  ms = merge --squash
+  # branch
+  br = branch
+  ba = branch -a
+  # fetch/pull/push
+  ft = fetch
+  pl = pull
+  ps = push
+  # log
+  l  = log --stat --date=iso
+  la = log -p --date=iso
+  ll = log --graph --date=iso --all --pretty=format:'%h %Cgreen%ad %Cblue%cn %Creset%s %Cred%d'
+  # diff
+  d  = diff
+  dm = diff master
+  dw = diff --color-words
+  dc = diff --cached
+  # submodule
+  sm = submodule
+  # grep
+  gr   = grep -n
+  gri  = grep -n -i
+  grl  = grep -l
+  gril = grep -i -l
+  # percol
+  psh = "!f() { git log --date=iso --all --pretty=format:'%h %ad %cn %s %d' | \
+                percol --match-method migemo | \
+                cut -d' ' -f1 | \
+                tr '\n' ' ' | \
+                xargs git show; }; f;"
+  # other
+  lf    = "!f() { git log $1..$2 --name-only --oneline | grep -v ' ' | sort -u; }; f"
+  ctags = "!f() { ctags -Re; }; f;"

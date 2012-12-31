@@ -1,0 +1,3 @@
+(:name migemo
+       :type http
+       :url "https://raw.github.com/gist/457761/migemo.el")
