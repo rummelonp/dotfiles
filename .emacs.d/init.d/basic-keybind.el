@@ -113,7 +113,3 @@
 
 ;; popwin
 (define-key global-map (kbd "C-x p") 'popwin:display-last-buffer)
-
-;; twittering mode
-(define-key global-map (kbd "C-c C-t") 'twittering-mode)
-(define-key global-map (kbd "C-c C-u") 'twittering-update-status-interactive)
