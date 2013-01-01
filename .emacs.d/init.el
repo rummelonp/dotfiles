@@ -30,6 +30,7 @@
          "basic-function"
          "basic-keybind"
          "extensions"
+         "extension-dired"
          "extension-tabbar"
          "languages"
          "language-ruby"))

@@ -105,11 +105,11 @@
 (define-key global-map (kbd "C-z p") 'tabbar-backward-group)
 (define-key global-map (kbd "s-{") 'tabbar-backward-group)
 
-;; tag
-(define-key global-map (kbd "M-.") 'find-tag)
-
 ;; auto complete
 (define-key global-map (kbd "C-x C-.") 'auto-complete)
 
 ;; popwin
 (define-key global-map (kbd "C-x p") 'popwin:display-last-buffer)
+
+;; tag
+(define-key global-map (kbd "M-.") 'find-tag)
