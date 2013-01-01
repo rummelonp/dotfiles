@@ -6,6 +6,7 @@
 ;; wdired
 (require 'wdired)
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+(define-key dired-mode-map (kbd "C-t") 'next-window-or-split-horizontally)
 
 ;; uniquify
 (require 'uniquify)
@@ -53,6 +54,10 @@
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
 (push '("^\\*anything.*\\*$" :regexp t :height 20) popwin:special-display-config)
+(defalias 'dired-display-file
+  '(lambda ()
+     (interactive)
+     (popwin:find-file (dired-get-file-for-visit))))
 
 ;; migemo
 (require 'migemo)
