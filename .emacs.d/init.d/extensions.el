@@ -20,8 +20,7 @@
 (setq recentf-auto-cleanup 'never)
 (setq recentf-auto-save-timer
       (run-with-idle-timer 30 t 'recentf-save-list))
-(require 'recentf)
-(recentf-mode t)
+(require 'recentf-ext)
 
 ;; savekill
 (require 'savekill)

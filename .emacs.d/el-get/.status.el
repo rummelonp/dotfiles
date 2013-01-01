@@ -58,6 +58,8 @@
         (:name popup :website "https://github.com/auto-complete/popup-el" :description "Visual Popup Interface Library for Emacs" :type github :pkgname "auto-complete/popup-el"))
  (popwin status "installed" recipe
          (:name popwin :description "Popup Window Manager." :website "https://github.com/m2ym/popwin-el" :type github :pkgname "m2ym/popwin-el"))
+ (recentf-ext status "installed" recipe
+              (:name recentf-ext :description "Recentf extensions" :type emacswiki :features "recentf-ext"))
  (redo+ status "installed" recipe
         (:name redo+ :auto-generated t :type elpa :description "Redo/undo system for Emacs [source: wiki]"))
  (rinari status "installed" recipe
