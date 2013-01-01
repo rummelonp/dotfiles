@@ -49,6 +49,10 @@
 (define-key ac-menu-map (kbd "C-p") 'ac-previous)
 (define-key ac-mode-map (kbd "C-x ?") 'ac-last-quick-help)
 
+;; popwin
+(require 'popwin)
+(setq display-buffer-function 'popwin:display-buffer)
+
 ;; migemo
 (require 'migemo)
 (setq migemo-command "cmigemo")
