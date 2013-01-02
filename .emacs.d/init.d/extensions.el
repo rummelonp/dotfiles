@@ -52,6 +52,7 @@
 (setq display-buffer-function 'popwin:display-buffer)
 (push '("^\\*anything.*\\*$" :regexp t :height 20) popwin:special-display-config)
 (push '("*Backtrace*") popwin:special-display-config)
+(push '("*Warnings*") popwin:special-display-config)
 
 ;; migemo
 (require 'migemo)
