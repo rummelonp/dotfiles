@@ -91,6 +91,9 @@
 (define-key global-map (kbd "M-x") 'anything-execute-extended-command)
 (define-key global-map (kbd "M-y") 'anything-show-kill-ring)
 
+;; anything yaetags
+(define-key global-map (kbd "M-.") 'anything-yaetags-find-tag)
+
 ;; tabbar
 (define-key global-map (kbd "C-z a") 'tabbar-local-mode)
 (define-key global-map (kbd "C-z k") 'kill-this-buffer)
@@ -110,6 +113,3 @@
 
 ;; popwin
 (define-key global-map (kbd "C-x p") 'popwin:display-last-buffer)
-
-;; tag
-(define-key global-map (kbd "M-.") 'find-tag)

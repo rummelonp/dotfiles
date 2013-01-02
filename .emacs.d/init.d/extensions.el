@@ -3,6 +3,9 @@
 ;; anything
 (require 'anything-startup)
 
+;; anything yaetags
+(require 'anything-yaetags)
+
 ;; uniquify
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)

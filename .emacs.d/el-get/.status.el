@@ -2,6 +2,8 @@
            (:name anything :website "http://www.emacswiki.org/emacs/Anything" :description "Open anything / QuickSilver-like candidate-selection framework" :type git :url "http://repo.or.cz/r/anything-config.git" :shallow nil :load-path
                   ("." "extensions" "contrib")
                   :features anything))
+ (anything-yaetags status "installed" recipe
+                   (:name anything-yaetags :auto-generated t :type emacswiki :description "Yet another etags interface with anything." :website "https://raw.github.com/emacsmirror/emacswiki.org/master/anything-yaetags.el"))
  (auto-complete status "installed" recipe
                 (:name auto-complete :website "http://cx4a.org/software/auto-complete/" :description "The most intelligent auto-completion extension." :type github :pkgname "auto-complete/auto-complete" :depends
                        (popup fuzzy)))
