@@ -27,7 +27,7 @@
            (:name js2-mode :website "https://github.com/mooz/js2-mode#readme" :description "An improved JavaScript editing mode" :type github :pkgname "mooz/js2-mode" :prepare
                   (autoload 'js2-mode "js2-mode" nil t)))
  (less-css-mode status "installed" recipe
-                (:name less-css-mode :auto-generated t :type elpa :description "Major mode for editing LESS CSS files (lesscss.org) [source: github]"))
+                (:name less-css-mode :auto-generated t :type elpa :description "Major mode for editing LESS CSS files (lesscss.org)"))
  (migemo status "installed" recipe
          (:name migemo :type http :url "https://raw.github.com/gist/457761/migemo.el"))
  (nginx-mode status "installed" recipe
@@ -63,7 +63,13 @@
  (recentf-ext status "installed" recipe
               (:name recentf-ext :description "Recentf extensions" :type emacswiki :features "recentf-ext"))
  (redo+ status "installed" recipe
-        (:name redo+ :auto-generated t :type elpa :description "Redo/undo system for Emacs [source: wiki]"))
+        (:name redo+ :auto-generated t :type elpa :description "Redo/undo system for Emacs"))
+ (rhtml-mode status "installed" recipe
+             (:name rhtml-mode :description "Major mode for editing RHTML files" :type github :pkgname "eschulte/rhtml" :prepare
+                    (progn
+                      (autoload 'rhtml-mode "rhtml-mode" nil t)
+                      (add-to-list 'auto-mode-alist
+                                   '("\\.html.erb$" . rhtml-mode)))))
  (rinari status "installed" recipe
          (:name rinari :description "Rinari Is Not A Rails IDE" :type github :pkgname "eschulte/rinari" :load-path
                 ("." "util" "util/jump")

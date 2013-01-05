@@ -35,8 +35,11 @@
 
 ;; html
 (add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.erb$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.aspx$" . html-mode))
+
+;; rhtml
+(autoload 'rhtml-mode "rhtml-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
 
 ;; zencoding
 (autoload 'zencoding-mode "zencoding-mode" nil t)
