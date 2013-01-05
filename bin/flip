@@ -37,7 +37,7 @@ class String
   }
 
   def flip
-    each_char.map { |c|
+    downcase.reverse.each_char.map { |c|
       FLIP_TABLE[c] || FLIP_TABLE.invert[c] || c
     }.join
   end
