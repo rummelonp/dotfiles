@@ -26,6 +26,7 @@ case $OSTYPE in
         export PERLBREW_ROOT=/usr/local/perlbrew
         source $PERLBREW_ROOT/etc/bashrc
         # Node
+        export PATH=$PATH:/usr/local/share/npm/bin
         export NODE_PATH=/usr/local/share/npm/lib/node_modules
         # Android
         export ANDROID_HOME=/usr/local/var/lib/android-sdk
