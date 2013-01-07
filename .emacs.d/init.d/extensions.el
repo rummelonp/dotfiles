@@ -36,21 +36,6 @@
 (require 'undohist)
 (undohist-initialize)
 
-;; auto complete
-(require 'auto-complete-config)
-(ac-config-default)
-(setq ac-delay 0.1)
-(setq ac-auto-show-menu 0.5)
-(setq ac-quick-help-delay 0.5)
-(setq ac-use-menu-map t)
-(define-key ac-menu-map (kbd "C-n") 'ac-next)
-(define-key ac-menu-map (kbd "C-p") 'ac-previous)
-(define-key ac-mode-map (kbd "C-x ?") 'ac-last-quick-help)
-
-;; yasnippet
-(require 'yasnippet)
-(yas-global-mode t)
-
 ;; popwin
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)

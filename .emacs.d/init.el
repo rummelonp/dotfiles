@@ -32,6 +32,7 @@
          "extensions"
          "extension-dired"
          "extension-tabbar"
+         "extension-auto-complete"
          "languages"
          "language-ruby"))
     (funcall safe-load name))
