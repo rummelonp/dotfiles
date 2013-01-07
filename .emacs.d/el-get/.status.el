@@ -97,5 +97,25 @@
            (:name undohist :type github :pkgname "m2ym/undohist-el" :description "Record and recover undo history" :website "http://d.hatena.ne.jp/m2ym/20090707/1246933894"))
  (yaml-mode status "installed" recipe
             (:name yaml-mode :description "Simple major mode to edit YAML file for emacs" :type github :pkgname "yoshiki/yaml-mode"))
+ (yasnippet status "installed" recipe
+            (:name yasnippet :website "https://github.com/capitaomorte/yasnippet.git" :description "YASnippet is a template system for Emacs." :type github :pkgname "capitaomorte/yasnippet" :features "yasnippet" :pre-init
+                   (unless
+                       (or
+                        (boundp 'yas/snippet-dirs)
+                        (get 'yas/snippet-dirs 'customized-value))
+                     (setq yas/snippet-dirs
+                           (list
+                            (concat el-get-dir
+                                    (file-name-as-directory "yasnippet")
+                                    "snippets"))))
+                   :post-init
+                   (put 'yas/snippet-dirs 'standard-value
+                        (list
+                         (list 'quote
+                               (list
+                                (concat el-get-dir
+                                        (file-name-as-directory "yasnippet")
+                                        "snippets")))))
+                   :compile nil :submodule nil))
  (zencoding-mode status "installed" recipe
                  (:name zencoding-mode :description "Unfold CSS-selector-like expressions to markup" :type github :pkgname "rooney/zencoding" :features zencoding-mode)))

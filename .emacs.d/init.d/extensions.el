@@ -47,6 +47,10 @@
 (define-key ac-menu-map (kbd "C-p") 'ac-previous)
 (define-key ac-mode-map (kbd "C-x ?") 'ac-last-quick-help)
 
+;; yasnippet
+(require 'yasnippet)
+(yas-global-mode t)
+
 ;; popwin
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
