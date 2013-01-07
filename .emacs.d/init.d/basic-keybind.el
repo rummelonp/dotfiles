@@ -109,6 +109,7 @@
 (define-key global-map (kbd "s-{") 'tabbar-backward-group)
 
 ;; auto complete
+(define-key global-map (kbd "C-x .") 'auto-complete)
 (define-key global-map (kbd "C-x C-.") 'auto-complete)
 
 ;; popwin

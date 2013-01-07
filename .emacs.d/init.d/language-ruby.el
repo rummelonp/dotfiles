@@ -50,7 +50,8 @@
           '(lambda ()
              (require 'rsense)
              (add-to-list 'ac-sources 'ac-source-rsense-method)
-             (add-to-list 'ac-sources 'ac-source-rsense-constant)))
+             (add-to-list 'ac-sources 'ac-source-rsense-constant)
+             (define-key ruby-mode-map (kbd "C-x .") 'ac-complete-rsense)))
 
 ;; rinari
 (require 'rinari)
