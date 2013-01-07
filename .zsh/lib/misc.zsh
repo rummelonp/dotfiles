@@ -19,9 +19,9 @@ export RSENSE_HOME=$HOME/.emacs.d/el-get/rsense
 
 case $OSTYPE in
     darwin*)
-        # RVM
-        export PATH=$PATH:$HOME/.rvm/bin
-        source $HOME/.rvm/scripts/rvm
+        # Rbenv
+        eval "$(rbenv init -)"
+        export RBENV_ROOT=/usr/local/opt/rbenv
         # Perlbrew
         export PERLBREW_ROOT=/usr/local/perlbrew
         source $PERLBREW_ROOT/etc/bashrc

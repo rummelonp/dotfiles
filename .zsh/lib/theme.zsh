@@ -29,8 +29,8 @@ function _precmd_rprompt () {
   psvar=()
   LANG=en_US.UTF-8 vcs_info
   psvar[1]=$vcs_info_msg_0_
-  if which rvm-prompt > /dev/null; then
-      psvar[2]=$(rvm-prompt i v g)
+  if which rbenv > /dev/null; then
+      psvar[2]=$(rbenv version | cut -d' ' -f1)
   fi
 }
 add-zsh-hook precmd _precmd_rprompt
