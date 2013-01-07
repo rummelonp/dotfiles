@@ -54,6 +54,9 @@
 (push '("*Backtrace*") popwin:special-display-config)
 (push '("*Warnings*") popwin:special-display-config)
 
+;; jaunte
+(require 'jaunte)
+
 ;; migemo
 (require 'migemo)
 (setq migemo-command "cmigemo")

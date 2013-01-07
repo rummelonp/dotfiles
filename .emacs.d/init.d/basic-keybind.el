@@ -113,3 +113,6 @@
 
 ;; popwin
 (define-key global-map (kbd "C-x p") 'popwin:display-last-buffer)
+
+;; jaunte
+(define-key global-map (kbd "C-x j") 'jaunte)

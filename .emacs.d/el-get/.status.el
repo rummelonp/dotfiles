@@ -23,6 +23,8 @@
                   (:name eldoc-extension :auto-generated t :type emacswiki :description "Some extension for eldoc" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/eldoc-extension.el"))
  (fuzzy status "installed" recipe
         (:name fuzzy :website "https://github.com/auto-complete/fuzzy-el" :description "Fuzzy matching utilities for GNU Emacs" :type github :pkgname "auto-complete/fuzzy-el"))
+ (jaunte status "installed" recipe
+         (:name jaunte :type github :pkgname "kawaguchi/jaunte.el"))
  (js2-mode status "installed" recipe
            (:name js2-mode :website "https://github.com/mooz/js2-mode#readme" :description "An improved JavaScript editing mode" :type github :pkgname "mooz/js2-mode" :prepare
                   (autoload 'js2-mode "js2-mode" nil t)))
