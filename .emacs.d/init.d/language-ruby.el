@@ -49,6 +49,8 @@
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (require 'rsense)
+             (setq rsense-rurema-home (expand-file-name "~/Dropbox/Documents/ruby-refm"))
+             (setq rsense-rurema-refe "refe-1_9_3")
              (add-to-list 'ac-sources 'ac-source-rsense-method)
              (add-to-list 'ac-sources 'ac-source-rsense-constant)
              (define-key ruby-mode-map (kbd "C-x .") 'ac-complete-rsense)))
