@@ -19,6 +19,7 @@ alias ll="ls -1alF"
 alias gr="grep"
 alias gri="grep -i"
 alias grl="grep -l"
+export GREP_OPTIONS='--color=auto --exclude=*.git*'
 
 alias rsync-copy="rsync -av --progress -h"
 alias rsync-move="rsync -av --progress -h --remove-source-files"

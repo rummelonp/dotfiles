@@ -18,7 +18,7 @@ function create_symlink_unless_exists() {
 DOTFILES_DIR=$(cd $(dirname $0) && pwd)
 
 ## dotfiles
-DOTFILES=(bin .zshrc .zsh .emacs.d .gitconfig .gitignore .screenrc .screen .tmux.conf .tmux .gemrc .pryrc .percol.d)
+DOTFILES=(bin .zshenv .zshrc .zsh .emacs.d .gitconfig .gitignore .screenrc .screen .tmux.conf .tmux .gemrc .pryrc .percol.d)
 for name in ${DOTFILES[@]}
 do
     create_symlink_unless_exists $DOTFILES_DIR/$name $HOME/$name

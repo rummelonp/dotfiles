@@ -1,4 +1,4 @@
-## Misc
+## Environment
 
 # Lang
 export LANG=ja_JP.UTF-8
@@ -17,7 +17,6 @@ esac
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 export RSENSE_HOME=$HOME/.emacs.d/el-get/rsense
 
-# Environment
 case $OSTYPE in
     darwin*)
         # Ruby
@@ -40,6 +39,3 @@ case $OSTYPE in
         export PATH=$PATH:/var/lib/gems/1.9.1/bin
         ;;
 esac
-
-# Grep
-export GREP_OPTIONS='--color=auto --exclude=*.git*'
