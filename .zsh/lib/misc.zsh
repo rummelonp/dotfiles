@@ -17,20 +17,22 @@ esac
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 export RSENSE_HOME=$HOME/.emacs.d/el-get/rsense
 
+# Environment
 case $OSTYPE in
     darwin*)
         # Ruby
         eval "$(rbenv init -)"
         export RBENV_ROOT=/usr/local/opt/rbenv
-        # Perlbrew
+        # Perl
         export PERLBREW_ROOT=/usr/local/perlbrew
         source $PERLBREW_ROOT/etc/bashrc
         # Node
+        eval "$(npm completion)"
         export PATH=$PATH:/usr/local/share/npm/bin
         export NODE_PATH=/usr/local/share/npm/lib/node_modules
         # Android
         export ANDROID_HOME=/usr/local/var/lib/android-sdk
-        # Gisty
+        # Gist
         export GISTY_DIR=$HOME/Dropbox/Gist
         ;;
     linux*)
