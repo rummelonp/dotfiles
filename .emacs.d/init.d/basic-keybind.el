@@ -42,12 +42,14 @@
 (define-key global-map (kbd "C-w") 'kill-ring-save)
 (define-key global-map (kbd "M-w") 'kill-region)
 (define-key global-map (kbd "C-y") 'yank)
+(define-key global-map (kbd "M-y") 'yank-pop)
 (define-key global-map (kbd "C-M-y") 'yank-pop)
 
 ;; window
 (define-key global-map (kbd "C-t") 'next-window-or-split-horizontally)
 (define-key global-map (kbd "C-M-t") 'next-window-or-split-vertically)
-(define-key global-map (kbd "C-S-T") 'prev-window-or-split-horizontally)
+(define-key global-map (kbd "C-S-t") 'prev-window-or-split-horizontally)
+(define-key global-map (kbd "C-x t") 'delete-window)
 (define-key global-map (kbd "M-t") 'delete-window)
 (define-key global-map (kbd "C-^") 'enlarge-window)
 (define-key global-map (kbd "C-~") 'enlarge-window-horizontally)
@@ -71,6 +73,7 @@
 (define-key global-map (kbd "M-?") 'help-for-help)
 
 ;; undo redo
+(define-key global-map (kbd "C-_") 'undo)
 (define-key global-map (kbd "M-_") 'redo)
 (define-key global-map (kbd "C-M-_") 'redo)
 (define-key global-map (kbd "M-p") 'point-undo)
@@ -90,7 +93,7 @@
 (define-key global-map (kbd "C-x C-b") 'anything-buffers+)
 (define-key global-map (kbd "C-x C-x") 'anything-execute-anything-command)
 (define-key global-map (kbd "M-x") 'anything-execute-extended-command)
-(define-key global-map (kbd "M-y") 'anything-show-kill-ring)
+(define-key global-map (kbd "C-x C-y") 'anything-show-kill-ring)
 
 ;; anything yaetags
 (define-key global-map (kbd "M-.") 'anything-yaetags-find-tag)
