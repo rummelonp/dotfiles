@@ -69,6 +69,7 @@
 ;; coffee
 (autoload 'coffee-mode "coffee-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(setq coffee-tab-width 2)
 
 ;; c sharp
 (autoload 'csharp-mode "csharp-mode" nil t)
