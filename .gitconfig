@@ -76,6 +76,7 @@
   # diff
   d  = diff
   dm = diff master
+  do = diff origin/master
   dw = diff --color-words
   dc = diff --cached
   # submodule
