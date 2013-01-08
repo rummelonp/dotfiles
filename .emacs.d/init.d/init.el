@@ -1,4 +1,4 @@
-;; Basic
+;; Initialize
 
 ;; japanese environment
 (set-language-environment "Japanese")

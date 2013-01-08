@@ -25,14 +25,14 @@
             (warn (error-message-string e)))))))
   (dolist
       (name
-       '("basic"
-         "basic-alias"
-         "basic-function"
-         "basic-keybind"
+       '("init"
          "extensions"
          "extension-dired"
          "extension-tabbar"
          "extension-auto-complete"
+         "basic-alias"
+         "basic-function"
+         "basic-keybind"
          "languages"
          "language-ruby"))
     (funcall safe-load name))
