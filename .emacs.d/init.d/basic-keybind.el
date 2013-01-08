@@ -46,6 +46,7 @@
 
 ;; window
 (define-key global-map (kbd "C-t") 'next-window-or-split-horizontally)
+(define-key global-map (kbd "C-M-t") 'next-window-or-split-vertically)
 (define-key global-map (kbd "C-S-T") 'prev-window-or-split-horizontally)
 (define-key global-map (kbd "M-t") 'delete-window)
 (define-key global-map (kbd "C-^") 'enlarge-window)
@@ -114,6 +115,7 @@
 
 ;; popwin
 (define-key global-map (kbd "C-x p") 'popwin:display-last-buffer)
+(define-key global-map (kbd "C-x s") 'popwin:stick-popup-window)
 
 ;; jaunte
 (define-key global-map (kbd "C-x j") 'jaunte)
