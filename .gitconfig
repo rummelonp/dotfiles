@@ -75,10 +75,10 @@
   ll = log --graph --date=iso --all --pretty=format:'%h %Cgreen%ad %Cblue%cn %Creset%s %Cred%d'
   # diff
   d  = diff
+  dc = diff --cached
+  dw = diff --word-diff-regex='\\w+|[^[:space:]]'
   dm = diff master
   do = diff origin/master
-  dw = diff --color-words
-  dc = diff --cached
   # submodule
   sm = submodule
   # grep
