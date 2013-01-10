@@ -16,6 +16,7 @@ bindkey ^t focus
 bind ^r source $HOME/.screenrc
 bind ^w windowlist
 bind ^s colon 'number '
+bind ^b colon 'select '
 bind 1 only
 bind 2 split
 bind ^^ resize +5
