@@ -9,6 +9,7 @@ unsetopt menu_complete
 unsetopt flowcontrol
 unsetopt auto_remove_slash
 unsetopt list_beep
+unsetopt complete_aliases
 setopt auto_menu
 setopt complete_in_word
 setopt always_to_end
@@ -24,7 +25,6 @@ setopt auto_param_slash
 setopt brace_ccl
 setopt multios
 setopt path_dirs
-setopt complete_aliases
 
 # See http://d.hatena.ne.jp/sugyan/20100712/1278869962
 autoload -Uz select-word-style
