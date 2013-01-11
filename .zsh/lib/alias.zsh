@@ -4,7 +4,6 @@
 case $OSTYPE in
     darwin*)
         alias ls="ls -G"
-        alias git="hub"
         alias copy-pwd="pwd | perl -pe 's/\n//' | pbcopy"
         ;;
     linux*)
