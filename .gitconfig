@@ -51,6 +51,7 @@
   rbi = rebase -i
   rbo = rebase --onto
   rbc = rebase --continue
+  rbs = rebase --skip
   rba = rebase --abort
   # reset
   rs   = reset
