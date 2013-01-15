@@ -2,6 +2,10 @@
            (:name anything :website "http://www.emacswiki.org/emacs/Anything" :description "Open anything / QuickSilver-like candidate-selection framework" :type git :url "http://repo.or.cz/r/anything-config.git" :shallow nil :load-path
                   ("." "extensions" "contrib")
                   :features anything))
+ (anything-project status "installed" recipe
+                   (:name anything-project :type github :pkgname "imakado/anything-project" :depends
+                          (anything)
+                          :description "finding any resource of a project" :website "https://github.com/imakado/anything-project"))
  (anything-yaetags status "installed" recipe
                    (:name anything-yaetags :auto-generated t :type emacswiki :description "Yet another etags interface with anything." :website "https://raw.github.com/emacsmirror/emacswiki.org/master/anything-yaetags.el"))
  (auto-complete status "installed" recipe

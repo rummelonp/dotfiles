@@ -3,6 +3,9 @@
 ;; anything
 (require 'anything-startup)
 
+;; anything project
+(require 'anything-project)
+
 ;; anything yaetags
 (require 'anything-yaetags)
 
