@@ -36,6 +36,9 @@ zstyle ':zle:*' word-style unspecified
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
+# Cache
+zstyle ':completion:*' use-cache true
+
 # Messages
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' format '%B%d%b'
