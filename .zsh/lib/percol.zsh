@@ -32,31 +32,40 @@ zle -N percol-select-history
 
 # Search
 function percol-search-document() {
-    if [ $# -ge 1 ]; then
-        DOCUMENT_DIR=$*
-    else
-        DOCUMENT_DIR=($HOME/Dropbox)
-        if [ -d $HOME/Documents ]; then
-            DOCUMENT_DIR=($HOME/Documents $DOCUMENT_DIR)
+    if (( $#DOCUMENT_DIR == 0 )); then
+        DOCUMENT_DIR=($HOME/Documents)
+        if [ -d $HOME/Dropbox ]; then
+            DOCUMENT_DIR=($HOME/Dropbox $DOCUMENT_DIR[*])
         fi
     fi
-    SELECTED_FILE=$(echo $DOCUMENT_DIR | \
+
+    typeset -a document_dir
+    if (( $# >= 1 )); then
+        document_dir=$@
+    else
+        document_dir=$DOCUMENT_DIR
+    fi
+
+    PERCOL_SELECTED_FILE=($(echo $document_dir | \
         xargs find | \
         grep -E "\.(txt|md|pdf|key|numbers|pages|doc|xls|ppt)$" | \
-        percol --match-method migemo)
-    if [ $? -eq 0 ]; then
-        echo $SELECTED_FILE | sed 's/ /\\ /g'
+        percol --match-method migemo | \
+        sed 's/ /\\ /g'))
+    if (( $#PERCOL_SELECTED_FILE > 0 )); then
+        echo $PERCOL_SELECTED_FILE
     fi
 }
 
 function percol-search-locate() {
-    if [ $# -ge 1 ]; then
-        SELECTED_FILE=$(locate $* | percol --match-method regex)
-        if [ $? -eq 0 ]; then
-            echo $SELECTED_FILE | sed 's/ /\\ /g'
+    if (( $# > 0 )); then
+        PERCOL_SELECTED_FILE=($(locate $@ | \
+            percol --match-method regex | \
+            sed 's/ /\\ /g'))
+        if (( $#PERCOL_SELECTED_FILE > 0 )); then
+            echo $PERCOL_SELECTED_FILE
         fi
     else
-        bultin locate
+        locate
     fi
 }
 
