@@ -93,6 +93,9 @@
                 cut -d' ' -f1 | \
                 tr '\n' ' ' | \
                 xargs git show; }; f;"
+  pls-files = "!f() { git ls-files | \
+                      percol --match-method regex | \
+                      sed 's/ /\\ /g'; }; f;"
   # other
   lf    = "!f() { git log $1..$2 --name-only --oneline | grep -v ' ' | sort -u; }; f"
   ctags = "!f() { ctags -Re; }; f;"
