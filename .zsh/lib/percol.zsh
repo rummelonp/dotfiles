@@ -22,7 +22,7 @@ function percol-select-history() {
     else
         tac="tail -r"
     fi
-    BUFFER=$(history -n 1 | \
+    BUFFER=$(builtin history -n 1 | \
         eval $tac | \
         percol --match-method regex --query "$LBUFFER")
     CURSOR=$#BUFFER
