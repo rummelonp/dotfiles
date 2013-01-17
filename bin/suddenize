@@ -1,20 +1,20 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 function suddenize() {
     typeset text hit length i header footer
     text=$1
     hit=0
-    for i in {1..$#text}; do
+    for i in $( seq 1 ${#text} ); do
         hit=$(( $hit + $(expr $text[$i] : '[ -~]') ))
     done
-    length=$(( $#text - $(( $hit / 2 )) + 2 ))
-    for i in {1..$length}; do
+    length=$(( ${#text} - $(( $hit / 2 )) + 2 ))
+    for i in $( seq 1 ${length} ); do
         header='人'$header
         footer='Ｙ'$footer
     done
-    echo ＿$header＿
-    echo ＞　$text　＜
-    echo ￣$footer￣
+    echo ＿${header}＿
+    echo ＞　${text}　＜
+    echo ￣${footer}￣
 }
 
 suddenize $1
