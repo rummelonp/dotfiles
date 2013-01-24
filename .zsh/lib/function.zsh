@@ -14,3 +14,11 @@ function take() {
     mkdir -p $1
     cd $1
 }
+
+function encode64 {
+    echo -n $1 | base64
+}
+
+function decode64 {
+    echo -n $1 | base64 -D
+}
