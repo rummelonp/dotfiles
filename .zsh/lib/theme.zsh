@@ -46,3 +46,4 @@ zstyle ':vcs_info:git:*' actionformats '(%s) - [%c%u%b|%a]'
 
 PROMPT="%(?|${GREEN}（･ω･）|${RED}（☓ω☓）)${BASE_COLOR}%n@%m${WHITE}:${BLUE}%~${RESET}$ "
 RPROMPT="%1(v|${GREEN}%1v${RESET} |)%2(v|${RED}(%2v)${RESET} |)(%*)"
+SPROMPT="Correct '%R' to '%r' [n,y,a,e]? " # no, yes, abort, edit
