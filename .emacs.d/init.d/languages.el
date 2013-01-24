@@ -54,6 +54,7 @@
 ;; scss
 (autoload 'scss-mode "scss-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))
+(setq scss-compile-at-save nil)
 
 ;; scss
 (autoload 'less-css-mode "less-css-mode" nil t)
