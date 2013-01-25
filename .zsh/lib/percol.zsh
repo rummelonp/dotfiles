@@ -10,7 +10,7 @@ function percol-insert-file() {
         percol --match-method regex | \
         sed 's/ /\\ /g' | \
         tr '\n' ' ')
-    zle clear-screen
+    zle -R -c
 }
 zle -N percol-insert-file
 
@@ -26,7 +26,7 @@ function percol-select-history() {
         eval $tac | \
         percol --match-method regex --query "$LBUFFER")
     CURSOR=$#BUFFER
-    zle clear-screen
+    zle -R -c
 }
 zle -N percol-select-history
 

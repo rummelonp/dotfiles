@@ -1,5 +1,6 @@
 ## Misc
 startup_message off
+altscreen on
 term xterm-256color
 escape ^Zz
 
