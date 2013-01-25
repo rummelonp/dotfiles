@@ -21,3 +21,14 @@ function tw-tweet() {
 }
 
 alias tweet="tw-tweet"
+
+__tw_user_list() {
+    _tw_user_list=($(tw --user:list | grep -v -E '\(\d+ users\)' | sed 's/\*//g'))
+    _describe -t tw_user_list "user" _tw_user_list
+}
+
+_tw_tweet() {
+    _arguments ":user:__tw_user_list"
+}
+
+compdef _tw_tweet tw-tweet
