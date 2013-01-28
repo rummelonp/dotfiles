@@ -14,7 +14,7 @@
   func       = bold magenta
   old        = bold red
   new        = bold blue
-  commit     = bold white
+  commit     = bold yellow
   whitespace = normal magenta
 [push]
   default = tracking
