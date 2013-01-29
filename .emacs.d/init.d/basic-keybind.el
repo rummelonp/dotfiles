@@ -88,9 +88,8 @@
 ;; anything
 (define-key global-map (kbd "C-x C-a") 'anything-recentf)
 (define-key global-map (kbd "C-x f") 'anything-find-file)
-(define-key global-map (kbd "C-x C-f") 'anything)
-(define-key global-map (kbd "C-x g") 'anything-my-project)
-(define-key global-map (kbd "C-x C-o") 'anything-project)
+(define-key global-map (kbd "C-x C-f") 'anything-project)
+(define-key global-map (kbd "C-x C-o") 'anything-my-project)
 (define-key global-map (kbd "C-x b") 'anything-buffers+)
 (define-key global-map (kbd "C-x C-b") 'anything-buffers+)
 (define-key global-map (kbd "C-x C-x") 'anything-execute-anything-command)
