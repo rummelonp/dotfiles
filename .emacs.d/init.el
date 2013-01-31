@@ -31,6 +31,7 @@
          "extensions"
          "extension-dired"
          "extension-tabbar"
+         "extension-powerline"
          "extension-auto-complete"
          "basic-alias"
          "basic-function"

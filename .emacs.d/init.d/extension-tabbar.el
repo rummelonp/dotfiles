@@ -39,20 +39,20 @@
 (set-face-attribute
  'tabbar-default nil
  :family "Monaco"
- :background "gray30"
+ :background "#181a26"
  :height 1.0)
 (set-face-attribute
  'tabbar-selected nil
- :foreground "gray10"
- :background "gray80"
+ :foreground "black"
+ :background "#1aa6b1"
  :box nil)
 (set-face-attribute
  'tabbar-unselected nil
- :foreground "gray70"
- :background "gray30"
+ :foreground "gray80"
+ :background "#181a26"
  :box nil)
 (set-face-attribute
  'tabbar-separator nil
- :foreground "gray30"
- :background "gray30")
+ :foreground "#181a26"
+ :background "#181a26")
 (setq tabbar-separator '(1))
