@@ -60,6 +60,8 @@
                            ("gnu" . "http://elpa.gnu.org/packages/")
                            ("marmalade" . "http://marmalade-repo.org/packages/")
                            ("SC" . "http://joseito.republika.pl/sunrise-commander/"))))))
+ (php-mode status "installed" recipe
+           (:name php-mode :description "A PHP mode for GNU Emacs " :type github :pkgname "ejmr/php-mode" :website "https://github.com/ejmr/php-mode"))
  (point-undo status "installed" recipe
              (:name point-undo :auto-generated t :type emacswiki :description "undo/redo position" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/point-undo.el"))
  (popup status "installed" recipe

@@ -72,6 +72,10 @@
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 (setq coffee-tab-width 2)
 
+;; php
+(autoload 'php-mode "php-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+
 ;; c sharp
 (autoload 'csharp-mode "csharp-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.cs$" . csharp-mode))
