@@ -20,8 +20,11 @@ export RSENSE_HOME=$HOME/.emacs.d/el-get/rsense
 case $OSTYPE in
     darwin*)
         # Ruby / rbenv
-        eval "$(rbenv init -)"
         export RBENV_ROOT=/usr/local/opt/rbenv
+        eval "$(rbenv init -)"
+        # Python / pyenv
+        export PYENV_ROOT=/usr/local/opt/pyenv
+        eval "$(pyenv init -)"
         # Perl / perlbrew
         export PERLBREW_ROOT=/usr/local/perlbrew
         source $PERLBREW_ROOT/etc/bashrc
