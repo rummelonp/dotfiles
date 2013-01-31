@@ -9,6 +9,20 @@
 ;; anything yaetags
 (require 'anything-yaetags)
 
+;; powerline
+(require 'powerline)
+(setq powerline-arrow-shape 'arrow14)
+(set-face-attribute
+ 'mode-line nil
+ :foreground "gray10"
+ :background "gray80"
+ :box nil)
+(set-face-attribute
+ 'mode-line-inactive nil
+ :foreground "gray70"
+ :background "gray30"
+ :box nil)
+
 ;; uniquify
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
