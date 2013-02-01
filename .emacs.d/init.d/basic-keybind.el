@@ -101,6 +101,7 @@
 
 ;; tabbar
 (define-key global-map (kbd "C-z a") 'tabbar-local-mode)
+(define-key global-map (kbd "C-z C-s") 'tabbar-sort-tab)
 (define-key global-map (kbd "C-z k") 'kill-this-buffer)
 (define-key global-map (kbd "C-z C-n") 'tabbar-forward-tab)
 (define-key global-map (kbd "C-<tab>") 'tabbar-forward-tab)
