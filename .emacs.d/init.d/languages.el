@@ -60,6 +60,10 @@
 (autoload 'less-css-mode "less-css-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
+;; js
+(require 'js)
+(setq js-indent-level 2)
+
 ;; js2
 (defalias 'javascript-generic-mode 'js2-mode)
 (autoload 'js2-mode "js2-mode" nil t)
@@ -79,3 +83,31 @@
 ;; c sharp
 (autoload 'csharp-mode "csharp-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.cs$" . csharp-mode))
+
+;; mmm mode
+(require 'mmm-mode)
+(setq mmm-global-mode 'maybe)
+(mmm-add-mode-ext-class nil "\\.erb$" 'html-css)
+(mmm-add-mode-ext-class nil "\\.erb$" 'html-js)
+(mmm-add-mode-ext-class nil "\\.html$" 'html-css)
+(mmm-add-mode-ext-class nil "\\.html$" 'html-js)
+(mmm-add-mode-ext-class nil "\\.html$" 'html-php)
+(mmm-add-classes
+ '((html-css
+    :submode css-mode
+    :front "<style[^>]*>\n"
+    :back  "</style>")
+   (html-js
+    :submode js-mode
+    :front "<script[^>]*>\n"
+    :back  "</script>")
+   (html-smarty
+    :submode smarty-mode
+    :include-front t
+    :include-back t
+    :front "{{"
+    :back "}}")
+   (html-php
+    :submode php-mode
+    :front "<?php"
+    :back "?>")))

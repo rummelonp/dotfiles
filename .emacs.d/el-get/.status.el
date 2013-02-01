@@ -36,6 +36,8 @@
                 (:name less-css-mode :auto-generated t :type elpa :description "Major mode for editing LESS CSS files (lesscss.org)"))
  (migemo status "installed" recipe
          (:name migemo :type http :url "https://raw.github.com/gist/457761/migemo.el"))
+ (mmm-mode status "installed" recipe
+           (:name mmm-mode :description "Allow Multiple Major Modes in a buffer" :type github :pkgname "purcell/mmm-mode"))
  (nginx-mode status "installed" recipe
              (:name nginx-mode :website "https://github.com/ajc/nginx-mode" :description "major mode for editing nginx config files" :type github :pkgname "ajc/nginx-mode"))
  (package status "installed" recipe
