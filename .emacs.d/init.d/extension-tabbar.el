@@ -26,13 +26,16 @@
       '(lambda ()
          (list
           (let ((name (symbol-name major-mode)))
-            (cond ((or (equal name "coffee-mode")
-                       (equal name "js2-mode"))
-                   "js2-mode")
+            (cond ((or (equal name "html-mode")
+                       (equal name "rhtml-mode"))
+                   "html-mode")
                   ((or (equal name "scss-mode")
                        (equal name "less-css-mode")
                        (equal name "css-mode"))
                    "css-mode")
+                  ((or (equal name "coffee-mode")
+                       (equal name "js2-mode"))
+                   "js2-mode")
                   (t name))))))
 
 ;; face
