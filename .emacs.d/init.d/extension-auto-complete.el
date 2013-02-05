@@ -38,6 +38,7 @@
 
 ;; configuration
 (ac-config-default)
+(ac-set-trigger-key "C-i")
 (setq ac-auto-start nil)
 (setq ac-auto-show-menu 0.5)
 (setq ac-quick-help-delay 0.5)
