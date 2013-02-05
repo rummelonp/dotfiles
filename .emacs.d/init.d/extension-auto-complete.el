@@ -38,7 +38,7 @@
 
 ;; configuration
 (ac-config-default)
-(setq ac-delay 0.1)
+(setq ac-auto-start nil)
 (setq ac-auto-show-menu 0.5)
 (setq ac-quick-help-delay 0.5)
 
