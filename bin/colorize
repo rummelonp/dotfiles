@@ -25,4 +25,5 @@ $stdin.each_line do |line|
     line = line.colorize(args)
   end
   puts line
+  break if $stdin.closed?
 end
