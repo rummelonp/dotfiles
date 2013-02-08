@@ -48,7 +48,7 @@ function percol-search-document() {
 
     PERCOL_SELECTED_FILE=($(echo $document_dir | \
         xargs find | \
-        grep -E "\.(txt|md|pdf|key|numbers|pages|doc|xlsx?|ppt)$" | \
+        grep -E "\.(txt|md|pdf|numbers|key|pages|docx?|xlsx?|pptx?)$" | \
         percol --match-method migemo | \
         sed 's/ /\\ /g'))
     if (( $#PERCOL_SELECTED_FILE > 0 )); then
