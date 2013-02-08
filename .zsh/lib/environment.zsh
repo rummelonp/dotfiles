@@ -29,7 +29,7 @@ case $OSTYPE in
         export PERLBREW_ROOT=/usr/local/perlbrew
         source $PERLBREW_ROOT/etc/bashrc
         # Node / nodebrew
-        export PATH=$PATH:$HOME/.nodebrew/current/bin
+        export PATH=$HOME/.nodebrew/current/bin:$PATH
         eval "$(npm completion)"
         # Android
         export ANDROID_HOME=/usr/local/var/lib/android-sdk
@@ -41,3 +41,5 @@ case $OSTYPE in
         export PATH=$PATH:/var/lib/gems/1.9.1/bin
         ;;
 esac
+
+typeset -U PATH
