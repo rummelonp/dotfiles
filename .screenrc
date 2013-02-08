@@ -1,7 +1,7 @@
 ## Misc
 startup_message off
 altscreen on
-term xterm-256color
+term screen-256color
 escape ^Zz
 
 ## Message
