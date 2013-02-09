@@ -91,5 +91,6 @@
   psh = "!f() { git log --date=iso --all --pretty=format:'%h %ad %cn %s %d' | percol --match-method migemo | cut -d' ' -f1 | tr '\n' ' ' | xargs git show; }; f;"
   pls-files = "!f() { echo $(git ls-files | percol --match-method regex | sed 's/ /\\ /g'); }; f;"
   # other
+  root  = "!f() { pwd; }; f;"
   lf    = "!f() { git log $1..$2 --name-only --oneline | grep -v ' ' | sort -u; }; f"
   ctags = "!f() { ctags -Re; }; f;"
