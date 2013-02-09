@@ -93,4 +93,3 @@
   # other
   root  = "!f() { pwd; }; f;"
   lf    = "!f() { git log $1..$2 --name-only --oneline | grep -v ' ' | sort -u; }; f"
-  ctags = "!f() { ctags -Re; }; f;"
