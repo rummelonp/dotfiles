@@ -47,7 +47,7 @@ zstyle ':completion:*' group-name ''
 
 # File
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*' list-colors di=34 fi=0
+zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*:*:*:*:*' menu select
 
 # Directory
