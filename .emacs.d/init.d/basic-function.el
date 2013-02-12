@@ -37,3 +37,12 @@
                                                  (buffer-file-name (car b2))))))
           (put tabset 'template nil)
           (tabbar-display-update)))))
+
+;; auto complete
+(defun auto-complete-auto-start-enable ()
+  (interactive)
+  (setq ac-auto-start t))
+
+(defun auto-complete-auto-start-disable ()
+  (interactive)
+  (setq ac-auto-start nil))
