@@ -3,6 +3,7 @@
 ;; japanese environment
 (set-language-environment "Japanese")
 (set-default-coding-systems 'utf-8)
+(prefer-coding-system 'utf-8)
 
 ;; theme
 (load-theme 'deeper-blue t)
