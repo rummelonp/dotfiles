@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 
-begin
-  require "awesome_print"
-  AwesomePrint.pry!
-rescue LoadError
-end
-
 Pry.config.tap do |config|
   config.editor = lambda do |file, line|
     "emacsclient -n +#{line} #{file}"
