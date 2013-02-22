@@ -46,6 +46,14 @@
 (define-key global-map (kbd "C-M-y") 'yank-pop)
 
 ;; window
+(define-key global-map (kbd "C-x 1") 'delete-other-windows)
+(define-key global-map (kbd "C-z 1") 'delete-other-windows)
+(define-key global-map (kbd "C-2") 'split-window-vertically)
+(define-key global-map (kbd "C-x 2") 'split-window-vertically)
+(define-key global-map (kbd "C-z 2") 'split-window-vertically)
+(define-key global-map (kbd "C-3") 'split-window-horizontally)
+(define-key global-map (kbd "C-x 3") 'split-window-horizontally)
+(define-key global-map (kbd "C-z 3") 'split-window-horizontally)
 (define-key global-map (kbd "C-t") 'next-window-or-split-horizontally)
 (define-key global-map (kbd "C-M-t") 'next-window-or-split-vertically)
 (define-key global-map (kbd "C-S-t") 'prev-window-or-split-horizontally)
@@ -95,8 +103,6 @@
 (define-key global-map (kbd "C-x C-x") 'anything-execute-anything-command)
 (define-key global-map (kbd "M-x") 'anything-execute-extended-command)
 (define-key global-map (kbd "C-x C-y") 'anything-show-kill-ring)
-
-;; anything yaetags
 (define-key global-map (kbd "M-.") 'anything-yaetags-find-tag)
 
 ;; tabbar
