@@ -31,6 +31,8 @@ case $OSTYPE in
         # Node / nodebrew
         export PATH=$HOME/.nodebrew/current/bin:$PATH
         eval "$(npm completion)"
+        # Haskell
+        export PATH=$HOME/.cabal/bin:$PATH
         # Android
         export ANDROID_HOME=/usr/local/var/lib/android-sdk
         # Gist
