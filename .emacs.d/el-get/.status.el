@@ -27,6 +27,11 @@
                   (:name eldoc-extension :auto-generated t :type emacswiki :description "Some extension for eldoc" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/eldoc-extension.el"))
  (fuzzy status "installed" recipe
         (:name fuzzy :website "https://github.com/auto-complete/fuzzy-el" :description "Fuzzy matching utilities for GNU Emacs" :type github :pkgname "auto-complete/fuzzy-el"))
+ (haskell-mode status "installed" recipe
+               (:name haskell-mode :description "A Haskell editing mode" :type github :pkgname "haskell/haskell-mode" :load "haskell-site-file.el" :post-init
+                      (progn
+                        (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+                        (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation))))
  (jaunte status "installed" recipe
          (:name jaunte :type github :pkgname "kawaguchi/jaunte.el"))
  (js2-mode status "installed" recipe
