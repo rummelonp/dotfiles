@@ -9,6 +9,10 @@
 ;; anything yaetags
 (require 'anything-yaetags)
 
+;; cua
+(cua-mode t)
+(setq cua-enable-cua-keys nil)
+
 ;; uniquify
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
