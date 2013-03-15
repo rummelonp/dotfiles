@@ -124,6 +124,9 @@
 (define-key global-map (kbd "C-x .") 'auto-complete)
 (define-key global-map (kbd "C-x C-.") 'auto-complete)
 
+;; git-gutter
+(define-key global-map (kbd "C-x C-g") 'git-gutter)
+
 ;; popwin
 (define-key global-map (kbd "C-x p") 'popwin:display-last-buffer)
 (define-key global-map (kbd "C-x s") 'popwin:stick-popup-window)

@@ -43,6 +43,9 @@
 (require 'undohist)
 (undohist-initialize)
 
+;; git-gutter
+(require 'git-gutter)
+
 ;; popwin
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
