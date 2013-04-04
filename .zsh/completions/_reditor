@@ -20,7 +20,7 @@ _reditor() {
         _call_function 1 _reditor_${words[1]}
     else
         _arguments \
-            ': : _alternative ":command:__reditor_commands" ":gem:__reditor_gems"'
+            ': : _alternative ":command:__reditor_commands" ":gem:__reditor_gems" ":lib:__reditor_libs"'
     fi
 }
 
@@ -41,12 +41,18 @@ __reditor_gems() {
     _describe -t reditor_gems 'gem' _reditor_gems
 }
 
+__reditor_libs() {
+    _reditor_libs=($(ruby -e 'puts Dir[*$:.map { |p| p + "/*.rb" }].map { |p| File.basename(p).sub(/\.rb$/, "") }.join("\n")'))
+
+    _describe -t reditor_libs 'lib' _reditor_libs
+}
+
 _reditor_sh() {
     _arguments \
-        ':gem:__reditor_gems'
+        ': : _alternative ":gem:__reditor_gems" ":lib:__reditor_libs"'
 }
 
 _reditor_open() {
     _arguments \
-        ':gem:__reditor_gems'
+        ': : _alternative ":gem:__reditor_gems" ":lib:__reditor_libs"'
 }
