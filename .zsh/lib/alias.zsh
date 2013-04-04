@@ -22,6 +22,8 @@ export GREP_OPTIONS='--color=auto --exclude=*.git*'
 
 alias diff="colordiff"
 
+alias less="less -R"
+
 alias rsync-copy="rsync -av --progress -h"
 alias rsync-move="rsync -av --progress -h --remove-source-files"
 alias rsync-update="rsync -avu --progress -h"
