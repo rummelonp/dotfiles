@@ -1,0 +1,52 @@
+#compdef reditor
+# ------------------------------------------------------------------------------
+# Description
+# -----------
+#
+#  Completion script for Reditor (https://github.com/hibariya/reditor).
+#
+# ------------------------------------------------------------------------------
+# Authors
+# -------
+#
+#  * Kazuya Takeshima (https://github.com/mitukiii)
+#
+# ------------------------------------------------------------------------------
+
+_reditor() {
+    if (( CURRENT > 2 )); then
+        (( CURRENT-- ))
+        shift words
+        _call_function 1 _reditor_${words[1]}
+    else
+        _arguments \
+            ': : _alternative ":command:__reditor_commands" ":gem:__reditor_gems"'
+    fi
+}
+
+__reditor_commands() {
+    _reditor_commands=(
+        'command'
+        'open[Open the library]'
+        'sh[Open a shell and move to the library]'
+        'version[Show version]'
+    )
+
+    _values $_reditor_commands
+}
+
+__reditor_gems() {
+    _reditor_gems=($(gem list | awk '{ print $1 }'))
+
+    _describe -t reditor_gems 'gem' _reditor_gems
+}
+
+_reditor_sh() {
+    _arguments \
+        ':gem:__reditor_gems'
+}
+
+_reditor_open() {
+    _arguments \
+        ':gem:__reditor_gems'
+}
