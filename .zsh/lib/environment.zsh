@@ -34,7 +34,7 @@ case $OSTYPE in
         # Haskell
         export PATH=$HOME/.cabal/bin:$PATH
         # Android
-        export ANDROID_HOME=/usr/local/var/lib/android-sdk
+        export ANDROID_HOME=/usr/local/opt/android-sdk
         # Gist
         export GISTY_DIR=$HOME/Dropbox/Gist
         ;;
