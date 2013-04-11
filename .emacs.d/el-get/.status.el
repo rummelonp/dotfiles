@@ -9,7 +9,7 @@
  (anything-yaetags status "installed" recipe
                    (:name anything-yaetags :auto-generated t :type emacswiki :description "Yet another etags interface with anything." :website "https://raw.github.com/emacsmirror/emacswiki.org/master/anything-yaetags.el"))
  (auto-complete status "installed" recipe
-                (:name auto-complete :website "http://cx4a.org/software/auto-complete/" :description "The most intelligent auto-completion extension." :type github :pkgname "auto-complete/auto-complete" :depends
+                (:name auto-complete :website "https://github.com/auto-complete/auto-complete" :description "The most intelligent auto-completion extension." :type github :pkgname "auto-complete/auto-complete" :depends
                        (popup fuzzy)))
  (coffee-mode status "installed" recipe
               (:name coffee-mode :website "http://ozmm.org/posts/coffee_mode.html" :description "Emacs Major Mode for CoffeeScript" :type github :pkgname "defunkt/coffee-mode" :features coffee-mode :post-init
