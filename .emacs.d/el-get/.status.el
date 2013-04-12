@@ -41,6 +41,10 @@
                   (autoload 'js2-mode "js2-mode" nil t)))
  (less-css-mode status "installed" recipe
                 (:name less-css-mode :auto-generated t :type elpa :description "Major mode for editing LESS CSS files (lesscss.org)"))
+ (markdown-mode status "installed" recipe
+                (:name markdown-mode :description "Major mode to edit Markdown files in Emacs" :type git :url "git://jblevins.org/git/markdown-mode.git" :before
+                       (add-to-list 'auto-mode-alist
+                                    '("\\.\\(md\\|mdown\\|markdown\\)\\'" . markdown-mode))))
  (migemo status "installed" recipe
          (:name migemo :type http :url "https://raw.github.com/gist/457761/migemo.el"))
  (mmm-mode status "installed" recipe
