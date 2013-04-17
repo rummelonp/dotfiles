@@ -20,21 +20,29 @@ export RSENSE_HOME=$HOME/.emacs.d/el-get/rsense
 case $OSTYPE in
     darwin*)
         # Ruby / rbenv
-        export RBENV_ROOT=/usr/local/opt/rbenv
-        eval "$(rbenv init -)"
+        export RBENV_ROOT=/usr/local/var/rbenv
+        if which rbenv > /dev/null; then
+            eval "$(rbenv init -)";
+        fi
         # Python / pyenv
         export PYENV_ROOT=/usr/local/opt/pyenv
-        eval "$(pyenv init -)"
-        # Perl / perlbrew
-        export PERLBREW_ROOT=/usr/local/perlbrew
-        source $PERLBREW_ROOT/etc/bashrc
+        if which pyenv > /dev/null; then
+            eval "$(pyenv init -)"
+        fi
+        # Perl / plenv
+        if which plenv > /dev/null; then
+            eval "$(plenv init -)";
+        fi
         # Node / nodebrew
         export PATH=$HOME/.nodebrew/current/bin:$PATH
-        eval "$(npm completion)"
         # Haskell
         export PATH=$HOME/.cabal/bin:$PATH
+        # MySQL / mysqlenv
+        if [ -f $HOME/.mysqlenv/etc/bashrc ]; then
+            source $HOME/.mysqlenv/etc/bashrc
+        fi
         # Android
-        export ANDROID_HOME=/usr/local/opt/android-sdk
+        export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
         # Gist
         export GISTY_DIR=$HOME/Dropbox/Gist
         ;;

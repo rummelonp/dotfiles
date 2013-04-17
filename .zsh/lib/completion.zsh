@@ -4,6 +4,12 @@ compinit -u
 
 zmodload -i zsh/complist
 
+case $OSTYPE in
+    darwin*)
+        eval "$(npm completion)"
+        ;;
+esac
+
 # See http://www.ayu.ics.keio.ac.jp/~mukai/translate/zshoptions.html
 unsetopt menu_complete
 unsetopt flowcontrol
