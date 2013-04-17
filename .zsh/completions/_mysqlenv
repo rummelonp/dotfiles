@@ -55,11 +55,9 @@ __mysql_installed_versions() {
 }
 
 _mysqlenv_install() {
-    if (( CURRENT > 3 )); then
-        return
-    fi
-
     _arguments \
+        '(-v --verbose)'{-v,--verbose}'[Chatty build log.]' \
+        '(--as)'--as'[Install the given version of MySQL by a name.]':name: \
         ':mysql versions:__mysql_versions'
 }
 
@@ -82,7 +80,7 @@ _mysqlenv_local() {
     fi
 
     _arguments \
-        ':mysql installed versions:__mysql_installed_versions'
+        ': : _alternative "::(--unset)" ":mysql installed versions:__mysql_installed_versions"'
 }
 
 _mysqlenv_which() {
