@@ -13,8 +13,8 @@ precmd() {
         local d=`date +%s`
         d=`expr $d - $command_time`
         if [ "$d" -ge "30" ] ; then
-             command="$command "
-             growlnotify -t "${${(s: :)command}[1]}" -m "$command"
+            command="$command "
+            growlnotify -t "${${(s: :)command}[1]}" -m "$command"
         fi
     fi
     command="0"

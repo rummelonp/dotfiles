@@ -82,23 +82,23 @@ zstyle ':completion:*:hosts' hosts $hosts
 
 # User
 zstyle ':completion:*:*:*:users' ignored-patterns \
-        adm amanda apache avahi beaglidx bin cacti canna clamav daemon \
-        dbus distcache dovecot fax ftp games gdm gkrellmd gopher \
-        hacluster haldaemon halt hsqldb ident junkbust ldap lp mail \
-        mailman mailnull mldonkey mysql nagios \
-        named netdump news nfsnobody nobody nscd ntp nut nx openvpn \
-        operator pcap postfix postgres privoxy pulse pvm quagga radvd \
-        rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs \
-        _amavisd _appleevents _appowner _appserver _ard _assetcache \
-        _atsserver _avbdeviced _calendar _ces _clamav _coreaudiod \
-        _cvmsroot _cvs _cyrus _devdocs _devicemgr _dovecot _dovenull \
-        _dpaudio _eppc _ftp _geod _installassistant _installer _jabber \
-        _kadmin_admin _kadmin_changepw _krb_anonymous _krb_changepw \
-        _krb_kadmin _krb_kerberos _krb_krbtgt _krbtgt _lda _locationd \
-        _lp _mailman _mcxalr _mdnsresponder _mysql _netbios \
-        _netstatistics _networkd _pcastagent _pcastlibrary _pcastserver \
-        _postfix _postgres _qtss _sandbox _screensaver _scsd \
-        _securityagent _serialnumberd _softwareupdate _spotlight \
-        _sshd _svn _taskgated _teamsserver _timezone _tokend \
-        _trustevaluationagent _unknown _update_sharing _usbmuxd _uucp \
-        _warmd _webauthserver _windowserver _www _xgridagent _xgridcontroller
+    adm amanda apache avahi beaglidx bin cacti canna clamav daemon \
+    dbus distcache dovecot fax ftp games gdm gkrellmd gopher \
+    hacluster haldaemon halt hsqldb ident junkbust ldap lp mail \
+    mailman mailnull mldonkey mysql nagios \
+    named netdump news nfsnobody nobody nscd ntp nut nx openvpn \
+    operator pcap postfix postgres privoxy pulse pvm quagga radvd \
+    rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs \
+    _amavisd _appleevents _appowner _appserver _ard _assetcache \
+    _atsserver _avbdeviced _calendar _ces _clamav _coreaudiod \
+    _cvmsroot _cvs _cyrus _devdocs _devicemgr _dovecot _dovenull \
+    _dpaudio _eppc _ftp _geod _installassistant _installer _jabber \
+    _kadmin_admin _kadmin_changepw _krb_anonymous _krb_changepw \
+    _krb_kadmin _krb_kerberos _krb_krbtgt _krbtgt _lda _locationd \
+    _lp _mailman _mcxalr _mdnsresponder _mysql _netbios \
+    _netstatistics _networkd _pcastagent _pcastlibrary _pcastserver \
+    _postfix _postgres _qtss _sandbox _screensaver _scsd \
+    _securityagent _serialnumberd _softwareupdate _spotlight \
+    _sshd _svn _taskgated _teamsserver _timezone _tokend \
+    _trustevaluationagent _unknown _update_sharing _usbmuxd _uucp \
+    _warmd _webauthserver _windowserver _www _xgridagent _xgridcontroller
