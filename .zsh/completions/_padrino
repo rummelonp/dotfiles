@@ -80,7 +80,7 @@ __padrino_generate() {
       case $line[1] in
         app)
           _arguments $_generators_options \
-            {-i--tiny}'[Generate tiny app skeleton]'
+            {-i,--tiny}'[Generate tiny app skeleton]'
           ret=0
           ;;
         controller)
