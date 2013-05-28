@@ -74,7 +74,7 @@
   # log
   l  = log --stat --date=iso
   la = log -p --date=iso
-  ll = log --graph --date=iso --all --pretty=format:'%h %Cgreen%ad %Cblue%cn %Creset%s %Cred%d'
+  ll = log --graph --date=iso --all --pretty=format:'%h %Cgreen%ad %Cblue%cn %Creset%s %Cred%d%Creset'
   # diff
   d  = diff
   dc = diff --cached
