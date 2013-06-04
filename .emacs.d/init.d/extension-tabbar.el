@@ -27,7 +27,8 @@
          (list
           (let ((name (symbol-name major-mode)))
             (cond ((or (equal name "html-mode")
-                       (equal name "rhtml-mode"))
+                       (equal name "rhtml-mode")
+                        (equal name "nxml-mode"))
                    "html-mode")
                   ((or (equal name "scss-mode")
                        (equal name "less-css-mode")
