@@ -62,6 +62,7 @@
   rshh = reset --hard HEAD^
   # merge
   m  = merge
+  mf = merge --ff
   mn = merge --no-ff
   ms = merge --squash
   # branch
