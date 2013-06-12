@@ -107,8 +107,11 @@
  (rsense status "installed" recipe
          (:name rsense :type github :pkgname "m2ym/rsense" :description "RSense client for Emacs" :website "http://cx4a.org/software/rsense/index.html" :load-path
                 ("etc")))
- (ruby-end status "installed" recipe
-           (:name ruby-end :description "Emacs minor mode for automatic insertion of end blocks for Ruby" :type http :url "https://github.com/rejeep/ruby-end/raw/master/ruby-end.el" :features ruby-end))
+ (ruby-block status "installed" recipe
+             (:name ruby-block :description "highlight matching block" :type github :pkgname "adolfosousa/ruby-block.el" :website "https://github.com/adolfosousa/ruby-block.el"))
+ (ruby-electric status "installed" recipe
+                (:name ruby-electric :description "Electric commands editing for ruby files" :type github :pkgname "qoobaa/ruby-electric" :post-init
+                       (add-hook 'ruby-mode-hook 'ruby-electric-mode)))
  (ruby-mode status "installed" recipe
             (:name ruby-mode :builtin "24" :type http :description "Major mode for editing Ruby files." :url "http://bugs.ruby-lang.org/projects/ruby-trunk/repository/raw/misc/ruby-mode.el"))
  (savekill status "installed" recipe

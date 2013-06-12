@@ -13,7 +13,6 @@
 (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
 (add-hook 'ruby-mode-hook
           '(lambda ()
-             (ruby-end-mode t)
              (setq ruby-deep-indent-paren nil)
              (define-key ruby-mode-map (kbd "C-x C-t") 'macosx-open-terminal)
              (define-key ruby-mode-map (kbd "C-m") 'reindent-then-newline-and-indent)
@@ -44,11 +43,24 @@
       (indent-line-to indent)
       (when (> offset 0) (forward-char offset)))))
 
+;; ruby electric
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (require 'ruby-electric)
+             (ruby-electric-mode t)))
+
+;; ruby block
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (require 'ruby-block)
+             (ruby-block-mode t)
+             (setq ruby-block-highlight-toggle t)))
+
 ;; rsense
-(setq rsense-home (expand-file-name "~/.emacs.d/el-get/rsense"))
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (require 'rsense)
+             (setq rsense-home (expand-file-name "~/.emacs.d/el-get/rsense"))
              (setq rsense-rurema-home (expand-file-name "~/Dropbox/Documents/ruby-refm"))
              (setq rsense-rurema-refe "refe-1_9_3")
              (add-to-list 'ac-sources 'ac-source-rsense-method)
