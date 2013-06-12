@@ -40,7 +40,8 @@
            (:name js2-mode :website "https://github.com/mooz/js2-mode#readme" :description "An improved JavaScript editing mode" :type github :pkgname "mooz/js2-mode" :prepare
                   (autoload 'js2-mode "js2-mode" nil t)))
  (less-css-mode status "installed" recipe
-                (:name less-css-mode :auto-generated t :type elpa :description "Major mode for editing LESS CSS files (lesscss.org)"))
+                (:name less-css-mode :auto-generated t :type elpa :description "Major mode for editing LESS CSS files (lesscss.org)" :repo
+                       ("marmalade" . "http://marmalade-repo.org/packages/")))
  (markdown-mode status "installed" recipe
                 (:name markdown-mode :description "Major mode to edit Markdown files in Emacs" :type git :url "git://jblevins.org/git/markdown-mode.git" :before
                        (add-to-list 'auto-mode-alist
@@ -52,7 +53,7 @@
  (nginx-mode status "installed" recipe
              (:name nginx-mode :website "https://github.com/ajc/nginx-mode" :description "major mode for editing nginx config files" :type github :pkgname "ajc/nginx-mode"))
  (package status "installed" recipe
-          (:name package :description "ELPA implementation (\"package.el\") from Emacs 24" :builtin 24 :type http :url "http://repo.or.cz/w/emacs.git/blob_plain/1a0a666f941c99882093d7bd08ced15033bc3f0c:/lisp/emacs-lisp/package.el" :shallow nil :features package :post-init
+          (:name package :description "ELPA implementation (\"package.el\") from Emacs 24" :builtin "24" :type http :url "http://repo.or.cz/w/emacs.git/blob_plain/1a0a666f941c99882093d7bd08ced15033bc3f0c:/lisp/emacs-lisp/package.el" :shallow nil :features package :post-init
                  (progn
                    (setq package-user-dir
                          (expand-file-name
@@ -86,7 +87,8 @@
  (recentf-ext status "installed" recipe
               (:name recentf-ext :description "Recentf extensions" :type emacswiki :features "recentf-ext"))
  (redo+ status "installed" recipe
-        (:name redo+ :auto-generated t :type elpa :description "Redo/undo system for Emacs"))
+        (:name redo+ :auto-generated t :type elpa :description "Redo/undo system for Emacs" :repo
+               ("marmalade" . "http://marmalade-repo.org/packages/")))
  (rhtml-mode status "installed" recipe
              (:name rhtml-mode :description "Major mode for editing RHTML files" :type github :pkgname "eschulte/rhtml" :prepare
                     (progn
@@ -99,7 +101,8 @@
                 :compile
                 ("\\.el$" "util")
                 :build
-                ("rake doc:install_info")
+                (("bundle")
+                 ("rake" "doc:install_info"))
                 :info "doc" :features rinari))
  (rsense status "installed" recipe
          (:name rsense :type github :pkgname "m2ym/rsense" :description "RSense client for Emacs" :website "http://cx4a.org/software/rsense/index.html" :load-path
