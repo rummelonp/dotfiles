@@ -2,12 +2,11 @@
 ZSH=$HOME/.zsh
 
 ## Add completions path
-for completions in /usr/local/share/zsh-completions $ZSH/completions; do
-    if [[ -n ${fpath[(re)$completions]} ]]; then
-    else
-        fpath=($completions $fpath)
-    fi
-done
+completions=$ZSH/completions
+if [[ -n ${fpath[(re)$completions]} ]]; then
+else
+    fpath=($completions $fpath)
+fi
 unset completions
 
 ## Load all configuration
