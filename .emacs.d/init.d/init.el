@@ -40,6 +40,7 @@
 
 ;; line
 (setq kill-whole-line t)
+(setq truncate-lines t)
 
 ;; paren
 (show-paren-mode t)

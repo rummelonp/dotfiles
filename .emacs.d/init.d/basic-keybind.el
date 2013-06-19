@@ -23,6 +23,9 @@
 (define-key global-map (kbd "C-x i") 'indent-region)
 (define-key global-map (kbd "C-x C-i") 'indent-and-untabify-buffer)
 
+;; truncate line
+(define-key global-map (kbd "C-/") 'toggle-truncate-lines)
+
 ;; cursor
 (define-key global-map (kbd "M-a") 'beginning-of-defun)
 (define-key global-map (kbd "M-e") 'end-of-defun)
