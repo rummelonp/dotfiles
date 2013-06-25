@@ -46,10 +46,6 @@ case $OSTYPE in
         # Gist
         export GISTY_DIR=$HOME/Dropbox/Gist
         ;;
-    linux*)
-        # Ruby
-        export PATH=$PATH:/var/lib/gems/1.9.1/bin
-        ;;
 esac
 
 typeset -U PATH
