@@ -18,7 +18,7 @@ function create_symlink() {
 DOTFILES_DIR=$(cd $(dirname $0) && pwd)
 
 ## dotfiles
-DOTFILES=(bin .zshenv .zshrc .zsh .emacs.d .gitconfig .gitignore .screenrc .screen .tmux.conf .tmux .gemrc .pryrc .percol.d)
+DOTFILES=(bin .zshenv .zshrc .zsh .emacs.d .gitconfig .gitignore .screenrc .screen .tmux.conf .tmux .gemrc .pryrc .railsrc .percol.d)
 for name in ${DOTFILES[@]}
 do
     create_symlink $DOTFILES_DIR/$name $HOME/$name
