@@ -87,8 +87,7 @@
  (recentf-ext status "installed" recipe
               (:name recentf-ext :description "Recentf extensions" :type emacswiki :features "recentf-ext"))
  (redo+ status "installed" recipe
-        (:name redo+ :auto-generated t :type elpa :description "Redo/undo system for Emacs" :repo
-               ("marmalade" . "http://marmalade-repo.org/packages/")))
+        (:name redo+ :type emacswiki :description "Redo/undo system for Emacs" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/redo+.el"))
  (rhtml-mode status "installed" recipe
              (:name rhtml-mode :description "Major mode for editing RHTML files" :type github :pkgname "eschulte/rhtml" :prepare
                     (progn
