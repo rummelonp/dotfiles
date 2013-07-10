@@ -48,7 +48,7 @@
 
 ;; popwin
 (require 'popwin)
-(setq display-buffer-function 'popwin:display-buffer)
+(popwin-mode 1)
 (add-to-list 'popwin:special-display-config '("^\\*anything.*\\*$" :regexp t :height 20))
 (add-to-list 'popwin:special-display-config '("*Backtrace*"))
 (add-to-list 'popwin:special-display-config '("*Warnings*"))
