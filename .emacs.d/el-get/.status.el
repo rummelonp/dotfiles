@@ -30,7 +30,7 @@
  (git-gutter status "installed" recipe
              (:name git-gutter :description "Emacs port of GitGutter Sublime Text 2 Plugin" :website "https://github.com/syohex/emacs-git-gutter" :type github :pkgname "syohex/emacs-git-gutter"))
  (haskell-mode status "installed" recipe
-               (:name haskell-mode :description "A Haskell editing mode" :type github :pkgname "haskell/haskell-mode" :load "haskell-site-file.el" :post-init
+               (:name haskell-mode :description "A Haskell editing mode" :type github :pkgname "haskell/haskell-mode" :post-init
                       (progn
                         (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
                         (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation))))

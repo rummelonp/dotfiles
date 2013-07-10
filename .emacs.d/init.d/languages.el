@@ -85,7 +85,7 @@
 (add-to-list 'auto-mode-alist '("\\.cs$" . csharp-mode))
 
 ;; haskell
-(autoload 'csharp-mode "haskell-mode" nil t)
+(autoload 'haskell-mode "haskell-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
 
 ;; mmm mode
