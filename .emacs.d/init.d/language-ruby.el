@@ -14,6 +14,7 @@
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (setq ruby-deep-indent-paren nil)
+             (add-to-list 'ruby-encoding-map '(undecided . utf-8))
              (define-key ruby-mode-map (kbd "C-x C-t") 'macosx-open-terminal)
              (define-key ruby-mode-map (kbd "C-m") 'reindent-then-newline-and-indent)
              (define-key ruby-mode-map (kbd "C-j") 'ruby-end-return)
@@ -47,7 +48,8 @@
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (require 'ruby-electric)
-             (ruby-electric-mode t)))
+             (ruby-electric-mode t)
+             (setq ruby-electric-expand-delimiters-list nil)))
 
 ;; ruby block
 (add-hook 'ruby-mode-hook
