@@ -37,6 +37,7 @@
 (setq require-final-newline t)
 (setq backup-inhibited t)
 (setq delete-auto-save-files t)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; line
 (setq kill-whole-line t)
