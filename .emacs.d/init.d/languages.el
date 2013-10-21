@@ -56,10 +56,6 @@
 (add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))
 (setq scss-compile-at-save nil)
 
-;; scss
-(autoload 'less-css-mode "less-css-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
-
 ;; js
 (require 'js)
 (setq js-indent-level 2)

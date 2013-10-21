@@ -3,8 +3,10 @@
 ;; mac key
 (when darwin-p
   (setq mac-control-modifier 'control)
+  (setq mac-option-modifier 'meta)
   (setq mac-command-modifier 'super)
-  (setq mac-option-modifier 'meta))
+  (setq mac-right-command-modifier 'hyper))
+
 
 ;; key map
 (define-prefix-command 'screen-map)
