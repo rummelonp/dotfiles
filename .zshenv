@@ -14,7 +14,7 @@ case $OSTYPE in
 esac
 
 # Path
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
 export RSENSE_HOME=$HOME/.emacs.d/el-get/rsense
 
 case $OSTYPE in
