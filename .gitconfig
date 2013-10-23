@@ -90,8 +90,8 @@
   grl  = grep -l
   gril = grep -i -l
   # percol
-  psh  = "!f() { git log --date=iso --all --pretty=format:'%h %ad %cn %s %d' | percol --match-method migemo | cut -d' ' -f1 | xargs git show; }; f;"
-  prsh = "!f() { git reflog | percol --match-method migemo | cut -d' ' -f1 | xargs git show; }; f;"
+  psh  = "!f() { git log --date=iso --all --pretty=format:'%h %ad %cn %s %d' | percol --match-method regex | cut -d' ' -f1 | xargs git show; }; f;"
+  prsh = "!f() { git reflog | percol --match-method regex | cut -d' ' -f1 | xargs git show; }; f;"
   pls-files = "!f() { echo $(git ls-files | percol --match-method regex | sed 's/ /\\ /g'); }; f;"
   # other
   root  = "!f() { pwd; }; f;"

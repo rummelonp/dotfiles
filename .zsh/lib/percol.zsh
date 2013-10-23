@@ -49,7 +49,7 @@ function percol-search-document() {
     PERCOL_SELECTED_FILE=($(echo $document_dir | \
         xargs find | \
         grep -E "\.(txt|md|pdf|numbers|key|pages|docx?|xlsx?|pptx?)$" | \
-        percol --match-method migemo | \
+        percol --match-method regex | \
         sed 's/ /\\ /g'))
     if (( $#PERCOL_SELECTED_FILE > 0 )); then
         echo $PERCOL_SELECTED_FILE
@@ -75,4 +75,4 @@ bindkey '^r' percol-select-history
 alias pd='percol-search-document'
 alias pl='percol-search-locate'
 
-alias -g P="| percol --match-method migemo"
+alias -g P="| percol --match-method regex"
