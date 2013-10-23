@@ -14,7 +14,7 @@ precmd() {
         d=`expr $d - $command_time`
         if [ "$d" -ge "30" ] ; then
             command="$command "
-            growlnotify -t "${${(s: :)command}[1]}" -m "$command"
+            notification "$command" -t "${${(s: :)command}[1]}"
         fi
     fi
     command="0"
@@ -35,6 +35,35 @@ function free-memory() {
     diskutil repairPermissions /
     purge
     du -sx / >& /dev/null & sleep 5 && kill $!
+}
+
+function notification() {
+    local title
+    local subtitle
+    local text=""
+    while [ "$1" != "" ]; do
+        case "$1" in
+            -t)
+                shift
+                title="$1"
+                ;;
+            -s)
+                shift
+                subtitle="$1"
+                ;;
+            *)
+                text+=" $1"
+        esac
+        shift
+    done
+    local command="display notification \"$text\""
+    if [ -n "$title" ]; then
+        command+=" with title \"$title\""
+        if [ -n "$subtitle" ]; then
+            command+=" subtitle \"$subtitle\""
+        fi
+    fi
+    echo "$command" | osascript
 }
 
 function _copy-line-as-kill() {
