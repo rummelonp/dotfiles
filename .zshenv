@@ -42,7 +42,7 @@ case $OSTYPE in
             source $HOME/.mysqlenv/etc/bashrc
         fi
         # Android
-        export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
+        export ANDROID_HOME=/usr/local/opt/android-sdk
         # Gist
         export GISTY_DIR=$HOME/Dropbox/Gist
         ;;
