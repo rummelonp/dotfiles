@@ -9,6 +9,9 @@
 ;; anything yaetags
 (require 'anything-yaetags)
 
+;; dash-at-point
+(require 'dash-at-point)
+
 ;; cua
 (cua-mode t)
 (setq cua-enable-cua-keys nil)

@@ -31,7 +31,7 @@
           '(lambda ()
              (when (string-match "\\.el$" buffer-file-name)
                (byte-compile-file buffer-file-name))))
-(define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
+(define-key emacs-lisp-mode-map (kbd "C-.") 'find-function-at-point)
 
 ;; html
 (add-to-list 'auto-mode-alist '("\\.html$" . html-mode))

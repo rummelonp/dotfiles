@@ -25,6 +25,8 @@
                        (setq coffee-js-mode 'javascript-mode))))
  (csharp-mode status "installed" recipe
               (:name csharp-mode :website "https://code.google.com/p/csharpmode/" :description "This is a mode for editing C# in emacs. It's based on cc-mode, v5.30.3 and above." :type git-svn :url "http://csharpmode.googlecode.com/svn/trunk/" :features csharp-mode))
+ (dash-at-point status "installed" recipe
+                (:name dash-at-point :description "Search the word at point with Dash. Dash is an API Documentation Browser and Code Snippet Manager. dash-at-point make it easy to search the word at point with Dash." :type github :pkgname "stanaka/dash-at-point"))
  (el-get status "installed" recipe
          (:name el-get :website "https://github.com/dimitri/el-get#readme" :description "Manage the external elisp bits and pieces you depend upon." :type github :branch "4.stable" :pkgname "dimitri/el-get" :info "." :load "el-get.el"))
  (eldoc-extension status "installed" recipe

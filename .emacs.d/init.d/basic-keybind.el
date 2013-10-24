@@ -99,6 +99,7 @@
 (define-key global-map (kbd "C-M-$") 'replace-regexp)
 
 ;; anything
+(define-key global-map (kbd "C-.") 'anything-yaetags-find-tag)
 (define-key global-map (kbd "C-x C-a") 'anything-recentf)
 (define-key global-map (kbd "C-x f") 'anything-find-file)
 (define-key global-map (kbd "C-x C-f") 'anything-project)
@@ -108,7 +109,9 @@
 (define-key global-map (kbd "C-x C-x") 'anything-execute-anything-command)
 (define-key global-map (kbd "M-x") 'anything-execute-extended-command)
 (define-key global-map (kbd "C-x C-y") 'anything-show-kill-ring)
-(define-key global-map (kbd "M-.") 'anything-yaetags-find-tag)
+
+;; dash-at-point
+(define-key global-map (kbd "M-.") 'dash-at-point)
 
 ;; tabbar
 (define-key global-map (kbd "C-z a") 'tabbar-local-mode)
