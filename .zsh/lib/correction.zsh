@@ -2,7 +2,8 @@
 setopt correct
 setopt correct_all
 
-alias exec="nocorrect exec"
 alias cp="nocorrect cp"
-alias mv="nocorrect mv"
+alias exec="nocorrect exec"
 alias mkdir="nocorrect mkdir"
+alias mv="nocorrect mv"
+alias which="nocorrect which"
