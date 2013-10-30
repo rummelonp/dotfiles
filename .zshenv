@@ -15,37 +15,40 @@ esac
 
 # Path
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
-export RSENSE_HOME=$HOME/.emacs.d/el-get/rsense
 
 case $OSTYPE in
     darwin*)
-        # Ruby / rbenv
+        # Ruby
         export RBENV_ROOT=/usr/local/var/rbenv
         if which rbenv > /dev/null; then
+            export PATH=$RBENV_ROOT/shims:$PATH
             eval "$(rbenv init -)";
         fi
-        # Python / pyenv
-        export PYENV_ROOT=/usr/local/opt/pyenv
+        # Python
+        export PYENV_ROOT=/usr/local/var/pyenv
         if which pyenv > /dev/null; then
+            export PATH=$PYENV_ROOT/shims:$PATH
             eval "$(pyenv init -)"
         fi
-        # Perl / plenv
+        # Perl
+        export PLENV_ROOT=/usr/local/var/plenv
         if which plenv > /dev/null; then
+            export PATH=$PLENV_ROOT/shims:$PATH
             eval "$(plenv init -)";
         fi
-        # Node / nodebrew
-        export PATH=$HOME/.nodebrew/current/bin:$PATH
+        # Node
+        export NODEBREW_ROOT=/usr/local/var/nodebrew
+        export PATH=$NODEBREW_ROOT/current/bin:$PATH
         # Haskell
         export PATH=$HOME/.cabal/bin:$PATH
-        # MySQL / mysqlenv
-        if [ -f $HOME/.mysqlenv/etc/bashrc ]; then
-            source $HOME/.mysqlenv/etc/bashrc
-        fi
         # Android
         export ANDROID_HOME=/usr/local/opt/android-sdk
         # Gist
         export GISTY_DIR=$HOME/Dropbox/Gist
         ;;
 esac
+
+# Rsense
+export RSENSE_HOME=$HOME/.emacs.d/el-get/rsense
 
 typeset -U PATH

@@ -6,7 +6,9 @@ zmodload -i zsh/complist
 
 case $OSTYPE in
     darwin*)
-        eval "$(npm completion)"
+        if which npm > /dev/null; then
+            eval "$(npm completion)"
+        fi
         ;;
 esac
 
