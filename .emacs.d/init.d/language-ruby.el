@@ -1,6 +1,6 @@
 ;; Ruby
 
-(autoload 'ruby-mode "ruby-mode" nil t)
+(require 'ruby-mode)
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rb.sample$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
@@ -11,21 +11,20 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
-(add-hook 'ruby-mode-hook
-          '(lambda ()
-             (setq ruby-deep-indent-paren nil)
-             (add-to-list 'ruby-encoding-map '(undecided . utf-8))
-             (define-key ruby-mode-map (kbd "C-x C-t") 'macosx-open-terminal)
-             (define-key ruby-mode-map (kbd "C-m") 'reindent-then-newline-and-indent)
-             (define-key ruby-mode-map (kbd "C-j") 'ruby-end-return)
-             (define-key ruby-mode-map (kbd "M-a") 'ruby-beginning-of-defun)
-             (define-key ruby-mode-map (kbd "M-e") 'ruby-end-of-defun)
-             (define-key ruby-mode-map (kbd "M-f") 'ruby-forward-sexp)
-             (define-key ruby-mode-map (kbd "M-b") 'ruby-backward-sexp)
-             (define-key ruby-mode-map (kbd "C-M-a") 'backward-sentence)
-             (define-key ruby-mode-map (kbd "C-M-e") 'forward-sentence)
-             (define-key ruby-mode-map (kbd "C-M-f") 'forward-word)
-             (define-key ruby-mode-map (kbd "C-M-b") 'backward-word)))
+(add-to-list 'ruby-encoding-map '(undecided . utf-8))
+(setq ruby-use-smie nil)
+(setq ruby-deep-indent-paren nil)
+(define-key ruby-mode-map (kbd "C-x C-t") 'macosx-open-terminal)
+(define-key ruby-mode-map (kbd "C-m") 'reindent-then-newline-and-indent)
+(define-key ruby-mode-map (kbd "C-j") 'ruby-end-return)
+(define-key ruby-mode-map (kbd "M-a") 'ruby-beginning-of-defun)
+(define-key ruby-mode-map (kbd "M-e") 'ruby-end-of-defun)
+(define-key ruby-mode-map (kbd "M-f") 'ruby-forward-sexp)
+(define-key ruby-mode-map (kbd "M-b") 'ruby-backward-sexp)
+(define-key ruby-mode-map (kbd "C-M-a") 'backward-sentence)
+(define-key ruby-mode-map (kbd "C-M-e") 'forward-sentence)
+(define-key ruby-mode-map (kbd "C-M-f") 'forward-word)
+(define-key ruby-mode-map (kbd "C-M-b") 'backward-word)
 
 ;; function
 ;; http://stackoverflow.com/questions/7961533/emacs-ruby-method-parameter-indentation
