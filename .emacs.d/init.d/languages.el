@@ -92,6 +92,9 @@
 (mmm-add-mode-ext-class nil "\\.html$" 'html-css)
 (mmm-add-mode-ext-class nil "\\.html$" 'html-js)
 (mmm-add-mode-ext-class nil "\\.html$" 'html-php)
+(mmm-add-mode-ext-class nil "\\.php$" 'html-css)
+(mmm-add-mode-ext-class nil "\\.php$" 'html-js)
+(mmm-add-mode-ext-class nil "\\.php$" 'html-php)
 (mmm-add-classes
  '((html-css
     :submode css-mode
