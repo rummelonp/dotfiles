@@ -7,6 +7,7 @@
 
 ;; theme
 (load-theme 'deeper-blue t)
+(set-frame-parameter nil 'alpha 95)
 
 ;; font
 (set-face-attribute 'default nil
