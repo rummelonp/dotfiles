@@ -10,6 +10,9 @@
                           :description "finding any resource of a project" :website "https://github.com/imakado/anything-project"))
  (anything-yaetags status "installed" recipe
                    (:name anything-yaetags :auto-generated t :type emacswiki :description "Yet another etags interface with anything." :website "https://raw.github.com/emacsmirror/emacswiki.org/master/anything-yaetags.el"))
+ (applescript-mode status "installed" recipe
+                   (:name applescript-mode :type github :description "Emacs mode for editing AppleScript." :pkgname "ieure/applescript-mode" :prepare
+                          (autoload 'applescript-mode "applescript-mode" "Major mode for editing AppleScript source." t)))
  (auto-complete status "installed" recipe
                 (:name auto-complete :website "https://github.com/auto-complete/auto-complete" :description "The most intelligent auto-completion extension." :type github :pkgname "auto-complete/auto-complete" :depends
                        (popup fuzzy)))
