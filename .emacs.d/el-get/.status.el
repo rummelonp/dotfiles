@@ -10,6 +10,8 @@
                           :description "finding any resource of a project" :website "https://github.com/imakado/anything-project"))
  (anything-yaetags status "installed" recipe
                    (:name anything-yaetags :auto-generated t :type emacswiki :description "Yet another etags interface with anything." :website "https://raw.github.com/emacsmirror/emacswiki.org/master/anything-yaetags.el"))
+ (anzu status "installed" recipe
+       (:name anzu :website "https://github.com/syohex/emacs-anzu" :description "A minor mode which displays current match and total matches." :type "github" :branch "master" :pkgname "syohex/emacs-anzu"))
  (applescript-mode status "installed" recipe
                    (:name applescript-mode :type github :description "Emacs mode for editing AppleScript." :pkgname "ieure/applescript-mode" :prepare
                           (autoload 'applescript-mode "applescript-mode" "Major mode for editing AppleScript source." t)))
@@ -127,6 +129,8 @@
          (:name tabbar :type emacswiki :description "Display a tab bar in the header line" :lazy t :load-path "."))
  (undohist status "installed" recipe
            (:name undohist :type github :pkgname "m2ym/undohist-el" :description "Record and recover undo history" :website "http://d.hatena.ne.jp/m2ym/20090707/1246933894"))
+ (visual-regexp status "installed" recipe
+                (:name visual-regexp :description "A regexp/replace command for Emacs with\n       interactive visual feedback" :type github :depends cl-lib :pkgname "benma/visual-regexp.el"))
  (yaml-mode status "installed" recipe
             (:name yaml-mode :description "Simple major mode to edit YAML file for emacs" :type github :pkgname "yoshiki/yaml-mode"))
  (yasnippet status "installed" recipe

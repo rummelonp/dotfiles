@@ -93,10 +93,13 @@
 (define-key global-map (kbd "M-n") 'point-redo)
 
 ;; replace
-(define-key global-map (kbd "M-#") 'query-replace)
+(define-key global-map (kbd "M-#") 'anzu-query-replace)
 (define-key global-map (kbd "C-M-#") 'replace-string)
-(define-key global-map (kbd "M-$") 'query-replace-regexp)
+(define-key global-map (kbd "M-$") 'anzu-query-replace-regexp)
 (define-key global-map (kbd "C-M-$") 'replace-regexp)
+(define-key global-map (kbd "M-%") 'vr/query-replace)
+(define-key global-map (kbd "C-M-%") 'vr/replace)
+(define-key global-map (kbd "C-:") 'anzu-query-replace-at-cursor-thing)
 
 ;; anything
 (define-key global-map (kbd "C-.") 'anything-yaetags-find-tag)
