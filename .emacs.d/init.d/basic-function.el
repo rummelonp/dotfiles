@@ -25,6 +25,13 @@
     (split-window-horizontally))
   (other-window -1))
 
+;; anything
+(defun anything-git-files-or-recentf ()
+  (interactive)
+  (if (anything-git-files:git-p)
+      (anything-git-files)
+    (anything-recentf)))
+
 ;; tabbar
 (defun tabbar-sort-tab ()
   (interactive)

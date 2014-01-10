@@ -4,6 +4,8 @@
            (:name anything :website "http://www.emacswiki.org/emacs/Anything" :description "Open anything / QuickSilver-like candidate-selection framework" :type git :url "http://repo.or.cz/r/anything-config.git" :shallow nil :load-path
                   ("." "extensions" "contrib")
                   :features anything))
+ (anything-git-files status "installed" recipe
+                     (:name anything-git-files :type github :pkgname "tarao/anything-git-files-el" :depends anything))
  (anything-project status "installed" recipe
                    (:name anything-project :type github :pkgname "imakado/anything-project" :depends
                           (anything)
@@ -78,10 +80,15 @@
                        (boundp 'package-subdirectory-regexp)
                      (defconst package-subdirectory-regexp "^\\([^.].*\\)-\\([0-9]+\\(?:[.][0-9]+\\)*\\)$" "Regular expression matching the name of\n a package subdirectory. The first subexpression is the package\n name. The second subexpression is the version string."))
                    (setq package-archives
-                         '(("ELPA" . "http://tromey.com/elpa/")
-                           ("gnu" . "http://elpa.gnu.org/packages/")
-                           ("marmalade" . "http://marmalade-repo.org/packages/")
-                           ("SC" . "http://joseito.republika.pl/sunrise-commander/"))))))
+                         (bound-and-true-p package-archives))
+                   (mapc
+                    (lambda
+                      (pa)
+                      (add-to-list 'package-archives pa 'append))
+                    '(("ELPA" . "http://tromey.com/elpa/")
+                      ("gnu" . "http://elpa.gnu.org/packages/")
+                      ("marmalade" . "http://marmalade-repo.org/packages/")
+                      ("SC" . "http://joseito.republika.pl/sunrise-commander/"))))))
  (php-mode status "installed" recipe
            (:name php-mode :description "A PHP mode for GNU Emacs " :type github :pkgname "ejmr/php-mode" :website "https://github.com/ejmr/php-mode"))
  (point-undo status "installed" recipe

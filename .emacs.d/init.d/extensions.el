@@ -3,8 +3,8 @@
 ;; anything
 (require 'anything-startup)
 
-;; anything project
-(require 'anything-project)
+;; anything-git-files
+(require 'anything-git-files)
 
 ;; anything yaetags
 (require 'anything-yaetags)
