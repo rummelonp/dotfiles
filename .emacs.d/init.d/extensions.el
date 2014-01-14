@@ -39,7 +39,7 @@
 (setq undo-limit 100000)
 (setq undo-strong-limit 100000)
 
-;; point undo
+;; point-undo
 (require 'point-undo)
 
 ;; undohist
@@ -97,3 +97,10 @@
 
 ;; visual-regexp
 (require 'visual-regexp)
+
+;; auto-highlight-symbol
+(setq auto-highlight-symbol-mode-map t)
+(require 'auto-highlight-symbol-config)
+
+;; highlight-symbol
+(require 'highlight-symbol)

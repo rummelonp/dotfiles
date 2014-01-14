@@ -20,6 +20,8 @@
  (auto-complete status "installed" recipe
                 (:name auto-complete :website "https://github.com/auto-complete/auto-complete" :description "The most intelligent auto-completion extension." :type github :pkgname "auto-complete/auto-complete" :depends
                        (popup fuzzy)))
+ (auto-highlight-symbol status "installed" recipe
+                        (:name auto-highlight-symbol :type github :pkgname "emacsmirror/auto-highlight-symbol" :description "Automatic highlighting current symbol minor mode" :website "https://github.com/emacsmirror/auto-highlight-symbol/"))
  (cl-lib status "installed" recipe
          (:name cl-lib :builtin "24.3" :type elpa :description "Properly prefixed CL functions and macros" :url "http://elpa.gnu.org/packages/cl-lib.html"))
  (coffee-mode status "installed" recipe
@@ -47,6 +49,8 @@
                       (progn
                         (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
                         (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation))))
+ (highlight-symbol status "installed" recipe
+                   (:name highlight-symbol :description "Quickly highlight a symbol throughout the buffer and cycle through its locations." :type http :url "http://nschum.de/src/emacs/highlight-symbol/highlight-symbol.el" :features "highlight-symbol"))
  (jaunte status "installed" recipe
          (:name jaunte :type github :pkgname "kawaguchi/jaunte.el"))
  (js2-mode status "installed" recipe
