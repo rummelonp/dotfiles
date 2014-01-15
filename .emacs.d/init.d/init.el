@@ -34,6 +34,9 @@
 ;; emacs client server
 (server-start)
 
+;; buffer
+(global-auto-revert-mode 1)
+
 ;; file
 (setq require-final-newline t)
 (setq backup-inhibited t)
