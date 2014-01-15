@@ -98,6 +98,12 @@
 ;; visual-regexp
 (require 'visual-regexp)
 
+;; expand-region
+(require 'expand-region)
+
+;; multiple-cursors
+(require 'multiple-cursors)
+
 ;; auto-highlight-symbol
 (setq auto-highlight-symbol-mode-map t)
 (require 'auto-highlight-symbol-config)

@@ -40,6 +40,8 @@
          (:name el-get :website "https://github.com/dimitri/el-get#readme" :description "Manage the external elisp bits and pieces you depend upon." :type github :branch "4.stable" :pkgname "dimitri/el-get" :info "." :load "el-get.el"))
  (eldoc-extension status "installed" recipe
                   (:name eldoc-extension :auto-generated t :type emacswiki :description "Some extension for eldoc" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/eldoc-extension.el"))
+ (expand-region status "installed" recipe
+                (:name expand-region :type github :pkgname "magnars/expand-region.el" :description "Expand region increases the selected region by semantic units. Just keep pressing the key until it selects what you want." :website "https://github.com/magnars/expand-region.el#readme" :features expand-region))
  (fuzzy status "installed" recipe
         (:name fuzzy :website "https://github.com/auto-complete/fuzzy-el" :description "Fuzzy matching utilities for GNU Emacs" :type github :pkgname "auto-complete/fuzzy-el"))
  (git-gutter status "installed" recipe
@@ -64,6 +66,8 @@
          (:name migemo :type http :url "https://raw.github.com/emacs-jp/migemo/master/migemo.el"))
  (mmm-mode status "installed" recipe
            (:name mmm-mode :description "Allow Multiple Major Modes in a buffer" :type github :pkgname "purcell/mmm-mode"))
+ (multiple-cursors status "installed" recipe
+                   (:name multiple-cursors :description "An experiment in adding multiple cursors to emacs" :type github :pkgname "magnars/multiple-cursors.el" :features multiple-cursors))
  (nginx-mode status "installed" recipe
              (:name nginx-mode :website "https://github.com/ajc/nginx-mode" :description "major mode for editing nginx config files" :type github :pkgname "ajc/nginx-mode"))
  (package status "installed" recipe

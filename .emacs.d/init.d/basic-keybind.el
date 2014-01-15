@@ -99,7 +99,7 @@
 (define-key global-map (kbd "C-M-$") 'replace-regexp)
 (define-key global-map (kbd "M-%") 'vr/query-replace)
 (define-key global-map (kbd "C-M-%") 'vr/replace)
-(define-key global-map (kbd "C-M-;") 'anzu-query-replace-at-cursor-thing)
+(define-key global-map (kbd "C-,") 'anzu-query-replace-at-cursor-thing)
 
 ;; anything
 (define-key global-map (kbd "C-.") 'anything-yaetags-find-tag)
@@ -140,6 +140,15 @@
 
 ;; jaunte
 (define-key global-map (kbd "C-x j") 'jaunte)
+
+;; expand-region
+(define-key global-map (kbd "C-@") 'er/expand-region)
+(define-key global-map (kbd "C-M-@") 'er/contract-region)
+
+;; multiple-cursors
+(define-key global-map (kbd "C-M-,") 'mc/mark-all-like-this)
+(define-key global-map (kbd "C->") 'mc/mark-next-like-this)
+(define-key global-map (kbd "C-<") 'mc/mark-previous-like-this)
 
 ;; highlight-symbol
 (define-key global-map (kbd "C-:") 'highlight-symbol-at-point)
