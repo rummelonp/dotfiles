@@ -22,9 +22,9 @@
   (interactive)
   (shell-command-to-string "open -a terminal"))
 
-(defun macosx-open-yorufukurou ()
+(defun macosx-open-tweetbot ()
   (interactive)
-  (shell-command-to-string "open -a yorufukurou"))
+  (shell-command-to-string "open -a tweetbot"))
 
 (define-key global-map (kbd "C-x C-t") 'macosx-open-terminal)
-(define-key global-map (kbd "s-E") 'macosx-open-yorufukurou)
+(define-key global-map (kbd "s-E") 'macosx-open-tweetbot)
