@@ -16,4 +16,7 @@ Pry.config.tap do |config|
     output.puts "\e[31m#{exception.class}: #{exception.message}"
     output.puts "from #{exception.backtrace.first}\e[0m"
   end
+
+  lib = File.expand_path('./lib')
+  $:.unshift lib if File.exists?(lib)
 end
