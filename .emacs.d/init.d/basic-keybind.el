@@ -84,6 +84,7 @@
 
 ;; help
 (define-key global-map (kbd "M-?") 'help-for-help)
+(define-key global-map (kbd "C-x k") 'describe-key)
 
 ;; undo redo
 (define-key global-map (kbd "C-_") 'undo)
