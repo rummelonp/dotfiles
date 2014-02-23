@@ -39,6 +39,9 @@ case $OSTYPE in
         # Node
         export NODEBREW_ROOT=/usr/local/var/nodebrew
         export PATH=$NODEBREW_ROOT/current/bin:$PATH
+        if which nodebrew > /dev/null; then
+            export NODE_PATH=$NODEBREW_ROOT/node/$(nodebrew ls | tail -n1 | cut -d ' ' -f2)/lib/node_modules
+        fi
         # Haskell
         export PATH=$HOME/.cabal/bin:$PATH
         # Android
