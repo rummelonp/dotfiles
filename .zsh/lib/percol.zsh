@@ -5,74 +5,92 @@ else
     return
 fi
 
-function percol-insert-file() {
-    LBUFFER=$LBUFFER$(ls -A | \
-        percol --match-method regex | \
-        sed 's/ /\\ /g' | \
-        tr '\n' ' ')
-    zle -R -c
-}
-zle -N percol-insert-file
-
-# History
+# Keybind
 function percol-select-history() {
     local tac
     if which tac > /dev/null; then
-        tac="tac"
+        tac='tac'
     else
-        tac="tail -r"
+        tac='tail -r'
     fi
-    BUFFER=$(builtin history -n 1 | \
-        eval $tac | \
-        percol --match-method regex --query "$LBUFFER")
+    BUFFER=$(fc -l -n 1 | eval $tac | percol --query "$LBUFFER")
     CURSOR=$#BUFFER
     zle -R -c
 }
 zle -N percol-select-history
 
-# Search
-function percol-search-document() {
+bindkey '^r' percol-select-history
+
+# Function
+# ppgrep -- find or signal processes by name
+# ppgrep [query ...]
+function ppgrep() {
+    typeset percol
+    if (( $# > 0 )); then
+        percol="percol --query '$@'"
+    else
+        percol='percol'
+    fi
+    SELECTED_PID=($(ps aux | eval $percol | awk '{ print $2 }'))
+    if (( $#SELECTED_PID > 0 )); then
+        echo $SELECTED_PID
+    fi
+}
+
+# ppkill -- terminate or signal a process
+# ppkill [-s signal_name] [query ...]
+function ppkill() {
+    typeset query
+    typeset signal
+    while [ $1 ]; do
+        case $1 in
+            -s)
+                signal="-s $2"
+                shift
+                ;;
+            *)
+                query="$query $1"
+                ;;
+        esac
+        shift
+    done
+    eval "ppgrep $query | xargs kill $signal"
+}
+
+# plocate -- find filenames
+# plocate [pattern ...]
+function plocate() {
+    if (( $# > 0 )); then
+        SELECTED_FILE=($(locate $@ | percol | sed 's/ /\\ /g'))
+        if (( $#SELECTED_FILE > 0 )); then
+            echo $SELECTED_FILE
+        fi
+    else
+        echo 'Usage: plocate [pattern ...]'
+    fi
+}
+
+# pdoc -- find document
+# pdoc [path ...]
+function pdoc() {
     if (( $#DOCUMENT_DIR == 0 )); then
-        DOCUMENT_DIR=($HOME/Documents)
+        if [ -d $HOME/Documents ]; then
+            DOCUMENT_DIR=($HOME/Documents)
+        fi
         if [ -d $HOME/Dropbox ]; then
             DOCUMENT_DIR=($HOME/Dropbox $DOCUMENT_DIR[*])
         fi
     fi
-
-    typeset -a document_dir
-    if (( $# >= 1 )); then
-        document_dir=$@
-    else
-        document_dir=$DOCUMENT_DIR
-    fi
-
-    PERCOL_SELECTED_FILE=($(echo $document_dir | \
-        xargs find | \
-        grep -E "\.(txt|md|pdf|numbers|key|pages|docx?|xlsx?|pptx?)$" | \
-        percol --match-method regex | \
-        sed 's/ /\\ /g'))
-    if (( $#PERCOL_SELECTED_FILE > 0 )); then
-        echo $PERCOL_SELECTED_FILE
-    fi
-}
-
-function percol-search-locate() {
+    typeset -a paths
     if (( $# > 0 )); then
-        PERCOL_SELECTED_FILE=($(locate $@ | \
-            percol --match-method regex | \
-            sed 's/ /\\ /g'))
-        if (( $#PERCOL_SELECTED_FILE > 0 )); then
-            echo $PERCOL_SELECTED_FILE
-        fi
+        paths=($@)
     else
-        locate
+        paths=($DOCUMENT_DIR)
+    fi
+    SELECTED_FILE=($(find $paths | grep -E "\.(txt|md|pdf|numbers|key|pages|docx?|xlsx?|pptx?)$" | percol | sed 's/ /\\ /g'))
+    if (( $#SELECTED_FILE > 0 )); then
+        echo $SELECTED_FILE
     fi
 }
 
-bindkey '^[c' percol-insert-file
-bindkey '^r' percol-select-history
-
-alias pd='percol-search-document'
-alias pl='percol-search-locate'
-
-alias -g P="| percol --match-method regex"
+alias -g P="| percol"
