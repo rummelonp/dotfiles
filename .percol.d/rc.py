@@ -3,8 +3,6 @@ from percol.command import SelectorCommand
 from percol.key import SPECIAL_KEYS
 from percol.finder import FinderMultiQueryString, FinderMultiQueryRegex
 
-percol.command.toggle_finder(FinderMultiQueryRegex)
-
 ## prompt
 def dynamic_prompt():
     prompt = ur""
