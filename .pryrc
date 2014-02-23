@@ -18,5 +18,5 @@ Pry.config.tap do |config|
   end
 
   lib = File.expand_path('./lib')
-  $:.unshift lib if File.exists?(lib)
+  $:.unshift lib if File.exists?(lib) && !$:.include?(lib)
 end
