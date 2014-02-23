@@ -25,6 +25,21 @@ preexec() {
     command_time=`date +%s`
 }
 
+# Keybind
+function _copy-line-as-kill() {
+    zle kill-line
+    print -rn $CUTBUFFER | pbcopy
+}
+zle -N _copy-line-as-kill
+
+function _paste-as-yank() {
+    pbpaste
+}
+zle -N _paste-as-yank
+
+bindkey '^k' _copy-line-as-kill
+bindkey "^y" _paste-as-yank
+
 # Function
 function man-preview() {
     man -t "$@" | open -f -a Preview
@@ -65,17 +80,3 @@ function notification() {
     fi
     echo "$command" | osascript
 }
-
-function _copy-line-as-kill() {
-    zle kill-line
-    print -rn $CUTBUFFER | pbcopy
-}
-zle -N _copy-line-as-kill
-
-function _paste-as-yank() {
-    pbpaste
-}
-zle -N _paste-as-yank
-
-bindkey '^k' _copy-line-as-kill
-bindkey "^y" _paste-as-yank
