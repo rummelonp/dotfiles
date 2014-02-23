@@ -7,6 +7,9 @@ el-get/.*
 # auto-complete
 ac-comphist.dat
 
+# multiple-cursors
+.mc-lists.el
+
 # savekill
 kill-ring-saved.el
 
