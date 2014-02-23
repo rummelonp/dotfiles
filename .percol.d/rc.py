@@ -1,13 +1,17 @@
 import sys, commands
 from percol.command import SelectorCommand
 from percol.key import SPECIAL_KEYS
-from percol.finder import FinderMultiQueryRegex
+from percol.finder import FinderMultiQueryString, FinderMultiQueryRegex
 
 percol.command.toggle_finder(FinderMultiQueryRegex)
 
 ## prompt
 def dynamic_prompt():
     prompt = ur""
+    if percol.model.finder.__class__ == FinderMultiQueryRegex:
+        prompt += "[Regexp]"
+    else:
+        prompt += "[String]"
     if percol.model.finder.case_insensitive:
         prompt += "[a]"
     else:
@@ -53,5 +57,6 @@ percol.import_keymap({
     "C-j" : lambda percol: percol.finish(),
     "C-g" : lambda percol: percol.cancel(),
     "M-c" : lambda percol: percol.command.toggle_case_sensitive(),
+    "M-q" : lambda percol: percol.command.toggle_finder(FinderMultiQueryString),
     "M-r" : lambda percol: percol.command.toggle_finder(FinderMultiQueryRegex)
 })
