@@ -18,16 +18,13 @@ alias ll="ls -1alF"
 alias gr="grep"
 alias gri="grep -i"
 alias grl="grep -l"
+alias gril="grep -i -l"
+alias grli="grep -i -l"
 export GREP_OPTIONS='--color=auto --exclude=*.git*'
 
 alias diff="colordiff"
 
 alias less="less -R"
-
-alias rsync-copy="rsync -av --progress -h"
-alias rsync-move="rsync -av --progress -h --remove-source-files"
-alias rsync-update="rsync -avu --progress -h"
-alias rsync-synchronize="rsync -avu --delete --progress -h"
 
 alias du="du -h"
 alias df="df -h"
@@ -38,16 +35,13 @@ alias s="screen"
 alias t="tmux"
 
 alias g="git"
-alias gs="git status"
-alias ga="git add"
-alias gd="git diff"
-alias gc="git commit"
 
 alias e="emacsclient -n"
 
 # Ruby
 alias irb="pry"
 
+alias b="b"
 alias bi="bundle install"
 alias bu="bundle update"
 alias be="bundle exec"
@@ -68,6 +62,10 @@ case $OSTYPE in
         alias -g E="| xargs emacsclient -n"
         alias -g O="| xargs open"
         alias -g C="| pbcopy"
+        alias -g S="| gsed"
+        ;;
+    *)
+        alias -g S="| sed"
         ;;
 esac
 
@@ -75,4 +73,3 @@ alias -g L="| less"
 alias -g H="| head"
 alias -g T="| tail"
 alias -g G="| grep"
-alias -g S="| sed"
