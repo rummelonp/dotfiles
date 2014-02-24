@@ -46,10 +46,15 @@
           (tabbar-display-update)))))
 
 ;; auto complete
-(defun auto-complete-auto-start-enable ()
+(defun auto-complete-toggle-auto-start ()
   (interactive)
-  (setq ac-auto-start t))
+  (if ac-auto-start
+      (setq ac-auto-start nil)
+    (setq ac-auto-start t)))
 
-(defun auto-complete-auto-start-disable ()
+;; before save hook
+(defun toggle-delete-trailing-whitespace ()
   (interactive)
-  (setq ac-auto-start nil))
+  (if (find 'delete-trailing-whitespace before-save-hook)
+      (remove-hook 'before-save-hook 'delete-trailing-whitespace)
+    (add-hook 'before-save-hook 'delete-trailing-whitespace)))
