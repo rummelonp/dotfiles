@@ -75,6 +75,7 @@
 (require 'migemo)
 (setq migemo-command "/usr/local/bin/cmigemo")
 (setq migemo-options '("-q" "--emacs"))
+(setq migemo-isearch-min-length 2)
 (setq migemo-user-dictionary nil)
 (setq migemo-regex-dictionary nil)
 (setq migemo-coding-system 'utf-8-unix)
