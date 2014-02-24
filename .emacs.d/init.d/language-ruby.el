@@ -45,13 +45,6 @@
       (indent-line-to indent)
       (when (> offset 0) (forward-char offset)))))
 
-;; ruby electric
-(add-hook 'ruby-mode-hook
-          '(lambda ()
-             (require 'ruby-electric)
-             (ruby-electric-mode t)
-             (setq ruby-electric-expand-delimiters-list nil)))
-
 ;; ruby block
 (add-hook 'ruby-mode-hook
           '(lambda ()
