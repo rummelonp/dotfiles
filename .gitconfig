@@ -29,27 +29,32 @@
   autocorrect = 1
 [alias]
   # status
-  s  = status
+  s  = status --short
   st = status
-  ss = status -s
-  sh = show
+  # show
+  sh  = show
+  shw = show --word-diff
+  # add
+  a  = add
+  aa = add --all
+  ap = add --patch
+  au = add --update
   # commit
-  a    = add
-  ad   = add
-  ap   = add -p
   c    = commit
-  ca   = commit -a
+  ca   = commit --all
   cam  = commit --amend
-  caam = commit -a --amend
-  cp   = cherry-pick
-  cpn  = cherry-pick -n
-  co   = checkout
-  cb   = checkout -b
-  cm   = checkout master
+  caam = commit --all --amend
+  # cherry-pick
+  cp  = cherry-pick
+  cpn = cherry-pick --no-commit
+  # checkout
+  co  = checkout
+  cob = checkout -b
+  com = checkout master
   # rebase
   rb  = rebase
   rbm = rebase master
-  rbi = rebase -i
+  rbi = rebase --interactive
   rbo = rebase --onto
   rbc = rebase --continue
   rbs = rebase --skip
@@ -66,35 +71,52 @@
   mn = merge --no-ff
   ms = merge --squash
   # branch
-  br = branch
-  ba = branch -a
-  # fetch/pull/push
-  ft = fetch
-  pl = pull
-  ps = push
+  br  = branch
+  bra = branch --all
+  brv = branch -vv
+  # fetch
+  f  = fetch
+  fa = fetch --all
+  fp = fetch --prune
+  # pull
+  pl  = pull
+  plf = pull --ff
+  pln = pull --no-ff
+  plr = pull --rebase
+  # push
+  ps  = push
+  psf = push --force
+  psu = push --set-upstream
+  pst = push --tags
+  psm = push --mirror
   # log
   l   = log --stat --date=iso
-  la  = log --stat -p --date=iso
-  ll  = log --graph --date=iso --pretty=format:'%h %Cgreen%ad %Cblue%cn %Creset%s %C(auto)%d%Creset'
-  lla = log --graph --date=iso --all --pretty=format:'%h %Cgreen%ad %Cblue%cn %Creset%s %C(auto)%d%Creset'
+  la  = log --stat --patch --date=iso
+  law = log --stat --patch --date=iso --word-diff
+  ll  = log --date=iso --pretty=format:'%h %Cgreen%ad %Cblue%cn %Creset%s %C(auto)%d%Creset'
+  lla = log --date=iso --all --pretty=format:'%h %Cgreen%ad %Cblue%cn %Creset%s %C(auto)%d%Creset'
+  lg  = log --graph --date=iso --pretty=format:'%h %Cgreen%ad %Cblue%cn %Creset%s %C(auto)%d%Creset'
+  lga = log --graph --date=iso --all --pretty=format:'%h %Cgreen%ad %Cblue%cn %Creset%s %C(auto)%d%Creset'
   # diff
-  d  = diff
-  dc = diff --cached
-  dw = diff --word-diff-regex='\\w+|[^[:space:]]'
-  dm = diff master
-  do = diff origin/master
+  d   = diff
+  dw  = diff --word-diff
+  dc  = diff --cached
+  dcw = diff --cached --word-diff
+  dm  = diff master
+  dmw = diff master --word-diff
+  do  = diff origin/master
+  dow = diff origin/master --word-diff
   # submodule
   sm = submodule
   # grep
-  gr   = grep -n
-  gri  = grep -n -i
-  grl  = grep -l
-  gril = grep -i -l
-  # percol
-  psh  = "!f() { git log --date=iso --all --pretty=format:'%h %ad %cn %s %d' | percol --match-method regex | cut -d' ' -f1 | xargs git show; }; f;"
-  prsh = "!f() { git reflog | percol --match-method regex | cut -d' ' -f1 | xargs git show; }; f;"
-  pls-files = "!f() { echo $(git ls-files | percol --match-method regex | sed 's/ /\\ /g'); }; f;"
-  # other
-  root  = "!f() { pwd; }; f;"
-  lf    = "!f() { git log $1..$2 --name-only --oneline | grep -v ' ' | sort -u; }; f"
-  grsed = "!f() { git grep -l \"$1\" | xargs sed -i \"s/$1/$2/g\"; }; f"
+  gr   = grep --line-number
+  gri  = grep --line-number --ignore-case
+  grl  = grep --files-with-matches
+  gril = grep --ignore-case --files-with-matches
+  grli = grep --ignore-case --files-with-matches
+  # sh
+  log-files = "!f() { git log $1..$2 --name-only --oneline | grep -v ' ' | sort -u; }; f"
+  grep-sed  = "!f() { git grep --files-with-matches \"$1\" | xargs sed -i \"s/$1/$2/g\"; }; f"
+  pshow     = "!f() { git log --date=iso --all --pretty=format:'%h %ad %cn %s %d' | percol | cut -d' ' -f1 | xargs git show; }; f;"
+  preflog   = "!f() { git reflog | percol | cut -d' ' -f1 | xargs git show; }; f;"
+  pls-files = "!f() { echo $(git ls-files | percol | sed 's/ /\\ /g'); }; f;"
