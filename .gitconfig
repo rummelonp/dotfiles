@@ -3,8 +3,8 @@
   email = mail@mitukiii.jp
 [core]
   excludesfile = ~/.gitignore
-  pager        = less -r
-  autocrlf     = false
+  pager        = less --raw-control-chars
+  autocrlf     = input
   quotepath    = false
 [color]
   ui = auto
@@ -17,16 +17,20 @@
   new        = bold blue
   commit     = bold yellow
   whitespace = normal magenta
-[push]
-  default = tracking
-[branch]
-  autosetuprebase = always
-[merge]
-  ff = false
-[pull]
-  rebase = true
 [help]
   autocorrect = 1
+[log]
+  date = iso
+[pretty]
+  colorful = %h %Cgreen%ad %Cblue%cn %Creset%s %C(auto)%d%Creset
+[merge]
+  ff = false
+[branch]
+  autosetuprebase = always
+[pull]
+  rebase = true
+[push]
+  default = current
 [alias]
   # status
   s  = status --short
@@ -90,13 +94,13 @@
   pst = push --tags
   psm = push --mirror
   # log
-  l   = log --stat --date=iso
-  la  = log --stat --patch --date=iso
-  law = log --stat --patch --date=iso --word-diff
-  ll  = log --date=iso --pretty=format:'%h %Cgreen%ad %Cblue%cn %Creset%s %C(auto)%d%Creset'
-  lla = log --date=iso --all --pretty=format:'%h %Cgreen%ad %Cblue%cn %Creset%s %C(auto)%d%Creset'
-  lg  = log --graph --date=iso --pretty=format:'%h %Cgreen%ad %Cblue%cn %Creset%s %C(auto)%d%Creset'
-  lga = log --graph --date=iso --all --pretty=format:'%h %Cgreen%ad %Cblue%cn %Creset%s %C(auto)%d%Creset'
+  l   = log --stat
+  la  = log --stat --patch
+  law = log --stat --patch --word-diff
+  ll  = log --pretty=colorful
+  lla = log --all --pretty=colorful
+  lg  = log --graph --pretty=colorful
+  lga = log --graph --all --pretty=colorful
   # diff
   d   = diff
   dw  = diff --word-diff
@@ -117,6 +121,6 @@
   # sh
   log-files = "!f() { git log $1..$2 --name-only --oneline | grep -v ' ' | sort -u; }; f"
   grep-sed  = "!f() { git grep --files-with-matches \"$1\" | xargs sed -i \"s/$1/$2/g\"; }; f"
-  pshow     = "!f() { git log --date=iso --all --pretty=format:'%h %ad %cn %s %d' | percol | cut -d' ' -f1 | xargs git show; }; f;"
+  pshow     = "!f() { git log --all --pretty=format:'%h %ad %cn %s %d' | percol | cut -d' ' -f1 | xargs git show; }; f;"
   preflog   = "!f() { git reflog | percol | cut -d' ' -f1 | xargs git show; }; f;"
   pls-files = "!f() { echo $(git ls-files | percol | sed 's/ /\\ /g'); }; f;"
