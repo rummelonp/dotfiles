@@ -29,8 +29,8 @@
 (defun ac-common-setup ()
   (add-to-list 'ac-sources 'ac-source-yasnippet))
 
+
 ;; add major modes
-(add-to-list 'ac-modes 'html-mode)
 (add-to-list 'ac-modes 'rhtml-mode)
 (add-to-list 'ac-modes 'scss-mode)
 (add-to-list 'ac-modes 'less-css-mode)
