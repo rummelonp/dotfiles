@@ -104,7 +104,8 @@
  (popup status "installed" recipe
         (:name popup :website "https://github.com/auto-complete/popup-el" :description "Visual Popup Interface Library for Emacs" :type github :pkgname "auto-complete/popup-el"))
  (popwin status "installed" recipe
-         (:name popwin :description "Popup Window Manager." :website "https://github.com/m2ym/popwin-el" :type github :pkgname "m2ym/popwin-el"))
+         (:name popwin :description "Popup Window Manager." :website "https://github.com/m2ym/popwin-el" :type github :pkgname "m2ym/popwin-el" :load-path
+                ("." "misc")))
  (powerline status "installed" recipe
             (:name powerline :website "https://github.com/jonathanchu/emacs-powerline" :description "Powerline for Emacs" :type github :pkgname "jonathanchu/emacs-powerline" :features powerline))
  (recentf-ext status "installed" recipe
@@ -130,7 +131,7 @@
          (:name rsense :type github :pkgname "m2ym/rsense" :description "RSense client for Emacs" :website "http://cx4a.org/software/rsense/index.html" :load-path
                 ("etc")))
  (ruby-block status "installed" recipe
-             (:name ruby-block :description "highlight matching block" :type github :pkgname "adolfosousa/ruby-block.el" :website "https://github.com/adolfosousa/ruby-block.el"))
+             (:name ruby-block :type http :url "https://raw.github.com/emacsmirror/emacswiki.org/master/ruby-block.el" :description "highlight matching block"))
  (ruby-mode status "installed" recipe
             (:name ruby-mode :builtin "24" :type http :description "Major mode for editing Ruby files." :url "http://bugs.ruby-lang.org/projects/ruby-trunk/repository/raw/misc/ruby-mode.el"))
  (savekill status "installed" recipe
