@@ -13,8 +13,12 @@ case $OSTYPE in
         ;;
 esac
 
+# Genetal
+export GREP_OPTIONS='--color=auto --exclude-dir=.git --exclude-dir=.svn'
+
 # Path
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
+typeset -U PATH
+export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 
 case $OSTYPE in
     darwin*)
@@ -22,7 +26,7 @@ case $OSTYPE in
         export RBENV_ROOT=/usr/local/var/rbenv
         if which rbenv > /dev/null; then
             export PATH=$RBENV_ROOT/shims:$PATH
-            eval "$(rbenv init -)";
+            eval "$(rbenv init -)"
         fi
         # Python
         export PYENV_ROOT=/usr/local/var/pyenv
@@ -49,7 +53,5 @@ case $OSTYPE in
         ;;
 esac
 
-# Rsense
+# RSense
 export RSENSE_HOME=$HOME/.emacs.d/el-get/rsense
-
-typeset -U PATH

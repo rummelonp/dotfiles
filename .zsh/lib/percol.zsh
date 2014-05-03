@@ -1,15 +1,14 @@
 ## Percol
 
-if which percol > /dev/null; then
-else
+if ! which percol > /dev/null; then
     return
 fi
 
-# Keybind
+# Keybinds
 function percol-select-history() {
-    local tac
+    typeset tac
     if which tac > /dev/null; then
-        tac='tac'
+        tac=tac
     else
         tac='tail -r'
     fi
@@ -87,10 +86,10 @@ function pdoc() {
     else
         paths=($DOCUMENT_DIR)
     fi
-    SELECTED_FILE=($(find $paths | grep -E "\.(txt|md|pdf|numbers|key|pages|docx?|xlsx?|pptx?)$" | percol | sed 's/ /\\ /g'))
+    SELECTED_FILE=($(find $paths | grep -E '\.(txt|md|pdf|numbers|key|pages|docx?|xlsx?|pptx?)$' | percol | sed 's/ /\\ /g'))
     if (( $#SELECTED_FILE > 0 )); then
         echo $SELECTED_FILE
     fi
 }
 
-alias -g P="| percol"
+alias -g P='| percol'

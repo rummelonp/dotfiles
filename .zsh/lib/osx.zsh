@@ -1,31 +1,36 @@
 ## OSX
 
-if [[ $OSTYPE =~ "darwin" ]]; then
-else
+if ! [[ $OSTYPE =~ darwin ]]; then
     return
 fi
 
-# Growl
-local command=""
-local command_time=""
-precmd() {
-    if [ "$command_time" -ne "0" ] ; then
-        local d=`date +%s`
-        d=`expr $d - $command_time`
-        if [ "$d" -ge "30" ] ; then
-            command="$command "
-            notification "$command" -t "${${(s: :)command}[1]}"
+# Notification
+autoload -Uz add-zsh-hook
+
+typeset command=''
+typeset command_time=0
+
+function _precmd-notification() {
+    if (( $command_time > 0 )); then
+        typeset d=$(date +%s)
+        (( d = $d - $command_time ))
+        if (( $d >= 30 )); then
+            notification "$command " -t "${${(s: :)command}[1]}"
         fi
     fi
-    command="0"
-    command_time="0"
-}
-preexec() {
-    command="${1}"
-    command_time=`date +%s`
+    command=''
+    command_time=0
 }
 
-# Keybind
+function _preexec-notification() {
+    command=$1
+    command_time=$(date +%s)
+}
+
+add-zsh-hook precmd _precmd-notification
+add-zsh-hook preexec _preexec-notification
+
+# Keybinds
 function _copy-line-as-kill() {
     zle kill-line
     print -rn $CUTBUFFER | pbcopy
@@ -38,11 +43,11 @@ function _paste-as-yank() {
 zle -N _paste-as-yank
 
 bindkey '^k' _copy-line-as-kill
-bindkey "^y" _paste-as-yank
+bindkey '^y' _paste-as-yank
 
 # Function
 function man-preview() {
-    man -t "$@" | open -f -a Preview
+    man -t $@ | open -f -a Preview
 }
 compdef _man man-preview
 
@@ -53,30 +58,30 @@ function free-memory() {
 }
 
 function notification() {
-    local title
-    local subtitle
-    local text=""
-    while [ "$1" != "" ]; do
-        case "$1" in
+    typeset title
+    typeset subtitle
+    typeset text=''
+    while [ "$1" != '' ]; do
+        case $1 in
             -t)
                 shift
-                title="$1"
+                title=$1
                 ;;
             -s)
                 shift
-                subtitle="$1"
+                subtitle=$1
                 ;;
             *)
                 text+=" $1"
         esac
         shift
     done
-    local command="display notification \"$text\""
-    if [ -n "$title" ]; then
+    typeset command="display notification \"$text\""
+    if [ -n $title ]; then
         command+=" with title \"$title\""
-        if [ -n "$subtitle" ]; then
+        if [ -n $subtitle ]; then
             command+=" subtitle \"$subtitle\""
         fi
     fi
-    echo "$command" | osascript
+    echo $command | osascript
 }

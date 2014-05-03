@@ -1,9 +1,9 @@
 ## History
+
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
-# See http://memo.officebrook.net/20100224.html
 setopt share_history
 setopt hist_find_no_dups
 setopt hist_ignore_all_dups

@@ -1,4 +1,6 @@
 ## Completion
+
+# General
 autoload -U compinit
 compinit -u
 
@@ -12,7 +14,6 @@ case $OSTYPE in
         ;;
 esac
 
-# See http://www.ayu.ics.keio.ac.jp/~mukai/translate/zshoptions.html
 unsetopt menu_complete
 unsetopt flowcontrol
 unsetopt auto_remove_slash
@@ -34,20 +35,20 @@ setopt brace_ccl
 setopt multios
 setopt path_dirs
 
-# See http://d.hatena.ne.jp/sugyan/20100712/1278869962
+# Word separator
 autoload -Uz select-word-style
 select-word-style default
-zstyle ':zle:*' word-chars " _-./;@"
+zstyle ':zle:*' word-chars ' _-./;@'
 zstyle ':zle:*' word-style unspecified
 
-# See http://d.hatena.ne.jp/lurker/20061231/1167570929
+# Auto escaping of URL
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
 # Cache
 zstyle ':completion:*' use-cache true
 
-# Messages
+# Message
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' format '%B%d%b'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
@@ -59,14 +60,13 @@ zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'c
 zstyle ':completion:*:*:*:*:*' menu select
 
 # Directory
-# See http://voidy21.hatenablog.jp/entry/20090902/1251918174
-cdpath=($HOME/ $HOME/Documents $HOME/Dropbox)
+cdpath=($HOME/ $HOME/Dropbox/ $HOME/Documents/)
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 # Process
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
-zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
+zstyle ':completion:*:*:*:*:processes' command 'ps -u `whoami` -o pid,user,comm -w -w'
 
 # Hostname
 [ -r /etc/ssh/ssh_known_hosts ] && _global_ssh_hosts=(${${${${(f)"$(</etc/ssh/ssh_known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _global_ssh_hosts=()
