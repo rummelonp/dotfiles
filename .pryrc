@@ -2,7 +2,7 @@
 
 Pry.config.tap do |config|
   config.editor = lambda do |file, line|
-    "emacsclient -n +#{line} #{file}"
+    "emacsclient +#{line} #{file}"
   end
 
   config.pager = false
@@ -13,8 +13,9 @@ Pry.config.tap do |config|
   ]
 
   config.exception_handler = lambda do |output, exception, _|
-    output.puts "\e[31m#{exception.class}: #{exception.message}"
-    output.puts "from #{exception.backtrace.first}\e[0m"
+    message = "#{exception.class}: #{exception.message}\n" <<
+      (exception.backtrace || []).map { |line| "  #{line}" }.join("\n")
+    output.puts "\e[31m#{message}\e[0m"
   end
 
   lib = File.expand_path('./lib')
