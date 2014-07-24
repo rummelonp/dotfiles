@@ -18,7 +18,6 @@ typeset -a dotfiles
 
 dotfiles_dir=$(cd $(dirname $0) && pwd)
 dotfiles=(
-    bin
     .zshenv
     .zshrc
     .zsh
@@ -56,4 +55,4 @@ if which ruby > /dev/null; then
     fi
 fi
 
-unset typeset dotfiles_dir dotfile_name rsense_dir
+unset dotfiles_dir dotfiles dotfile_name rsense_dir
