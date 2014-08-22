@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+curl "http://www.gitignore.io/api/$(IFS=,; echo "$*")"
