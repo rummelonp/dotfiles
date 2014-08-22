@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function execute() {
     echo $@
@@ -18,6 +18,7 @@ typeset -a dotfiles
 
 dotfiles_dir=$(cd $(dirname $0) && pwd)
 dotfiles=(
+    bin
     .zshenv
     .zshrc
     .zsh
