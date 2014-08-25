@@ -75,6 +75,8 @@
 		   (:name multiple-cursors :description "An experiment in adding multiple cursors to emacs" :type github :pkgname "magnars/multiple-cursors.el"))
  (nginx-mode status "installed" recipe
 	     (:name nginx-mode :website "https://github.com/ajc/nginx-mode" :description "major mode for editing nginx config files" :type github :pkgname "ajc/nginx-mode"))
+ (oniisama status "installed" recipe
+	   (:name oniisama :type github :pkgname "yu-i9/oniisama"))
  (package status "installed" recipe
 	  (:name package :description "ELPA implementation (\"package.el\") from Emacs 24" :builtin "24" :type http :url "http://repo.or.cz/w/emacs.git/blob_plain/1a0a666f941c99882093d7bd08ced15033bc3f0c:/lisp/emacs-lisp/package.el" :shallow nil :features package :post-init
 		 (progn
@@ -95,6 +97,7 @@
 		      (pa)
 		      (add-to-list 'package-archives pa 'append))
 		    '(("ELPA" . "http://tromey.com/elpa/")
+		      ("melpa" . "http://melpa.milkbox.net/packages/")
 		      ("gnu" . "http://elpa.gnu.org/packages/")
 		      ("marmalade" . "http://marmalade-repo.org/packages/")
 		      ("SC" . "http://joseito.republika.pl/sunrise-commander/"))))))

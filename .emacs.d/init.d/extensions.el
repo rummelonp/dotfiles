@@ -109,3 +109,7 @@
 
 ;; highlight-symbol
 (require 'highlight-symbol)
+
+;; oniisama
+(require 'oniisama)
+(imouto)
