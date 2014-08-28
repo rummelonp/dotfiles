@@ -85,6 +85,7 @@
        (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")))
 (migemo-init)
 (set-process-query-on-exit-flag migemo-process nil)
+(define-key isearch-mode-map (kbd "C-i") 'migemo-isearch-toggle-migemo)
 
 ;; anzu
 (require 'anzu)
