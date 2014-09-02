@@ -38,7 +38,7 @@ setopt path_dirs
 # Word separator
 autoload -Uz select-word-style
 select-word-style default
-zstyle ':zle:*' word-chars ' _-./;@'
+zstyle ':zle:*' word-chars ' _-./:;@'
 zstyle ':zle:*' word-style unspecified
 
 # Auto escaping of URL
