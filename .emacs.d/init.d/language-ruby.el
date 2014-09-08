@@ -65,4 +65,19 @@
              (define-key ruby-mode-map (kbd "C-x .") 'ac-complete-rsense)))
 
 ;; rinari
-(require 'rinari)
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (require 'rinari)
+             (setq rinari-controller-keywords
+                   (append rinari-controller-keywords
+                           '("before_action" "append_before_action" "prepend_before_action"
+                             "after_action" "append_after_action" "prepend_after_action"
+                             "around_action" "append_around_action" "prepend_around_action"
+                             "skip_before_action" "skip_after_action" "skip_around_action")))
+             (setq rinari-migration-keywords
+                   (append rinari-migration-keywords
+                           '("set_table_comment" "remove_table_comment"
+                             "set_column_comment" "remove_column_comment")))
+             (setq rinari-model-keywords
+                   (append rinari-model-keywords
+                           '("enumerize" "def_delegator")))))
