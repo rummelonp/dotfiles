@@ -1,12 +1,14 @@
 import sys, commands
 from percol.command import SelectorCommand
 from percol.key import SPECIAL_KEYS
-from percol.finder import FinderMultiQueryString, FinderMultiQueryRegex
+from percol.finder import FinderMultiQueryString, FinderMultiQueryRegex, FinderMultiQueryMigemo
 
 ## Prompt
 def dynamic_prompt():
     prompt = ur''
-    if percol.model.finder.__class__ == FinderMultiQueryRegex:
+    if percol.model.finder.__class__ == FinderMultiQueryMigemo:
+        prompt += '[Migemo]'
+    elif percol.model.finder.__class__ == FinderMultiQueryRegex:
         prompt += '[Regexp]'
     else:
         prompt += '[String]'
@@ -30,6 +32,10 @@ if sys.platform == 'darwin':
 
     SelectorCommand.kill_end_of_line = copy_end_of_line_as_kill
     SelectorCommand.yank = paste_as_yank
+
+## Migemo dict path
+if sys.platform == 'darwin':
+    FinderMultiQueryMigemo.dictionary_path = '/usr/local/Cellar/cmigemo/20110227/share/migemo/utf-8/migemo-dict'
 
 ## Keymap
 # Map backspace
@@ -56,5 +62,6 @@ percol.import_keymap({
     'C-g' : lambda percol: percol.cancel(),
     'M-c' : lambda percol: percol.command.toggle_case_sensitive(),
     'M-q' : lambda percol: percol.command.toggle_finder(FinderMultiQueryString),
-    'M-r' : lambda percol: percol.command.toggle_finder(FinderMultiQueryRegex)
+    'M-r' : lambda percol: percol.command.toggle_finder(FinderMultiQueryRegex),
+    'M-m' : lambda percol: percol.command.toggle_finder(FinderMultiQueryMigemo)
 })
