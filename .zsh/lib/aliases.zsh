@@ -15,6 +15,7 @@ alias l='ls -1'
 alias la='ls -1A'
 alias ll='ls -1alF'
 
+alias grep='grep --color=auto --exclude-dir=.git --exclude-dir=.svn'
 alias gr='grep --line-number'
 alias gri='grep --line-number --ignore-case'
 alias grl='grep --files-without-match'

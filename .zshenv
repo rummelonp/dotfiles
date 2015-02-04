@@ -13,9 +13,6 @@ case $OSTYPE in
         ;;
 esac
 
-# Genetal
-export GREP_OPTIONS='--color=auto --exclude-dir=.git --exclude-dir=.svn'
-
 # Path
 typeset -U PATH
 export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
