@@ -22,7 +22,7 @@
 [log]
   date = iso
 [pretty]
-  colorful = %h %Cgreen%ad %Cblue%cn %Creset%s %C(auto)%d%Creset
+  colorful = %h %Cgreen%ad %Cblue%an %Creset%s %C(auto)%d%Creset
 [merge]
   ff = false
 [branch]
@@ -119,6 +119,6 @@
   # sh
   log-files = "!f() { git log $1..$2 --name-only --oneline | grep -v ' ' | sort -u; }; f"
   grep-sed  = "!f() { git grep --files-with-matches \"$1\" | xargs sed -i \"s/$1/$2/g\"; }; f"
-  pshow     = "!f() { git log --all --pretty=format:'%h %ad %cn %s %d' | percol | cut -d' ' -f1 | xargs git show; }; f;"
+  pshow     = "!f() { git log --all --pretty=colorful | percol | cut -d' ' -f1 | xargs git show; }; f;"
   preflog   = "!f() { git reflog | percol | cut -d' ' -f1 | xargs git show; }; f;"
   pls-files = "!f() { echo $(git ls-files | percol | sed 's/ /\\ /g'); }; f;"
