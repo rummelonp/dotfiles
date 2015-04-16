@@ -75,6 +75,11 @@
 ;; php
 (autoload 'php-mode "php-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-hook 'php-mode-hook
+          '(lambda()
+             (setq tab-width 2)
+             (setq indent-tabs-mode t)
+             (setq c-basic-offset 2)))
 
 ;; c sharp
 (autoload 'csharp-mode "csharp-mode" nil t)
