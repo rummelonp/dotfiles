@@ -21,3 +21,10 @@ Pry.config.tap do |config|
   lib = File.expand_path('./lib')
   $:.unshift lib if File.exists?(lib) && !$:.include?(lib)
 end
+
+begin
+  require 'awesome_print'
+rescue LoadError
+else
+  AwesomePrint.pry!
+end
