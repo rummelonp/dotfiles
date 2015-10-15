@@ -1,14 +1,50 @@
-;; el-get
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (let (el-get-master-branch)
-      (goto-char (point-max))
-      (eval-print-last-sexp))))
-(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/recipes")
-(el-get 'sync)
+;;;; init
+
+;;; package
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+(dolist
+    (package
+     '(ace-jump-mode
+       anything
+       anything-git-files
+       anzu
+       auto-complete
+       auto-highlight-symbol
+       cl-lib
+       coffee-mode
+       dash-at-point
+       eldoc-extension
+       expand-region
+       git-gutter
+       helm
+       helm-git-files
+       highlight-symbol
+       js2-mode
+       migemo
+       mmm-mode
+       multiple-cursors
+       nginx-mode
+       php-mode
+       point-undo
+       popwin
+       powerline
+       recentf-ext
+       redo+
+       rhtml-mode
+       savekill
+       scss-mode
+       tabbar
+       undohist
+       visual-regexp
+       yaml-mode
+       yasnippet
+       zencoding-mode))
+  (unless (package-installed-p package)
+    (package-install package)))
 
 ;; variables
 (defvar darwin-p (eq system-type 'darwin))
@@ -16,7 +52,7 @@
 
 ;; init.d
 (add-to-list 'load-path "~/.emacs.d/init.d")
-(lexical-let
+(let
     ((safe-load
       '(lambda (name)
          (condition-case e

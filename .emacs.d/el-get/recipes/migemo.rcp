@@ -1,3 +1,0 @@
-(:name migemo
-       :type http
-       :url "https://raw.github.com/emacs-jp/migemo/master/migemo.el")

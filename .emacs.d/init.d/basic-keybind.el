@@ -103,7 +103,6 @@
 (define-key global-map (kbd "C-,") 'anzu-query-replace-at-cursor-thing)
 
 ;; anything
-(define-key global-map (kbd "C-.") 'anything-yaetags-find-tag)
 (define-key global-map (kbd "C-x C-a") 'anything-recentf)
 (define-key global-map (kbd "C-x f") 'anything-find-file)
 (define-key global-map (kbd "C-x C-f") 'anything-git-files-or-recentf)

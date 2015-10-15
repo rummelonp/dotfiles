@@ -1,8 +1,5 @@
-# el-get
-el-get/*
-el-get/.*
-!el-get/recipes/
-!el-get/.status.el
+# package
+elpa
 
 # auto-complete
 ac-comphist.dat

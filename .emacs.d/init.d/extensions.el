@@ -6,9 +6,6 @@
 ;; anything-git-files
 (require 'anything-git-files)
 
-;; anything yaetags
-(require 'anything-yaetags)
-
 ;; dash-at-point
 (require 'dash-at-point)
 
@@ -55,9 +52,6 @@
 (add-to-list 'popwin:special-display-config '("^\\*anything.*\\*$" :regexp t :height 20))
 (add-to-list 'popwin:special-display-config '("*Backtrace*"))
 (add-to-list 'popwin:special-display-config '("*Warnings*"))
-
-;; jaunte
-(require 'jaunte)
 
 ;; ace-jump-mode
 (require 'ace-jump-mode)
@@ -106,11 +100,7 @@
 
 ;; auto-highlight-symbol
 (setq auto-highlight-symbol-mode-map t)
-(require 'auto-highlight-symbol-config)
+(require 'auto-highlight-symbol)
 
 ;; highlight-symbol
 (require 'highlight-symbol)
-
-;; oniisama
-(require 'oniisama)
-(imouto)

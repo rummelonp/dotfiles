@@ -81,14 +81,6 @@
              (setq indent-tabs-mode t)
              (setq c-basic-offset 2)))
 
-;; c sharp
-(autoload 'csharp-mode "csharp-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.cs$" . csharp-mode))
-
-;; haskell
-(autoload 'haskell-mode "haskell-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
-
 ;; mmm mode
 (require 'mmm-mode)
 (setq mmm-global-mode 'maybe)
