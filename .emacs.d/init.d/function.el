@@ -1,6 +1,16 @@
-;; Function
+;;;; basic - function
 
-;; window
+;;; alias
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;;; helm
+(defun helm-git-files-or-recentf ()
+  (interactive)
+  (if (helm-git-files:git-p)
+      (helm-git-files)
+    (helm-recentf)))
+
+;;; window
 (defun next-window-or-split-horizontally ()
   (interactive)
   (when (one-window-p)
@@ -11,14 +21,7 @@
   (interactive)
   (other-window -1))
 
-;; helm
-(defun helm-git-files-or-recentf ()
-  (interactive)
-  (if (helm-git-files:git-p)
-      (helm-git-files)
-    (helm-recentf)))
-
-;; tabbar
+;;; tabbar
 (defun tabbar-sort-tab ()
   (interactive)
   (let* ((tabset (tabbar-current-tabset 't))

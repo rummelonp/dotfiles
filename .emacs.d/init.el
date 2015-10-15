@@ -1,71 +1,74 @@
 ;;;; init
 
-;;; package
+;;; variables
+(defvar darwin-p
+  (eq system-type 'darwin))
+(defvar linux-p
+  (eq system-type 'gnu/linux))
+(defvar required-packages
+  '(
+    ;; extension - framework
+    helm helm-git-files
+    ;; exetnsion - basic
+    recentf-ext savekill undohist redo+ point-undo
+    ;; extension - window
+    tabbar powerline popwin git-gutter
+    ;; extension - auto complete
+    yasnippet auto-complete
+    ;; extension - find and replace
+    migemo anzu visual-regexp
+    ;; extension - editor enhancement
+    expand-region multiple-cursors
+    ;; language - emacs lisp
+    eldoc-extension
+    ;; language - conf
+    nginx-mode yaml-mode
+    ;; language - web
+    rhtml-mode zencoding-mode scss-mode coffee-mode js2-mode mmm-mode
+    ;; language - other
+    php-mode
+    ))
+(setq required-init-files
+  '(
+    ;; basics
+    "basic"
+    ;; extension
+    "extension-framework" "extension-basic" "extension-window"
+    "extension-auto-complete" "extension-find-and-replace" "extension-editor-enhancement"
+    ;; language
+    "language-emacs-lisp" "language-conf" "language-web" "language-ruby" "language-php"
+    ;; function
+    "function"
+    ;; key bind
+    "key-bind"
+    ;; environment dependent
+    "darwin-environment"
+    ))
+
+;;; install packages
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
-(dolist
-    (package
-     '(anzu
-       auto-complete
-       cl-lib
-       coffee-mode
-       eldoc-extension
-       expand-region
-       git-gutter
-       helm
-       helm-git-files
-       js2-mode
-       migemo
-       mmm-mode
-       multiple-cursors
-       nginx-mode
-       php-mode
-       point-undo
-       popwin
-       powerline
-       recentf-ext
-       redo+
-       rhtml-mode
-       savekill
-       scss-mode
-       tabbar
-       undohist
-       visual-regexp
-       yaml-mode
-       yasnippet
-       zencoding-mode))
+(dolist (package required-packages)
   (unless (package-installed-p package)
     (package-install package)))
 
-;; variables
-(defvar darwin-p (eq system-type 'darwin))
-(defvar linux-p (eq system-type 'gnu/linux))
-
-;; init.d
+;;; load init files
 (add-to-list 'load-path "~/.emacs.d/init.d")
-(let
-    ((safe-load
-      '(lambda (name)
-         (condition-case e
-             (load name)
-           (error
-            (warn (error-message-string e)))))))
-  (dolist
-      (name
-       '("init"
-         "extensions"
-         "extension-dired"
-         "extension-tabbar"
-         "extension-powerline"
-         "extension-auto-complete"
-         "basic-alias"
-         "basic-function"
-         "basic-keybind"
-         "languages"
-         "language-ruby"))
-    (funcall safe-load name))
-  (when darwin-p
-    (funcall safe-load "local-osx")))
+(defun try-load (file)
+  (condition-case e
+      (load file)
+    (error
+     (warn (format "%s: %s" file (error-message-string e))))))
+(dolist (file required-init-files)
+  (cond
+   ((string-match-p "^darwin" file)
+    (when darwin-p
+      (try-load file)))
+   ((string-match-p "^linux" file)
+     (when linux-p
+      (try-load file)))
+   (t
+    (try-load file))))
