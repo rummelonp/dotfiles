@@ -8,19 +8,15 @@
   (package-refresh-contents))
 (dolist
     (package
-     '(ace-jump-mode
-       anzu
+     '(anzu
        auto-complete
-       auto-highlight-symbol
        cl-lib
        coffee-mode
-       dash-at-point
        eldoc-extension
        expand-region
        git-gutter
        helm
        helm-git-files
-       highlight-symbol
        js2-mode
        migemo
        mmm-mode

@@ -9,9 +9,6 @@
 ;; helm-git-files
 (require 'helm-git-files)
 
-;; dash-at-point
-(require 'dash-at-point)
-
 ;; cua
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
@@ -55,18 +52,6 @@
 (add-to-list 'popwin:special-display-config '("*Backtrace*"))
 (add-to-list 'popwin:special-display-config '("*Warnings*"))
 
-;; ace-jump-mode
-(require 'ace-jump-mode)
-(defun add-keys-to-ace-jump-mode (prefix c)
-  (define-key global-map
-    (read-kbd-macro (concat prefix (string c)))
-    `(lambda ()
-       (interactive)
-       (funcall #'ace-jump-word-mode ,c))))
-(loop for c from ?0 to ?9 do (add-keys-to-ace-jump-mode "H-" c))
-(loop for c from ?a to ?z do (add-keys-to-ace-jump-mode "H-" c))
-(loop for c from ?! to ?~ do (add-keys-to-ace-jump-mode "H-" c))
-
 ;; migemo
 (require 'migemo)
 (setq migemo-command "/usr/local/bin/cmigemo")
@@ -99,10 +84,3 @@
 
 ;; multiple-cursors
 (require 'multiple-cursors)
-
-;; auto-highlight-symbol
-(setq auto-highlight-symbol-mode-map t)
-(require 'auto-highlight-symbol)
-
-;; highlight-symbol
-(require 'highlight-symbol)
