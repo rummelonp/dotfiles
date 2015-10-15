@@ -4,23 +4,6 @@
 (require 'yasnippet)
 (yas-global-mode t)
 
-;; prompt
-;; http://d.hatena.ne.jp/sugyan/20120111/1326288445
-(defun yas/anything-prompt (prompt choices &optional display-fn)
-  (let* ((names (loop for choice in choices
-                      collect (or (and display-fn (funcall display-fn choice))
-                                  coice)))
-         (selected (anything-other-buffer
-                    `(((name . ,(format "%s" prompt))
-                       (candidates . names)
-                       (action . (("Insert snippet" . (lambda (arg) arg))))))
-                    "*anything yas/prompt*")))
-    (if selected
-        (let ((n (position selected names :test 'equal)))
-          (nth n choices))
-      (signal 'quit "user quit!"))))
-(add-to-list 'yas-prompt-functions 'yas/anything-prompt)
-
 ;; auto complete
 (require 'auto-complete-config)
 (global-auto-complete-mode t)

@@ -102,15 +102,14 @@
 (define-key global-map (kbd "C-M-%") 'vr/replace)
 (define-key global-map (kbd "C-,") 'anzu-query-replace-at-cursor-thing)
 
-;; anything
-(define-key global-map (kbd "C-x C-a") 'anything-recentf)
-(define-key global-map (kbd "C-x f") 'anything-find-file)
-(define-key global-map (kbd "C-x C-f") 'anything-git-files-or-recentf)
-(define-key global-map (kbd "C-x b") 'anything-buffers+)
-(define-key global-map (kbd "C-x C-b") 'anything-buffers+)
-(define-key global-map (kbd "C-x C-x") 'anything-execute-anything-command)
-(define-key global-map (kbd "M-x") 'anything-execute-extended-command)
-(define-key global-map (kbd "C-x C-y") 'anything-show-kill-ring)
+;; helm
+(define-key global-map (kbd "C-x C-a") 'helm-recentf)
+(define-key global-map (kbd "C-x f") 'helm-find-files)
+(define-key global-map (kbd "C-x C-f") 'helm-git-files-or-recentf)
+(define-key global-map (kbd "C-x b") 'helm-buffers-list)
+(define-key global-map (kbd "C-x C-b") 'helm-buffers-list)
+(define-key global-map (kbd "M-x") 'helm-M-x)
+(define-key global-map (kbd "C-x C-y") 'helm-show-kill-ring)
 
 ;; dash-at-point
 (define-key global-map (kbd "M-.") 'dash-at-point)

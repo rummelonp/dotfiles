@@ -9,8 +9,6 @@
 (dolist
     (package
      '(ace-jump-mode
-       anything
-       anything-git-files
        anzu
        auto-complete
        auto-highlight-symbol

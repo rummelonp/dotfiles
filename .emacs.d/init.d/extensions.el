@@ -1,10 +1,13 @@
 ;; Extension
 
-;; anything
-(require 'anything-startup)
+;; helm
+(require 'helm-config)
+(add-hook 'helm-after-initialize-hook
+          '(lambda ()
+             (define-key helm-map (kbd "C-M-v") 'helm-previous-page)))
 
-;; anything-git-files
-(require 'anything-git-files)
+;; helm-git-files
+(require 'helm-git-files)
 
 ;; dash-at-point
 (require 'dash-at-point)
@@ -49,7 +52,6 @@
 ;; popwin
 (require 'popwin)
 (popwin-mode 1)
-(add-to-list 'popwin:special-display-config '("^\\*anything.*\\*$" :regexp t :height 20))
 (add-to-list 'popwin:special-display-config '("*Backtrace*"))
 (add-to-list 'popwin:special-display-config '("*Warnings*"))
 

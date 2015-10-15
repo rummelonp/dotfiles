@@ -25,12 +25,12 @@
     (split-window-horizontally))
   (other-window -1))
 
-;; anything
-(defun anything-git-files-or-recentf ()
+;; helm
+(defun helm-git-files-or-recentf ()
   (interactive)
-  (if (anything-git-files:git-p)
-      (anything-git-files)
-    (anything-recentf)))
+  (if (helm-git-files:git-p)
+      (helm-git-files)
+    (helm-recentf)))
 
 ;; tabbar
 (defun tabbar-sort-tab ()
