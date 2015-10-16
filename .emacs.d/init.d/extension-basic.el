@@ -28,6 +28,7 @@
 
 ;;; savekill
 (require 'savekill)
+(setq savekill-max-saved-items 1000)
 
 ;;; undohist
 (require 'undohist)
