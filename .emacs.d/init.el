@@ -8,7 +8,7 @@
 (defvar required-packages
   '(
     ;; extension - framework
-    helm helm-git-files
+    helm helm-git-files helm-descbinds
     ;; exetnsion - basic
     recentf-ext savekill undohist redo+ point-undo
     ;; extension - window
