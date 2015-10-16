@@ -1,6 +1,8 @@
 ;;;; language - emacs lisp
 
 ;;; emacs lisp mode
+;; configuration
+(setq edebug-inhibit-emacs-lisp-mode-bindings t)
 ;; byte complete after save
 (add-hook 'after-save-hook
           '(lambda ()
