@@ -48,7 +48,7 @@
 
 ;;; line
 (setq kill-whole-line t)
-(setq truncate-lines t)
+(setq-default truncate-lines t)
 
 ;;; paren
 (show-paren-mode t)
