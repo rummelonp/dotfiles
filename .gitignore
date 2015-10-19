@@ -1,16 +1,24 @@
-## See https://github.com/github/gitignore
+# Created by https://www.gitignore.io/api/osx,emacs,vim,svn,tags
 
-## OSX
+### OSX ###
 .DS_Store
 .AppleDouble
 .LSOverride
+
 # Icon must end with two \r
-Icon
+Icon
+
 # Thumbnails
 ._*
-# Files that might appear on external disk
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
 .Spotlight-V100
+.TemporaryItems
 .Trashes
+.VolumeIcon.icns
+
 # Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop
@@ -18,7 +26,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-## Emacs
+
+### Emacs ###
+# -*- mode: gitignore; -*-
 *~
 \#*\#
 /.emacs.desktop
@@ -27,25 +37,32 @@ Temporary Items
 auto-save-list
 tramp
 .\#*
+
 # Org-mode
 .org-id-locations
 *_archive
+
 # flymake-mode
 *_flymake.*
+
 # eshell files
 /eshell/history
 /eshell/lastdir
+
 # elpa packages
 /elpa/
+
 # reftex files
 *.rel
+
 # AUCTeX auto folder
 /auto/
-# Ensime specific
-.ensime
-.ensime_lucene/
 
-## Vim
+# cask packages
+.cask/
+
+
+### Vim ###
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]
 *.un~
@@ -53,61 +70,12 @@ Session.vim
 .netrwhist
 *~
 
-## Xcode
-build/
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-xcuserdata
-*.xccheckout
-*.moved-aside
-DerivedData
-*.xcuserstate
 
-## Eclipse
-*.pydevproject
-.metadata
-.gradle
-# bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.settings/
-.loadpath
-# External tool builders
-.externalToolBuilders/
-# Locally stored "Eclipse launch configurations"
-*.launch
-# CDT-specific
-.cproject
-# PDT-specific
-.buildpath
-# sbteclipse plugin
-.target
-# TeXlipse plugin
-.texlipse
-
-# SBT
-# recommended: http://code.google.com/p/simple-build-tool/wiki/Setup#Version_Control
-target/
-lib_managed/
-src_managed/
-project/boot/
-.history
-.cache
-
-## SVN
+### SVN ###
 .svn/
 
-## Tags
+
+### Tags ###
 # Ignore tags created by etags, ctags, gtags (GNU global) and cscope
 TAGS
 !TAGS/
@@ -121,3 +89,5 @@ cscope.files
 cscope.out
 cscope.in.out
 cscope.po.out
+
+
