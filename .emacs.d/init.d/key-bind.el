@@ -20,6 +20,8 @@
 (define-key global-map (kbd "C-x C-f") 'helm-git-files-or-recentf)
 (define-key global-map (kbd "C-x b") 'helm-buffers-list)
 (define-key global-map (kbd "C-x C-b") 'helm-buffers-list)
+(define-key global-map (kbd "C-x m") 'helm-imenu)
+(define-key global-map (kbd "C-x C-m") 'helm-imenu-in-all-buffers)
 (define-key global-map (kbd "M-x") 'helm-M-x)
 (define-key global-map (kbd "C-x C-y") 'helm-show-kill-ring)
 
