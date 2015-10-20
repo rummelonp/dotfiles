@@ -18,14 +18,14 @@
 ;; key bind
 (define-key isearch-mode-map (kbd "C-i") 'migemo-isearch-toggle-migemo)
 
+;;; visual regexp
+(require 'visual-regexp)
+
 ;;; anzu
 (require 'anzu)
 (global-anzu-mode +1)
 ;; configuration
 (setq anzu-mode-lighter "")
-(setq anzu-deactivate-region t)
 (setq anzu-search-threshold 1000)
 (setq anzu-use-migemo t)
-
-;;; visual regexp
-(require 'visual-regexp)
+(setq anzu-replace-to-string-separator " => ")

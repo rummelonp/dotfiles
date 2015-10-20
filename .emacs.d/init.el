@@ -16,7 +16,7 @@
     ;; extension - auto complete
     yasnippet auto-complete
     ;; extension - find and replace
-    migemo anzu visual-regexp
+    migemo visual-regexp anzu
     ;; extension - editor enhancement
     expand-region multiple-cursors
     ;; language - emacs lisp

@@ -78,15 +78,12 @@
 (define-key global-map (kbd "C-x C-.") 'auto-complete)
 
 ;;; find and replace
-(define-key global-map (kbd "C-M-#") 'replace-string)
-(define-key global-map (kbd "C-M-$") 'replace-regexp)
-;; anzu
-(define-key global-map (kbd "C-,") 'anzu-query-replace-at-cursor-thing)
-(define-key global-map (kbd "M-#") 'anzu-query-replace)
-(define-key global-map (kbd "M-$") 'anzu-query-replace-regexp)
 ;; visual regexp
 (define-key global-map (kbd "M-%") 'vr/query-replace)
 (define-key global-map (kbd "C-M-%") 'vr/replace)
+;; anzu
+(define-key global-map (kbd "C-,") 'anzu-query-replace-at-cursor-thing)
+(define-key global-map (kbd "C-M-,") 'anzu-query-replace-at-cursor)
 
 ;;; editor enhancement
 ;; multiple cursors
