@@ -87,9 +87,11 @@
 
 ;;; editor enhancement
 ;; multiple cursors
-(define-key global-map (kbd "C-M-,") 'mc/mark-all-like-this)
 (define-key global-map (kbd "C->") 'mc/mark-next-like-this)
+(define-key global-map (kbd "C-M-<") 'mc/unmark-next-like-this)
 (define-key global-map (kbd "C-<") 'mc/mark-previous-like-this)
+(define-key global-map (kbd "C-M->") 'mc/unmark-previous-like-this)
+(define-key global-map (kbd "M-@") 'mc/mark-all-like-this)
 ;; expand region
 (define-key global-map (kbd "C-@") 'er/expand-region)
 (define-key global-map (kbd "C-M-@") 'er/contract-region)
