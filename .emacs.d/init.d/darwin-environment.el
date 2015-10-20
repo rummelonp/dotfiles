@@ -20,7 +20,5 @@
   (shell-command-to-string "open -a tweetbot"))
 
 ;;; key bind
-(define-key global-map (kbd "C-x C-d") 'darwin-copy-current-directory)
-(define-key global-map (kbd "C-x C-p") 'darwin-copy-current-file-path)
 (define-key global-map (kbd "C-x C-t") 'darwin-open-terminal)
 (define-key global-map (kbd "s-E") 'darwin-open-tweetbot)
