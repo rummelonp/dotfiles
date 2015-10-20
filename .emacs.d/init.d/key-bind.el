@@ -7,10 +7,6 @@
   (setq mac-command-modifier 'super)
   (setq mac-right-command-modifier 'hyper))
 
-;;; key map
-(define-prefix-command 'screen-map)
-(define-key global-map (kbd "C-z") 'screen-map)
-
 ;;; backslash
 (define-key global-map (kbd "M-(J\(B") "\\")
 
@@ -25,16 +21,18 @@
 (define-key global-map (kbd "M-x") 'helm-M-x)
 (define-key global-map (kbd "C-x C-y") 'helm-show-kill-ring)
 
+;;; frame
+(define-key global-map (kbd "C-z") nil)
 ;;; window
 (define-key global-map (kbd "C-t") 'next-window-or-split-horizontally)
 (define-key global-map (kbd "C-S-t") 'prev-window)
 (define-key global-map (kbd "M-t") 'delete-window)
 ;; tabbar
-(define-key global-map (kbd "C-z C-s") 'tabbar-sort-tab)
-(define-key global-map (kbd "C-z C-n") 'tabbar-forward-tab)
-(define-key global-map (kbd "C-z C-p") 'tabbar-backward-tab)
-(define-key global-map (kbd "C-z n") 'tabbar-forward-group)
-(define-key global-map (kbd "C-z p") 'tabbar-backward-group)
+(define-key global-map (kbd "C-x j") 'tabbar-sort-tab)
+(define-key global-map (kbd "C-x C-n") 'tabbar-forward-tab)
+(define-key global-map (kbd "C-x C-p") 'tabbar-backward-tab)
+(define-key global-map (kbd "C-x n") 'tabbar-forward-group)
+(define-key global-map (kbd "C-x p") 'tabbar-backward-group)
 
 ;;; basic
 ;; server
