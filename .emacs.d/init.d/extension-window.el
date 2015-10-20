@@ -2,23 +2,37 @@
 
 ;;; powerline
 (require 'powerline)
-;; style
-(setq powerline-arrow-shape 'arrow14)
-;; face
+(setq powerline-default-separator nil)
+(setq powerline-display-mule-info nil)
+(setq powerline-display-hud nil)
+(defpowerline powerline-buffer-id nil)
+(powerline-default-theme)
 (set-face-attribute
  'mode-line nil
- :foreground "black"
- :background "#1aa6b1"
+ :foreground "white"
+ :background "gray40"
  :box nil)
 (set-face-attribute
+ 'powerline-active1 nil
+ :foreground "black"
+ :background "#1aa6b1")
+(set-face-attribute
+ 'powerline-active2 nil
+ :foreground "white"
+ :background "grey22")
+(set-face-attribute
  'mode-line-inactive nil
- :foreground "gray80"
+ :foreground "white"
  :background "#181a26"
  :box nil)
-;; format
-(defpowerline row     "%l")
-(defpowerline column  "%c")
-(defpowerline time    "%M")
+(set-face-attribute
+ 'powerline-inactive1 nil
+ :foreground "gray80"
+ :background "#181a26")
+(set-face-attribute
+ 'powerline-inactive2 nil
+ :foreground "gray80"
+ :background "#181a26")
 
 ;;; tabbar
 (require 'tabbar)
@@ -30,13 +44,18 @@
  :background "#181a26"
  :height 1.0)
 (set-face-attribute
+ 'tabbar-unselected nil
+ :foreground "gray80"
+ :background "#181a26"
+ :box nil)
+(set-face-attribute
  'tabbar-selected nil
  :foreground "black"
  :background "#1aa6b1"
  :box nil)
 (set-face-attribute
- 'tabbar-unselected nil
- :foreground "gray80"
+ 'tabbar-modified nil
+ :foreground "green"
  :background "#181a26"
  :box nil)
 (set-face-attribute
