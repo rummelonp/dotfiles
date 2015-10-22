@@ -18,7 +18,7 @@
 (add-to-list 'ruby-encoding-map '(undecided . utf-8))
 (setq ruby-use-smie nil)
 (setq ruby-deep-indent-paren nil)
-(define-key ruby-mode-map (kbd "C-x C-t") 'macosx-open-terminal)
+(define-key ruby-mode-map (kbd "C-x C-t") 'darwin-open-terminal)
 (define-key ruby-mode-map (kbd "C-m") 'reindent-then-newline-and-indent)
 (define-key ruby-mode-map (kbd "C-j") 'ruby-end-return)
 (define-key ruby-mode-map (kbd "M-a") 'ruby-beginning-of-defun)
