@@ -4,6 +4,7 @@
 ZSH=$HOME/.zsh
 
 ## Completions
+typeset -U fpath
 fpath=($ZSH/completions $fpath)
 
 ## Load library
