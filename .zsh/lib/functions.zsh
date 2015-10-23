@@ -1,4 +1,4 @@
-## Functions
+### Functions
 
 function take() {
     mkdir -p $1

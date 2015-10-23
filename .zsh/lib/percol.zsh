@@ -1,10 +1,10 @@
-## Percol
+### Percol
 
 if ! which percol > /dev/null; then
     return
 fi
 
-# Keybinds
+## Key bind
 function percol-select-history() {
     typeset tac
     if which tac > /dev/null; then
@@ -20,7 +20,7 @@ zle -N percol-select-history
 
 bindkey '^r' percol-select-history
 
-# Function
+## Functions
 # ppgrep -- find or signal processes by name
 # ppgrep [query ...]
 function ppgrep() {
@@ -92,4 +92,5 @@ function pdoc() {
     fi
 }
 
+## Aliases
 alias -g P='| percol'

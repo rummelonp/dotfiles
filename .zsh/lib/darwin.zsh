@@ -1,10 +1,10 @@
-## OSX
+### Darwin
 
 if ! [[ $OSTYPE =~ darwin ]]; then
     return
 fi
 
-# Notification
+## Notification
 autoload -Uz add-zsh-hook
 
 typeset command=''
@@ -30,7 +30,7 @@ function _preexec-notification() {
 add-zsh-hook precmd _precmd-notification
 add-zsh-hook preexec _preexec-notification
 
-# Keybinds
+## Key bind
 function _copy-line-as-kill() {
     zle kill-line
     print -rn $CUTBUFFER | pbcopy
@@ -45,7 +45,7 @@ zle -N _paste-as-yank
 bindkey '^k' _copy-line-as-kill
 bindkey '^y' _paste-as-yank
 
-# Function
+## Function
 function man-preview() {
     man -t $@ | open -f -a Preview
 }

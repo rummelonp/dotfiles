@@ -1,4 +1,4 @@
-## History
+### History
 
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000

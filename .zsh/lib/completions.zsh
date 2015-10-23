@@ -1,6 +1,6 @@
-## Completion
+### Completions
 
-# General
+## General
 autoload -U compinit
 compinit -u
 
@@ -35,40 +35,40 @@ setopt brace_ccl
 setopt multios
 setopt path_dirs
 
-# Word separator
+## Word separator
 autoload -Uz select-word-style
 select-word-style default
 zstyle ':zle:*' word-chars ' _-./:;@'
 zstyle ':zle:*' word-style unspecified
 
-# Auto escaping of URL
+## Auto escaping of URL
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
-# Cache
+## Cache
 zstyle ':completion:*' use-cache true
 
-# Message
+## Message
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' format '%B%d%b'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 
-# File
+## File
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*:*:*:*:*' menu select
 
-# Directory
+## Directory
 cdpath=($HOME/ $HOME/Dropbox/ $HOME/Documents/)
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
-# Process
+## Process
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*:*:*:*:processes' command 'ps -u `whoami` -o pid,user,comm -w -w'
 
-# Hostname
+## Hostname
 [ -r /etc/ssh/ssh_known_hosts ] && _global_ssh_hosts=(${${${${(f)"$(</etc/ssh/ssh_known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _global_ssh_hosts=()
 [ -r ~/.ssh/known_hosts ] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
 [ -r /etc/hosts ] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
@@ -82,7 +82,7 @@ hosts=(
 
 zstyle ':completion:*:hosts' hosts $hosts
 
-# User
+## User
 zstyle ':completion:*:*:*:users' ignored-patterns \
     adm amanda apache avahi beaglidx bin cacti canna clamav daemon \
     dbus distcache dovecot fax ftp games gdm gkrellmd gopher \

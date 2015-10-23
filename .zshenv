@@ -1,9 +1,9 @@
-## Environment
+### Environment
 
-# Lang
+## Lang
 export LANG=ja_JP.UTF-8
 
-# Editor
+## Editor
 case $OSTYPE in
     darwin*)
         export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
@@ -13,9 +13,19 @@ case $OSTYPE in
         ;;
 esac
 
-# Path
+## Path
 typeset -U PATH
-export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
+typeset -a paths=(
+    $HOME/bin
+    /usr/local/sbin
+    /usr/local/bin
+    /usr/sbin
+    /usr/bin
+    /sbin
+    /bin
+)
+export PATH=${(j':')paths}:$PATH
+unset paths
 
 case $OSTYPE in
     darwin*)
@@ -49,6 +59,3 @@ case $OSTYPE in
         export GISTY_DIR=$HOME/Dropbox/Gist
         ;;
 esac
-
-# RSense
-export RSENSE_HOME=$HOME/.emacs.d/el-get/rsense
