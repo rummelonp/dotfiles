@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 Pry.config.tap do |config|
   config.editor = lambda do |file, line|
     "emacsclient +#{line} #{file}"
@@ -17,14 +15,13 @@ Pry.config.tap do |config|
       (exception.backtrace || []).map { |line| "  #{line}" }.join("\n")
     output.puts "\e[31m#{message}\e[0m"
   end
-
-  lib = File.expand_path('./lib')
-  $:.unshift lib if File.exists?(lib) && !$:.include?(lib)
 end
+
+lib = File.expand_path('./lib')
+$:.unshift lib if File.exists?(lib) && !$:.include?(lib)
 
 begin
   require 'awesome_print'
-rescue LoadError
-else
   AwesomePrint.pry!
+rescue LoadError
 end
