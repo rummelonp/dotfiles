@@ -1,8 +1,8 @@
-;;;; extension - find and replace
+;;;; Extension - Find and replace
 
-;;; migemo
+;;; migemo.el
 (require 'migemo)
-;; configuration
+;; Configuration
 (setq migemo-command "/usr/local/bin/cmigemo")
 (setq migemo-options '("-q" "--emacs"))
 (setq migemo-isearch-min-length 2)
@@ -15,16 +15,16 @@
        (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")))
 (migemo-init)
 (set-process-query-on-exit-flag migemo-process nil)
-;; key bind
+;; Key bind
 (define-key isearch-mode-map (kbd "C-i") 'migemo-isearch-toggle-migemo)
 
-;;; visual regexp
+;;; visual-regexp.el
 (require 'visual-regexp)
 
-;;; anzu
+;;; anzu.el
 (require 'anzu)
 (global-anzu-mode +1)
-;; configuration
+;; Configuration
 (setq anzu-mode-lighter "")
 (setq anzu-search-threshold 1000)
 (setq anzu-use-migemo t)

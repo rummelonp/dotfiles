@@ -1,14 +1,14 @@
-;;;; extension - framework
+;;;; Extension - Framework
 
-;;; helm
+;;; helm.el
 (require 'helm-config)
 (helm-mode t)
-;; key bind
+;; Key bind
 (define-key helm-map (kbd "C-M-v") 'helm-previous-page)
 
-;;; helm git files
+;;; helm-git-files.el
 (require 'helm-git-files)
 
-;;; helm descbinds
+;;; helm-descbinds.el
 (require 'helm-descbinds)
 (helm-descbinds-mode t)

@@ -1,6 +1,6 @@
-;;;; extension - window
+;;;; Extension - Window
 
-;;; powerline
+;;; powerline.el
 (require 'powerline)
 (setq powerline-default-separator nil)
 (setq powerline-display-mule-info nil)
@@ -34,10 +34,10 @@
  :foreground "gray80"
  :background "#181a26")
 
-;;; tabbar
+;;; tabbar.el
 (require 'tabbar)
 (tabbar-mode t)
-;; face
+;; Face
 (set-face-attribute
  'tabbar-default nil
  :family "Monaco"
@@ -63,7 +63,7 @@
  :foreground "#181a26"
  :background "#181a26")
 (setq tabbar-separator '(1))
-;; button
+;; Remove buttons
 (dolist
     (button
      '(tabbar-buffer-home-button
@@ -72,14 +72,14 @@
   (set button (cons
                (cons "" nil)
                (cons "" nil))))
-;; list
+;; Customize list
 (setq tabbar-buffer-list-function
       '(lambda ()
          (remove-if
           '(lambda (buffer)
              (find (aref (buffer-name buffer) 0) " *"))
           (buffer-list))))
-;; group
+;; Customize group
 (setq tabbar-buffer-groups-function
       '(lambda ()
          (list
@@ -97,13 +97,13 @@
                    "js2-mode")
                   (t name))))))
 
-;;; popwin
+;;; popwin.el
 (require 'popwin)
 (popwin-mode 1)
-;; configuration
+;; Configuration
 (add-to-list 'popwin:special-display-config '("*Backtrace*"))
 (add-to-list 'popwin:special-display-config '("*Warnings*"))
 
-;;; git gutter
+;;; git-gutter.el
 (require 'git-gutter)
 (global-git-gutter-mode t)

@@ -1,11 +1,11 @@
-;;;; language - php
+;;;; Language - PHP
 
-;;; php mode
+;;; php-mode.el
 (autoload 'php-mode "php-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\/views?.*\\.php$" . html-mode))
 
-;; toggle major mode between html and php
+;; Toggle major mode between html-mode and php-mode
 (add-hook 'php-mode-hook
           '(lambda ()
              (define-key php-mode-map (kbd "C--") 'html-mode)))

@@ -1,51 +1,51 @@
-;;;; init
+;;;; Initialize
 
-;;; variables
+;;; Variables
 (defvar darwin-p
   (eq system-type 'darwin))
 (defvar linux-p
   (eq system-type 'gnu/linux))
 (defvar required-packages
   '(
-    ;; extension - framework
+    ;; Extension - Framework
     helm helm-git-files helm-descbinds
-    ;; exetnsion - basic
+    ;; Exetnsion - Basic
     recentf-ext savekill undohist redo+ point-undo
-    ;; extension - window
+    ;; Extension - Window
     tabbar powerline popwin git-gutter
-    ;; extension - auto complete
+    ;; Extension - Auto complete
     yasnippet auto-complete
-    ;; extension - find and replace
+    ;; Extension - Find and replace
     migemo visual-regexp anzu
-    ;; extension - editor enhancement
+    ;; Extension - Editor enhancement
     expand-region multiple-cursors
-    ;; language - emacs lisp
+    ;; Language - Emacs lisp
     eldoc-extension
-    ;; language - conf
+    ;; Language - Config
     nginx-mode yaml-mode
-    ;; language - web
+    ;; Language - Web
     rhtml-mode zencoding-mode scss-mode coffee-mode js2-mode mmm-mode
-    ;; language - other
+    ;; Language - Other
     php-mode
     ))
 (setq required-init-files
   '(
-    ;; basics
+    ;; Basics
     "basic"
-    ;; extension
+    ;; Extensions
     "extension-framework" "extension-basic" "extension-window"
     "extension-auto-complete" "extension-find-and-replace" "extension-editor-enhancement"
-    ;; language
-    "language-emacs-lisp" "language-conf" "language-web" "language-ruby" "language-php"
-    ;; function
-    "function"
+    ;; Languages
+    "language-emacs-lisp" "language-config" "language-web" "language-ruby" "language-php"
+    ;; Functions
+    "functions"
     ;; key bind
     "key-bind"
-    ;; environment dependent
+    ;; Environment dependent
     "darwin-environment"
     ))
 
-;;; install packages
+;;; Install packages
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
@@ -55,7 +55,7 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-;;; load init files
+;;; Load init files
 (add-to-list 'load-path "~/.emacs.d/init.d")
 (defun try-load (file)
   (condition-case e

@@ -1,7 +1,7 @@
-;;;; darwin
+;;;; Darwin
 
-;;; function
-;; copy
+;;; Functions
+;; Copy
 (defun darwin-copy-current-directory ()
   (interactive)
   (shell-command-to-string "pwd | perl -pe 's/(\r|\n)//' | pbcopy"))
@@ -10,7 +10,7 @@
   (interactive)
   (shell-command-to-string (concat "echo " buffer-file-name " | perl -pe 's/(\r|\n)//' | pbcopy")))
 
-;; open
+;; Open
 (defun darwin-open-terminal ()
   (interactive)
   (shell-command-to-string "open -a terminal"))
@@ -19,6 +19,6 @@
   (interactive)
   (shell-command-to-string "open -a tweetbot"))
 
-;;; key bind
+;;; Key bind
 (define-key global-map (kbd "C-x C-t") 'darwin-open-terminal)
 (define-key global-map (kbd "s-E") 'darwin-open-tweetbot)

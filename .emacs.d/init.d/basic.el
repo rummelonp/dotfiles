@@ -1,15 +1,15 @@
-;;;; basic
+;;;; Basic
 
-;;; environment
+;;; Environment
 (set-language-environment "Japanese")
 (set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8)
 
-;;; theme
+;;; Theme
 (load-theme 'deeper-blue t)
 (set-frame-parameter nil 'alpha 95)
 
-;;; faces
+;;; Faces
 (set-face-attribute 'default nil
                     :family "Monaco"
                     :height 120)
@@ -20,41 +20,41 @@
                   'katakana-jisx0201
                   '("Hiragino Maru Gothic ProN"))
 
-;;; application
+;;; Application
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode t)
 
-;;; window
+;;; Window
 (line-number-mode t)
 (column-number-mode t)
 
-;;; ignore beep
+;;; Ignore beep
 (setq ring-bell-function 'ignore)
 
-;;; server
+;;; Server
 (require 'server)
 (unless (server-running-p)
   (server-start))
 
-;;; buffer
+;;; Buffer
 (global-auto-revert-mode 1)
 
-;;; file
+;;; File
 (setq require-final-newline t)
 (setq backup-inhibited t)
 (setq delete-auto-save-files t)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;;; line
+;;; Line
 (setq kill-whole-line t)
 (setq-default truncate-lines t)
 
-;;; paren
+;;; Paren
 (show-paren-mode t)
 (setq show-paren-delay 0)
 (setq show-paren-style 'mixed)
 
-;;; tab
+;;; Tab
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)

@@ -1,44 +1,44 @@
-;;;; extension - basic
+;;;; Extension - Basic
 
-;;; wdired
+;;; wdired.el
 (require 'wdired)
-;; key bind
+;; Key bind
 (define-key dired-mode-map (kbd "C-t") 'next-window-or-split-horizontally)
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 
-;;; cua
+;;; cua.el
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
 
-;;; uniquify
+;;; uniquify.el
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq uniquify-ignore-buffers-re "*[^*]+*")
 
-;;; recentf
-;; configuration
+;;; recentf.el
+;; Configuration
 (setq recentf-max-menu-items 100000)
 (setq recentf-max-save-items 100000)
 (setq recentf-max-saved-items 100000)
 (setq recentf-auto-cleanup 'never)
 (setq recentf-auto-save-timer
       (run-with-idle-timer 30 t 'recentf-save-list))
-;; extension
+;; Extension
 (require 'recentf-ext)
 
-;;; savekill
+;;; savekill.el
 (require 'savekill)
 (setq savekill-max-saved-items 1000)
 
-;;; undohist
+;;; undohist.el
 (require 'undohist)
 (undohist-initialize)
 
-;;; redo+
+;;; redo+.el
 (require 'redo+)
 (setq undo-no-redo t)
 (setq undo-limit 100000)
 (setq undo-strong-limit 100000)
 
-;;; point-undo
+;;; point-undo.el
 (require 'point-undo)

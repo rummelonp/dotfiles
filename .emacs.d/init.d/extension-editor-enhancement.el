@@ -1,7 +1,7 @@
-;;;; extension - editor enhancement
+;;;; Extension - Editor enhancement
 
-;;; expand region
+;;; expand-region.el
 (require 'expand-region)
 
-;;; multiple cursors
+;;; multiple-cursors.el
 (require 'multiple-cursors)

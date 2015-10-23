@@ -1,19 +1,19 @@
-;;;; language - emacs lisp
+;;;; language - Emacs lisp
 
-;;; emacs lisp mode
-;; configuration
-(setq edebug-inhibit-emacs-lisp-mode-bindings t)
-;; byte complete after save
+;;; emacs-lisp-mode.el
+;; Configuration
+(setq edebug-inhibit-emacs-lisp-mode-bindings )
+;; Byte complete after save
 (add-hook 'after-save-hook
           '(lambda ()
              (when (string-match "\\.el$" buffer-file-name)
                (byte-compile-file buffer-file-name))))
 
-;;; eldoc extension
+;;; eldoc-extension.el
 (require 'eldoc-extension)
-;; configuration
+;; Configuration
 (setq eldoc-idle-delay 0)
 (setq eldoc-echo-area-use-multiline-p t)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-;; key bind
+;; Key bind
 (define-key emacs-lisp-mode-map (kbd "C-.") 'find-function-at-point)

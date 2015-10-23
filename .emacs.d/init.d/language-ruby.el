@@ -1,6 +1,6 @@
-;;;; language - ruby
+;;;; Language - Ruby
 
-;;; ruby mode
+;;; ruby-mode.el
 (require 'ruby-mode)
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rb.sample$" . ruby-mode))
@@ -29,7 +29,7 @@
 (define-key ruby-mode-map (kbd "C-M-e") 'forward-sentence)
 (define-key ruby-mode-map (kbd "C-M-f") 'forward-word)
 (define-key ruby-mode-map (kbd "C-M-b") 'backward-word)
-;; function
+;; Functions
 ;; http://stackoverflow.com/questions/7961533/emacs-ruby-method-parameter-indentation
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
   (let ((column (current-column))
@@ -46,14 +46,14 @@
       (indent-line-to indent)
       (when (> offset 0) (forward-char offset)))))
 
-;;; ruby block
+;;; ruby-block.el
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (require 'ruby-block)
              (ruby-block-mode t)
              (setq ruby-block-highlight-toggle t)))
 
-;;; rinari
+;;; rinari.el
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (require 'rinari)

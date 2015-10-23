@@ -1,16 +1,9 @@
-;;;; basic - function
+;;;; Basic - Functions
 
-;;; alias
+;;; Aliaes
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;;; helm
-(defun helm-git-files-or-recentf ()
-  (interactive)
-  (if (helm-git-files:git-p)
-      (helm-git-files)
-    (helm-recentf)))
-
-;;; window
+;;; Window
 (defun next-window-or-split-horizontally ()
   (interactive)
   (when (one-window-p)
@@ -21,7 +14,14 @@
   (interactive)
   (other-window -1))
 
-;;; tabbar
+;;; helm.el
+(defun helm-git-files-or-recentf ()
+  (interactive)
+  (if (helm-git-files:git-p)
+      (helm-git-files)
+    (helm-recentf)))
+
+;;; tabbar.el
 (defun tabbar-sort-tab ()
   (interactive)
   (let* ((tabset (tabbar-current-tabset 't))
