@@ -30,7 +30,7 @@
 [pull]
   rebase = true
 [push]
-  default = current
+  default = simple
 [alias]
   # status
   s  = status --short
