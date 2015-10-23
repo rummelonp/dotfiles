@@ -25,8 +25,6 @@
   colorful = %h %Cgreen%ad %Cblue%an %Creset%s %C(auto)%d%Creset
 [merge]
   ff = false
-[branch]
-  autosetuprebase = always
 [pull]
   rebase = true
 [push]
