@@ -15,7 +15,8 @@ esac
 
 ## Path
 typeset -U PATH
-typeset -a paths=(
+typeset -a paths
+paths=(
     $HOME/bin
     /usr/local/sbin
     /usr/local/bin
