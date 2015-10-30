@@ -4,7 +4,7 @@ if ! which percol > /dev/null; then
     return
 fi
 
-## Key bind
+## Key bindings
 function percol-select-history() {
     typeset tac
     if which tac > /dev/null; then

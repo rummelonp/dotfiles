@@ -3,9 +3,10 @@
 DOTFILES_HOME=$(cd $(dirname $0) && pwd)
 DOTFILES=(
     # zsh
-    .zshenv
-    .zshrc
     .zsh
+    .zshenv
+    .zprofile
+    .zshrc
     # bin
     bin
     # emacs

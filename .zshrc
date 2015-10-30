@@ -1,17 +1,26 @@
 ### Initialize
 
-## Home
-ZSH=$HOME/.zsh
-
-## Completions
-typeset -U fpath
-fpath=($ZSH/completions $fpath)
-
-## Load library
-for file in $ZSH/lib/*.zsh; do
-    source $file
+## Load modules
+module_names=(
+    # Basic
+    environment
+    editor
+    history
+    directory
+    utility
+    completion
+    prompt
+    # Extension
+    autojump
+    percol
+    # Environment dependent
+    darwin
+)
+for module_name in $module_names; do
+    source $HOME/.zsh/modules/$module_name.zsh
 done
-unset file
+unset module_names
+unset module_name
 
 ## Local configuration
 source $HOME/.zshrc.local

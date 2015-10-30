@@ -1,6 +1,6 @@
-### Key bind
+### Editor
 
-## Emacs key bind
+## Emacs key bindings
 bindkey -e
 
 ## History

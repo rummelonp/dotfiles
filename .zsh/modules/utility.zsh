@@ -1,6 +1,23 @@
-### Aliases
+### Utility
 
-## General
+## Correction
+setopt correct
+
+alias cp='nocorrect cp'
+alias exec='nocorrect exec'
+alias git='nocorrect git'
+alias man='nocorrect man'
+alias mkdir='nocorrect mkdir'
+alias mv='nocorrect mv'
+alias which='nocorrect which'
+
+## Aliases
+
+# LS color
+export LSCOLORS='exfxcxdxbxegedabagacad'
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+
+# With options
 case $OSTYPE in
     darwin*)
         alias ls='ls -G'
@@ -10,7 +27,6 @@ case $OSTYPE in
         ;;
 esac
 
-# With options
 alias grep='grep --color=auto --exclude-dir=.git --exclude-dir=.svn'
 alias less='less --raw-control-chars'
 alias du='du -h'
@@ -27,11 +43,12 @@ alias grl='grep --files-without-match'
 alias gril='grep --ignore-case --files-without-match'
 alias grli='grep --ignore-case --files-without-match'
 
-alias diff=colordiff
+alias diff='colordiff'
 
-alias g=git
-alias t=tmux
-alias h=history
+alias g='git'
+alias t='tmux'
+alias d='diff'
+alias h='history'
 alias e='emacsclient --no-wait'
 
 alias netstat-all='lsof -nP -iTCP'
@@ -57,9 +74,8 @@ alias -g H='| head'
 alias -g T='| tail'
 
 ## Ruby
-alias irb=pry
+alias irb='pry'
 
-alias b=b
 alias bi='bundle install'
 alias bu='bundle update'
 alias be='bundle exec'
@@ -67,3 +83,9 @@ alias be='bundle exec'
 ## Python
 alias saba='python -m SimpleHTTPServer > /dev/null 2>&1 &'
 alias shimesaba='pkill -f "python -m SimpleHTTPServer"'
+
+## Functions
+function take() {
+    mkdir -p $1
+    cd $1
+}
