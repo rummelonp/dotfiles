@@ -54,6 +54,9 @@ case $OSTYPE in
         if which nodebrew > /dev/null; then
             export NODE_PATH=$NODEBREW_ROOT/node/$(nodebrew ls | tail -n1 | cut -d ' ' -f2)/lib/node_modules
         fi
+        # Go
+        export GOPATH=/usr/local/var/go
+        export PATH=$GOPATH/bin:$PATH
         # Haskell
         export PATH=$HOME/.cabal/bin:$PATH
         # Gist
