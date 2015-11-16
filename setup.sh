@@ -11,6 +11,8 @@ DOTFILES=(
     bin
     # emacs
     .emacs.d
+    # vim
+    .vimrc
     # git
     .gitconfig
     .gitignore
