@@ -14,6 +14,11 @@ case $OSTYPE in
 esac
 export PAGER=less
 
+## Direnv
+if which direnv > /dev/null; then
+    eval "$(direnv hook zsh)"
+fi
+
 ## Paths
 typeset -g path fpath cdpath
 
