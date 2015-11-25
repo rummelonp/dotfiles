@@ -76,9 +76,6 @@ case $OSTYPE in
         export GOPATH=/usr/local/var/go
         export PATH=$GOPATH/bin:$PATH
 
-        # Haskell
-        export PATH=$HOME/.cabal/bin:$PATH
-
         # Gist
         export GISTY_DIR=$HOME/Dropbox/Gist
         ;;
