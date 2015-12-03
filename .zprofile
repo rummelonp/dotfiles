@@ -31,7 +31,7 @@ path=(
 )
 
 fpath=(
-    $ZSH/completions
+    $HOME/.zsh/completions
     $fpath
 )
 
