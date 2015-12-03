@@ -49,6 +49,7 @@ alias g='git'
 alias t='tmux'
 alias d='diff'
 alias h='history'
+alias v='view'
 alias e='emacsclient --no-wait'
 
 alias netstat-all='lsof -nP -iTCP'
