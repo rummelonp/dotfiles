@@ -6,7 +6,6 @@ module_names=(
     environment
     editor
     history
-    directory
     utility
     completion
     prompt
