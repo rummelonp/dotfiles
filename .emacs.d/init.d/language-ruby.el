@@ -46,6 +46,9 @@
       (indent-line-to indent)
       (when (> offset 0) (forward-char offset)))))
 
+(defun ruby-mode-set-encoding ()
+  ())
+
 ;;; ruby-block.el
 (add-hook 'ruby-mode-hook
           '(lambda ()
