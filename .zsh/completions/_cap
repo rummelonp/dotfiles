@@ -1,0 +1,56 @@
+#compdef cap
+# ------------------------------------------------------------------------------
+# Description
+# -----------
+#
+#  Completion script for Capistrano (http://capistranorb.com/).
+#
+# ------------------------------------------------------------------------------
+# Authors
+# -------
+#
+#  * Kazuya Takeshima (https://github.com/mitukiii)
+#
+# ------------------------------------------------------------------------------
+
+_cap() {
+  local context state line curcontext="$curcontext"
+
+  _arguments -C \
+             ': :->stages' \
+             '*: :->tasks'
+
+  case $state in
+    stages)
+      __cap_stages
+      ;;
+    tasks)
+      __cap_tasks
+      ;;
+  esac
+}
+
+__cap_stages() {
+  local -a _stages_files stages
+  _stage_files=($(_call_program stages ls -1 config/deploy 2> /dev/null))
+  _stages=(${_stage_files%.rb})
+
+  _describe -t stages 'stage' _stages
+}
+
+__cap_tasks() {
+  local -a _tasks
+  _tasks=( ${(f)"$(_call_program tasks cap -T 2> /dev/null | sed -e '/ # /!d; s/:/\\:/g; s/cap \([A-Za-z0-9\\:_-]*\) .*# /\1:/')"} )
+
+  _describe -t tasks 'task' _tasks
+}
+
+_cap "$@"
+
+# Local Variables:
+# mode: Shell-Script
+# sh-indentation: 2
+# indent-tabs-mode: nil
+# sh-basic-offset: 2
+# End:
+# vim: ft=zsh sw=2 ts=2 et
