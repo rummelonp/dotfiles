@@ -4,6 +4,7 @@
 (require 'wdired)
 ;; Key bind
 (define-key dired-mode-map (kbd "C-t") 'next-window-or-split-horizontally)
+(define-key dired-mode-map (kbd "C--") 'dired-omit-mode)
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 
 ;;; cua.el
