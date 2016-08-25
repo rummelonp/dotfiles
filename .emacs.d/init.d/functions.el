@@ -1,5 +1,9 @@
 ;;;; Basic - Functions
 
+;;; Configuration
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
 ;;; Aliaes
 (defalias 'yes-or-no-p 'y-or-n-p)
 
