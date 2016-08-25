@@ -7,6 +7,8 @@
   (eq system-type 'gnu/linux))
 (defvar required-packages
   '(
+    ;; Basic - Theme
+    spacemacs-theme
     ;; Extension - Framework
     helm helm-git-files helm-descbinds
     ;; Exetnsion - Basic
