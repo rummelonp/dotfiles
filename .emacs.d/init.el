@@ -41,7 +41,7 @@
     "language-emacs-lisp" "language-config" "language-web" "language-ruby" "language-php"
     ;; Functions
     "functions"
-    ;; key bind
+    ;; Key bind
     "key-bind"
     ;; Environment dependent
     "darwin-environment"
