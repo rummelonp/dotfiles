@@ -16,6 +16,7 @@ setopt pushd_to_home        # Push to home directory when no argument is given.
 setopt auto_name_dirs       # Auto add variable-stored paths to ~ list.
 
 # Expansion and globbing
+setopt numeric_glob_sort    # Sort the filenames numerically rather than lexicographically.
 setopt brace_ccl            # Allow brace character class list expansion.
 setopt extended_glob        # Use extended globbing syntax.
 
