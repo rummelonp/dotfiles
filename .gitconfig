@@ -34,7 +34,7 @@
   s  = status --short
   st = status
   # show
-  sh  = show
+  sh  = show --ignore-all-space
   shw = show --word-diff
   # add
   a  = add
@@ -73,9 +73,10 @@
   mn = merge --no-ff
   ms = merge --squash
   # branch
-  br  = branch
-  bra = branch --all
-  brv = branch -vv
+  br   = branch
+  bra  = branch --all
+  brv  = branch -vv
+  brav = branch --all -vv
   # fetch
   f  = fetch
   fa = fetch --all
@@ -98,13 +99,13 @@
   ll  = log --graph --pretty=colorful
   lla = log --graph --pretty=colorful --all
   # diff
-  d   = diff
+  d   = diff --ignore-all-space
   dw  = diff --word-diff
-  dc  = diff --cached
+  dc  = diff --ignore-all-space --cached
   dcw = diff --cached --word-diff
-  dm  = diff master
+  dm  = diff --ignore-all-space master
   dmw = diff master --word-diff
-  do  = diff origin/master
+  do  = diff --ignore-all-space origin/master
   dow = diff origin/master --word-diff
   # submodule
   sm = submodule
@@ -115,7 +116,7 @@
   gril = grep --ignore-case --files-with-matches
   grli = grep --ignore-case --files-with-matches
   # sh
-  log-files = "!f() { git log $1..$2 --name-only --oneline | grep -v ' ' | sort -u; }; f"
+  log-files = "!f() { git log $1..$2 --name-only --oneline | grep --invert-match ' ' | sort --unique; }; f"
   grep-sed  = "!f() { git grep --files-with-matches \"$1\" | xargs sed -i \"s/$1/$2/g\"; }; f"
   pshow     = "!f() { git log --all --pretty=colorful | percol | cut -d' ' -f1 | xargs git show; }; f;"
   preflog   = "!f() { git reflog | percol | cut -d' ' -f1 | xargs git show; }; f;"
