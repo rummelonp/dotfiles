@@ -35,7 +35,7 @@ red="%{${fg[red]}%}"
 blue="%{${fg[blue]}%}"
 white="%{${fg[white]}%}"
 
-if [ -n "$SSH_TTY" ]; then
+if [ -n "$SSH_TTY" -o "$USER" = 'root' ]; then
     PROMPT="%(?|${green}（╹ω╹）|${red}（☓ω☓）)${green}%n@%m${white}:${blue}%~${reset}$ "
 else
     PROMPT="%(?|${green}（╹ω╹）|${red}（☓ω☓）)${blue}%~${reset}$ "
