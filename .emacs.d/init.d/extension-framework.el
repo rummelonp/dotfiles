@@ -6,8 +6,8 @@
 ;; Key bind
 (define-key helm-map (kbd "C-M-v") 'helm-previous-page)
 
-;;; helm-git-files.el
-(require 'helm-git-files)
+;;; helm-ls-git.el
+(require 'helm-ls-git)
 
 ;;; helm-descbinds.el
 (require 'helm-descbinds)

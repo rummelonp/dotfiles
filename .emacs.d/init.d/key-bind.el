@@ -13,7 +13,7 @@
 ;;; helm.el
 (define-key global-map (kbd "C-x C-a") 'helm-recentf)
 (define-key global-map (kbd "C-x f") 'helm-find-files)
-(define-key global-map (kbd "C-x C-f") 'helm-git-files-or-recentf)
+(define-key global-map (kbd "C-x C-f") 'helm-ls-git-ls-or-recentf)
 (define-key global-map (kbd "C-x b") 'helm-buffers-list)
 (define-key global-map (kbd "C-x C-b") 'helm-buffers-list)
 (define-key global-map (kbd "C-x m") 'helm-imenu)

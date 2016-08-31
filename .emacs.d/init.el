@@ -10,7 +10,7 @@
     ;; Basic - Theme
     spacemacs-theme
     ;; Extension - Framework
-    helm helm-git-files helm-descbinds
+    helm helm-ls-git helm-descbinds
     ;; Exetnsion - Basic
     recentf-ext savekill undohist redo+ point-undo
     ;; Extension - Window

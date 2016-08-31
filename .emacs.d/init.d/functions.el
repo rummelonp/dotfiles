@@ -19,10 +19,10 @@
   (other-window -1))
 
 ;;; helm.el
-(defun helm-git-files-or-recentf ()
+(defun helm-ls-git-ls-or-recentf ()
   (interactive)
-  (if (helm-git-files:git-p)
-      (helm-git-files)
+  (if (helm-ls-git-root-dir)
+      (helm-ls-git-ls)
     (helm-recentf)))
 
 ;;; tabbar.el
