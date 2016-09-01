@@ -38,6 +38,9 @@
 (unless (server-running-p)
   (server-start))
 
+;;; VC
+(setq vc-follow-symlinks t)
+
 ;;; Buffer
 (global-auto-revert-mode 1)
 
