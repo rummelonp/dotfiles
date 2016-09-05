@@ -3,8 +3,6 @@
 ;;; emacs-lisp-mode.el
 ;; Configuration
 (setq edebug-inhibit-emacs-lisp-mode-bindings )
-;; Key bind
-(define-key emacs-lisp-mode-map (kbd "C-x C-a") 'helm-recentf)
 ;; Byte complete after save
 (add-hook 'after-save-hook
           '(lambda ()
