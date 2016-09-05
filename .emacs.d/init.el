@@ -24,7 +24,7 @@
     ;; Language - Emacs lisp
     eldoc-extension
     ;; Language - Config
-    nginx-mode yaml-mode
+    nginx-mode yaml-mode markdown-mode+
     ;; Language - Web
     rhtml-mode haml-mode slim-mode zencoding-mode scss-mode coffee-mode js2-mode mmm-mode
     ;; Language - Other
