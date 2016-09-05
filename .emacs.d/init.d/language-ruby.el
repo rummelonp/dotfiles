@@ -16,8 +16,10 @@
 (add-to-list 'auto-mode-alist '("Berksfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Bowerfile$" . ruby-mode))
 (add-to-list 'ruby-encoding-map '(undecided . utf-8))
+;; Configuration
 (setq ruby-use-smie nil)
 (setq ruby-deep-indent-paren nil)
+;; Key bind
 (define-key ruby-mode-map (kbd "C-x C-t") 'darwin-open-terminal)
 (define-key ruby-mode-map (kbd "C-m") 'reindent-then-newline-and-indent)
 (define-key ruby-mode-map (kbd "C-j") 'ruby-end-return)
