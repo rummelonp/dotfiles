@@ -26,7 +26,7 @@
     ;; Language - Config
     nginx-mode yaml-mode
     ;; Language - Web
-    rhtml-mode zencoding-mode scss-mode coffee-mode js2-mode mmm-mode
+    rhtml-mode haml-mode slim-mode zencoding-mode scss-mode coffee-mode js2-mode mmm-mode
     ;; Language - Other
     php-mode
     ))

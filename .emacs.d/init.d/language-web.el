@@ -6,6 +6,12 @@
 ;; rhtml-mode.el
 (autoload 'rhtml-mode "rhtml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
+;; rhtml-mode.el
+(autoload 'haml-mode "haml-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
+;; rhtml-mode.el
+(autoload 'slim-mode "slim-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
 ;; zencoding-code.el
 (autoload 'zencoding-mode "zencoding-mode" nil t)
 (add-hook 'html-mode-hook 'zencoding-mode)
