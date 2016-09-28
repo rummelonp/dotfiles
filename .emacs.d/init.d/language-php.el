@@ -4,6 +4,10 @@
 (autoload 'php-mode "php-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\/views?.*\\.php$" . html-mode))
+(add-hook 'php-mode-hook
+          (lambda ()
+            (setq tab-width 2)
+            (setq c-basic-offset 2)))
 
 ;; Toggle major mode between html-mode and php-mode
 (add-hook 'php-mode-hook
