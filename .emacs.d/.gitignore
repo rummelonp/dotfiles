@@ -7,6 +7,9 @@ ac-comphist.dat
 # multiple-cursors
 .mc-lists.el
 
+# recentf
+recentf
+
 # savekill
 kill-ring-saved.el
 
