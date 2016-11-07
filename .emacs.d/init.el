@@ -28,7 +28,7 @@
     ;; Language - Web
     rhtml-mode haml-mode slim-mode zencoding-mode scss-mode coffee-mode js2-mode mmm-mode
     ;; Language - Other
-    php-mode
+    scala-mode php-mode
     ))
 (setq required-init-files
   '(
