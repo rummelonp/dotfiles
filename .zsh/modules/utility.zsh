@@ -60,6 +60,7 @@ case $OSTYPE in
     darwin*)
         alias -g emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
         alias -g E='| xargs emacsclient --no-wait'
+        alias -g I='| xargs idea'
         alias -g O='| xargs open'
         alias -g C='| pbcopy'
         alias -g S='| gsed'
