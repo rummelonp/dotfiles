@@ -15,6 +15,7 @@
 (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Berksfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Bowerfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Schemafile$" . ruby-mode))
 (add-to-list 'ruby-encoding-map '(undecided . utf-8))
 ;; Configuration
 (setq ruby-use-smie nil)
