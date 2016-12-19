@@ -8,7 +8,7 @@ stats() {
     local until="$(date -v${to} +'%Y-%m-%d') 23:59:59"
 
     echo $desc
-    git log --oneline --shortstat --no-merges --since="'$since'" --until="'$until'" \
+    git log --author="$(git config --get user.name)" --oneline --shortstat --no-merges --since="'$since'" --until="'$until'" \
         | grep -E 'files? changed' \
         | awk 'BEGIN { i=0; d=0 }
                      { i+=$4; d+=$6 }
