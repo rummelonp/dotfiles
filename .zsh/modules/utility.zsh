@@ -51,6 +51,8 @@ alias d='diff'
 alias h='history'
 alias v='view'
 alias e='emacsclient --no-wait'
+alias i='idea'
+alias o='open'
 
 alias netstat-all='lsof -nP -iTCP'
 alias netstat-listen='lsof -nP -iTCP -sTCP:LISTEN'
@@ -60,7 +62,7 @@ case $OSTYPE in
     darwin*)
         alias -g emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
         alias -g E='| xargs emacsclient --no-wait'
-        alias -g I='| xargs idea'
+        alias -g I='| xargs -n10 idea'
         alias -g O='| xargs open'
         alias -g C='| pbcopy'
         alias -g S='| gsed'
