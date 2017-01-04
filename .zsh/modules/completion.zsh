@@ -15,7 +15,7 @@ unsetopt menu_complete   # Do not autoselect the first completion entry.
 ## Word separator
 autoload -Uz select-word-style
 select-word-style default
-zstyle ':zle:*' word-chars ' ,_-./:;@'
+zstyle ':zle:*' word-chars ' ,-./:;=@_'
 zstyle ':zle:*' word-style unspecified
 
 ## Cache
