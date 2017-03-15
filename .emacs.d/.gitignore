@@ -1,12 +1,6 @@
 # package
 elpa
 
-# auto-complete
-ac-comphist.dat
-
-# multiple-cursors
-.mc-lists.el
-
 # recentf
 recentf
 
@@ -15,3 +9,9 @@ kill-ring-saved.el
 
 # undohist
 undohist
+
+# auto-complete
+ac-comphist.dat
+
+# multiple-cursors
+.mc-lists.el
