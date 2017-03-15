@@ -1,0 +1,67 @@
+#compdef eb
+# ------------------------------------------------------------------------------
+# Authors
+# -------
+#
+#  * Kazuya Takeshima (https://github.com/mitukiii)
+#
+# ------------------------------------------------------------------------------
+
+_eb() {
+  local context state line curcontext="$curcontext"
+
+  if (( CURRENT > 2 )); then
+    (( CURRENT-- ))
+    shift words
+    _call_function - "_eb_${words[1]}" || _nothing
+  else
+    __eb_commands
+  fi
+}
+
+__eb_commands() {
+  local context state line curcontext="$curcontext"
+
+  local -a commands
+  commands=(
+    abort'[Cancels an environment update or deployment.]'
+    appversion'[Listing and managing application versions]'
+    clone'[Clones an environment.]'
+    codesource'[Configures the code source for the EB CLI to use by default.]'
+    config"[Modify an environment's configuration. Use subcommands to manage saved configurations.]"
+    console'[Opens the environment in the AWS Elastic Beanstalk Management Console.]'
+    create'[Creates a new environment.]'
+    deploy'[Deploys your source code to the environment.]'
+    events'[Gets recent events.]'
+    health'[Shows detailed environment health.]'
+    init'[Initializes your directory with the EB CLI. Creates the application.]'
+    labs'[Extra experimental commands.]'
+    list'[Lists all environments.]'
+    local'[Runs commands on your local machine.]'
+    logs'[Gets recent logs.]'
+    open'[Opens the application URL in a browser.]'
+    platform'[Manages platforms.]'
+    printenv'[Shows the environment variables.]'
+    restore'[Restores a terminated environment.]'
+    scale'[Changes the number of running instances.]'
+    setenv'[Sets environment variables.]'
+    ssh'[Opens the SSH client to connect to an instance.]'
+    status'[Gets environment information and status.]'
+    swap'[Swaps two environment CNAMEs with each other.]'
+    terminate'[Terminates the environment.]'
+    upgrade'[Updates the environment to the most recent platform version.]'
+    use'[Sets default environment.]'
+  )
+
+  _values 'command' $commands
+}
+
+_eb "$@"
+
+# Local Variables:
+# mode: Shell-Script
+# sh-indentation: 2
+# indent-tabs-mode: nil
+# sh-basic-offset: 2
+# End:
+# vim: ft=zsh sw=2 ts=2 et
