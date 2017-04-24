@@ -72,10 +72,6 @@ case $OSTYPE in
             eval "$(npm completion)"
         fi
 
-        # Go
-        export GOPATH=/usr/local/var/go
-        export PATH=$GOPATH/bin:$PATH
-
         # Android
         export ANDROID_HOME=/usr/local/opt/android-sdk
 
