@@ -8,7 +8,6 @@
 
 ;;; conf-space-mode.el
 (add-to-list 'auto-mode-alist '("\\.conf$" . conf-space-mode))
-(add-to-list 'auto-mode-alist '("\\.screenrc$" . conf-space-mode))
 
 ;;; nginx-mode.el
 (autoload 'nginx-mode "nginx-mode" nil t)
@@ -17,8 +16,6 @@
 ;;; yaml-mode.el
 (autoload 'yaml-mode "yaml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.yml.sample$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
 
 ;;; markdown-mode.el
 (autoload 'markdown-mode "markdown-mode" nil t)
