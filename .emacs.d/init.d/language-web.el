@@ -6,12 +6,15 @@
 ;; rhtml-mode.el
 (autoload 'rhtml-mode "rhtml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
-;; rhtml-mode.el
+;; haml-mode.el
 (autoload 'haml-mode "haml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
-;; rhtml-mode.el
+;; slim-mode.el
 (autoload 'slim-mode "slim-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
+;; vue-mode.el
+(autoload 'vue-mode "vue-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.vue$" . vue-mode))
 ;; zencoding-code.el
 (autoload 'zencoding-mode "zencoding-mode" nil t)
 (add-hook 'html-mode-hook 'zencoding-mode)
@@ -26,6 +29,9 @@
 (autoload 'scss-mode "scss-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))
 (setq scss-compile-at-save nil)
+;; less-css-mode.el
+(autoload 'less-css-mode "less-css-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
 ;;; JavaScript
 ;; js.el
@@ -37,6 +43,9 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 (setq js2-basic-offset 2)
+;; json-mode.el
+(autoload 'json-mode "json-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 ;; coffee-mode.el
 (autoload 'coffee-mode "coffee-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
@@ -50,11 +59,11 @@
  '((html-css
     :submode css-mode
     :front "<style[^>]*>\n"
-    :back  "</style>")
+    :back  "^</style>")
    (html-js
     :submode js-mode
     :front "<script[^>]*>\n"
-    :back  "</script>")))
+    :back  "^</script>")))
 ;; .html
 (mmm-add-mode-ext-class nil "\\.html$" 'html-css)
 (mmm-add-mode-ext-class nil "\\.html$" 'html-js)
