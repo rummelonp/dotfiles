@@ -54,19 +54,10 @@
    (html-js
     :submode js-mode
     :front "<script[^>]*>\n"
-    :back  "</script>")
-   (html-php
-    :submode php-mode
-    :front "<?php"
-    :back "?>")))
+    :back  "</script>")))
 ;; .html
 (mmm-add-mode-ext-class nil "\\.html$" 'html-css)
 (mmm-add-mode-ext-class nil "\\.html$" 'html-js)
-(mmm-add-mode-ext-class nil "\\.html$" 'html-php)
 ;; .erb
 (mmm-add-mode-ext-class nil "\\.erb$" 'html-css)
 (mmm-add-mode-ext-class nil "\\.erb$" 'html-js)
-;; .php
-(mmm-add-mode-ext-class nil "\\.php$" 'html-css)
-(mmm-add-mode-ext-class nil "\\.php$" 'html-js)
-(mmm-add-mode-ext-class nil "\\.php$" 'html-php)

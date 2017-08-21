@@ -28,7 +28,7 @@
     ;; Language - Web
     rhtml-mode haml-mode slim-mode zencoding-mode scss-mode coffee-mode js2-mode mmm-mode
     ;; Language - Other
-    scala-mode php-mode
+    scala-mode
     ))
 (setq required-init-files
   '(
@@ -38,7 +38,7 @@
     "extension-framework" "extension-basic" "extension-window"
     "extension-auto-complete" "extension-find-and-replace" "extension-editor-enhancement"
     ;; Languages
-    "language-emacs-lisp" "language-config" "language-web" "language-ruby" "language-php"
+    "language-emacs-lisp" "language-config" "language-web" "language-ruby"
     ;; Functions
     "functions"
     ;; Key bind
