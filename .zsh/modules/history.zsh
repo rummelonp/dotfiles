@@ -7,7 +7,7 @@ SAVEHIST=100000
 
 ## Options
 setopt bang_hist               # Treat the '!' character specially during expansion.
-setopt extended_history        # Write the history file in the ':start:elapsed;command' format.
+setopt no_extended_history     # Write the history file in the 'command' format.
 setopt hist_beep               # beep when accessing non-existent history.
 setopt hist_expire_dups_first  # Expire a duplicate event first when trimming history.
 setopt hist_find_no_dups       # Do not display a previously found event.
