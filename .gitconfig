@@ -36,6 +36,8 @@
   # show
   sh  = show --ignore-all-space
   shw = show --word-diff
+  shs = show --stat
+  shn = show --name-only
   # add
   a  = add
   aa = add --all
@@ -73,10 +75,11 @@
   mn = merge --no-ff
   ms = merge --squash
   # branch
-  br   = branch
-  bra  = branch --all
-  brv  = branch -vv
-  brav = branch --all -vv
+  b   = branch
+  bm  = branch --move
+  bd  = branch --delete
+  br  = branch --no-merged
+  brv = branch -vv --no-merged
   # fetch
   f  = fetch
   fa = fetch --all
