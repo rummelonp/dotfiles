@@ -20,6 +20,8 @@
 (define-key global-map (kbd "C-x C-m") 'helm-imenu-in-all-buffers)
 (define-key global-map (kbd "M-x") 'helm-M-x)
 (define-key global-map (kbd "C-x C-y") 'helm-show-kill-ring)
+(define-key global-map (kbd "C-.") 'helm-etags-select)
+(define-key global-map (kbd "C-M-.") 'helm-etags-select)
 
 ;;; Frame
 (define-key global-map (kbd "C-z") nil)

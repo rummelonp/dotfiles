@@ -17,3 +17,4 @@
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 ;; Key bind
 (define-key emacs-lisp-mode-map (kbd "C-.") 'find-function-at-point)
+(define-key emacs-lisp-mode-map (kbd "C-M-.") 'find-function-at-point)
