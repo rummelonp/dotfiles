@@ -54,6 +54,7 @@
   # checkout
   co  = checkout
   cob = checkout -b
+  cod = checkout develop
   com = checkout master
   # rebase
   rb  = rebase
@@ -81,9 +82,10 @@
   br  = branch --no-merged
   brv = branch -vv --no-merged
   # fetch
-  f  = fetch
-  fa = fetch --all
-  fp = fetch --prune
+  f   = fetch
+  fa  = fetch --all
+  fp  = fetch --prune
+  fap = fetch --all --prune
   # pull
   pl  = pull
   plf = pull --ff
@@ -102,14 +104,18 @@
   ll  = log --graph --pretty=colorful
   lla = log --graph --pretty=colorful --all
   # diff
-  d   = diff --ignore-all-space
-  dw  = diff --word-diff
-  dc  = diff --ignore-all-space --cached
-  dcw = diff --cached --word-diff
-  dm  = diff --ignore-all-space master
-  dmw = diff master --word-diff
-  do  = diff --ignore-all-space origin/master
-  dow = diff origin/master --word-diff
+  d    = diff --ignore-all-space
+  dw   = diff --word-diff
+  dc   = diff --ignore-all-space --cached
+  dcw  = diff --cached --word-diff
+  dd   = diff --ignore-all-space develop
+  ddw  = diff develop --word-diff
+  dod  = diff --ignore-all-space origin/develop
+  dodw = diff origin/devellop --word-diff
+  dm   = diff --ignore-all-space master
+  dmw  = diff master --word-diff
+  dom  = diff --ignore-all-space origin/master
+  domw = diff origin/master --word-diff
   # submodule
   sm = submodule
   # grep
@@ -120,7 +126,7 @@
   grli = grep --ignore-case --files-with-matches
   # sh
   log-files = "!f() { git log $1..$2 --name-only --oneline | grep --invert-match ' ' | sort --unique; }; f"
-  grep-sed  = "!f() { git grep --files-with-matches \"$1\" | xargs sed -i \"s/$1/$2/g\"; }; f"
+  grep-sed  = "!f() { git grep --files-with-matches \"$1\" $3 | xargs sed -i \"s/$1/$2/g\"; }; f"
   pshow     = "!f() { git log --all --pretty=colorful | percol | cut -d' ' -f1 | xargs git show; }; f;"
   preflog   = "!f() { git reflog | percol | cut -d' ' -f1 | xargs git show; }; f;"
   pls-files = "!f() { echo $(git ls-files | percol | sed 's/ /\\ /g'); }; f;"
