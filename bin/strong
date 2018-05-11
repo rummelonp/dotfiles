@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+puts ARGV.join(' ').codepoints.map { |cp|
+  if ('A'..'Z').flat_map(&:codepoints).include?(cp)
+    cp + '𝘼'.codepoints.first - 'A'.codepoints.first
+  elsif ('a'..'z').flat_map(&:codepoints).include?(cp)
+    cp + '𝗮'.codepoints.first - 'a'.codepoints.first
+  else
+    cp
+  end
+}.pack('U*')
