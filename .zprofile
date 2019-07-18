@@ -78,9 +78,6 @@ case $OSTYPE in
 
         # Android
         export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
-
-        # Gist
-        export GISTY_DIR=$HOME/Dropbox/Gist
         ;;
 esac
 
