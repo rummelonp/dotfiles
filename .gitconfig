@@ -61,6 +61,8 @@
   # rebase
   rb  = rebase
   rbm = rebase master
+  rbd = rebase develop
+  rbr = rebase release
   rbi = rebase --interactive
   rbo = rebase --onto
   rbc = rebase --continue
