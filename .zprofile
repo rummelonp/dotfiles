@@ -73,7 +73,7 @@ case $OSTYPE in
         fi
 
         # Go
-        export GOPATH=$HOME/go
+        export GOPATH=/usr/local/var/go
         export PATH=$GOPATH/bin:$PATH
 
         # Android
