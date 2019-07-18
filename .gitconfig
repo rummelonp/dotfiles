@@ -25,6 +25,8 @@
   colorful = %h %Cgreen%ad %Cblue%an %Creset%s %C(auto)%d%Creset
 [merge]
   ff = false
+[fetch]
+  prune = true
 [pull]
   rebase = true
 [push]
@@ -84,8 +86,6 @@
   # fetch
   f   = fetch
   fa  = fetch --all
-  fp  = fetch --prune
-  fap = fetch --all --prune
   # pull
   pl  = pull
   plf = pull --ff
