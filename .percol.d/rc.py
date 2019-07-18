@@ -1,11 +1,11 @@
-import sys, commands
+import sys, subprocess
 from percol.command import SelectorCommand
 from percol.key import SPECIAL_KEYS
 from percol.finder import FinderMultiQueryString, FinderMultiQueryRegex, FinderMultiQueryMigemo
 
 ## Prompt
 def dynamic_prompt():
-    prompt = ur''
+    prompt = ''
     if percol.model.finder.__class__ == FinderMultiQueryMigemo:
         prompt += '[Migemo]'
     elif percol.model.finder.__class__ == FinderMultiQueryRegex:
@@ -24,11 +24,11 @@ percol.view.__class__.PROMPT = property(lambda self: dynamic_prompt())
 ## Kill
 if sys.platform == 'darwin':
     def copy_end_of_line_as_kill(self):
-        commands.getoutput('echo ' + self.model.query[self.model.caret:] + ' | pbcopy')
+        subprocess.getoutput('echo ' + self.model.query[self.model.caret:] + ' | pbcopy')
         self.model.query  = self.model.query[:self.model.caret]
 
     def paste_as_yank(self):
-        self.model.insert_string(commands.getoutput('pbpaste'))
+        self.model.insert_string(subprocess.getoutput('pbpaste'))
 
     SelectorCommand.kill_end_of_line = copy_end_of_line_as_kill
     SelectorCommand.yank = paste_as_yank
