@@ -6,8 +6,7 @@
 (prefer-coding-system 'utf-8)
 
 ;;; Theme
-(load-theme 'spacemacs-dark t)
-(load-theme 'deeper-blue t)
+(load-theme 'dracula t)
 (set-frame-parameter nil 'alpha 95)
 
 ;;; Faces

@@ -8,7 +8,7 @@
 (defvar required-packages
   '(
     ;; Basic - Theme
-    spacemacs-theme
+    dracula-theme
     ;; Extension - Framework
     helm helm-ls-git helm-descbinds
     ;; Exetnsion - Basic
