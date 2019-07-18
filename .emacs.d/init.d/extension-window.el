@@ -35,6 +35,7 @@
  :background "#181a26")
 
 ;;; tabbar.el
+(require 'cl)
 (require 'tabbar)
 (tabbar-mode t)
 ;; Face
