@@ -77,7 +77,7 @@ case $OSTYPE in
         export PATH=$GOPATH/bin:$PATH
 
         # Android
-        export ANDROID_HOME=/usr/local/opt/android-sdk
+        export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
 
         # Gist
         export GISTY_DIR=$HOME/Dropbox/Gist
