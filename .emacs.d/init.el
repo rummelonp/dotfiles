@@ -31,7 +31,7 @@
     js2-mode typescript-mode json-mode coffee-mode
     mmm-mode
     ;; Language - Other
-    scala-mode
+    rinari scala-mode
     ))
 (setq required-init-files
   '(

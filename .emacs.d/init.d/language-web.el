@@ -6,6 +6,7 @@
 ;; rhtml-mode.el
 (autoload 'rhtml-mode "rhtml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
+(add-to-list 'auto-mode-alist '("\\.tt$" . rhtml-mode))
 ;; haml-mode.el
 (autoload 'haml-mode "haml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
@@ -62,11 +63,11 @@
  '((html-css
     :submode css-mode
     :front "<style[^>]*>\n"
-    :back  "^</style>")
+    :back  "</style>")
    (html-js
     :submode js-mode
     :front "<script[^>]*>\n"
-    :back  "^</script>")))
+    :back  "</script>")))
 ;; .html
 (mmm-add-mode-ext-class nil "\\.html$" 'html-css)
 (mmm-add-mode-ext-class nil "\\.html$" 'html-js)

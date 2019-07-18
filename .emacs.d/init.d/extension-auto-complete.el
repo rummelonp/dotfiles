@@ -14,7 +14,9 @@
 (add-to-list 'ac-modes 'rhtml-mode)
 (add-to-list 'ac-modes 'scss-mode)
 (add-to-list 'ac-modes 'less-css-mode)
+(add-to-list 'ac-modes 'typescript-mode)
 (add-to-list 'ac-modes 'coffee-mode)
+(add-to-list 'ac-modes 'vue-mode)
 ;; Configuration
 (ac-config-default)
 (ac-set-trigger-key "C-i")
