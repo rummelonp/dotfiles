@@ -27,6 +27,7 @@
 (define-key global-map (kbd "C-z") nil)
 
 ;;; Window
+(define-key global-map (kbd "C-x `") 'delete-other-windows)
 (define-key global-map (kbd "C-t") 'next-window-or-split-horizontally)
 (define-key global-map (kbd "C-S-t") 'prev-window)
 (define-key global-map (kbd "M-t") 'delete-window)
@@ -67,13 +68,15 @@
 (define-key global-map (kbd "C-M-y") 'yank-pop)
 ;; Undo
 (define-key global-map (kbd "C-_") 'undo)
+(define-key global-map (kbd "C-/") 'undo)
 (define-key global-map (kbd "C-M-_") 'redo)
+(define-key global-map (kbd "C-M-/") 'redo)
 (define-key global-map (kbd "M-p") 'point-undo)
 (define-key global-map (kbd "M-n") 'point-redo)
 ;; Comment
 (define-key global-map (kbd "C-;") 'comment-or-uncomment-region)
 ;; Configuration
-(define-key global-map (kbd "C-/") 'toggle-truncate-lines)
+(define-key global-map (kbd "C--") 'toggle-truncate-lines)
 ;; Help
 (define-key global-map (kbd "M-?") 'help-for-help)
 
