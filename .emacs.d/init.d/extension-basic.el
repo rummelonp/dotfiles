@@ -1,5 +1,8 @@
 ;;;; Extension - Basic
 
+;;; dired-x.el
+(require 'dired-x)
+
 ;;; wdired.el
 (require 'wdired)
 ;; Key bind
