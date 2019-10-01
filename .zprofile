@@ -78,6 +78,7 @@ case $OSTYPE in
 
         # Android
         export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+        export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
         ;;
 esac
 
