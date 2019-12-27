@@ -28,8 +28,8 @@ function _chpwd-rprompt() {
     if which pyenv > /dev/null; then
         psvar[3]=$(pyenv version | cut -d' ' -f1)
     fi
-    if which nodebrew > /dev/null; then
-        psvar[4]=$(nodebrew ls | tail -n1 | cut -d ' ' -f2)
+    if which nodenv > /dev/null; then
+        psvar[4]=$(nodenv version | cut -d ' ' -f1)
     fi
 }
 add-zsh-hook chpwd _chpwd-rprompt

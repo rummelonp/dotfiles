@@ -63,13 +63,10 @@ case $OSTYPE in
         fi
 
         # Node
-        export NODEBREW_ROOT=/usr/local/var/nodebrew
-        if which nodebrew > /dev/null; then
-            export PATH=$NODEBREW_ROOT/current/bin:$PATH
-            export NODE_PATH=$NODEBREW_ROOT/node/$(nodebrew ls | tail -n1 | cut -d ' ' -f2)/lib/node_modules
-        fi
-        if which npm > /dev/null; then
-            eval "$(npm completion)"
+        export NODENV_ROOT=/usr/local/var/nodenv
+        if which nodenv > /dev/null; then
+            export PATH=$NODENV_ROOT/shims:$PATH
+            eval "$(nodenv init -)";
         fi
 
         # Go
