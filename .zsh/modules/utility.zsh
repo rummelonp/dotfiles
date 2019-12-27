@@ -78,8 +78,6 @@ alias -g H='| head'
 alias -g T='| tail'
 
 ## Ruby
-alias irb='pry'
-
 alias bi='bundle install'
 alias bu='bundle update'
 alias be='bundle exec'
