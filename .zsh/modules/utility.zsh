@@ -83,8 +83,8 @@ alias bu='bundle update'
 alias be='bundle exec'
 
 ## Python
-alias saba='python -m SimpleHTTPServer > /dev/null 2>&1 &'
-alias shimesaba='pkill -f "python -m SimpleHTTPServer"'
+alias saba='python -m http.server > /dev/null 2>&1 &'
+alias shimesaba='pkill -f "python -m http.server"'
 
 ## Functions
 function take() {
