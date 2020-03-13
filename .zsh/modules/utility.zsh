@@ -33,6 +33,9 @@ alias du='du -h'
 alias df='df -h'
 
 # Shorthand
+alias ..='cd ..'
+alias ...='cd ../..'
+
 alias l='ls -1'
 alias la='ls -1A'
 alias ll='ls -1alF'
