@@ -5,10 +5,7 @@ Pry.config.tap do |config|
 
   config.pager = false
 
-  config.prompt = [
-    lambda { |obj, level, _| "> " },
-    lambda { |obj, level, _| "  " }
-  ]
+  config.prompt = Pry::Prompt[:simple]
 
   config.exception_handler = lambda do |output, exception, _|
     message = "#{exception.class}: #{exception.message}\n" <<
