@@ -22,3 +22,12 @@
 ;;; markdown-mode.el
 (autoload 'markdown-mode "markdown-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+
+;;; plantuml-mode.el
+(autoload 'plantuml-mode "plantuml-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.puml$" . plantuml-mode))
+(add-to-list 'auto-mode-alist '("\\.iuml$" . plantuml-mode))
+(setq plantuml-executable-path "/usr/local/bin/plantuml")
+(setq plantuml-default-exec-mode 'executable)
+(setq plantuml-output-type "svg")
+(setq plantuml-indent-level 2)
