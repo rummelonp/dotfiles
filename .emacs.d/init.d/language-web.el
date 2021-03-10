@@ -47,6 +47,9 @@
 ;; typescript-mode.el
 (require 'typescript-mode)
 (setq typescript-indent-level 2)
+;; rjsx-mode.el
+(require 'rjsx-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx$" . rjsx-mode))
 ;; json-mode.el
 (autoload 'json-mode "json-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
