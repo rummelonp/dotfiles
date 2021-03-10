@@ -6,8 +6,10 @@
 ;;; shell-script-mode.el
 (add-to-list 'auto-mode-alist '("\\.zsh" . shell-script-mode))
 
-;;; conf-space-mode.el
-(add-to-list 'auto-mode-alist '("\\.conf$" . conf-space-mode))
+;;; conf-mode.el
+(add-to-list 'auto-mode-alist '("\\.conf$" . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.aws/config$" . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.aws/credentials$" . conf-mode))
 
 ;;; nginx-mode.el
 (autoload 'nginx-mode "nginx-mode" nil t)
