@@ -48,6 +48,7 @@ case $OSTYPE in
         if which brew > /dev/null; then
             eval "$(brew shellenv)"
         fi
+        export PATH=$(brew --prefix)/opt/grep/libexec/gnubin:$PATH
 
         # Ruby
         if which rbenv > /dev/null; then
