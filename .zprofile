@@ -61,7 +61,6 @@ case $OSTYPE in
 
         # Node
         if which nodenv > /dev/null; then
-            export PATH=$NODENV_ROOT/shims:$PATH
             eval "$(nodenv init -)";
         fi
 
