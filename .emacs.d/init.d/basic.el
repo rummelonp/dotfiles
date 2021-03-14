@@ -21,9 +21,9 @@
                   '("Hiragino Maru Gothic ProN"))
 
 ;;; Application
-(menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode t)
+(menu-bar-mode t)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;;; Window
 (line-number-mode t)
