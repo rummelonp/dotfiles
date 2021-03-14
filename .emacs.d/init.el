@@ -33,21 +33,28 @@
     ;; Language - Other
     rinari scala-mode
     ))
-(setq required-init-files
+(defvar required-init-files
   '(
     ;; Basics
-    "basic"
+    basic
     ;; Extensions
-    "extension-framework" "extension-basic" "extension-window"
-    "extension-auto-complete" "extension-find-and-replace" "extension-editor-enhancement"
+    extension-framework
+    extension-basic
+    extension-window
+    extension-auto-complete
+    extension-find-and-replace
+    extension-editor-enhancement
     ;; Languages
-    "language-emacs-lisp" "language-config" "language-web" "language-ruby"
+    language-emacs-lisp
+    language-config
+    language-web
+    language-ruby
     ;; Functions
-    "functions"
+    functions
     ;; Key bind
-    "key-bind"
+    key-bind
     ;; Environment dependent
-    "darwin-environment"
+    darwin-environment
     ))
 
 ;;; Install packages
@@ -69,12 +76,13 @@
     (error
      (warn (format "%s: %s" file (error-message-string e))))))
 (dolist (file required-init-files)
-  (cond
-   ((string-match-p "^darwin" file)
-    (when darwin-p
-      (try-load file)))
-   ((string-match-p "^linux" file)
-     (when linux-p
-      (try-load file)))
-   (t
-    (try-load file))))
+  (let ((file (symbol-name file)))
+    (cond
+     ((string-match-p "^darwin" file)
+      (when darwin-p
+        (try-load file)))
+     ((string-match-p "^linux" file)
+      (when linux-p
+        (try-load file)))
+     (t
+      (try-load file)))))
