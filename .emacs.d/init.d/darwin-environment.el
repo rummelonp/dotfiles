@@ -11,13 +11,16 @@
   (shell-command-to-string (concat "echo " buffer-file-name " | perl -pe 's/(\r|\n)//' | pbcopy")))
 
 ;; Open
+(defun darwin-open (name)
+  (shell-command-to-string (concat "echo 'tell application \"" name "\" to activate window' | osascript")))
+
 (defun darwin-open-terminal ()
   (interactive)
-  (shell-command-to-string "open -a terminal"))
+  (darwin-open "Terminal"))
 
 (defun darwin-open-tweetbot ()
   (interactive)
-  (shell-command-to-string "open -a tweetbot"))
+  (darwin-open "Tweetbot"))
 
 ;;; Key bind
 (define-key global-map (kbd "C-x C-t") 'darwin-open-terminal)
