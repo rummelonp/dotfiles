@@ -24,6 +24,7 @@ typeset -g path fpath cdpath
 
 path=(
     $HOME/bin
+    /opt/homebrew/{opt,sbin,bin}
     /usr/local/{sbin,bin}
     /usr/{sbin,bin}
     /{sbin,bin}
@@ -43,6 +44,11 @@ cdpath=(
 
 case $OSTYPE in
     darwin*)
+        # Homebrew
+        if which brew > /dev/null; then
+            eval "$(brew shellenv)"
+        fi
+
         # Ruby
         export RBENV_ROOT=/usr/local/var/rbenv
         if which rbenv > /dev/null; then
