@@ -50,19 +50,16 @@ case $OSTYPE in
         fi
 
         # Ruby
-        export RBENV_ROOT=/usr/local/var/rbenv
         if which rbenv > /dev/null; then
             eval "$(rbenv init -)"
         fi
 
         # Python
-        export PYENV_ROOT=/usr/local/var/pyenv
         if which pyenv > /dev/null; then
             eval "$(pyenv init -)"
         fi
 
         # Node
-        export NODENV_ROOT=/usr/local/var/nodenv
         if which nodenv > /dev/null; then
             export PATH=$NODENV_ROOT/shims:$PATH
             eval "$(nodenv init -)";
