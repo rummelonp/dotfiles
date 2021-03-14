@@ -28,7 +28,7 @@
     ;; Language - Web
     rhtml-mode haml-mode slim-mode vue-mode zencoding-mode
     scss-mode less-css-mode
-    js2-mode typescript-mode json-mode coffee-mode
+    js2-mode typescript-mode json-mode coffee-mode rjsx-mode
     mmm-mode
     ;; Language - Other
     rinari scala-mode
