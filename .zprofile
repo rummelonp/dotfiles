@@ -70,8 +70,7 @@ case $OSTYPE in
         export PATH=$GOPATH/bin:$PATH
 
         # Android
-        export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
-        export ANDROID_NDK_ROOT=/usr/local/share/android-ndk
+        export ANDROID_SDK_ROOT=$(brew --prefix)/share/android-sdk
         export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
         ;;
 esac
