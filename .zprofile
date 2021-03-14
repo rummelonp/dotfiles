@@ -61,13 +61,6 @@ case $OSTYPE in
             eval "$(pyenv init -)"
         fi
 
-        # Perl
-        export PLENV_ROOT=/usr/local/var/plenv
-        if which plenv > /dev/null; then
-            export PATH=$PLENV_ROOT/shims:$PATH
-            eval "$(plenv init -)";
-        fi
-
         # Node
         export NODENV_ROOT=/usr/local/var/nodenv
         if which nodenv > /dev/null; then
