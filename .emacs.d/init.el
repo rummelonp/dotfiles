@@ -53,6 +53,7 @@
 ;;; Install packages
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("emacswiki" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/emacswiki/") t)
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
