@@ -39,9 +39,9 @@ link_dir  tmux/.tmux      .tmux
 link_file tmux/.tmux.conf .tmux.conf
 
 if [[ $OSTYPE =~ darwin ]]; then
-    link_file .tmux/darwin.conf .tmux.local
+    link_file .tmux/darwin.conf .tmux.local.conf
 else
-    link_file .tmux/linux.conf  .tmux.local
+    link_file .tmux/linux.conf  .tmux.local.conf
 fi
 
 # ruby
