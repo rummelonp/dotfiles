@@ -6,7 +6,7 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
 
 # Thumbnails
 ._*
@@ -25,6 +25,9 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Homebrew
+Brewfile.lock.json
 
 
 ### Emacs ###
@@ -89,5 +92,3 @@ cscope.files
 cscope.out
 cscope.in.out
 cscope.po.out
-
-
