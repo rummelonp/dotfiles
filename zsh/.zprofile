@@ -23,7 +23,7 @@ fi
 typeset -g path fpath cdpath
 
 path=(
-    $HOME/bin
+    $HOME/.bin
     /opt/homebrew/{opt,sbin,bin}
     /usr/local/{sbin,bin}
     /usr/{sbin,bin}
