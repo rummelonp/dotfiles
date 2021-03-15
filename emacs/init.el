@@ -38,17 +38,17 @@
     ;; Basics
     basic
     ;; Extensions
-    extension-framework
-    extension-basic
-    extension-window
-    extension-auto-complete
-    extension-find-and-replace
-    extension-editor-enhancement
+    ext-framework
+    ext-basic
+    ext-window
+    ext-auto-complete
+    ext-find-and-replace
+    ext-editor-enhancement
     ;; Languages
-    language-emacs-lisp
-    language-config
-    language-web
-    language-ruby
+    lang-emacs-lisp
+    lang-config
+    lang-web
+    lang-ruby
     ;; Functions
     functions
     ;; Key bind
