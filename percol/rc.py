@@ -1,4 +1,4 @@
-import sys, subprocess
+import os, sys, subprocess
 from percol.command import SelectorCommand
 from percol.key import SPECIAL_KEYS
 from percol.finder import FinderMultiQueryString, FinderMultiQueryRegex, FinderMultiQueryMigemo
@@ -34,8 +34,11 @@ if sys.platform == 'darwin':
     SelectorCommand.yank = paste_as_yank
 
 ## Migemo dict path
-if sys.platform == 'darwin':
-    FinderMultiQueryMigemo.dictionary_path = '/usr/local/Cellar/cmigemo/20110227/share/migemo/utf-8/migemo-dict'
+FinderMultiQueryMigemo.dictionary_path = next(filter(lambda path: os.path.exists(path), [
+    '/opt/homebrew/share/migemo/utf-8/migemo-dict',
+    '/usr/local/share/migemo/utf-8/migemo-dict',
+    '/usr/share/cmigemo/utf-8/migemo-dict'
+]))
 
 ## Keymap
 # Map backspace
