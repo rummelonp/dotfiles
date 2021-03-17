@@ -1,9 +1,18 @@
 # dotfiles
 
-## Installation
+## Install
 
 ```sh
 git clone git://github.com/mitukiii/dotfiles.git
 cd dotfiles
-./setup.sh
+
+# Link dotfiles
+./install.sh
+```
+
+## Uninstall
+
+```sh
+# Unlink dotfiles
+./uninstall.sh
 ```
