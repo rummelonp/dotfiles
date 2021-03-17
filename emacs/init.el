@@ -69,7 +69,7 @@
     (package-install package)))
 
 ;;; Load init files
-(add-to-list 'load-path "~/.emacs.d/init.d")
+(add-to-list 'load-path "~/.emacs.d/modules")
 (defun try-load (file)
   (condition-case e
       (load file)
