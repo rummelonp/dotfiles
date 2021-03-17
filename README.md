@@ -10,6 +10,10 @@ dotfiles/install.sh
 
 # Install homebrew
 dotfiles/homebrew/install.sh
+
+# Install homebrew packages
+eval "$(/opt/homebrew/bin/brew shellenv)"
+brew bundle --global
 ```
 
 ## Uninstall
