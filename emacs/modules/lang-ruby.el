@@ -11,7 +11,7 @@
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Schemafile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Brewfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Brewfile$" . ruby-mode))
 (add-to-list 'ruby-encoding-map '(undecided . utf-8))
 ;; Configuration
 (setq ruby-use-smie nil)
