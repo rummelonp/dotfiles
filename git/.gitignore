@@ -1,4 +1,4 @@
-# Created by https://www.gitignore.io/api/osx,emacs,vim,svn,tags
+# Created by https://www.gitignore.io/api/osx,emacs,vim,tags
 
 ### OSX ###
 .DS_Store
@@ -72,10 +72,6 @@ tramp
 Session.vim
 .netrwhist
 *~
-
-
-### SVN ###
-.svn/
 
 
 ### Tags ###
