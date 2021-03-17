@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 function unlink_file() {
     local dest=$HOME/$1

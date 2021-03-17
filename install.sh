@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 DOTFILES_HOME=$(cd $(dirname $0) && pwd)
 
