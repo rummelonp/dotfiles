@@ -39,7 +39,6 @@ brew "pyenv"
 brew "ruby-build"
 brew "rbenv"
 brew "rbenv-aliases"
-brew "reattach-to-user-namespace"
 brew "redis", restart_service: true
 brew "sbt"
 brew "terraform"
