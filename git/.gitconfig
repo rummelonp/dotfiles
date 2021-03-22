@@ -11,10 +11,10 @@
 [color "diff"]
   plain      = normal
   meta       = bold green
-  frag       = bold cyan
+  frag       = bold blue
   func       = bold magenta
   old        = bold red
-  new        = bold blue
+  new        = bold cyan
   commit     = bold yellow
   whitespace = normal magenta
 [help]
@@ -22,7 +22,7 @@
 [log]
   date = iso
 [pretty]
-  colorful = %h %Cgreen%ad %Cblue%an %Creset%s %C(auto)%d%Creset
+  colorful = %C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(cyan)%an%C(reset) %s %C(auto)%d%C(reset)
 [merge]
   ff = false
 [fetch]
