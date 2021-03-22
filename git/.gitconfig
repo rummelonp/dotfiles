@@ -3,7 +3,7 @@
   email = mail@mitukiii.jp
 [core]
   excludesfile = ~/.gitignore
-  pager        = less --raw-control-chars
+  pager        = less
   autocrlf     = input
   quotepath    = false
 [color]
