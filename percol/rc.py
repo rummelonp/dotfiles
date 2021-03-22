@@ -3,7 +3,7 @@ from percol.command import SelectorCommand
 from percol.key import SPECIAL_KEYS
 from percol.finder import FinderMultiQueryString, FinderMultiQueryRegex, FinderMultiQueryMigemo
 
-## Prompt
+### Prompt ###
 percol.view.prompt_replacees["F"] = lambda self, **args: self.model.finder.get_name()
 
 def dynamic_prompt():
@@ -23,7 +23,7 @@ def dynamic_prompt():
 
 percol.view.__class__.PROMPT = property(lambda self: dynamic_prompt())
 
-## Kill
+### Kill ###
 if sys.platform == 'darwin':
     def copy_end_of_line_as_kill(self):
         subprocess.getoutput('echo ' + self.model.query[self.model.caret:] + ' | pbcopy')
@@ -35,14 +35,14 @@ if sys.platform == 'darwin':
     SelectorCommand.kill_end_of_line = copy_end_of_line_as_kill
     SelectorCommand.yank = paste_as_yank
 
-## Migemo dict path
+### Migemo ###
 FinderMultiQueryMigemo.dictionary_path = next(filter(lambda path: os.path.exists(path), [
     '/opt/homebrew/share/migemo/utf-8/migemo-dict',
     '/usr/local/share/migemo/utf-8/migemo-dict',
     '/usr/share/cmigemo/utf-8/migemo-dict'
 ]))
 
-## Keymap
+### Keymap ###
 # Map backspace
 SPECIAL_KEYS.update({
     127: '<backspace>'
