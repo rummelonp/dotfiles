@@ -12,7 +12,7 @@
 ;;; Faces
 (set-face-attribute 'default nil
                     :family "Monaco"
-                    :height 120)
+                    :height 130)
 (set-fontset-font "fontset-default"
                   'japanese-jisx0208
                   '("Hiragino Maru Gothic ProN"))
