@@ -1,6 +1,8 @@
-### Utility
+#
+# Defines general aliases and functions
+#
 
-## Correction
+### Correction ###
 setopt correct
 
 alias cp='nocorrect cp'
@@ -11,7 +13,7 @@ alias mkdir='nocorrect mkdir'
 alias mv='nocorrect mv'
 alias which='nocorrect which'
 
-## Aliases
+### Aliases ###
 
 # LS color
 export LSCOLORS='exfxcxdxbxegedabagacad'
@@ -60,7 +62,7 @@ alias o='open'
 alias netstat-all='lsof -nP -iTCP'
 alias netstat-listen='lsof -nP -iTCP -sTCP:LISTEN'
 
-## Global
+### Global ###
 case $OSTYPE in
     darwin*)
         alias -g emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
@@ -80,16 +82,16 @@ alias -g L='| less'
 alias -g H='| head'
 alias -g T='| tail'
 
-## Ruby
+### Ruby ###
 alias bi='bundle install'
 alias bu='bundle update'
 alias be='bundle exec'
 
-## Python
+### Python ###
 alias saba='python -m http.server > /dev/null 2>&1 &'
 alias shimesaba='pkill -f "python -m http.server"'
 
-## Functions
+### Functions ###
 function take() {
     mkdir -p $1
     cd $1

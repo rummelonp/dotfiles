@@ -1,10 +1,12 @@
-### Environment
+#
+# Sets general shell options and defines environment variables
+#
 
-## Smart URLs
+### Smart URLs ###
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
-## Options
+### Options ###
 
 # Changing directories
 setopt auto_cd              # Auto changes to a directory without typing cd.

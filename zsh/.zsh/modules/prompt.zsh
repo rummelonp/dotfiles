@@ -1,6 +1,8 @@
-### Theme
+#
+# Loads prompt themes
+#
 
-## VCS Info
+### VCS Info ###
 autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable git svn
@@ -12,7 +14,7 @@ zstyle ':vcs_info:*' actionformats '(%s) - [%b|%a]'
 zstyle ':vcs_info:git:*' formats '(%s) - [%c%u%b]'
 zstyle ':vcs_info:git:*' actionformats '(%s) - [%c%u%b|%a]'
 
-## Hook
+### Hook ###
 autoload -Uz add-zsh-hook
 
 function _precmd-rprompt() {
@@ -37,7 +39,7 @@ add-zsh-hook chpwd _chpwd-rprompt
 psvar=()
 _chpwd-rprompt
 
-## Prompt
+### Prompt ###
 autoload -Uz colors
 colors
 

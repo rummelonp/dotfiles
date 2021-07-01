@@ -1,10 +1,12 @@
-### Darwin
+#
+# Darwin
+#
 
 if ! [[ $OSTYPE =~ darwin ]]; then
     return
 fi
 
-## Key bindings
+### Key bindings ###
 function _copy-line-as-kill() {
     zle kill-line
     print -rn $CUTBUFFER | pbcopy
@@ -19,7 +21,7 @@ zle -N _paste-as-yank
 bindkey '^k' _copy-line-as-kill
 bindkey '^y' _paste-as-yank
 
-## Functions
+### Functions ###
 function man-preview() {
     man -t $@ | open -f -a Preview
 }

@@ -1,11 +1,13 @@
-### History
+#
+# Sets history options
+#
 
-## Variables
+### Variables ###
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
-## Options
+### Options ###
 setopt bang_hist               # Treat the '!' character specially during expansion.
 setopt no_extended_history     # Write the history file in the 'command' format.
 setopt hist_beep               # beep when accessing non-existent history.
@@ -19,7 +21,7 @@ setopt hist_verify             # do not execute immediately upon history expansi
 setopt inc_append_history      # Write to the history file immediately, not when the shell exits.
 setopt share_history           # share history between all sessions.
 
-## Zle
+### Zle ###
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end

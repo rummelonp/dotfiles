@@ -1,11 +1,13 @@
-### Editor
+#
+# Sets key bindings
+#
 
-## Emacs key bindings
+# Emacs key layout
 bindkey -e
 
-## History
+# History
 bindkey '^p' history-beginning-search-backward-end
 bindkey '^n' history-beginning-search-forward-end
 
-## Redo
+# Redo
 bindkey '^[_' redo

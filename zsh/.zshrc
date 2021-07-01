@@ -1,6 +1,8 @@
-### Initialize
+#
+# Executes commands at the start of an interactive session
+#
 
-## Load modules
+### Load modules ###
 module_names=(
     # Basic
     environment
@@ -21,5 +23,5 @@ done
 unset module_names
 unset module_name
 
-## Local configuration
+### Local configuration ###
 source $HOME/.zshrc.local

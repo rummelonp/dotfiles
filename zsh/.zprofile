@@ -1,9 +1,11 @@
-### Profile
+#
+# Executes commands at login pre-zshrc
+#
 
-## Language
+### Language ###
 export LANG=ja_JP.UTF-8
 
-## Editors
+### Editors ###
 case $OSTYPE in
     darwin*)
         export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
@@ -14,12 +16,12 @@ case $OSTYPE in
 esac
 export PAGER=less
 
-## Direnv
+### Direnv ###
 if which direnv > /dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
-## Paths
+### Paths ###
 typeset -g path fpath cdpath
 
 path=(
