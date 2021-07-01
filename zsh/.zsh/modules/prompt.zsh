@@ -46,21 +46,21 @@ colors
 reset="%{${reset_color}%}"
 red="%{${fg[red]}%}"
 green="%{${fg[green]}%}"
-blue="%{${fg[blue]}%}"
 magenta="%{${fg[magenta]}%}"
 cyan="%{${fg[cyan]}%}"
 white="%{${fg[white]}%}"
 
 if [ -n "$SSH_TTY" -o "$USER" = 'root' ]; then
-    PROMPT="%(?|${green}（╹ω╹）|${red}（☓ω☓）)${green}%n@%m${white}:${blue}%~${reset}$ "
+    PROMPT="%(?|${green}（╹ω╹）|${red}（☓ω☓）)${green}%n@%m${white}:${cyan}%~${reset}$ "
 else
-    PROMPT="%(?|${green}（╹ω╹）|${red}（☓ω☓）)${blue}%~${reset}$ "
+    PROMPT="%(?|${green}（╹ω╹）|${red}（☓ω☓）)${cyan}%~${reset}$ "
 fi
 RPROMPT="%1(v|${green}%1v${reset} |)%2(v|${red}(%2v)${reset} |)%3(v|${magenta}(%3v)${reset} |)%4(v|${cyan}(%4v)${reset} |)"
 SPROMPT='Correct "%R" to "%r" [n,y,a,e]? ' # no, yes, abort, edit
 
 unset reset
-unset green
 unset red
-unset blue
+unset green
+unset magenta
+unset cyan
 unset white
