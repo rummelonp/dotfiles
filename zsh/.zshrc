@@ -11,17 +11,17 @@ module_names=(
     utility
     completion
     prompt
-    # Extension
-    autojump
+    # Extensions
+    ssh
     percol
+    autojump
     # Environment dependent
     darwin
 )
 for module_name in $module_names; do
     source $HOME/.zsh/modules/$module_name.zsh
 done
-unset module_names
-unset module_name
+unset module_name{s,}
 
 ### Local configuration ###
 source $HOME/.zshrc.local
