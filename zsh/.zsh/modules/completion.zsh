@@ -6,13 +6,13 @@ autoload -Uz compinit
 compinit -i
 
 ### Options ###
-setopt always_to_end     # Move cursor to the end of a completed word.
-setopt complete_in_word  # Complete from both ends of a word.
-setopt auto_list         # Automatically list choices on ambiguous completion.
-setopt auto_menu         # Show completion menu on a successive tab press.
-setopt auto_param_slash  # If completed parameter is a directory, add a trailing slash.
-unsetopt flow_control    # Disable start/stop characters in shell editor.
-unsetopt menu_complete   # Do not autoselect the first completion entry.
+setopt ALWAYS_TO_END     # Move cursor to the end of a completed word.
+setopt COMPLETE_IN_WORD  # Complete from both ends of a word.
+setopt AUTO_LIST         # Automatically list choices on ambiguous completion.
+setopt AUTO_MENU         # Show completion menu on a successive tab press.
+setopt AUTO_PARAM_SLASH  # If completed parameter is a directory, add a trailing slash.
+unsetopt FLOW_CONTROL    # Disable start/stop characters in shell editor.
+unsetopt MENU_COMPLETE   # Do not autoselect the first completion entry.
 
 ### Word separator ###
 autoload -Uz select-word-style
@@ -39,7 +39,7 @@ zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
 ### Directory ###
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-unsetopt case_glob
+unsetopt CASE_GLOB
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 zstyle ':completion:*:cd:*' ignore-parents parent pwd

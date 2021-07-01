@@ -3,7 +3,7 @@
 #
 
 ### Correction ###
-setopt correct
+setopt CORRECT
 
 alias cp='nocorrect cp'
 alias exec='nocorrect exec'
