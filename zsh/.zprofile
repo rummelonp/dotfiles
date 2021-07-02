@@ -3,18 +3,18 @@
 #
 
 ### Language ###
-export LANG=ja_JP.UTF-8
+export LANG='ja_JP.UTF-8'
 
 ### Editors ###
-case $OSTYPE in
+case "$OSTYPE" in
     darwin*)
-        export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
+        export EDITOR='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
         ;;
     *)
-        export EDITOR=vim
+        export EDITOR='vim'
         ;;
 esac
-export PAGER=less
+export PAGER='less'
 
 ### Direnv ###
 if which direnv > /dev/null; then
@@ -44,7 +44,7 @@ cdpath=(
     $cdpath
 )
 
-case $OSTYPE in
+case "$OSTYPE" in
     darwin*)
         # Homebrew
         if which brew > /dev/null; then
