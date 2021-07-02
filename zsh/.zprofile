@@ -18,17 +18,15 @@ esac
 export PAGER='less'
 export LESS='--quit-if-one-screen --hilite-search --ignore-case --LONG-PROMPT --RAW-CONTROL-CHARS --chop-long-lines --hilite-unread --no-init --window=-5'
 
-### Direnv ###
-if which direnv > /dev/null; then
-    eval "$(direnv hook zsh)"
-fi
-
 ### Paths ###
-typeset -g path fpath cdpath
 
+# Ensure path arrays do not contain duplicates
+typeset -gU path fpath cdpath
+
+# Set the list of directories that Zsh searches for programs
 path=(
     $HOME/.bin
-    /opt/homebrew/{opt,sbin,bin}
+    /opt/homebrew/{sbin,bin}
     /usr/local/{sbin,bin}
     /usr/{sbin,bin}
     /{sbin,bin}
@@ -40,43 +38,58 @@ fpath=(
     $fpath
 )
 
+# Set the list of directories that cd searches
 cdpath=(
     $HOME
-    $HOME/{Dropbox,Documents}
+    $HOME/{Documents,Dropbox}
     $cdpath
 )
 
-case "$OSTYPE" in
-    darwin*)
-        # Homebrew
-        if which brew > /dev/null; then
-            eval "$(brew shellenv)"
-        fi
-        export PATH=$(brew --prefix)/opt/grep/libexec/gnubin:$PATH
+# Homebrew
+if (( $+commands[brew] )); then
+    eval "$(brew shellenv)"
+    path=(
+        $(brew --prefix)/{sbin,bin}
+        $(brew --prefix)/opt/{gnu-sed,gnu-tar,grep}/libexec/gnubin
+        $path
+    )
+    fpath=(
+        $(brew --prefix)/share/zsh-completions
+        $(brew --prefix)/share/zsh/{functions,site-functions}
+        $fpath
+    )
+fi
 
-        # Ruby
-        if which rbenv > /dev/null; then
-            eval "$(rbenv init -)"
-        fi
+# Ruby
+if (( $+commands[rbenv] )); then
+    eval "$(rbenv init -)"
+fi
 
-        # Python
-        if which pyenv > /dev/null; then
-            eval "$(pyenv init -)"
-        fi
+# Python
+if (( $+commands[pyenv] )); then
+    eval "$(pyenv init --path)"
+    eval "$(pip completion --zsh)"
+fi
 
-        # Node
-        if which nodenv > /dev/null; then
-            eval "$(nodenv init -)";
-        fi
+# Node
+if (( $+commands[nodenv] )); then
+    eval "$(nodenv init -)"
+    eval "$(npm completion --zsh)"
+fi
 
-        # Go
-        export GOPATH=$HOME/.go
-        export PATH=$GOPATH/bin:$PATH
+# Go
+if (( $+commands[go] )); then
+    export GOPATH="$HOME/.go"
+    path=($GOPATH/bin $path)
+fi
 
-        # Android
-        export ANDROID_SDK_ROOT=$(brew --prefix)/share/android-sdk
-        export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
-        ;;
-esac
+# Android
+if (( $+commands[brew] )); then
+    export ANDROID_SDK_ROOT=$(brew --prefix)/share/android-sdk
+    path=($ANDROID_SDK_ROOT/platform-tools $path)
+fi
 
-typeset -U path fpath cdpath
+# Direnv
+if (( $+commands[direnv] )); then
+    eval "$(direnv hook zsh)"
+fi
