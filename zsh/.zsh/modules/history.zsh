@@ -20,8 +20,3 @@ setopt HIST_SAVE_NO_DUPS       # Do not write a duplicate event to the history f
 setopt HIST_VERIFY             # do not execute immediately upon history expansion.
 setopt INC_APPEND_HISTORY      # Write to the history file immediately, not when the shell exits.
 setopt SHARE_HISTORY           # share history between all sessions.
-
-### Zle ###
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
