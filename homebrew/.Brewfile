@@ -16,7 +16,9 @@ brew "cocoapods"
 brew "colordiff"
 brew "direnv"
 brew "fd"
+brew "figlet"
 brew "git"
+brew "git-secrets"
 brew "gnu-sed"
 brew "gnu-tar"
 brew "go"
@@ -26,7 +28,9 @@ brew "httpie"
 brew "imagemagick"
 brew "jq"
 brew "ktlint"
+brew "mas"
 brew "minio"
+brew "mint"
 brew "mysql", restart_service: true
 brew "ncdu"
 brew "nkf"
@@ -40,9 +44,7 @@ brew "pwgen"
 brew "pyenv"
 brew "ruby-build"
 brew "rbenv"
-brew "rbenv-aliases"
 brew "redis", restart_service: true
-brew "sbt"
 brew "terraform"
 brew "the_silver_searcher"
 brew "tmux"
@@ -50,19 +52,35 @@ brew "tree"
 brew "wget"
 brew "zsh"
 brew "zsh-completions"
+brew "zsh-history-substring-search"
+brew "zsh-syntax-highlighting"
 brew "federico-terzi/espanso/espanso"
 brew "getsentry/tools/sentry-cli"
-cask "adoptopenjdk8"
 cask "alfred"
+cask "android-ndk"
 cask "android-sdk"
 cask "android-studio"
 cask "appcleaner"
 cask "bartender"
+cask "docker"
 cask "dropbox"
 cask "emacs"
 cask "google-chrome"
 cask "google-japanese-ime"
+cask "lastfm"
 cask "macdown"
 cask "pastebot"
 cask "slack"
 cask "tweetbot"
+mas "1Password", id: 443987910
+mas "Keynote", id: 409183694
+mas "Kindle", id: 405399194
+mas "LINE", id: 539883307
+mas "MindNode", id: 1289197285
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Pocket", id: 568494494
+mas "Spark", id: 1176895641
+mas "Todoist", id: 585829637
+mas "TweetDeck", id: 485812721
+mas "Xcode", id: 497799835
