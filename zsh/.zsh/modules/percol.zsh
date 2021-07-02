@@ -71,6 +71,29 @@ function plocate() {
     fi
 }
 
+# pproject -- find project
+# pproject [path ...]
+function pproject() {
+    if (( $#DOCUMENT_DIR == 0 )); then
+        if [ -d $HOME/Documents ]; then
+            DOCUMENT_DIR=($HOME/Documents)
+        fi
+        if [ -d $HOME/Dropbox ]; then
+            DOCUMENT_DIR=($HOME/Dropbox $DOCUMENT_DIR[*])
+        fi
+    fi
+    typeset -a paths
+    if (( $# > 0 )); then
+        paths=($@)
+    else
+        paths=($DOCUMENT_DIR)
+    fi
+    SELECTED_FILE=($(fd --hidden '^\.git$' $paths | sed -e 's/\/\.git//' -e "s|${HOME}|~|" | sort | percol | sed 's/ /\\ /g'))
+    if (( $#SELECTED_FILE > 0 )); then
+        echo $SELECTED_FILE
+    fi
+}
+
 # pdoc -- find document
 # pdoc [path ...]
 function pdoc() {
