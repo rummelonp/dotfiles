@@ -16,6 +16,7 @@ case "$OSTYPE" in
         ;;
 esac
 export PAGER='less'
+export LESS='--quit-if-one-screen --hilite-search --ignore-case --LONG-PROMPT --RAW-CONTROL-CHARS --chop-long-lines --hilite-unread --no-init --window=-5'
 
 ### Direnv ###
 if which direnv > /dev/null; then
