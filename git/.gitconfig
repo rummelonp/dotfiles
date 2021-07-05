@@ -40,6 +40,8 @@
   shw = show --word-diff
   shs = show --stat
   shn = show --name-only
+  sha = show --diff-filter=A
+  shm = show --diff-filter=M
   # add
   a  = add
   aa = add --all
