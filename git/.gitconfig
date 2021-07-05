@@ -108,15 +108,15 @@
   # diff
   d    = diff --ignore-all-space
   dw   = diff --word-diff
-  dc   = diff --ignore-all-space --cached
+  dc   = diff --cached --ignore-all-space
   dcw  = diff --cached --word-diff
-  dd   = diff --ignore-all-space develop
+  dd   = diff develop --ignore-all-space
   ddw  = diff develop --word-diff
-  dod  = diff --ignore-all-space origin/develop
-  dodw = diff origin/devellop --word-diff
-  dm   = diff --ignore-all-space master
+  dod  = diff origin/develop --ignore-all-space
+  dodw = diff origin/develop --word-diff
+  dm   = diff master --ignore-all-space
   dmw  = diff master --word-diff
-  dom  = diff --ignore-all-space origin/master
+  dom  = diff origin/master --ignore-all-space
   domw = diff origin/master --word-diff
   # submodule
   sm = submodule
