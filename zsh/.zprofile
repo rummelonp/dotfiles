@@ -9,7 +9,7 @@ export LANG='ja_JP.UTF-8'
 case "$OSTYPE" in
     darwin*)
         export EDITOR='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
-        export JAVA_HOME='/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/'
+        export JAVA_HOME='/Applications/Android Studio.app/Contents/jre/Contents/Home/'
         ;;
     *)
         export EDITOR='vim'
