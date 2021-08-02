@@ -60,6 +60,11 @@ if (( $+commands[brew] )); then
     )
 fi
 
+# Scala
+if (( $+commands[cs] )); then
+    path=($HOME/Library/Application Support/Coursier/bin $path)
+fi
+
 # Ruby
 if (( $+commands[rbenv] )); then
     eval "$(rbenv init -)"
