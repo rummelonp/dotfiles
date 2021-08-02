@@ -62,7 +62,7 @@ fi
 
 # Scala
 if (( $+commands[cs] )); then
-    path=($HOME/Library/Application Support/Coursier/bin $path)
+    path=("$HOME/Library/Application Support/Coursier/bin" $path)
 fi
 
 # Ruby
