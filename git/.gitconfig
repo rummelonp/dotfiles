@@ -6,6 +6,8 @@
   pager        = less
   autocrlf     = input
   quotepath    = false
+[init]
+  defaultBranch = master
 [color]
   ui = auto
 [color "diff"]
