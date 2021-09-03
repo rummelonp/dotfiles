@@ -34,7 +34,7 @@ alias less='less --raw-control-chars'
 alias du='du -h'
 alias df='df -h'
 
-alias ag='ag --color-line-number="1;32" --color-match="1;31" --color-path="1;35" --ignore=.git'
+alias ag='ag --hidden --color-line-number="1;32" --color-match="1;31" --color-path="1;35" --ignore=.git'
 
 # Shorthand
 alias ..='cd ..'
