@@ -122,6 +122,7 @@
   dmw  = diff master --word-diff
   dom  = diff origin/master --ignore-all-space
   domw = diff origin/master --word-diff
+  du   = diff --name-only --diff-filter=U
   # submodule
   sm = submodule
   # grep
