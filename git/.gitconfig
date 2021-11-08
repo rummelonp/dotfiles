@@ -137,7 +137,6 @@
   # sh
   skip-files= "!f() { git ls-files -v | grep '^S' | awk '{ print $2 }'; }; f"
   log-files = "!f() { git log $1..$2 --name-only --oneline | grep --invert-match ' ' | sort --unique; }; f"
-  grep-sed  = "!f() { git grep --files-with-matches \"$1\" $3 | xargs sed -i \"s/$1/$2/g\"; }; f"
   pshow     = "!f() { git log --all --pretty=colorful | percol | cut -d' ' -f1 | xargs git show; }; f;"
   preflog   = "!f() { git reflog | percol | cut -d' ' -f1 | xargs git show; }; f;"
   pls-files = "!f() { echo $(git ls-files | percol | sed 's/ /\\ /g'); }; f;"
