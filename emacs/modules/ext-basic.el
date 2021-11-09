@@ -37,12 +37,3 @@
 ;;; undohist.el
 (require 'undohist)
 (undohist-initialize)
-
-;;; redo+.el
-(require 'redo+)
-(setq undo-no-redo t)
-(setq undo-limit 100000)
-(setq undo-strong-limit 100000)
-
-;;; point-undo.el
-(require 'point-undo)

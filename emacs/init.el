@@ -12,7 +12,7 @@
     ;; Extension - Framework
     helm helm-ls-git helm-descbinds
     ;; Exetnsion - Basic
-    recentf-ext savekill undohist redo+ point-undo
+    recentf-ext savekill undohist
     ;; Extension - Window
     tabbar powerline popwin git-gutter
     ;; Extension - Auto complete
@@ -21,8 +21,6 @@
     migemo visual-regexp anzu
     ;; Extension - Editor enhancement
     expand-region multiple-cursors
-    ;; Language - Emacs lisp
-    eldoc-extension
     ;; Language - Config
     nginx-mode yaml-mode markdown-mode+
     ;; Language - Web
@@ -60,7 +58,6 @@
 ;;; Install packages
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("emacswiki" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/emacswiki/") t)
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))

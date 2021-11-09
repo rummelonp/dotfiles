@@ -71,8 +71,6 @@
 (define-key global-map (kbd "C-/") 'undo)
 (define-key global-map (kbd "C-M-_") 'redo)
 (define-key global-map (kbd "C-M-/") 'redo)
-(define-key global-map (kbd "M-p") 'point-undo)
-(define-key global-map (kbd "M-n") 'point-redo)
 ;; Comment
 (define-key global-map (kbd "C-;") 'comment-or-uncomment-region)
 ;; Configuration
