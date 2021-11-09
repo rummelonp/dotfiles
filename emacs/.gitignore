@@ -1,17 +1,17 @@
-# package
-elpa
+# package.el
+/elpa/
 
-# recentf
-recentf
+# recentf.el
+/recentf
 
-# savekill
-kill-ring-saved.el
+# savekill.el
+/kill-ring-saved.el
 
-# undohist
-undohist
+# undohist.el
+/undohist/
 
-# auto-complete
-ac-comphist.dat
+# auto-complete.el
+/ac-comphist.dat
 
-# multiple-cursors
-.mc-lists.el
+# multiple-cursors.el
+/.mc-lists.el
