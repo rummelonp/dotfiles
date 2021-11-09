@@ -37,3 +37,7 @@
 ;;; undohist.el
 (require 'undohist)
 (undohist-initialize)
+
+;;; undotree.el
+(require 'undo-tree)
+(global-undo-tree-mode)
