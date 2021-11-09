@@ -6,7 +6,10 @@
 (prefer-coding-system 'utf-8)
 
 ;;; Theme
+(setq custom--inhibit-theme-enable nil)
 (load-theme 'dracula t)
+(custom-set-faces
+ '(font-lock-variable-name-face ((t (:foreground "#87d7ff")))))
 (set-frame-parameter nil 'alpha 95)
 
 ;;; Faces
