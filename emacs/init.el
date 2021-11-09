@@ -86,3 +86,5 @@
         (try-load file)))
      (t
       (try-load file)))))
+
+(setq custom-file "~/.emacs.d/custom.el")
