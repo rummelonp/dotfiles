@@ -22,7 +22,7 @@
     ;; Extension - Editor enhancement
     expand-region multiple-cursors
     ;; Language - Config
-    nginx-mode yaml-mode markdown-mode+
+    nginx-mode yaml-mode markdown-mode
     ;; Language - Web
     rhtml-mode haml-mode slim-mode vue-mode zencoding-mode
     scss-mode less-css-mode
