@@ -13,10 +13,13 @@
 (set-frame-parameter nil 'alpha 95)
 
 ;;; Faces
-(set-face-attribute 'default nil :family "Monaco" :height 130)
+(if (find-font (font-spec :name "HackGen"))
+    (set-face-attribute 'default nil :family "HackGen" :height 160)
+  (set-face-attribute 'default nil :family "Monaco" :height 140))
 (set-fontset-font "fontset-default" 'japanese-jisx0208 '("Hiragino Maru Gothic ProN"))
+(set-fontset-font "fontset-default" 'japanese-jisx0212 '("Hiragino Maru Gothic ProN"))
 (set-fontset-font "fontset-default" 'katakana-jisx0201 '("Hiragino Maru Gothic ProN"))
-(set-fontset-font "fontset-default" 'unicode '("Apple Color Emoji"))
+(set-fontset-font "fontset-default" '(#x1F004 . #x1FFFD) '("Apple Color Emoji"))
 
 ;;; Application
 (menu-bar-mode t)

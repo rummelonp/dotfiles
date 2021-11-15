@@ -41,7 +41,6 @@
 ;; Face
 (set-face-attribute
  'tabbar-default nil
- :family "Monaco"
  :background "#181a26"
  :height 1.0)
 (set-face-attribute
