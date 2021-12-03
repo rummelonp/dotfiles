@@ -88,7 +88,14 @@ function pproject() {
     else
         paths=($DOCUMENT_DIR)
     fi
-    SELECTED_FILE=($(fd --hidden '^\.git$' $paths | sed -e 's/\/\.git//' -e "s|${HOME}|~|" | sort | percol | sed 's/ /\\ /g'))
+    SELECTED_FILE=(
+        $($(which -p fd) --hidden '^\.git$' $paths |
+              sed -e 's/\/\.git//' -e "s|${HOME}|~|" |
+              sort |
+              percol |
+              sed 's/ /\\ /g'
+        )
+    )
     if (( $#SELECTED_FILE > 0 )); then
         echo $SELECTED_FILE
     fi
@@ -111,7 +118,14 @@ function pdoc() {
     else
         paths=($DOCUMENT_DIR)
     fi
-    SELECTED_FILE=($(find $paths | grep -E '\.(txt|md|pdf|numbers|key|pages|docx?|xlsx?|pptx?)$' | percol | sed 's/ /\\ /g'))
+    SELECTED_FILE=(
+        $(fd '.+\.(md|pdf|key|numbers|pages|pptx?|xlsx?|docx?)$' --exclude=node_modules --exclude=vendor --exclude=build $paths |
+              sed -e "s|${HOME}|~|" |
+              sort |
+              percol |
+              sed 's/ /\\ /g'
+        )
+    )
     if (( $#SELECTED_FILE > 0 )); then
         echo $SELECTED_FILE
     fi
