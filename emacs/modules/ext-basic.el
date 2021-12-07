@@ -41,3 +41,7 @@
 ;;; undotree.el
 (require 'undo-tree)
 (global-undo-tree-mode)
+
+;;; rainbow-delimiters.el
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
