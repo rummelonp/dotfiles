@@ -74,6 +74,7 @@ fi
 # Python
 if (( $+commands[pyenv] )); then
     eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"
     eval "$(pip completion --zsh)"
 fi
 
