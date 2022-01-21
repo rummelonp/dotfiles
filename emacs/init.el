@@ -12,7 +12,7 @@
     ;; Extension - Framework
     helm helm-ls-git helm-descbinds
     ;; Exetnsion - Basic
-    recentf-ext savekill undohist undo-tree rainbow-delimiters
+    sudo-edit recentf-ext savekill undohist undo-tree rainbow-delimiters
     ;; Extension - Window
     tabbar powerline popwin git-gutter
     ;; Extension - Auto complete
