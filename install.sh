@@ -1,16 +1,16 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-DOTFILES_HOME=$(cd $(dirname $0) && pwd)
+DOTFILES_HOME=$(cd "$(dirname "${0}")" && pwd)
 
 function link_file() {
-    local src=$DOTFILES_HOME/$1 dest=$HOME/$2
-    ln -fsv $src $dest
+    local src="${DOTFILES_HOME}/${1}" dest="${HOME}/${2}"
+    ln -fsv "${src}" "${dest}"
 }
 
 function link_dir() {
-    local src=$DOTFILES_HOME/$1 dest=$HOME/$2
-    if [ -L $dest ]; then rm $dest; fi
-    ln -sv $src $dest
+    local src="${DOTFILES_HOME}/${1}" dest="${HOME}/${2}"
+    if [ -L "${dest}" ]; then rm "${dest}"; fi
+    ln -sv "${src}" "${dest}"
 }
 
 # homebrew
@@ -22,7 +22,7 @@ link_file zsh/.zshenv   .zshenv
 link_file zsh/.zprofile .zprofile
 link_file zsh/.zshrc    .zshrc
 
-touch $HOME/.zshrc.local
+touch "${HOME}/.zshrc.local"
 
 # emacs
 link_dir emacs .emacs.d

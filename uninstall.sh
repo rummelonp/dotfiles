@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 function unlink_file() {
-    local dest=$HOME/$1
-    if [ -L $dest ]; then rm -v $dest; fi
+    local dest="${HOME}/${1}"
+    if [ -L "${dest}" ]; then rm -v "${dest}"; fi
 }
 
 unlink_file .Brewfile
