@@ -62,10 +62,11 @@
   cob = checkout -b
   cod = checkout develop
   com = checkout master
+  cor = checkout release
   # rebase
   rb  = rebase
-  rbm = rebase master
   rbd = rebase develop
+  rbm = rebase master
   rbr = rebase release
   rbi = rebase --interactive
   rbo = rebase --onto
@@ -122,6 +123,10 @@
   dmw  = diff master --word-diff
   dom  = diff origin/master --ignore-all-space
   domw = diff origin/master --word-diff
+  dr   = diff release --ignore-all-space
+  drw  = diff release --word-diff
+  dor  = diff origin/release --ignore-all-space
+  dorw = diff origin/release --word-diff
   du   = diff --name-only --diff-filter=U
   # submodule
   sm = submodule
