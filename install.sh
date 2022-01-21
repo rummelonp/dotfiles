@@ -54,3 +54,6 @@ link_dir percol .percol.d
 
 # bin
 link_dir bin .bin
+
+# espanso
+link_dir espanso Library/Preferences/espanso

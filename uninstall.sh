@@ -22,3 +22,4 @@ unlink_file .pryrc
 unlink_file .railsrc
 unlink_file .percol.d
 unlink_file .bin
+unlink_file Library/Preferences/espanso
