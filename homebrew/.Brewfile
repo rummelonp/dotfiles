@@ -52,6 +52,7 @@ brew "pyenv"
 brew "ruby-build"
 brew "rbenv"
 brew "redis", restart_service: true
+brew "rename"
 brew "sd"
 brew "shellcheck"
 brew "terraform"
