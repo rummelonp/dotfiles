@@ -1,8 +1,8 @@
 # custom.el
 /custom.el
 
-# package.el
-/elpa/
+# straight.el
+/straight/
 
 # recentf.el
 /recentf

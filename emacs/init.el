@@ -1,4 +1,67 @@
 ;;;; Initialize
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+;; Basic - Theme
+(straight-use-package 'dracula-theme)
+;; Extension - Framework
+(straight-use-package 'helm)
+(straight-use-package 'helm-ls-git)
+(straight-use-package 'helm-descbinds)
+;; Exetnsion - Basic
+(straight-use-package 'sudo-edit)
+(straight-use-package 'recentf-ext)
+(straight-use-package 'savekill)
+(straight-use-package 'undohist)
+(straight-use-package 'undo-tree)
+(straight-use-package 'rainbow-delimiters)
+;; Extension - Window
+(straight-use-package 'tabbar)
+(straight-use-package 'powerline)
+(straight-use-package 'popwin)
+(straight-use-package 'git-gutter)
+;; Extension - Auto complete
+(straight-use-package 'yasnippet)
+(straight-use-package 'auto-complete)
+;; Extension - Find and replace
+(straight-use-package 'migemo)
+(straight-use-package 'visual-regexp)
+(straight-use-package 'anzu)
+;; Extension - Editor enhancement
+(straight-use-package 'expand-region)
+(straight-use-package 'multiple-cursors)
+;; Language - Config
+(straight-use-package 'nginx-mode)
+(straight-use-package 'yaml-mode)
+(straight-use-package 'markdown-mode)
+(straight-use-package 'plantuml-mode)
+;; Language - Web
+(straight-use-package 'rhtml-mode)
+(straight-use-package 'haml-mode)
+(straight-use-package 'slim-mode)
+(straight-use-package 'vue-mode)
+(straight-use-package 'zencoding-mode)
+(straight-use-package 'scss-mode)
+(straight-use-package 'less-css-mode)
+(straight-use-package 'js2-mode)
+(straight-use-package 'typescript-mode)
+(straight-use-package 'json-mode)
+(straight-use-package 'coffee-mode)
+(straight-use-package 'rjsx-mode)
+(straight-use-package 'mmm-mode)
+;; Language - Other
+(straight-use-package 'rinari)
+(straight-use-package 'scala-mode)
 
 (require 'cl-lib)
 
@@ -7,32 +70,7 @@
   (eq system-type 'darwin))
 (defvar linux-p
   (eq system-type 'gnu/linux))
-(defvar required-packages
-  '(
-    ;; Basic - Theme
-    dracula-theme
-    ;; Extension - Framework
-    helm helm-ls-git helm-descbinds
-    ;; Exetnsion - Basic
-    sudo-edit recentf-ext savekill undohist undo-tree rainbow-delimiters
-    ;; Extension - Window
-    tabbar powerline popwin git-gutter
-    ;; Extension - Auto complete
-    yasnippet auto-complete
-    ;; Extension - Find and replace
-    migemo visual-regexp anzu
-    ;; Extension - Editor enhancement
-    expand-region multiple-cursors
-    ;; Language - Config
-    nginx-mode yaml-mode markdown-mode
-    ;; Language - Web
-    rhtml-mode haml-mode slim-mode vue-mode zencoding-mode
-    scss-mode less-css-mode
-    js2-mode typescript-mode json-mode coffee-mode rjsx-mode
-    mmm-mode
-    ;; Language - Other
-    rinari scala-mode
-    ))
+
 (defvar required-init-files
   '(
     ;; Basics
@@ -56,16 +94,6 @@
     ;; Environment dependent
     darwin-environment
     ))
-
-;;; Install packages
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
-(dolist (package required-packages)
-  (unless (package-installed-p package)
-    (package-install package)))
 
 ;;; Load init files
 (add-to-list 'load-path "~/.emacs.d/modules")
