@@ -78,9 +78,9 @@
 ;; Help
 (define-key global-map (kbd "M-?") 'help-for-help)
 
-;;; Auto complete
-;; auto-complete.el
-(define-key global-map (kbd "C-x C-.") 'auto-complete)
+;;; Company
+;; company.el
+(define-key global-map (kbd "C-x C-.") 'company-complete)
 
 ;;; Find and replace
 ;; visual-regexp.el

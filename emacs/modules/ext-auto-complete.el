@@ -1,29 +1,28 @@
 ;;;; Auto complete
 
-;;; yasnippet.el
-(require 'yasnippet)
-(yas-global-mode t)
+;;; company
+(require 'company)
+(global-company-mode)
+(setq company-require-match 'never
+      company-idle-delay 0
+      company-minimum-prefix-length 2
+      company-selection-wrap-around t
+      company-tooltip-align-annotations t)
+(define-key company-active-map (kbd "C-M-v") 'company-previous-page)
+(define-key company-active-map (kbd "C-s") 'company-filter-candidates)
+(define-key company-active-map (kbd "C-M-s") 'company-search-candidates)
+(define-key company-active-map (kbd "C-i") 'company-complete)
+(define-key company-active-map (kbd "C-.") 'company-show-location)
 
-;;; auto-complete.el
-(require 'auto-complete-config)
-(global-auto-complete-mode t)
-;; Source
-(defun ac-common-setup ()
-  (add-to-list 'ac-sources 'ac-source-yasnippet))
-;; Major mode
-(add-to-list 'ac-modes 'rhtml-mode)
-(add-to-list 'ac-modes 'scss-mode)
-(add-to-list 'ac-modes 'less-css-mode)
-(add-to-list 'ac-modes 'typescript-mode)
-(add-to-list 'ac-modes 'coffee-mode)
-(add-to-list 'ac-modes 'vue-mode)
-;; Configuration
-(ac-config-default)
-(ac-set-trigger-key "C-i")
-(setq ac-auto-show-menu 0.5)
-(setq ac-quick-help-delay 0.5)
-(setq ac-use-menu-map t)
-;; Key bind
-(define-key ac-menu-map (kbd "C-n") 'ac-next)
-(define-key ac-menu-map (kbd "C-p") 'ac-previous)
-(define-key ac-mode-map (kbd "C-x ?") 'ac-last-quick-help)
+;;; company-box
+(require 'company-box)
+(add-hook 'company-mode-hook 'company-box-mode)
+
+;;; company-statistics
+(require 'company-statistics)
+(setq company-transformers
+      '(company-sort-by-statistics company-sort-by-backend-importance))
+(company-statistics-mode)
+
+;;; company-anywhere
+(require 'company-anywhere)

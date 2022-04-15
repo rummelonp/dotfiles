@@ -32,8 +32,10 @@
 (straight-use-package 'popwin)
 (straight-use-package 'git-gutter)
 ;; Extension - Auto complete
-(straight-use-package 'yasnippet)
-(straight-use-package 'auto-complete)
+(straight-use-package 'company)
+(straight-use-package 'company-box)
+(straight-use-package 'company-statistics)
+(straight-use-package '(company-anywhere :type git :host github :repo "zk-phi/company-anywhere"))
 ;; Extension - Find and replace
 (straight-use-package 'migemo)
 (straight-use-package 'visual-regexp)

@@ -13,8 +13,8 @@
 # undohist.el
 /undohist/
 
-# auto-complete.el
-/ac-comphist.dat
+# company.el
+/company-statistics-cache.el
 
 # multiple-cursors.el
 /.mc-lists.el
