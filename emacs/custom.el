@@ -15,6 +15,7 @@
  '(company-transformers
    '(company-sort-by-statistics company-sort-by-backend-importance))
  '(completion-styles '(orderless))
+ '(consult-preview-key nil)
  '(css-indent-offset 2)
  '(cua-enable-cua-keys nil)
  '(delete-auto-save-files t)
@@ -58,7 +59,8 @@
  '(typescript-indent-level 2)
  '(undo-tree-auto-save-history nil)
  '(uniquify-ignore-buffers-re "*[^*]+*")
- '(vc-follow-symlinks t))
+ '(vc-follow-symlinks t)
+ '(vertico-count 20))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -18,13 +18,6 @@
   (interactive)
   (other-window -1))
 
-;;; helm.el
-(defun helm-ls-git-ls-or-recentf ()
-  (interactive)
-  (if (helm-ls-git-root-dir)
-      (helm-ls-git-ls)
-    (helm-recentf)))
-
 ;;; tabbar.el
 (defun tabbar-sort-tab ()
   (interactive)

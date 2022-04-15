@@ -15,9 +15,10 @@
 ;; Basic - Theme
 (straight-use-package 'dracula-theme)
 ;; Extension - Framework
-(straight-use-package 'helm)
-(straight-use-package 'helm-ls-git)
-(straight-use-package 'helm-descbinds)
+(straight-use-package 'vertico)
+(straight-use-package 'consult)
+(straight-use-package 'orderless)
+(straight-use-package 'marginalia)
 ;; Exetnsion - Basic
 (straight-use-package 'sudo-edit)
 (straight-use-package 'recentf-ext)

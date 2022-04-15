@@ -40,6 +40,8 @@
 ;;; VC
 
 ;;; Buffer
+(require 'savehist)
+(savehist-mode)
 (global-auto-revert-mode 1)
 
 ;;; File

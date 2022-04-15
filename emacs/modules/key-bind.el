@@ -10,18 +10,20 @@
 ;;; Backslash
 (define-key global-map (kbd "M-(J\(B") "\\")
 
-;;; helm.el
-(define-key global-map (kbd "C-x C-a") 'helm-recentf)
-(define-key global-map (kbd "C-x f") 'helm-find-files)
-(define-key global-map (kbd "C-x C-f") 'helm-ls-git-ls-or-recentf)
-(define-key global-map (kbd "C-x b") 'helm-buffers-list)
-(define-key global-map (kbd "C-x C-b") 'helm-buffers-list)
-(define-key global-map (kbd "C-x m") 'helm-imenu)
-(define-key global-map (kbd "C-x C-m") 'helm-imenu-in-all-buffers)
-(define-key global-map (kbd "M-x") 'helm-M-x)
-(define-key global-map (kbd "C-x C-y") 'helm-show-kill-ring)
-(define-key global-map (kbd "C-.") 'helm-etags-select)
-(define-key global-map (kbd "C-M-.") 'helm-etags-select)
+;;; consult.el
+(define-key global-map (kbd "C-x C-a") 'consult-project-buffer-or-buffer)
+(define-key global-map (kbd "C-x C-f") 'project-find-file)
+(define-key global-map (kbd "C-x f")   'find-file)
+(define-key global-map (kbd "C-x C-d") 'project-find-dir)
+(define-key global-map (kbd "C-x d")   'project-find-dir)
+(define-key global-map (kbd "C-x C-b") 'consult-project-buffer)
+(define-key global-map (kbd "C-x b")   'consult-buffer)
+(define-key global-map (kbd "C-x g")   'consult-git-grep)
+(define-key global-map (kbd "C-x C-m") 'consult-imenu)
+(define-key global-map (kbd "C-x m")   'consult-imenu-multi)
+(define-key global-map (kbd "C-x C-y") 'yank-from-kill-ring)
+(define-key global-map (kbd "M-g M-g") 'consult-line)
+(define-key global-map (kbd "M-g g")   'consult-line-multi)
 
 ;;; Frame
 (define-key global-map (kbd "C-z") nil)
