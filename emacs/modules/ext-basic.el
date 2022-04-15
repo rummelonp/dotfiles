@@ -41,6 +41,7 @@
 ;;; undotree.el
 (require 'undo-tree)
 (global-undo-tree-mode)
+(setq undo-tree-auto-save-history nil)
 
 ;;; rainbow-delimiters.el
 (require 'rainbow-delimiters)
