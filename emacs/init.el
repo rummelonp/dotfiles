@@ -47,16 +47,11 @@
 (straight-use-package 'plantuml-mode)
 ;; Language - Web
 (straight-use-package 'rhtml-mode)
-(straight-use-package 'haml-mode)
-(straight-use-package 'slim-mode)
 (straight-use-package 'vue-mode)
-(straight-use-package 'zencoding-mode)
 (straight-use-package 'scss-mode)
-(straight-use-package 'less-css-mode)
 (straight-use-package 'js2-mode)
 (straight-use-package 'typescript-mode)
 (straight-use-package 'json-mode)
-(straight-use-package 'coffee-mode)
 (straight-use-package 'rjsx-mode)
 (straight-use-package 'mmm-mode)
 ;; Language - Other

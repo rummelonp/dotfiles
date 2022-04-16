@@ -9,8 +9,6 @@
 (add-to-list 'auto-mode-alist '("\\.pryrc$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Schemafile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Brewfile$" . ruby-mode))
 (add-to-list 'ruby-encoding-map '(undecided . utf-8))
 ;; Configuration

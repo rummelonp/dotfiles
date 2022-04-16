@@ -7,19 +7,9 @@
 (autoload 'rhtml-mode "rhtml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
 (add-to-list 'auto-mode-alist '("\\.tt$" . rhtml-mode))
-;; haml-mode.el
-(autoload 'haml-mode "haml-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
-;; slim-mode.el
-(autoload 'slim-mode "slim-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
 ;; vue-mode.el
 (autoload 'vue-mode "vue-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.vue$" . vue-mode))
-;; zencoding-code.el
-(autoload 'zencoding-mode "zencoding-mode" nil t)
-(add-hook 'html-mode-hook 'zencoding-mode)
-(setq zencoding-indentation 2)
 
 ;;; Stylesheet
 ;; css-mode.el
@@ -30,9 +20,6 @@
 (autoload 'scss-mode "scss-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))
 (setq scss-compile-at-save nil)
-;; less-css-mode.el
-(autoload 'less-css-mode "less-css-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
 ;;; JavaScript
 ;; js.el
@@ -54,10 +41,6 @@
 ;; json-mode.el
 (autoload 'json-mode "json-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
-;; coffee-mode.el
-(autoload 'coffee-mode "coffee-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
-(setq coffee-tab-width 2)
 
 ;;; mmm-mode.el
 (require 'mmm-mode)
