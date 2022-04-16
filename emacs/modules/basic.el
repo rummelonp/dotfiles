@@ -21,15 +21,6 @@
 (set-fontset-font "fontset-default" 'katakana-jisx0201 '("Hiragino Maru Gothic ProN"))
 (set-fontset-font "fontset-default" '(#x1F004 . #x1FFFD) '("Apple Color Emoji"))
 
-;;; Application
-(menu-bar-mode t)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-
-;;; Window
-(line-number-mode t)
-(column-number-mode t)
-
 ;;; Ignore beep
 (setq ring-bell-function 'ignore)
 
