@@ -1,66 +1,38 @@
 ;;;; Extension - Window
 
+(defvar active-primary-fg "black")
+(defvar active-primary-bg "#1aa6b1")
+(defvar active-secondary-fg "white")
+(defvar active-secondary-bg "gray40")
+(defvar active-dark-fg "white")
+(defvar active-dark-bg "grey22")
+(defvar inactive-fg "gray80")
+(defvar inactive-bg "#181a26")
+
 ;;; powerline.el
 (require 'powerline)
-(setq powerline-default-separator nil)
+(setq powerline-default-separator 'utf-8)
 (setq powerline-display-mule-info nil)
 (setq powerline-display-hud nil)
 (defpowerline powerline-buffer-id nil)
 (powerline-default-theme)
-(set-face-attribute
- 'mode-line nil
- :foreground "white"
- :background "gray40"
- :box nil)
-(set-face-attribute
- 'powerline-active1 nil
- :foreground "black"
- :background "#1aa6b1")
-(set-face-attribute
- 'powerline-active2 nil
- :foreground "white"
- :background "grey22")
-(set-face-attribute
- 'mode-line-inactive nil
- :foreground "white"
- :background "#181a26"
- :box nil)
-(set-face-attribute
- 'powerline-inactive1 nil
- :foreground "gray80"
- :background "#181a26")
-(set-face-attribute
- 'powerline-inactive2 nil
- :foreground "gray80"
- :background "#181a26")
+(set-face-attribute 'mode-line nil :foreground active-secondary-fg :background active-secondary-bg)
+(set-face-attribute 'powerline-active1 nil :foreground active-primary-fg :background active-primary-bg)
+(set-face-attribute 'powerline-active2 nil :foreground active-dark-fg :background active-dark-bg)
+(set-face-attribute 'mode-line-inactive nil :foreground inactive-fg :background inactive-bg)
+(set-face-attribute 'powerline-inactive1 nil :foreground inactive-fg :background inactive-bg)
+(set-face-attribute 'powerline-inactive2 nil :foreground inactive-fg :background inactive-bg)
 
 ;;; tabbar.el
 (require 'tabbar)
 (tabbar-mode t)
 ;; Face
-(set-face-attribute
- 'tabbar-default nil
- :background "#181a26"
- :height 1.0)
-(set-face-attribute
- 'tabbar-unselected nil
- :foreground "gray80"
- :background "#181a26"
- :box nil)
-(set-face-attribute
- 'tabbar-selected nil
- :foreground "black"
- :background "#1aa6b1"
- :box nil)
-(set-face-attribute
- 'tabbar-modified nil
- :foreground "green"
- :background "#181a26"
- :box nil)
-(set-face-attribute
- 'tabbar-separator nil
- :foreground "#181a26"
- :background "#181a26")
+(set-face-attribute 'tabbar-default nil :background inactive-bg :height 1.0)
+(set-face-attribute 'tabbar-selected nil :foreground active-primary-fg :background active-primary-bg :box nil)
+(set-face-attribute 'tabbar-selected-modified nil :foreground active-primary-fg :background active-primary-bg :box nil)
+(set-face-attribute 'tabbar-unselected nil :foreground inactive-fg :background inactive-bg :box nil)
+(set-face-attribute 'tabbar-modified nil :foreground inactive-fg :background inactive-bg :box nil)
+(set-face-attribute 'tabbar-separator nil :foreground inactive-bg :background inactive-bg)
 (setq tabbar-separator '(1))
 ;; Remove buttons
 (dolist
