@@ -3,6 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(all-the-icons-scale-factor 1.0)
  '(anzu-mode-lighter "")
  '(anzu-replace-to-string-separator " => ")
  '(anzu-use-migemo t)
@@ -33,6 +34,7 @@
  '(migemo-regex-dictionary nil)
  '(migemo-user-dictionary nil)
  '(mmm-global-mode 'maybe nil (mmm-mode))
+ '(neo-theme 'icons)
  '(plantuml-default-exec-mode 'executable)
  '(plantuml-executable-path
    (cl-find-if 'executable-find

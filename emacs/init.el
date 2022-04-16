@@ -28,6 +28,8 @@
 (straight-use-package 'rainbow-mode)
 (straight-use-package 'rainbow-delimiters)
 ;; Extension - Window
+(straight-use-package 'all-the-icons)
+(straight-use-package 'neotree)
 (straight-use-package 'tabbar)
 (straight-use-package 'powerline)
 (straight-use-package 'popwin)

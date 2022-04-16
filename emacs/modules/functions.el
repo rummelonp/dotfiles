@@ -10,13 +10,38 @@
 ;;; Window
 (defun next-window-or-split-horizontally ()
   (interactive)
-  (when (one-window-p)
-    (split-window-horizontally))
-  (other-window 1))
+  (let* ((win-len (length (window-list)))
+         (current-win (selected-window))
+         (neotree-win (neo-global--get-window))
+         (next-win (next-window)))
+    (cond ((or (eq win-len 1)
+               (and neotree-win
+                    (not (eq current-win neotree-win))
+                    (eq win-len 2)))
+           (split-window-horizontally)
+           (other-window 1))
+          ((eq next-win neotree-win)
+           (other-window 2))
+          (t
+           (other-window 1)))))
 
 (defun prev-window ()
   (interactive)
   (other-window -1))
+
+(defun neotree-toggle-current ()
+  (interactive)
+  (let* ((path (or buffer-file-name (expand-file-name default-directory)))
+         (project (cdr (project-current nil path))))
+    (if (eq (selected-window) (neo-global--get-window))
+        (neotree-hide)
+      (progn
+        (if project
+            (progn
+              (neotree-dir project)
+              (neotree-find path))
+          (neo-global--open))
+        (neo-global--select-window)))))
 
 ;;; tabbar.el
 (defun tabbar-sort-tab ()

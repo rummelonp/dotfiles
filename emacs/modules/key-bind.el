@@ -14,7 +14,7 @@
 (define-key global-map (kbd "C-x C-a") 'consult-project-buffer-or-buffer)
 (define-key global-map (kbd "C-x C-f") 'project-find-file)                ;; find-file
 (define-key global-map (kbd "C-x f")   'find-file)                        ;; set-fill-column
-(define-key global-map (kbd "C-x C-d") 'project-find-dir)                 ;; list-directory
+(define-key global-map (kbd "C-x C-d") 'neotree-toggle-current)           ;; list-directory
 (define-key global-map (kbd "C-x d")   'project-find-dir)                 ;; dired
 (define-key global-map (kbd "C-x C-b") 'consult-project-buffer)           ;; list-buffer
 (define-key global-map (kbd "C-x b")   'consult-buffer)                   ;; switch-to-buffer
