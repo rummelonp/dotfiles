@@ -7,7 +7,8 @@
 (require 'wdired)
 ;; Key bind
 (define-key dired-mode-map (kbd "C-t") 'next-window-or-split-horizontally)
-(define-key dired-mode-map (kbd "C--") 'dired-omit-mode)
+(define-key dired-mode-map "F" 'dired-create-empty-file)
+(define-key dired-mode-map "f" 'dired-create-empty-file)
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 
 ;;; cua.el
