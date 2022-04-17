@@ -35,7 +35,6 @@
  :background "#181a26")
 
 ;;; tabbar.el
-(require 'cl)
 (require 'tabbar)
 (tabbar-mode t)
 ;; Face
@@ -75,9 +74,9 @@
 ;; Customize list
 (setq tabbar-buffer-list-function
       '(lambda ()
-         (remove-if
+         (cl-remove-if
           '(lambda (buffer)
-             (find (aref (buffer-name buffer) 0) " *"))
+             (cl-find (aref (buffer-name buffer) 0) " *"))
           (buffer-list))))
 ;; Customize group
 (setq tabbar-buffer-groups-function

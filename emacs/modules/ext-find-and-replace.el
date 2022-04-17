@@ -3,7 +3,7 @@
 ;;; migemo.el
 (require 'migemo)
 ;; Configuration
-(setq migemo-command (find-if 'executable-find
+(setq migemo-command (cl-find-if 'executable-find
                               '("/opt/homebrew/bin/cmigemo"
                                 "/usr/local/bin/cmigemo")))
 (setq migemo-options '("-q" "--emacs"))
@@ -11,7 +11,7 @@
 (setq migemo-user-dictionary nil)
 (setq migemo-regex-dictionary nil)
 (setq migemo-coding-system 'utf-8-unix)
-(setq migemo-dictionary (find-if 'file-exists-p
+(setq migemo-dictionary (cl-find-if 'file-exists-p
                                  '("/opt/homebrew/share/migemo/utf-8/migemo-dict"
                                    "/usr/local/share/migemo/utf-8/migemo-dict"
                                    "/usr/share/cmigemo/utf-8/migemo-dict")))

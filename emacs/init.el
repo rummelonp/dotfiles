@@ -1,5 +1,7 @@
 ;;;; Initialize
 
+(require 'cl-lib)
+
 ;;; Variables
 (defvar darwin-p
   (eq system-type 'darwin))
