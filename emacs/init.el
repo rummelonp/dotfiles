@@ -24,6 +24,7 @@
 (straight-use-package 'savekill)
 (straight-use-package 'undohist)
 (straight-use-package 'undo-tree)
+(straight-use-package 'rainbow-mode)
 (straight-use-package 'rainbow-delimiters)
 ;; Extension - Window
 (straight-use-package 'tabbar)

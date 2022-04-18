@@ -44,6 +44,10 @@
 (global-undo-tree-mode)
 (setq undo-tree-auto-save-history nil)
 
+;;; rainbow-mode.el
+(require 'rainbow-mode)
+(add-hook 'prog-mode-hook 'rainbow-mode)
+
 ;;; rainbow-delimiters.el
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
