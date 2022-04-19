@@ -37,3 +37,13 @@
                                                  (buffer-file-name (car b2))))))
           (put tabset 'template nil)
           (tabbar-display-update)))))
+
+;;; Other
+(defun insert-class-name-from-file-name ()
+  (interactive)
+  (insert
+   (let ((fn (capitalize (file-name-nondirectory
+                          (file-name-sans-extension
+				                   (or (buffer-file-name)
+				                       (buffer-name (current-buffer))))))))
+     (replace-regexp-in-string "_" "" fn t t))))
