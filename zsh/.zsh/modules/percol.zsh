@@ -14,7 +14,7 @@ function percol-select-history() {
     else
         tac='tail -r'
     fi
-    BUFFER=$(fc -l -n 1 | eval $tac | percol --query "$LBUFFER")
+    BUFFER=$(history -n 1 | eval $tac | percol --query "$LBUFFER")
     CURSOR=$#BUFFER
     zle -R -c
 }
