@@ -44,6 +44,7 @@ brew "nkf"
 brew "node-build"
 brew "nodenv"
 brew "oath-toolkit"
+brew "pam-reattach"
 brew "percol"
 brew "plantuml"
 brew "postgresql", restart_service: true
