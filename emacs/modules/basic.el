@@ -13,9 +13,21 @@
 (set-frame-parameter nil 'alpha 95)
 
 ;;; Faces
+;; | 数字 | アルファベット | 日本語 | 絵文字 |
+;; | 0123 | abcdefghijklmn | あいう | 🍎🍎🍎 |
 (if (find-font (font-spec :name "HackGen"))
-    (set-face-attribute 'default nil :family "HackGen" :height 160)
-  (set-face-attribute 'default nil :family "Monaco" :height 140))
+    (progn
+      (set-face-attribute 'default nil :family "HackGen" :height 160)
+      (setq face-font-rescale-alist
+            '(("HackGen" . 1.0)
+              ("Hiragino Maru Gothic ProN" . 1.0)
+              ("Apple Color Emoji" . 0.8))))
+  (progn
+    (set-face-attribute 'default nil :family "Monaco" :height 140)
+    (setq face-font-rescale-alist
+            '(("Monaco" . 1.0)
+              ("Hiragino Maru Gothic ProN" . 1.2)
+              ("Apple Color Emoji" . 0.9)))))
 (set-fontset-font "fontset-default" 'japanese-jisx0208 '("Hiragino Maru Gothic ProN"))
 (set-fontset-font "fontset-default" 'japanese-jisx0212 '("Hiragino Maru Gothic ProN"))
 (set-fontset-font "fontset-default" 'katakana-jisx0201 '("Hiragino Maru Gothic ProN"))
