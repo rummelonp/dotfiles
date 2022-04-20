@@ -58,19 +58,6 @@ function ppkill() {
     eval "ppgrep $query | xargs kill $signal"
 }
 
-# plocate -- find filenames
-# plocate [pattern ...]
-function plocate() {
-    if (( $# > 0 )); then
-        SELECTED_FILE=($(locate $@ | percol | sed 's/ /\\ /g'))
-        if (( $#SELECTED_FILE > 0 )); then
-            echo $SELECTED_FILE
-        fi
-    else
-        echo 'Usage: plocate [pattern ...]'
-    fi
-}
-
 # pproject -- find project
 # pproject [path ...]
 function pproject() {

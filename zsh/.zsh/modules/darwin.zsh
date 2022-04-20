@@ -26,9 +26,3 @@ function man-preview() {
     man -t $@ | open -f -a Preview
 }
 compdef _man man-preview
-
-function free-memory() {
-    diskutil repairPermissions /
-    purge
-    du -sx / >& /dev/null & sleep 5 && kill $!
-}
