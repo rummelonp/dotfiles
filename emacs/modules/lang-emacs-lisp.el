@@ -2,8 +2,6 @@
 
 ;;; emacs-lisp-mode.el
 ;; Configuration
-(setq edebug-inhibit-emacs-lisp-mode-bindings t)
-
 (defun find-variable-or-function-at-point ()
   (interactive)
   (let ((vsym (variable-at-point))

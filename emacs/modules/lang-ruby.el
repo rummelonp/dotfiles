@@ -12,8 +12,6 @@
 (add-to-list 'auto-mode-alist '("Brewfile$" . ruby-mode))
 (add-to-list 'ruby-encoding-map '(undecided . utf-8))
 ;; Configuration
-(setq ruby-use-smie nil)
-(setq ruby-deep-indent-paren nil)
 ;; Key bind
 (define-key ruby-mode-map (kbd "C-x C-t") 'darwin-open-terminal)
 (define-key ruby-mode-map (kbd "C-m") 'reindent-then-newline-and-indent)
@@ -50,8 +48,7 @@
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (require 'ruby-block)
-             (ruby-block-mode t)
-             (setq ruby-block-highlight-toggle t)))
+             (ruby-block-mode t)))
 
 ;;; rinari.el
 (add-hook 'ruby-mode-hook

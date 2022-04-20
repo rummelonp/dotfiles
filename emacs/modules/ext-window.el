@@ -11,9 +11,6 @@
 
 ;;; powerline.el
 (require 'powerline)
-(setq powerline-default-separator 'utf-8)
-(setq powerline-display-mule-info nil)
-(setq powerline-display-hud nil)
 (defpowerline powerline-buffer-id nil)
 (powerline-default-theme)
 (set-face-attribute 'mode-line nil :foreground active-secondary-fg :background active-secondary-bg)
@@ -33,7 +30,6 @@
 (set-face-attribute 'tabbar-unselected nil :foreground inactive-fg :background inactive-bg :box nil)
 (set-face-attribute 'tabbar-modified nil :foreground inactive-fg :background inactive-bg :box nil)
 (set-face-attribute 'tabbar-separator nil :foreground inactive-bg :background inactive-bg)
-(setq tabbar-separator '(1))
 ;; Remove buttons
 (dolist
     (button
