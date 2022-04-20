@@ -23,3 +23,6 @@ unlink_file .railsrc
 unlink_file .percol.d
 unlink_file .bin
 unlink_file Library/Preferences/espanso
+unlink_file "Library/Application Support/JetBrains/IdeaIC2021.2/keymaps"
+unlink_file "Library/Application Support/JetBrains/RubyMine2022.1/keymaps"
+unlink_file "Library/Application Support/Google/AndroidStudio2021.1/keymaps"
