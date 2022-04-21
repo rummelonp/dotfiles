@@ -11,19 +11,19 @@
 (define-key global-map (kbd "M-(J\(B") "\\")
 
 ;;; consult.el
-(define-key global-map (kbd "C-x C-a") 'mtk/consult-maybe-project-buffer)
-(define-key global-map (kbd "C-x C-f") 'project-find-file)                ;; find-file
-(define-key global-map (kbd "C-x f")   'find-file)                        ;; set-fill-column
-(define-key global-map (kbd "C-x C-d") 'mtk/neotree-toggle)               ;; list-directory
-(define-key global-map (kbd "C-x d")   'project-find-dir)                 ;; dired
-(define-key global-map (kbd "C-x C-b") 'consult-project-buffer)           ;; list-buffer
-(define-key global-map (kbd "C-x b")   'consult-buffer)                   ;; switch-to-buffer
+(define-key global-map (kbd "C-x C-a") 'consult-recent-file)
+(define-key global-map (kbd "C-x C-f") 'project-find-file)      ;; find-file
+(define-key global-map (kbd "C-x f")   'find-file)              ;; set-fill-column
+(define-key global-map (kbd "C-x C-d") 'mtk/neotree-toggle)     ;; list-directory
+(define-key global-map (kbd "C-x d")   'project-find-dir)       ;; dired
+(define-key global-map (kbd "C-x C-b") 'consult-project-buffer) ;; list-buffer
+(define-key global-map (kbd "C-x b")   'consult-buffer)         ;; switch-to-buffer
 (define-key global-map (kbd "C-x g")   'consult-git-grep)
 (define-key global-map (kbd "C-x C-m") 'consult-imenu)
-(define-key global-map (kbd "C-x m")   'consult-imenu-multi)              ;; compose-mail
+(define-key global-map (kbd "C-x m")   'consult-imenu-multi)    ;; compose-mail
 (define-key global-map (kbd "C-x C-y") 'yank-from-kill-ring)
-(define-key global-map (kbd "M-g M-g") 'consult-line)                     ;; goto-line
-(define-key global-map (kbd "M-g g")   'consult-line-multi)               ;; goto-line
+(define-key global-map (kbd "M-g M-g") 'consult-line)           ;; goto-line
+(define-key global-map (kbd "M-g g")   'consult-line-multi)     ;; goto-line
 
 ;;; Frame
 (define-key global-map (kbd "C-z") nil) ;; suspend-frame
