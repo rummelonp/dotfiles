@@ -23,6 +23,8 @@
   autocorrect = 1
 [log]
   date = iso
+[advice]
+  skippedCherryPicks = false
 [pretty]
   colorful = %C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(cyan)%an%C(reset) %s %C(auto)%d%C(reset)
 [merge]
