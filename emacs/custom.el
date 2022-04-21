@@ -19,6 +19,7 @@
    '(company-sort-by-statistics company-sort-by-backend-importance))
  '(completion-styles '(orderless))
  '(consult-preview-key nil)
+ '(create-lockfiles nil)
  '(css-indent-offset 2)
  '(cua-enable-cua-keys nil)
  '(cua-mode t)
@@ -39,6 +40,7 @@
  '(kill-ring-max 10000)
  '(kill-whole-line t)
  '(line-number-mode t)
+ '(make-backup-files nil)
  '(marginalia-mode t)
  '(menu-bar-mode t)
  '(migemo-command
