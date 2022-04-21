@@ -13,5 +13,3 @@
 
 ;;; anzu.el
 (require 'anzu)
-(global-anzu-mode +1)
-;; Configuration

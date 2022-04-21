@@ -53,7 +53,6 @@
 
 ;;; tabbar.el
 (require 'tabbar)
-(tabbar-mode t)
 ;; Face
 (set-face-attribute 'tabbar-default nil :background inactive-bg :height 1.0)
 (set-face-attribute 'tabbar-selected nil :foreground active-primary-fg :background active-primary-bg :box nil)
@@ -97,7 +96,6 @@
 
 ;;; popwin.el
 (require 'popwin)
-(popwin-mode 1)
 ;; Configuration
 (add-to-list 'popwin:special-display-config '("*Backtrace*"))
 (add-to-list 'popwin:special-display-config '("*Warnings*"))
@@ -105,4 +103,3 @@
 
 ;;; git-gutter.el
 (require 'git-gutter)
-(global-git-gutter-mode t)

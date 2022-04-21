@@ -2,7 +2,6 @@
 
 ;;; company
 (require 'company)
-(global-company-mode)
 (define-key company-active-map (kbd "C-M-v") 'company-previous-page)
 (define-key company-active-map (kbd "C-s") 'company-filter-candidates)
 (define-key company-active-map (kbd "C-M-s") 'company-search-candidates)
@@ -15,7 +14,6 @@
 
 ;;; company-statistics
 (require 'company-statistics)
-(company-statistics-mode)
 
 ;;; company-anywhere
 (require 'company-anywhere)

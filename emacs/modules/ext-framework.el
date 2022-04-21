@@ -1,7 +1,6 @@
 ;;;; Extension - Framework
 
 (require 'vertico)
-(vertico-mode)
 (define-key vertico-map (kbd "C-v") 'vertico-scroll-up)
 (define-key vertico-map (kbd "C-M-v") 'vertico-scroll-down)
 (define-key vertico-map (kbd "M-v") 'vertico-scroll-down)
@@ -19,4 +18,3 @@
 (require 'orderless)
 
 (require 'marginalia)
-(marginalia-mode)

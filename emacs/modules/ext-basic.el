@@ -11,9 +11,6 @@
 (define-key dired-mode-map "f" 'dired-create-empty-file)
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 
-;;; cua.el
-(cua-mode t)
-
 ;;; uniquify.el
 (require 'uniquify)
 
@@ -29,7 +26,6 @@
 
 ;;; undotree.el
 (require 'undo-tree)
-(global-undo-tree-mode)
 
 ;;; rainbow-mode.el
 (require 'rainbow-mode)

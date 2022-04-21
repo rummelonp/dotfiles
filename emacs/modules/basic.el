@@ -30,29 +30,13 @@
 (set-fontset-font "fontset-default" 'katakana-jisx0201 '("Hiragino Maru Gothic ProN"))
 (set-fontset-font "fontset-default" '(#x1F004 . #x1FFFD) '("Apple Color Emoji"))
 
-;;; Ignore beep
-
 ;;; Server
 (require 'server)
 (unless (server-running-p)
   (server-start))
 
-;;; VC
-
 ;;; Buffer
 (require 'savehist)
-(savehist-mode)
-(global-auto-revert-mode 1)
 
 ;;; File
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;;; Line
-(setq-default truncate-lines t)
-
-;;; Paren
-(show-paren-mode t)
-
-;;; Tab
-(setq-default tab-width 2)
-(setq-default indent-tabs-mode nil)
