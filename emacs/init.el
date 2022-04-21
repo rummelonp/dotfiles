@@ -82,7 +82,6 @@
     ext-window
     ext-auto-complete
     ext-find-and-replace
-    ext-editor-enhancement
     ;; Languages
     lang-emacs-lisp
     lang-config

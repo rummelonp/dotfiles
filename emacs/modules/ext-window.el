@@ -9,9 +9,6 @@
 (defvar inactive-fg "gray80")
 (defvar inactive-bg "#181a26")
 
-;;; all-the-icons.el
-(require 'all-the-icons)
-
 ;;; neotree.el
 (require 'neotree)
 (defun neotree-left (arg)
@@ -41,7 +38,6 @@
 (define-key neotree-mode-map (kbd "C-.") 'neotree-hidden-file-toggle)
 
 ;;; powerline.el
-(require 'powerline)
 (defpowerline powerline-buffer-id nil)
 (powerline-default-theme)
 (set-face-attribute 'mode-line nil :foreground active-secondary-fg :background active-secondary-bg)
@@ -52,54 +48,50 @@
 (set-face-attribute 'powerline-inactive2 nil :foreground inactive-fg :background inactive-bg)
 
 ;;; tabbar.el
-(require 'tabbar)
-;; Face
-(set-face-attribute 'tabbar-default nil :background inactive-bg :height 1.0)
-(set-face-attribute 'tabbar-selected nil :foreground active-primary-fg :background active-primary-bg :box nil)
-(set-face-attribute 'tabbar-selected-modified nil :foreground active-primary-fg :background active-primary-bg :box nil)
-(set-face-attribute 'tabbar-unselected nil :foreground inactive-fg :background inactive-bg :box nil)
-(set-face-attribute 'tabbar-modified nil :foreground inactive-fg :background inactive-bg :box nil)
-(set-face-attribute 'tabbar-separator nil :foreground inactive-bg :background inactive-bg)
-;; Remove buttons
-(dolist
-    (button
-     '(tabbar-buffer-home-button
-       tabbar-scroll-left-button
-       tabbar-scroll-right-button))
-  (set button (cons
-               (cons "" nil)
-               (cons "" nil))))
-;; Customize list
-(setq tabbar-buffer-list-function
-      '(lambda ()
-         (cl-remove-if
-          '(lambda (buffer)
-             (cl-find (aref (buffer-name buffer) 0) " *"))
-          (buffer-list))))
-;; Customize group
-(setq tabbar-buffer-groups-function
-      '(lambda ()
-         (list
-          (let ((name (symbol-name major-mode)))
-            (cond ((or (equal name "html-mode")
-                       (equal name "rhtml-mode")
-                       (equal name "vue-mode"))
-                   "vue-mode")
-                  ((or (equal name "css-mode")
-                       (equal name "scss-mode"))
-                   "vue-mode")
-                  ((or (equal name "typescript-mode")
-                       (equal name "js2-mode")
-                       (equal name "json-mode"))
-                   "vue-mode")
-                  (t name))))))
+(with-eval-after-load 'tabbar
+  ;; Face
+  (set-face-attribute 'tabbar-default nil :background inactive-bg :height 1.0)
+  (set-face-attribute 'tabbar-selected nil :foreground active-primary-fg :background active-primary-bg :box nil)
+  (set-face-attribute 'tabbar-selected-modified nil :foreground active-primary-fg :background active-primary-bg :box nil)
+  (set-face-attribute 'tabbar-unselected nil :foreground inactive-fg :background inactive-bg :box nil)
+  (set-face-attribute 'tabbar-modified nil :foreground inactive-fg :background inactive-bg :box nil)
+  (set-face-attribute 'tabbar-separator nil :foreground inactive-bg :background inactive-bg)
+  ;; Remove buttons
+  (dolist
+      (button
+       '(tabbar-buffer-home-button
+         tabbar-scroll-left-button
+         tabbar-scroll-right-button))
+    (set button (cons
+                 (cons "" nil)
+                 (cons "" nil))))
+  ;; Customize list
+  (setq tabbar-buffer-list-function
+        '(lambda ()
+           (cl-remove-if
+            '(lambda (buffer)
+               (cl-find (aref (buffer-name buffer) 0) " *"))
+            (buffer-list))))
+  ;; Customize group
+  (setq tabbar-buffer-groups-function
+        '(lambda ()
+           (list
+            (let ((name (symbol-name major-mode)))
+              (cond ((or (equal name "html-mode")
+                         (equal name "rhtml-mode")
+                         (equal name "vue-mode"))
+                     "vue-mode")
+                    ((or (equal name "css-mode")
+                         (equal name "scss-mode"))
+                     "vue-mode")
+                    ((or (equal name "typescript-mode")
+                         (equal name "js2-mode")
+                         (equal name "json-mode"))
+                     "vue-mode")
+                    (t name)))))))
 
 ;;; popwin.el
-(require 'popwin)
-;; Configuration
-(add-to-list 'popwin:special-display-config '("*Backtrace*"))
-(add-to-list 'popwin:special-display-config '("*Warnings*"))
-(add-to-list 'popwin:special-display-config '("*Compile-Log*"))
-
-;;; git-gutter.el
-(require 'git-gutter)
+(with-eval-after-load 'popwin
+  (add-to-list 'popwin:special-display-config '("*Backtrace*"))
+  (add-to-list 'popwin:special-display-config '("*Warnings*"))
+  (add-to-list 'popwin:special-display-config '("*Compile-Log*")))

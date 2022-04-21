@@ -1,7 +1,6 @@
 ;;;; Language - Ruby
 
 ;;; ruby-mode.el
-(require 'ruby-mode)
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
@@ -10,20 +9,20 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Brewfile$" . ruby-mode))
-(add-to-list 'ruby-encoding-map '(undecided . utf-8))
 ;; Configuration
 ;; Key bind
-(define-key ruby-mode-map (kbd "C-x C-t") 'darwin-open-terminal)
-(define-key ruby-mode-map (kbd "C-m") 'reindent-then-newline-and-indent)
-(define-key ruby-mode-map (kbd "C-j") 'ruby-end-return)
-(define-key ruby-mode-map (kbd "M-a") 'ruby-beginning-of-defun)
-(define-key ruby-mode-map (kbd "M-e") 'ruby-end-of-defun)
-(define-key ruby-mode-map (kbd "M-f") 'ruby-forward-sexp)
-(define-key ruby-mode-map (kbd "M-b") 'ruby-backward-sexp)
-(define-key ruby-mode-map (kbd "C-M-a") 'backward-sentence)
-(define-key ruby-mode-map (kbd "C-M-e") 'forward-sentence)
-(define-key ruby-mode-map (kbd "C-M-f") 'forward-word)
-(define-key ruby-mode-map (kbd "C-M-b") 'backward-word)
+(with-eval-after-load 'ruby-mode
+  (define-key ruby-mode-map (kbd "C-x C-t") 'darwin-open-terminal)
+  (define-key ruby-mode-map (kbd "C-m") 'reindent-then-newline-and-indent)
+  (define-key ruby-mode-map (kbd "C-j") 'ruby-end-return)
+  (define-key ruby-mode-map (kbd "M-a") 'ruby-beginning-of-defun)
+  (define-key ruby-mode-map (kbd "M-e") 'ruby-end-of-defun)
+  (define-key ruby-mode-map (kbd "M-f") 'ruby-forward-sexp)
+  (define-key ruby-mode-map (kbd "M-b") 'ruby-backward-sexp)
+  (define-key ruby-mode-map (kbd "C-M-a") 'backward-sentence)
+  (define-key ruby-mode-map (kbd "C-M-e") 'forward-sentence)
+  (define-key ruby-mode-map (kbd "C-M-f") 'forward-word)
+  (define-key ruby-mode-map (kbd "C-M-b") 'backward-word))
 ;; Functions
 ;; http://stackoverflow.com/questions/7961533/emacs-ruby-method-parameter-indentation
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
@@ -47,13 +46,11 @@
 ;;; ruby-block.el
 (add-hook 'ruby-mode-hook
           '(lambda ()
-             (require 'ruby-block)
              (ruby-block-mode t)))
 
 ;;; rinari.el
 (add-hook 'ruby-mode-hook
           '(lambda ()
-             (require 'rinari)
              (setq rinari-controller-keywords
                    (append rinari-controller-keywords
                            '("before_action" "append_before_action" "prepend_before_action"

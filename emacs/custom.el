@@ -56,6 +56,7 @@
  '(recentf-auto-cleanup 'never)
  '(recentf-max-menu-items 100000)
  '(recentf-max-saved-items 100000)
+ '(recentf-mode t)
  '(require-final-newline t)
  '(ring-bell-function 'ignore)
  '(ruby-deep-indent-paren nil)
