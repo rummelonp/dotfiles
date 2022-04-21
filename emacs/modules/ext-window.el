@@ -11,7 +11,7 @@
 
 ;;; neotree.el
 (require 'neotree)
-(defun neotree-left (arg)
+(defun mtk/neotree-left (arg)
   (interactive "P")
   (let* ((path (neo-buffer--get-filename-current-line))
          (file-p (and path (not (file-directory-p path)))))
@@ -22,7 +22,7 @@
            (neo-buffer--refresh t))
           (t
            (neotree-select-up-node)))))
-(defun neotree-right (arg)
+(defun mtk/neotree-right (arg)
   (interactive "P")
   (let* ((path (neo-buffer--get-filename-current-line))
          (file-p (and path (not (file-directory-p path)))))
@@ -33,8 +33,8 @@
            (neo-buffer--refresh t))
           (t
            (neotree-select-down-node)))))
-(define-key neotree-mode-map (kbd "<left>") 'neotree-left)
-(define-key neotree-mode-map (kbd "<right>") 'neotree-right)
+(define-key neotree-mode-map (kbd "<left>") 'mtk/neotree-left)
+(define-key neotree-mode-map (kbd "<right>") 'mtk/neotree-right)
 (define-key neotree-mode-map (kbd "C-.") 'neotree-hidden-file-toggle)
 
 ;;; powerline.el

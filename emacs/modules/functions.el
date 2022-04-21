@@ -8,7 +8,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;;; Window
-(defun next-window-or-split-horizontally ()
+(defun mtk/next-window-or-split-horizontally ()
   (interactive)
   (let* ((win-len (length (window-list)))
          (current-win (selected-window))
@@ -25,11 +25,11 @@
           (t
            (other-window 1)))))
 
-(defun prev-window ()
+(defun mtk/prev-window ()
   (interactive)
   (other-window -1))
 
-(defun neotree-toggle-current ()
+(defun mtk/neotree-toggle ()
   (interactive)
   (let* ((path (or buffer-file-name (expand-file-name default-directory)))
          (project (cdr (project-current nil path))))
@@ -44,7 +44,7 @@
         (neo-global--select-window)))))
 
 ;;; tabbar.el
-(defun tabbar-sort-tab ()
+(defun mtk/tabbar-sort-tab ()
   (interactive)
   (let* ((tabset (tabbar-current-tabset 't))
          (tabs (tabbar-tabs tabset)))
@@ -57,7 +57,7 @@
           (tabbar-display-update)))))
 
 ;;; Other
-(defun insert-class-name-from-file-name ()
+(defun mtk/insert-class-name-from-file-name ()
   (interactive)
   (insert
    (let ((fn (capitalize (file-name-nondirectory

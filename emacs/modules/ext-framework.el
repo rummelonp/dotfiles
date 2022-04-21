@@ -8,7 +8,7 @@
   (define-key vertico-map (kbd "C-r") 'vertico-previous))
 
 (require 'consult)
-(defun consult-project-buffer-or-buffer ()
+(defun mtk/consult-maybe-project-buffer ()
   (interactive)
   (if (consult--project-root)
       (consult-project-buffer)

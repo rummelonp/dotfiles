@@ -12,7 +12,7 @@
 ;; Configuration
 ;; Key bind
 (with-eval-after-load 'ruby-mode
-  (define-key ruby-mode-map (kbd "C-x C-t") 'darwin-open-terminal)
+  (define-key ruby-mode-map (kbd "C-x C-t") 'mtk/darwin-open-terminal)
   (define-key ruby-mode-map (kbd "C-m") 'reindent-then-newline-and-indent)
   (define-key ruby-mode-map (kbd "C-j") 'ruby-end-return)
   (define-key ruby-mode-map (kbd "M-a") 'ruby-beginning-of-defun)

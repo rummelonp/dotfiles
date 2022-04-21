@@ -11,10 +11,10 @@
 (define-key global-map (kbd "M-(J\(B") "\\")
 
 ;;; consult.el
-(define-key global-map (kbd "C-x C-a") 'consult-project-buffer-or-buffer)
+(define-key global-map (kbd "C-x C-a") 'mtk/consult-maybe-project-buffer)
 (define-key global-map (kbd "C-x C-f") 'project-find-file)                ;; find-file
 (define-key global-map (kbd "C-x f")   'find-file)                        ;; set-fill-column
-(define-key global-map (kbd "C-x C-d") 'neotree-toggle-current)           ;; list-directory
+(define-key global-map (kbd "C-x C-d") 'mtk/neotree-toggle)               ;; list-directory
 (define-key global-map (kbd "C-x d")   'project-find-dir)                 ;; dired
 (define-key global-map (kbd "C-x C-b") 'consult-project-buffer)           ;; list-buffer
 (define-key global-map (kbd "C-x b")   'consult-buffer)                   ;; switch-to-buffer
@@ -29,12 +29,12 @@
 (define-key global-map (kbd "C-z") nil) ;; suspend-frame
 
 ;;; Window
-(define-key global-map (kbd "C-x `") 'delete-other-windows)            ;; next-error
-(define-key global-map (kbd "C-t") 'next-window-or-split-horizontally) ;; transpose-charas
-(define-key global-map (kbd "C-S-t") 'prev-window)
-(define-key global-map (kbd "M-t") 'delete-window)                     ;; transpose-words
+(define-key global-map (kbd "C-x `") 'delete-other-windows)                ;; next-error
+(define-key global-map (kbd "C-t") 'mtk/next-window-or-split-horizontally) ;; transpose-charas
+(define-key global-map (kbd "C-S-t") 'mtk/prev-window)
+(define-key global-map (kbd "M-t") 'delete-window)                         ;; transpose-words
 ;; tabbar.el
-(define-key global-map (kbd "C-x j") 'tabbar-sort-tab)
+(define-key global-map (kbd "C-x j") 'mtk/tabbar-sort-tab)
 (define-key global-map (kbd "C-x C-n") 'tabbar-forward-tab)  ;; set-goal-column
 (define-key global-map (kbd "C-x C-p") 'tabbar-backward-tab) ;; mark-page
 (define-key global-map (kbd "C-x n") 'tabbar-forward-group)  ;; save-buffers-kill-terminal

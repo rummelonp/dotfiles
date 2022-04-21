@@ -98,7 +98,7 @@
 
 ;;; Load init files
 (add-to-list 'load-path "~/.emacs.d/modules")
-(defun try-load (file)
+(defun mtk/try-load (file)
   (condition-case e
       (load file)
     (error
@@ -108,12 +108,12 @@
     (cond
      ((string-match-p "^darwin" file)
       (when darwin-p
-        (try-load file)))
+        (mtk/try-load file)))
      ((string-match-p "^linux" file)
       (when linux-p
-        (try-load file)))
+        (mtk/try-load file)))
      (t
-      (try-load file)))))
+      (mtk/try-load file)))))
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
