@@ -75,7 +75,7 @@
 (defvar linux-p
   (eq system-type 'gnu/linux))
 
-(defvar required-init-files
+(defvar module-files
   '(
     ;; Basics
     basic
@@ -98,22 +98,20 @@
     darwin-environment
     ))
 
-;;; Load init files
+;;; Load modules
 (add-to-list 'load-path "~/.emacs.d/modules")
 (defun mtk/try-load (file)
   (condition-case e
       (load file)
     (error
      (warn (format "%s: %s" file (error-message-string e))))))
-(dolist (file required-init-files)
+(cl-dolist (file module-files)
   (let ((file (symbol-name file)))
     (cond
-     ((string-match-p "^darwin" file)
-      (when darwin-p
-        (mtk/try-load file)))
-     ((string-match-p "^linux" file)
-      (when linux-p
-        (mtk/try-load file)))
+     ((and darwin-p (string-match-p "^darwin" file))
+      (mtk/try-load file))
+     ((and linux-p (string-match-p "^linux" file))
+      (mtk/try-load file))
      (t
       (mtk/try-load file)))))
 
