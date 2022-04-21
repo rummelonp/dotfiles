@@ -12,73 +12,73 @@
 
 ;;; consult.el
 (define-key global-map (kbd "C-x C-a") 'consult-project-buffer-or-buffer)
-(define-key global-map (kbd "C-x C-f") 'project-find-file)
-(define-key global-map (kbd "C-x f")   'find-file)
-(define-key global-map (kbd "C-x C-d") 'project-find-dir)
-(define-key global-map (kbd "C-x d")   'project-find-dir)
-(define-key global-map (kbd "C-x C-b") 'consult-project-buffer)
-(define-key global-map (kbd "C-x b")   'consult-buffer)
+(define-key global-map (kbd "C-x C-f") 'project-find-file)                ;; find-file
+(define-key global-map (kbd "C-x f")   'find-file)                        ;; set-fill-column
+(define-key global-map (kbd "C-x C-d") 'project-find-dir)                 ;; list-directory
+(define-key global-map (kbd "C-x d")   'project-find-dir)                 ;; dired
+(define-key global-map (kbd "C-x C-b") 'consult-project-buffer)           ;; list-buffer
+(define-key global-map (kbd "C-x b")   'consult-buffer)                   ;; switch-to-buffer
 (define-key global-map (kbd "C-x g")   'consult-git-grep)
 (define-key global-map (kbd "C-x C-m") 'consult-imenu)
-(define-key global-map (kbd "C-x m")   'consult-imenu-multi)
+(define-key global-map (kbd "C-x m")   'consult-imenu-multi)              ;; compose-mail
 (define-key global-map (kbd "C-x C-y") 'yank-from-kill-ring)
-(define-key global-map (kbd "M-g M-g") 'consult-line)
-(define-key global-map (kbd "M-g g")   'consult-line-multi)
+(define-key global-map (kbd "M-g M-g") 'consult-line)                     ;; goto-line
+(define-key global-map (kbd "M-g g")   'consult-line-multi)               ;; goto-line
 
 ;;; Frame
-(define-key global-map (kbd "C-z") nil)
+(define-key global-map (kbd "C-z") nil) ;; suspend-frame
 
 ;;; Window
-(define-key global-map (kbd "C-x `") 'delete-other-windows)
-(define-key global-map (kbd "C-t") 'next-window-or-split-horizontally)
+(define-key global-map (kbd "C-x `") 'delete-other-windows)            ;; next-error
+(define-key global-map (kbd "C-t") 'next-window-or-split-horizontally) ;; transpose-charas
 (define-key global-map (kbd "C-S-t") 'prev-window)
-(define-key global-map (kbd "M-t") 'delete-window)
+(define-key global-map (kbd "M-t") 'delete-window)                     ;; transpose-words
 ;; tabbar.el
 (define-key global-map (kbd "C-x j") 'tabbar-sort-tab)
-(define-key global-map (kbd "C-x C-n") 'tabbar-forward-tab)
-(define-key global-map (kbd "C-x C-p") 'tabbar-backward-tab)
-(define-key global-map (kbd "C-x n") 'tabbar-forward-group)
+(define-key global-map (kbd "C-x C-n") 'tabbar-forward-tab)  ;; set-goal-column
+(define-key global-map (kbd "C-x C-p") 'tabbar-backward-tab) ;; mark-page
+(define-key global-map (kbd "C-x n") 'tabbar-forward-group)  ;; save-buffers-kill-terminal
 (define-key global-map (kbd "C-x p") 'tabbar-backward-group)
 
 ;;; Basic
 ;; Server
-(define-key global-map (kbd "C-x C-c") 'server-edit)
+(define-key global-map (kbd "C-x C-c") 'server-edit) ;; save-buffers-kill-terminal
 ;; Buffer
-(define-key global-map (kbd "M-k") 'kill-this-buffer)
+(define-key global-map (kbd "M-k") 'kill-this-buffer) ;; kill-sentence
 ;; Newline and indent
-(define-key global-map (kbd "C-m") 'newline-and-indent)
-(define-key global-map (kbd "C-j") 'indent-new-comment-line)
-(define-key global-map (kbd "C-i") 'indent-for-tab-command)
-(define-key global-map (kbd "M-i") 'delete-indentation)
-(define-key global-map (kbd "C-x i") 'indent-region)
+(define-key global-map (kbd "C-m") 'newline-and-indent)      ;; newline
+(define-key global-map (kbd "C-j") 'indent-new-comment-line) ;; electric-newline-and-maybe-indent
+(define-key global-map (kbd "C-i") 'indent-for-tab-command)  ;; indent-for-tab-command
+(define-key global-map (kbd "M-i") 'delete-indentation)      ;; tab-to-tab-stop
+(define-key global-map (kbd "C-x i") 'indent-region)         ;; insert-file
 ;; Cursor
-(define-key global-map (kbd "M-a") 'beginning-of-defun)
-(define-key global-map (kbd "M-e") 'end-of-defun)
-(define-key global-map (kbd "M-f") 'forward-sexp)
-(define-key global-map (kbd "M-b") 'backward-sexp)
-(define-key global-map (kbd "C-M-a") 'backward-sentence)
-(define-key global-map (kbd "C-M-e") 'forward-sentence)
-(define-key global-map (kbd "C-M-f") 'forward-word)
-(define-key global-map (kbd "C-M-b") 'backward-word)
+(define-key global-map (kbd "M-a") 'beginning-of-defun)  ;; backward-sentence
+(define-key global-map (kbd "M-e") 'end-of-defun)        ;; forward-sentence
+(define-key global-map (kbd "M-f") 'forward-sexp)        ;; forward-word
+(define-key global-map (kbd "M-b") 'backward-sexp)       ;; backward-word
+(define-key global-map (kbd "C-M-a") 'backward-sentence) ;; beginning-of-defun
+(define-key global-map (kbd "C-M-e") 'forward-sentence)  ;; end-of-fun
+(define-key global-map (kbd "C-M-f") 'forward-word)      ;; forward-sexp
+(define-key global-map (kbd "C-M-b") 'backward-word)     ;; backward-sexp
 ;; Scroll
-(define-key global-map (kbd "C-v") 'scroll-up-command)
-(define-key global-map (kbd "C-M-v") 'scroll-down)
+(define-key global-map (kbd "C-v") 'scroll-up-command)   ;; scroll-up-command
+(define-key global-map (kbd "C-M-v") 'scroll-down)       ;; scroll-other-window
 ;; Kill
-(define-key global-map (kbd "C-w") 'kill-ring-save)
-(define-key global-map (kbd "M-w") 'kill-region)
-(define-key global-map (kbd "C-y") 'yank)
+(define-key global-map (kbd "C-w") 'kill-ring-save) ;; kill-region
+(define-key global-map (kbd "M-w") 'kill-region)    ;; kill-ring-save
+(define-key global-map (kbd "C-y") 'yank)           ;; yank
 (define-key global-map (kbd "C-M-y") 'yank-pop)
 ;; Undo
-(define-key global-map (kbd "C-_") 'undo)
-(define-key global-map (kbd "C-/") 'undo)
-(define-key global-map (kbd "C-M-_") 'redo)
-(define-key global-map (kbd "C-M-/") 'redo)
+(define-key global-map (kbd "C-_") 'undo)   ;; undo
+(define-key global-map (kbd "C-/") 'undo)   ;; undo
+(define-key global-map (kbd "C-M-_") 'redo) ;; undo-redo
+(define-key global-map (kbd "C-M-/") 'redo) ;; dabbrev-completion
 ;; Comment
 (define-key global-map (kbd "C-;") 'comment-or-uncomment-region)
 ;; Configuration
-(define-key global-map (kbd "C--") 'toggle-truncate-lines)
+(define-key global-map (kbd "C--") 'toggle-truncate-lines) ;; negative-argument
 ;; Help
-(define-key global-map (kbd "M-?") 'help-for-help)
+(define-key global-map (kbd "M-?") 'help-for-help) ;; xref-find-references
 
 ;;; Company
 ;; company.el
@@ -86,8 +86,8 @@
 
 ;;; Find and replace
 ;; visual-regexp.el
-(define-key global-map (kbd "M-%") 'vr/query-replace)
-(define-key global-map (kbd "C-M-%") 'vr/replace)
+(define-key global-map (kbd "M-%") 'vr/query-replace) ;; query-replace
+(define-key global-map (kbd "C-M-%") 'vr/replace)     ;; query-replace-regexp
 ;; anzu.el
 (define-key global-map (kbd "C-,") 'anzu-query-replace-at-cursor-thing)
 (define-key global-map (kbd "C-M-,") 'anzu-query-replace-at-cursor)
@@ -98,7 +98,7 @@
 (define-key global-map (kbd "C-M-<") 'mc/unmark-next-like-this)
 (define-key global-map (kbd "C-<") 'mc/mark-previous-like-this)
 (define-key global-map (kbd "C-M->") 'mc/unmark-previous-like-this)
-(define-key global-map (kbd "M-@") 'mc/mark-all-like-this)
+(define-key global-map (kbd "M-@") 'mc/mark-all-like-this)          ;; mark-word
 ;; expand-region.el
-(define-key global-map (kbd "C-@") 'er/expand-region)
-(define-key global-map (kbd "C-M-@") 'er/contract-region)
+(define-key global-map (kbd "C-@") 'er/expand-region)     ;; set-mark-command
+(define-key global-map (kbd "C-M-@") 'er/contract-region) ;; mark-sexp
