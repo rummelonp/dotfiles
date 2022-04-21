@@ -20,6 +20,7 @@
 (straight-use-package 'orderless)
 (straight-use-package 'marginalia)
 ;; Exetnsion - Basic
+(straight-use-package 'direnv)
 (straight-use-package 'sudo-edit)
 (straight-use-package 'recentf-ext)
 (straight-use-package 'savekill)

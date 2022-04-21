@@ -22,6 +22,8 @@
  '(cua-enable-cua-keys nil)
  '(cua-mode t)
  '(delete-auto-save-files t)
+ '(direnv-always-show-summary nil)
+ '(direnv-mode t)
  '(global-anzu-mode t)
  '(global-auto-revert-mode t)
  '(global-company-mode t)
