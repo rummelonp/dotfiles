@@ -25,5 +25,5 @@
   (mtk/darwin-open "Tweetbot"))
 
 ;;; Key bind
-(define-key global-map (kbd "C-x C-t") 'mtk/darwin-open-terminal)
-(define-key global-map (kbd "s-E") 'mtk/darwin-open-tweetbot)
+(global-set-key (kbd "C-x C-t") 'mtk/darwin-open-terminal)
+(global-set-key (kbd "s-E") 'mtk/darwin-open-tweetbot)
