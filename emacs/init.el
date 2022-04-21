@@ -44,6 +44,8 @@
 (straight-use-package 'migemo)
 (straight-use-package 'visual-regexp)
 (straight-use-package 'anzu)
+;; Extension - Other
+(straight-use-package 'osx-osascript)
 ;; Extension - Editor enhancement
 (straight-use-package 'expand-region)
 (straight-use-package 'multiple-cursors)

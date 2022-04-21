@@ -1,5 +1,7 @@
 ;;;; Darwin
 
+(require 'osx-osascript)
+
 ;;; Functions
 ;; Copy
 (defun mtk/darwin-copy-current-directory ()
@@ -12,7 +14,7 @@
 
 ;; Open
 (defun mtk/darwin-open (name)
-  (shell-command-to-string (concat "echo 'tell application \"" name "\" to activate window' | osascript")))
+  (osascript-run-str (concat "tell application \"" name "\" to activate window")))
 
 (defun mtk/darwin-open-terminal ()
   (interactive)
