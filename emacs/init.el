@@ -53,14 +53,11 @@
 (straight-use-package 'flycheck)
 (straight-use-package 'git-gutter)
 ;; Language - Web
-(straight-use-package 'rhtml-mode)
-(straight-use-package 'vue-mode)
+(straight-use-package 'web-mode)
 (straight-use-package 'scss-mode)
 (straight-use-package 'js2-mode)
 (straight-use-package 'typescript-mode)
-(straight-use-package 'rjsx-mode)
 (straight-use-package 'json-mode)
-(straight-use-package 'mmm-mode)
 ;: Language - Ruby
 (straight-use-package 'ruby-mode)
 (straight-use-package 'enh-ruby-mode)

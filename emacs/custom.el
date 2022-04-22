@@ -54,7 +54,6 @@
                '("/opt/homebrew/share/migemo/utf-8/migemo-dict" "/usr/local/share/migemo/utf-8/migemo-dict" "/usr/share/cmigemo/utf-8/migemo-dict")))
  '(migemo-regex-dictionary nil)
  '(migemo-user-dictionary nil)
- '(mmm-global-mode 'maybe nil (mmm-mode))
  '(neo-theme 'icons)
  '(plantuml-default-exec-mode 'executable)
  '(plantuml-executable-path
@@ -91,7 +90,13 @@
  '(uniquify-ignore-buffers-re "*[^*]+*")
  '(vc-follow-symlinks t)
  '(vertico-count 20)
- '(vertico-mode t))
+ '(vertico-mode t)
+ '(web-mode-code-indent-offset 2)
+ '(web-mode-css-indent-offset 2)
+ '(web-mode-markup-indent-offset 2)
+ '(web-mode-part-padding 0)
+ '(web-mode-script-padding 0)
+ '(web-mode-style-padding 0))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
