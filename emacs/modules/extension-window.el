@@ -1,5 +1,8 @@
-;;;; Extension - Window
+;;
+;; Extension - Window
+;;
 
+;; variables
 (defvar active-primary-fg "black")
 (defvar active-primary-bg "#1aa6b1")
 (defvar active-secondary-fg "white")
@@ -9,7 +12,7 @@
 (defvar inactive-fg "gray80")
 (defvar inactive-bg "#181a26")
 
-;;; neotree.el
+;; neotree
 (require 'neotree)
 (defun mtk/neotree-left (arg)
   (interactive "P")
@@ -37,7 +40,7 @@
 (define-key neotree-mode-map (kbd "<right>") 'mtk/neotree-right)
 (define-key neotree-mode-map (kbd "C-.") 'neotree-hidden-file-toggle)
 
-;;; powerline.el
+;; powerline
 (defpowerline powerline-buffer-id nil)
 (powerline-default-theme)
 (set-face-attribute 'mode-line nil :foreground active-secondary-fg :background active-secondary-bg)
@@ -47,16 +50,16 @@
 (set-face-attribute 'powerline-inactive1 nil :foreground inactive-fg :background inactive-bg)
 (set-face-attribute 'powerline-inactive2 nil :foreground inactive-fg :background inactive-bg)
 
-;;; tabbar.el
+;; tabbar
 (with-eval-after-load 'tabbar
-  ;; Face
+  ;; face
   (set-face-attribute 'tabbar-default nil :background inactive-bg :height 1.0)
   (set-face-attribute 'tabbar-selected nil :foreground active-primary-fg :background active-primary-bg :box nil)
   (set-face-attribute 'tabbar-selected-modified nil :foreground active-primary-fg :background active-primary-bg :box nil)
   (set-face-attribute 'tabbar-unselected nil :foreground inactive-fg :background inactive-bg :box nil)
   (set-face-attribute 'tabbar-modified nil :foreground inactive-fg :background inactive-bg :box nil)
   (set-face-attribute 'tabbar-separator nil :foreground inactive-bg :background inactive-bg)
-  ;; Remove buttons
+  ;; remove buttons
   (dolist
       (button
        '(tabbar-buffer-home-button
@@ -65,14 +68,14 @@
     (set button (cons
                  (cons "" nil)
                  (cons "" nil))))
-  ;; Customize list
+  ;; customize list
   (setq tabbar-buffer-list-function
         '(lambda ()
            (cl-remove-if
             '(lambda (buffer)
                (cl-find (aref (buffer-name buffer) 0) " *"))
             (buffer-list))))
-  ;; Customize group
+  ;; customize group
   (setq tabbar-buffer-groups-function
         '(lambda ()
            (list
@@ -90,7 +93,7 @@
                      "vue-mode")
                     (t name)))))))
 
-;;; popwin.el
+;; popwin
 (with-eval-after-load 'popwin
   (add-to-list 'popwin:special-display-config '("*Backtrace*"))
   (add-to-list 'popwin:special-display-config '("*Warnings*"))

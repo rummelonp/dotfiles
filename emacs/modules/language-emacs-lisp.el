@@ -1,7 +1,7 @@
-;;;; language - Emacs Lisp
+;;
+;; language - Emacs Lisp
+;;
 
-;;; emacs-lisp-mode.el
-;; Configuration
 (defun mtk/find-anything-at-point ()
   (interactive)
   (let ((vsym (variable-at-point))

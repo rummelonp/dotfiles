@@ -1,15 +1,17 @@
-;;;; General - Basic
+;;
+;; General - Basic
+;;
 
-;;; Environment
+;; environment
 (set-language-environment "Japanese")
 (set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8)
 
-;;; Theme
+;; theme
 (load-theme 'dracula t)
 (set-frame-parameter nil 'alpha 95)
 
-;;; Faces
+;; font
 ;; | 数字 | アルファベット | 日本語 | 絵文字 |
 ;; | 0123 | abcdefghijklmn | あいう | 🍎🍎🍎 |
 (defun mtk/set-font-to-hackgen ()
@@ -32,13 +34,11 @@
     (mtk/set-font-to-hackgen)
   (mtk/set-font-to-monaco))
 
-;;; Server
+;; server
 (require 'server)
 (unless (server-running-p)
   (server-start))
 
-;;; Buffer
+;; misc
 (require 'savehist)
-
-;;; File
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

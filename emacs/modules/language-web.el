@@ -1,4 +1,6 @@
-;;;; Language - Web
+;;
+;; Language - Web
+;;
 
 ;;; HTML
 (add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
@@ -8,7 +10,7 @@
 (autoload 'vue-mode "vue-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.vue$" . vue-mode))
 
-;;; Stylesheet
+;;; StyleSheet
 (autoload 'css-mode "css-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 (autoload 'scss-mode "scss-mode" nil t)
@@ -23,7 +25,7 @@
 (autoload 'json-mode "json-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
-;;; mmm-mode.el
+;;; MMM Mode
 (mmm-add-classes
  '((html-css
     :submode css-mode

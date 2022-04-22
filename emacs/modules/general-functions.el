@@ -1,13 +1,15 @@
-;;;; General - Functions
+;;
+;; General - Functions
+;;
 
-;;; Configuration
+;; command protection
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
-;;; Aliaes
+;; aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;;; Window
+;; window functions
 (defun mtk/next-window-or-split-horizontally ()
   (interactive)
   (let* ((win-len (length (window-list)))
@@ -29,6 +31,7 @@
   (interactive)
   (other-window -1))
 
+;; neotree functions
 (defun mtk/neotree-toggle ()
   (interactive)
   (let* ((path (or buffer-file-name (expand-file-name default-directory)))
@@ -43,7 +46,7 @@
           (neo-global--open))
         (neo-global--select-window)))))
 
-;;; tabbar.el
+;; tabbar functions
 (defun mtk/tabbar-sort-tab ()
   (interactive)
   (let* ((tabset (tabbar-current-tabset 't))
@@ -56,7 +59,7 @@
           (put tabset 'template nil)
           (tabbar-display-update)))))
 
-;;; Other
+;; other functions
 (defun mtk/insert-class-name-from-file-name ()
   (interactive)
   (insert

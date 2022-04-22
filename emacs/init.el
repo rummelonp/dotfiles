@@ -1,4 +1,10 @@
-;;;; Initialize
+;;
+;; Init
+;;
+
+(require 'cl-lib)
+
+;;; Packages
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -11,7 +17,6 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
-
 ;; General - Basic
 (straight-use-package 'dracula-theme)
 ;; Exetnsion - Basic
@@ -66,34 +71,24 @@
 ;; Environment - Darwin
 (straight-use-package 'osx-osascript)
 
-
-(require 'cl-lib)
-
 ;;; Variables
 (defvar darwin-p
   (eq system-type 'darwin))
 (defvar linux-p
   (eq system-type 'gnu/linux))
-
 (defvar module-files
   '(
-    ;; Basics
     general-basic
-    ;; Extensions
     extension-basic
     extension-window
     extension-completion
     extension-editor
-    ;; Languages
     language-emacs-lisp
     language-web
     language-ruby
     language-misc
-    ;; Functions
     general-functions
-    ;; Key bind
     general-key-bindings
-    ;; Environment dependent
     environment-darwin
     ))
 
@@ -114,5 +109,6 @@
      (t
       (mtk/try-load file)))))
 
+;;; Load custom variables
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)

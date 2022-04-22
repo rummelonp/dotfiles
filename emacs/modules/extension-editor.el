@@ -1,5 +1,8 @@
-;;;; Extension - Editor
+;;
+;; Extension - Editor
+;;
 
+;; migemo
 (require 'migemo)
 (migemo-init)
 (set-process-query-on-exit-flag migemo-process nil)

@@ -1,6 +1,8 @@
-;;;; Language - Ruby
+;;
+;; Language - Ruby
+;;
 
-;;; ruby-mode.el
+;; auto mode
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
@@ -9,8 +11,8 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Brewfile$" . ruby-mode))
-;; Configuration
-;; Key bind
+
+;; key bindings
 (with-eval-after-load 'ruby-mode
   (define-key ruby-mode-map (kbd "C-x C-t") 'mtk/darwin-open-terminal)
   (define-key ruby-mode-map (kbd "C-m") 'reindent-then-newline-and-indent)
@@ -23,7 +25,8 @@
   (define-key ruby-mode-map (kbd "C-M-e") 'forward-sentence)
   (define-key ruby-mode-map (kbd "C-M-f") 'forward-word)
   (define-key ruby-mode-map (kbd "C-M-b") 'backward-word))
-;; Functions
+
+;; functions
 ;; http://stackoverflow.com/questions/7961533/emacs-ruby-method-parameter-indentation
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
   (let ((column (current-column))
@@ -43,12 +46,12 @@
 (defun ruby-mode-set-encoding ()
   ())
 
-;;; ruby-block.el
+;; ruby-block
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (ruby-block-mode t)))
 
-;;; rinari.el
+;; rinari
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (setq rinari-controller-keywords
