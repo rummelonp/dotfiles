@@ -68,6 +68,10 @@
 (straight-use-package 'rinari)
 ;; Language - Misc
 (straight-use-package 'scala-mode)
+(straight-use-package 'kotlin-mode)
+(straight-use-package 'groovy-mode)
+(straight-use-package 'swift-mode)
+(straight-use-package 'go-mode)
 (straight-use-package 'yaml-mode)
 (straight-use-package 'markdown-mode)
 (straight-use-package 'plantuml-mode)
