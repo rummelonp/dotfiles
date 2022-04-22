@@ -2,68 +2,24 @@
 ;; Language - Ruby
 ;;
 
-;; auto mode
-(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.pryrc$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Brewfile$" . ruby-mode))
 
-;; key bindings
 (with-eval-after-load 'ruby-mode
-  (define-key ruby-mode-map (kbd "C-x C-t") 'mtk/darwin-open-terminal)
-  (define-key ruby-mode-map (kbd "C-m") 'reindent-then-newline-and-indent)
-  (define-key ruby-mode-map (kbd "C-j") 'ruby-end-return)
-  (define-key ruby-mode-map (kbd "M-a") 'ruby-beginning-of-defun)
-  (define-key ruby-mode-map (kbd "M-e") 'ruby-end-of-defun)
-  (define-key ruby-mode-map (kbd "M-f") 'ruby-forward-sexp)
-  (define-key ruby-mode-map (kbd "M-b") 'ruby-backward-sexp)
-  (define-key ruby-mode-map (kbd "C-M-a") 'backward-sentence)
-  (define-key ruby-mode-map (kbd "C-M-e") 'forward-sentence)
-  (define-key ruby-mode-map (kbd "C-M-f") 'forward-word)
-  (define-key ruby-mode-map (kbd "C-M-b") 'backward-word))
-
-;; functions
-;; http://stackoverflow.com/questions/7961533/emacs-ruby-method-parameter-indentation
-(defadvice ruby-indent-line (after unindent-closing-paren activate)
-  (let ((column (current-column))
-        indent offset)
-    (save-excursion
-      (back-to-indentation)
-      (let ((state (syntax-ppss)))
-        (setq offset (- column (current-column)))
-        (when (and (eq (char-after) ?\))
-                   (not (zerop (car state))))
-          (goto-char (cadr state))
-          (setq indent (current-indentation)))))
-    (when indent
-      (indent-line-to indent)
-      (when (> offset 0) (forward-char offset)))))
-
-(defun ruby-mode-set-encoding ()
-  ())
-
-;; ruby-block
-(add-hook 'ruby-mode-hook
-          '(lambda ()
-             (ruby-block-mode t)))
-
-;; rinari
-(add-hook 'ruby-mode-hook
-          '(lambda ()
-             (setq rinari-controller-keywords
-                   (append rinari-controller-keywords
-                           '("before_action" "append_before_action" "prepend_before_action"
-                             "after_action" "append_after_action" "prepend_after_action"
-                             "around_action" "append_around_action" "prepend_around_action"
-                             "skip_before_action" "skip_after_action" "skip_around_action")))
-             (setq rinari-migration-keywords
-                   (append rinari-migration-keywords
-                           '("set_table_comment" "remove_table_comment"
-                             "set_column_comment" "remove_column_comment")))
-             (setq rinari-model-keywords
-                   (append rinari-model-keywords
-                           '("enumerize" "def_delegator")))))
+  (require 'enh-ruby-mode)
+  (require 'rinari)
+  (require 'robe)
+  (push 'company-robe company-backends)
+  (add-hook 'ruby-mode-hook 'enh-ruby-mode)
+  (add-hook 'enh-ruby-mode-hook 'robe-mode)
+  (add-hook 'enh-ruby-mode-hook 'rinari-minor-mode)
+  (define-key enh-ruby-mode-map (kbd "M-a") 'enh-ruby-beginning-of-defun)
+  (define-key enh-ruby-mode-map (kbd "M-e") 'enh-ruby-end-of-defun)
+  (define-key enh-ruby-mode-map (kbd "M-f") 'enh-ruby-forward-sexp)
+  (define-key enh-ruby-mode-map (kbd "M-b") 'enh-ruby-backward-sexp)
+  (define-key enh-ruby-mode-map (kbd "C-M-a") 'enh-ruby-backward-sexp) ;; enh-ruby-beginning-of-defun
+  (define-key enh-ruby-mode-map (kbd "C-M-e") 'enh-ruby-forward-sexp)  ;; enh-ruby-end-of-defun
+  (define-key enh-ruby-mode-map (kbd "C-M-f") 'forward-word)           ;; enh-ruby-forward-sexp
+  (define-key enh-ruby-mode-map (kbd "C-M-b") 'backward-word)          ;; enh-ruby-backward-sexp
+  (define-key robe-mode-map (kbd "C-.") 'robe-doc)
+  (define-key robe-mode-map (kbd "C-M-.") 'robe-jump)
+  (define-key robe-mode-map (kbd "M-.") 'pop-tag-mark))

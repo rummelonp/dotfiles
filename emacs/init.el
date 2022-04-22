@@ -61,6 +61,8 @@
 (straight-use-package 'mmm-mode)
 ;: Language - Ruby
 (straight-use-package 'ruby-mode)
+(straight-use-package 'enh-ruby-mode)
+(straight-use-package 'robe)
 (straight-use-package 'rinari)
 ;; Language - Misc
 (straight-use-package 'scala-mode)
