@@ -1,4 +1,4 @@
-;;;; Key bind
+;;;; General - Key bindings
 
 ;;; Darwin modifier
 (when darwin-p

@@ -1,4 +1,4 @@
-;;;; Basic - Functions
+;;;; General - Functions
 
 ;;; Configuration
 (put 'downcase-region 'disabled nil)

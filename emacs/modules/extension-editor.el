@@ -1,4 +1,4 @@
-;;;; Extension - Find and replace
+;;;; Extension - Editor
 
 (require 'migemo)
 (migemo-init)

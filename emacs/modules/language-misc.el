@@ -1,4 +1,4 @@
-;;;; Languages - Config
+;;;; Language - Misc
 
 ;;; generic-x.el
 (require 'generic-x)

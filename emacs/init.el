@@ -12,15 +12,9 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; Basic - Theme
+;; General - Basic
 (straight-use-package 'dracula-theme)
-;; Extension - Framework
-(straight-use-package 'vertico)
-(straight-use-package 'consult)
-(straight-use-package 'orderless)
-(straight-use-package 'marginalia)
 ;; Exetnsion - Basic
-(straight-use-package 'direnv)
 (straight-use-package 'sudo-edit)
 (straight-use-package 'recentf-ext)
 (straight-use-package 'savekill)
@@ -28,44 +22,50 @@
 (straight-use-package 'undo-tree)
 (straight-use-package 'rainbow-mode)
 (straight-use-package 'rainbow-delimiters)
-;; Extension - Window
+(straight-use-package 'direnv)
 (straight-use-package 'all-the-icons)
+;; Extension - Window
 (straight-use-package 'neotree)
 (straight-use-package 'tabbar)
 (straight-use-package 'powerline)
 (straight-use-package 'popwin)
-(straight-use-package 'git-gutter)
-;; Extension - Auto complete
+;; Extension - Completion
+(straight-use-package 'vertico)
+(straight-use-package 'consult)
+(straight-use-package 'orderless)
+(straight-use-package 'marginalia)
 (straight-use-package 'company)
 (straight-use-package 'company-box)
 (straight-use-package 'company-statistics)
 (straight-use-package '(company-anywhere :type git :host github :repo "zk-phi/company-anywhere"))
-;; Extension - Find and replace
+;; Extension - Editor
 (straight-use-package 'migemo)
-(straight-use-package 'visual-regexp)
-(straight-use-package 'anzu)
-;; Extension - Other
-(straight-use-package 'osx-osascript)
-;; Extension - Editor enhancement
 (straight-use-package 'expand-region)
 (straight-use-package 'multiple-cursors)
-;; Language - Config
-(straight-use-package 'nginx-mode)
-(straight-use-package 'yaml-mode)
-(straight-use-package 'markdown-mode)
-(straight-use-package 'plantuml-mode)
+(straight-use-package 'visual-regexp)
+(straight-use-package 'anzu)
+(straight-use-package 'git-gutter)
 ;; Language - Web
 (straight-use-package 'rhtml-mode)
 (straight-use-package 'vue-mode)
 (straight-use-package 'scss-mode)
 (straight-use-package 'js2-mode)
 (straight-use-package 'typescript-mode)
-(straight-use-package 'json-mode)
 (straight-use-package 'rjsx-mode)
+(straight-use-package 'json-mode)
 (straight-use-package 'mmm-mode)
-;; Language - Other
+;: Language - Ruby
+(straight-use-package 'ruby-mode)
 (straight-use-package 'rinari)
+;; Language - Misc
 (straight-use-package 'scala-mode)
+(straight-use-package 'yaml-mode)
+(straight-use-package 'markdown-mode)
+(straight-use-package 'plantuml-mode)
+(straight-use-package 'nginx-mode)
+;; Environment - Darwin
+(straight-use-package 'osx-osascript)
+
 
 (require 'cl-lib)
 
@@ -78,24 +78,23 @@
 (defvar module-files
   '(
     ;; Basics
-    basic
+    general-basic
     ;; Extensions
-    ext-framework
-    ext-basic
-    ext-window
-    ext-auto-complete
-    ext-find-and-replace
+    extension-basic
+    extension-window
+    extension-completion
+    extension-editor
     ;; Languages
-    lang-emacs-lisp
-    lang-config
-    lang-web
-    lang-ruby
+    language-emacs-lisp
+    language-web
+    language-ruby
+    language-misc
     ;; Functions
-    functions
+    general-functions
     ;; Key bind
-    key-bind
+    general-key-bindings
     ;; Environment dependent
-    darwin-environment
+    environment-darwin
     ))
 
 ;;; Load modules
@@ -108,9 +107,9 @@
 (cl-dolist (file module-files)
   (let ((file (symbol-name file)))
     (cond
-     ((and darwin-p (string-match-p "^darwin" file))
+     ((and darwin-p (string-match-p "darwin" file))
       (mtk/try-load file))
-     ((and linux-p (string-match-p "^linux" file))
+     ((and linux-p (string-match-p "linux" file))
       (mtk/try-load file))
      (t
       (mtk/try-load file)))))

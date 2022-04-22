@@ -1,4 +1,4 @@
-;;;; Basic
+;;;; General - Basic
 
 ;;; Environment
 (set-language-environment "Japanese")

@@ -1,4 +1,4 @@
-;;;; language - Emacs lisp
+;;;; language - Emacs Lisp
 
 ;;; emacs-lisp-mode.el
 ;; Configuration

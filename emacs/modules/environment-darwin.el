@@ -1,4 +1,4 @@
-;;;; Darwin
+;;;; Environment - Darwin
 
 (require 'osx-osascript)
 
