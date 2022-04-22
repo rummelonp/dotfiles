@@ -57,14 +57,14 @@
 (global-set-key (kbd "M-i")   'delete-indentation)      ;; tab-to-tab-stop
 (global-set-key (kbd "C-x i") 'indent-region)           ;; insert-file
 ;; cursor
-(global-set-key (kbd "M-a")   'beginning-of-defun) ;; backward-sentence
-(global-set-key (kbd "M-e")   'end-of-defun)       ;; forward-sentence
+(global-set-key (kbd "C-M-f") 'forward-word)       ;; forward-sexp
+(global-set-key (kbd "C-M-b") 'backward-word)      ;; backward-sexp
 (global-set-key (kbd "M-f")   'forward-sexp)       ;; forward-word
 (global-set-key (kbd "M-b")   'backward-sexp)      ;; backward-word
 (global-set-key (kbd "C-M-a") 'backward-sentence)  ;; beginning-of-defun
 (global-set-key (kbd "C-M-e") 'forward-sentence)   ;; end-of-fun
-(global-set-key (kbd "C-M-f") 'forward-word)       ;; forward-sexp
-(global-set-key (kbd "C-M-b") 'backward-word)      ;; backward-sexp
+(global-set-key (kbd "M-a")   'beginning-of-defun) ;; backward-sentence
+(global-set-key (kbd "M-e")   'end-of-defun)       ;; forward-sentence
 ;; scroll
 (global-set-key (kbd "C-v")   'scroll-up-command) ;; scroll-up-command
 (global-set-key (kbd "C-M-v") 'scroll-down)       ;; scroll-other-window
