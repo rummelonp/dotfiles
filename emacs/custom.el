@@ -31,6 +31,7 @@
  '(global-anzu-mode t)
  '(global-auto-revert-mode t)
  '(global-company-mode t)
+ '(global-flycheck-mode t)
  '(global-git-gutter-mode t)
  '(global-undo-tree-mode t)
  '(indent-tabs-mode nil)

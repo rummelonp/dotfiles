@@ -49,6 +49,7 @@
 (straight-use-package 'multiple-cursors)
 (straight-use-package 'visual-regexp)
 (straight-use-package 'anzu)
+(straight-use-package 'flycheck)
 (straight-use-package 'git-gutter)
 ;; Language - Web
 (straight-use-package 'rhtml-mode)
