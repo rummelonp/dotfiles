@@ -26,6 +26,7 @@
  '(delete-auto-save-files t)
  '(direnv-always-show-summary nil)
  '(direnv-mode t)
+ '(git-gutter:update-interval 5)
  '(global-anzu-mode t)
  '(global-auto-revert-mode t)
  '(global-company-mode t)
