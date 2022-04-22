@@ -98,3 +98,16 @@
   (add-to-list 'popwin:special-display-config '("*Backtrace*"))
   (add-to-list 'popwin:special-display-config '("*Warnings*"))
   (add-to-list 'popwin:special-display-config '("*Compile-Log*")))
+
+;; diminish
+(defun mtk/setup-diminish ()
+  (require 'diminish)
+  (diminish 'abbrev-mode)
+  (diminish 'company-box-mode)
+  (diminish 'eldoc-mode)
+  (diminish 'git-gutter-mode)
+  (diminish 'mmm-mode)
+  (diminish 'rainbow-mode)
+  (diminish 'robe-mode)
+  (diminish 'undo-tree-mode))
+(add-hook 'after-change-major-mode-hook 'mtk/setup-diminish)

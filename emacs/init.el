@@ -34,6 +34,7 @@
 (straight-use-package 'tabbar)
 (straight-use-package 'powerline)
 (straight-use-package 'popwin)
+(straight-use-package 'diminish)
 ;; Extension - Completion
 (straight-use-package 'vertico)
 (straight-use-package 'consult)
