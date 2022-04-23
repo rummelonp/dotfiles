@@ -8,7 +8,7 @@
 (prefer-coding-system 'utf-8)
 
 ;; theme
-(load-theme 'dracula t)
+(load-theme 'kabukicho t)
 (set-frame-parameter nil 'alpha 95)
 
 ;; font

@@ -18,7 +18,7 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 ;; General - Basic
-(straight-use-package 'dracula-theme)
+(straight-use-package '(emacs-kabukicho-theme :type git :host github :repo "mitukiii/emacs-kabukicho-theme"))
 ;; Exetnsion - Basic
 (straight-use-package 'sudo-edit)
 (straight-use-package 'recentf-ext)
