@@ -41,6 +41,7 @@
 (define-key neotree-mode-map (kbd "C-.") 'neotree-hidden-file-toggle)
 
 ;; powerline
+(require 'powerline)
 (defpowerline powerline-buffer-id nil)
 (powerline-default-theme)
 (set-face-attribute 'mode-line nil :foreground active-secondary-fg :background active-secondary-bg)
