@@ -52,6 +52,8 @@
 (straight-use-package 'anzu)
 (straight-use-package 'flycheck)
 (straight-use-package 'git-gutter)
+;; Language - Emacs Lisp
+(straight-use-package 'flycheck-package)
 ;; Language - Web
 (straight-use-package 'web-mode)
 (straight-use-package 'scss-mode)
