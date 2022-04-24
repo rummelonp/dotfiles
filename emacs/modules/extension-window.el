@@ -67,38 +67,30 @@
   (set-face-attribute 'tabbar-modified nil :foreground inactive-fg :background inactive-bg :box nil)
   (set-face-attribute 'tabbar-separator nil :foreground inactive-bg :background inactive-bg)
   ;; remove buttons
-  (dolist
-      (button
-       '(tabbar-buffer-home-button
-         tabbar-scroll-left-button
-         tabbar-scroll-right-button))
-    (set button (cons
-                 (cons "" nil)
-                 (cons "" nil))))
+  (let ((blank-button (cons (cons "" nil) (cons "" nil))))
+    (setq tabbar-buffer-home-button blank-button)
+    (setq tabbar-scroll-left-button blank-button)
+    (setq tabbar-scroll-right-button blank-button))
   ;; customize list
-  (setq tabbar-buffer-list-function
-        '(lambda ()
-           (cl-remove-if
-            '(lambda (buffer)
-               (cl-find (aref (buffer-name buffer) 0) " *"))
-            (buffer-list))))
+  (defun mtk/tabbar-buffer-list-function ()
+    (cl-remove-if
+     '(lambda (buffer)
+        (cl-find (aref (buffer-name buffer) 0) " *"))
+     (buffer-list)))
+  (setq tabbar-buffer-list-function 'mtk/tabbar-buffer-list-function)
   ;; customize group
-  (setq tabbar-buffer-groups-function
-        '(lambda ()
-           (list
-            (let ((name (symbol-name major-mode)))
-              (cond ((or (equal name "html-mode")
-                         (equal name "rhtml-mode")
-                         (equal name "vue-mode"))
-                     "vue-mode")
-                    ((or (equal name "css-mode")
-                         (equal name "scss-mode"))
-                     "vue-mode")
-                    ((or (equal name "typescript-mode")
-                         (equal name "js2-mode")
-                         (equal name "json-mode"))
-                     "vue-mode")
-                    (t name)))))))
+  (defun mtk/tabbar-buffer-group-function ()
+    (list
+     (let ((name (symbol-name major-mode)))
+       (cond ((or (equal name "web-mode")
+                  (equal name "css-mode")
+                  (equal name "scss-mode")
+                  (equal name "js2-mode")
+                  (equal name "typescript-mode")
+                  (equal name "json-mode"))
+              "web-mode")
+             (t name)))))
+  (setq tabbar-buffer-groups-function 'mtk/tabbar-buffer-group-function))
 
 ;; popwin
 (with-eval-after-load 'popwin
