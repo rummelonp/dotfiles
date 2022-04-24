@@ -17,5 +17,6 @@
 ;; misc
 (require 'savekill)
 (undohist-initialize)
+(require 'point-undo)
 (add-hook 'prog-mode-hook 'rainbow-mode)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
