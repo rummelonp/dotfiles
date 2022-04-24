@@ -104,3 +104,6 @@
 ;; anzu
 (bind-key "C-,"   'anzu-query-replace-at-cursor-thing)
 (bind-key "C-M-," 'anzu-query-replace-at-cursor)
+;; string-inflection
+(bind-key "C-:" 'string-inflection-all-cycle)
+(bind-key "C-'" 'string-inflection-all-cycle)

@@ -52,6 +52,7 @@
 (straight-use-package 'multiple-cursors)
 (straight-use-package 'visual-regexp)
 (straight-use-package 'anzu)
+(straight-use-package 'string-inflection)
 (straight-use-package 'flycheck)
 (straight-use-package 'consult-flycheck)
 (straight-use-package 'git-gutter)
