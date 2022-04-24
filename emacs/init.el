@@ -59,6 +59,7 @@
 (straight-use-package 'flycheck-package)
 ;; Language - Web
 (straight-use-package 'web-mode)
+(straight-use-package 'company-web)
 (straight-use-package 'scss-mode)
 (straight-use-package 'js2-mode)
 (straight-use-package 'typescript-mode)
