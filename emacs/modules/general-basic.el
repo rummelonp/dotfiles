@@ -41,4 +41,7 @@
 
 ;; misc
 (require 'savehist)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(defun mtk/maybe-delete-trailing-whitespace ()
+  (unless (eq major-mode 'markdown-mode)
+    (delete-trailing-whitespace)))
+(add-hook 'before-save-hook 'mtk/maybe-delete-trailing-whitespace)
