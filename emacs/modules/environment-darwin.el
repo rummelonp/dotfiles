@@ -5,16 +5,6 @@
 (require 'osx-osascript)
 
 ;;; Functions
-;; copy
-(defun mtk/darwin-copy-current-directory ()
-  (interactive)
-  (shell-command-to-string "pwd | perl -pe 's/(\r|\n)//' | pbcopy"))
-
-(defun mtk/darwin-copy-current-file-path ()
-  (interactive)
-  (shell-command-to-string (concat "echo " buffer-file-name " | perl -pe 's/(\r|\n)//' | pbcopy")))
-
-;; open
 (defun mtk/darwin-open (name)
   (osascript-run-str (concat "tell application \"" name "\" to activate window")))
 
