@@ -4,6 +4,12 @@
 # recentf.el
 /recentf
 
+# project.el
+/projects
+
+# savehist.el
+/history
+
 # savekill.el
 /kill-ring-saved.el
 
@@ -15,9 +21,3 @@
 
 # multiple-cursors.el
 /.mc-lists.el
-
-# project.el
-/projects
-
-# savehist.el
-/history
