@@ -52,6 +52,7 @@
 (straight-use-package 'visual-regexp)
 (straight-use-package 'anzu)
 (straight-use-package 'flycheck)
+(straight-use-package 'consult-flycheck)
 (straight-use-package 'git-gutter)
 ;; Language - Emacs Lisp
 (straight-use-package 'flycheck-package)
@@ -73,6 +74,8 @@
 (straight-use-package 'swift-mode)
 (straight-use-package 'go-mode)
 (straight-use-package 'yaml-mode)
+(straight-use-package 'dockerfile-mode)
+(straight-use-package 'terraform-mode)
 (straight-use-package 'markdown-mode)
 (straight-use-package 'plantuml-mode)
 (straight-use-package 'nginx-mode)
