@@ -74,10 +74,10 @@
 (global-set-key (kbd "C-y") 'yank)           ;; yank
 (global-set-key (kbd "C-M-y") 'yank-pop)
 ;; undo
-(global-set-key (kbd "C-_")   'undo) ;; undo
-(global-set-key (kbd "C-/")   'undo) ;; undo
-(global-set-key (kbd "C-M-_") 'redo) ;; undo-redo
-(global-set-key (kbd "C-M-/") 'redo) ;; dabbrev-completion
+(global-set-key (kbd "C-_")   'undo)           ;; undo
+(global-set-key (kbd "C-/")   'undo)           ;; undo
+(global-set-key (kbd "C-M-_") 'undo-tree-redo) ;; undo-redo
+(global-set-key (kbd "C-M-/") 'undo-tree-redo) ;; dabbrev-completion
 ;; point undo
 (global-set-key (kbd "M-p") 'point-undo)
 (global-set-key (kbd "M-n") 'point-redo)
