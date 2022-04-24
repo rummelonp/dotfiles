@@ -38,6 +38,12 @@
            (neotree-select-down-node)))))
 (define-key neotree-mode-map (kbd "<left>") 'mtk/neotree-left)
 (define-key neotree-mode-map (kbd "<right>") 'mtk/neotree-right)
+(define-key neotree-mode-map (kbd "+") 'neotree-create-node)
+(define-key neotree-mode-map (kbd "F") 'neotree-create-node)
+(define-key neotree-mode-map (kbd "C") 'neotree-copy-node)
+(define-key neotree-mode-map (kbd "R") 'neotree-rename-node)
+(define-key neotree-mode-map (kbd "D") 'neotree-delete-node)
+(define-key neotree-mode-map (kbd "D") 'neotree-enter)
 (define-key neotree-mode-map (kbd "C-.") 'neotree-hidden-file-toggle)
 
 ;; powerline

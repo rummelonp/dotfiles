@@ -53,6 +53,7 @@
                '("/opt/homebrew/share/migemo/utf-8/migemo-dict" "/usr/local/share/migemo/utf-8/migemo-dict" "/usr/share/cmigemo/utf-8/migemo-dict")))
  '(migemo-regex-dictionary nil)
  '(migemo-user-dictionary nil)
+ '(neo-default-system-application "open")
  '(neo-theme 'icons)
  '(plantuml-default-exec-mode 'executable)
  '(plantuml-executable-path
