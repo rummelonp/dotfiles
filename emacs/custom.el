@@ -36,7 +36,6 @@
  '(global-undo-tree-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(inhibit-startup-message t)
  '(initial-scratch-message nil)
  '(js-indent-level 2)
  '(js2-strict-missing-semi-warning nil)
