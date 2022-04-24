@@ -25,6 +25,7 @@
 (straight-use-package 'savekill)
 (straight-use-package 'undohist)
 (straight-use-package 'undo-tree)
+(straight-use-package 'point-undo)
 (straight-use-package 'rainbow-mode)
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'direnv)

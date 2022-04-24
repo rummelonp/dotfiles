@@ -78,6 +78,9 @@
 (global-set-key (kbd "C-/")   'undo) ;; undo
 (global-set-key (kbd "C-M-_") 'redo) ;; undo-redo
 (global-set-key (kbd "C-M-/") 'redo) ;; dabbrev-completion
+;; point undo
+(global-set-key (kbd "M-p") 'point-undo)
+(global-set-key (kbd "M-n") 'point-redo)
 ;; comment
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 ;; configuration
