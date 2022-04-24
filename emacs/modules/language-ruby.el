@@ -12,14 +12,16 @@
   (add-hook 'ruby-mode-hook 'enh-ruby-mode)
   (add-hook 'enh-ruby-mode-hook 'robe-mode)
   (add-hook 'enh-ruby-mode-hook 'rinari-minor-mode)
-  (define-key enh-ruby-mode-map (kbd "C-M-f") 'forward-word)                ;; enh-ruby-forward-sexp
-  (define-key enh-ruby-mode-map (kbd "C-M-b") 'backward-word)               ;; enh-ruby-backward-sexp
-  (define-key enh-ruby-mode-map (kbd "M-f") 'enh-ruby-forward-sexp)
-  (define-key enh-ruby-mode-map (kbd "M-b") 'enh-ruby-backward-sexp)
-  (define-key enh-ruby-mode-map (kbd "C-M-a") 'enh-ruby-beginning-of-block) ;; enh-ruby-beginning-of-defun
-  (define-key enh-ruby-mode-map (kbd "C-M-e") 'enh-ruby-end-of-block)       ;; enh-ruby-end-of-defun
-  (define-key enh-ruby-mode-map (kbd "M-a") 'enh-ruby-beginning-of-defun)
-  (define-key enh-ruby-mode-map (kbd "M-e") 'enh-ruby-end-of-defun)
-  (define-key robe-mode-map (kbd "C-.") 'robe-doc)
-  (define-key robe-mode-map (kbd "C-M-.") 'robe-jump)
-  (define-key robe-mode-map (kbd "M-.") 'pop-tag-mark))
+  (bind-keys :map enh-ruby-mode-map
+             ("C-M-f" . forward-word)                ;; enh-ruby-forward-sexp
+             ("C-M-b" . backward-word)               ;; enh-ruby-backward-sexp
+             ("M-f"   . enh-ruby-forward-sexp)
+             ("M-b"   . enh-ruby-backward-sexp)
+             ("C-M-a" . enh-ruby-beginning-of-block) ;; enh-ruby-beginning-of-defun
+             ("C-M-e" . enh-ruby-end-of-block)       ;; enh-ruby-end-of-defun
+             ("M-a"   . enh-ruby-beginning-of-defun)
+             ("M-e"   . enh-ruby-end-of-defun))
+  (bind-keys :map robe-mode-map
+             ("C-."   . robe-doc)
+             ("C-M-." . robe-jump)
+             ("M-."   . pop-tag-mark)))

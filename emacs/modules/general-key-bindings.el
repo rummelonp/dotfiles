@@ -10,97 +10,97 @@
   (setq mac-right-command-modifier 'hyper))
 
 ;;; Character
-(global-set-key (kbd "M-(J\(B") "\\")
+(bind-key "M-(J\(B" "\\")
 
 ;;; Completion
 ;; consult
-(global-set-key (kbd "C-x C-a") 'consult-recent-file)
-(global-set-key (kbd "C-x C-f") 'project-find-file)      ;; find-file
-(global-set-key (kbd "C-x f")   'find-file)              ;; set-fill-column
-(global-set-key (kbd "C-x C-d") 'mtk/neotree-toggle)     ;; list-directory
-(global-set-key (kbd "C-x d")   'project-find-dir)       ;; dired
-(global-set-key (kbd "C-x C-b") 'consult-project-buffer) ;; list-buffer
-(global-set-key (kbd "C-x b")   'consult-buffer)         ;; switch-to-buffer
-(global-set-key (kbd "C-x g")   'consult-git-grep)
-(global-set-key (kbd "C-x C-m") 'consult-imenu)
-(global-set-key (kbd "C-x m")   'consult-imenu-multi)    ;; compose-mail
-(global-set-key (kbd "C-x C-y") 'yank-from-kill-ring)
-(global-set-key (kbd "M-g M-g") 'consult-line)           ;; goto-line
-(global-set-key (kbd "M-g g")   'consult-line-multi)     ;; goto-line
+(bind-key "C-x C-a" 'consult-recent-file)
+(bind-key "C-x C-f" 'project-find-file)      ;; find-file
+(bind-key "C-x f"   'find-file)              ;; set-fill-column
+(bind-key "C-x C-d" 'mtk/neotree-toggle)     ;; list-directory
+(bind-key "C-x d"   'project-find-dir)       ;; dired
+(bind-key "C-x C-b" 'consult-project-buffer) ;; list-buffer
+(bind-key "C-x b"   'consult-buffer)         ;; switch-to-buffer
+(bind-key "C-x g"   'consult-git-grep)
+(bind-key "C-x C-m" 'consult-imenu)
+(bind-key "C-x m"   'consult-imenu-multi)    ;; compose-mail
+(bind-key "C-x C-y" 'yank-from-kill-ring)
+(bind-key "M-g M-g" 'consult-line)           ;; goto-line
+(bind-key "M-g g"   'consult-line-multi)     ;; goto-line
 ;; company
-(global-set-key (kbd "C-x C-.") 'company-complete)
+(bind-key "C-x C-." 'company-complete)
 
 ;;; Window
 ;; frame
-(global-set-key (kbd "C-z") nil) ;; suspend-frame
+(bind-key "C-z" nil) ;; suspend-frame
 ;; window
-(global-set-key (kbd "C-x `") 'delete-other-windows)                  ;; next-error
-(global-set-key (kbd "C-t")   'mtk/next-window-or-split-horizontally) ;; transpose-charas
-(global-set-key (kbd "C-S-t") 'mtk/prev-window)
-(global-set-key (kbd "M-t")   'delete-window)                         ;; transpose-words
+(bind-key  "C-x `" 'delete-other-windows)                  ;; next-error
+(bind-key* "C-t"   'mtk/next-window-or-split-horizontally) ;; transpose-charas
+(bind-key  "C-S-t" 'mtk/prev-window)
+(bind-key  "M-t"   'delete-window)                         ;; transpose-words
 ;; tabbar
-(global-set-key (kbd "C-x j")   'mtk/tabbar-sort-tab)
-(global-set-key (kbd "C-x C-n") 'tabbar-forward-tab)    ;; set-goal-column
-(global-set-key (kbd "C-x C-p") 'tabbar-backward-tab)   ;; mark-page
-(global-set-key (kbd "C-x n")   'tabbar-forward-group)  ;; save-buffers-kill-terminal
-(global-set-key (kbd "C-x p")   'tabbar-backward-group)
+(bind-key "C-x j"   'mtk/tabbar-sort-tab)
+(bind-key "C-x C-n" 'tabbar-forward-tab)    ;; set-goal-column
+(bind-key "C-x C-p" 'tabbar-backward-tab)   ;; mark-page
+(bind-key "C-x n"   'tabbar-forward-group)  ;; save-buffers-kill-terminal
+(bind-key "C-x p"   'tabbar-backward-group)
 
 ;;; Basic
 ;; server
-(global-set-key (kbd "C-x C-c") 'server-edit) ;; save-buffers-kill-terminal
+(bind-key "C-x C-c" 'server-edit) ;; save-buffers-kill-terminal
 ;; buffer
-(global-set-key (kbd "M-k") 'kill-this-buffer) ;; kill-sentence
+(bind-key "M-k" 'kill-this-buffer) ;; kill-sentence
 ;; newline and indent
-(global-set-key (kbd "C-m")   'newline-and-indent)      ;; newline
-(global-set-key (kbd "C-j")   'indent-new-comment-line) ;; electric-newline-and-maybe-indent
-(global-set-key (kbd "C-i")   'indent-for-tab-command)  ;; indent-for-tab-command
-(global-set-key (kbd "M-i")   'delete-indentation)      ;; tab-to-tab-stop
-(global-set-key (kbd "C-x i") 'indent-region)           ;; insert-file
+(bind-key "C-m"   'newline-and-indent)      ;; newline
+(bind-key "C-j"   'indent-new-comment-line) ;; electric-newline-and-maybe-indent
+(bind-key "C-i"   'indent-for-tab-command)  ;; indent-for-tab-command
+(bind-key "M-i"   'delete-indentation)      ;; tab-to-tab-stop
+(bind-key "C-x i" 'indent-region)           ;; insert-file
 ;; cursor
-(global-set-key (kbd "C-M-f") 'forward-word)       ;; forward-sexp
-(global-set-key (kbd "C-M-b") 'backward-word)      ;; backward-sexp
-(global-set-key (kbd "M-f")   'forward-sexp)       ;; forward-word
-(global-set-key (kbd "M-b")   'backward-sexp)      ;; backward-word
-(global-set-key (kbd "C-M-a") 'backward-sentence)  ;; beginning-of-defun
-(global-set-key (kbd "C-M-e") 'forward-sentence)   ;; end-of-fun
-(global-set-key (kbd "M-a")   'beginning-of-defun) ;; backward-sentence
-(global-set-key (kbd "M-e")   'end-of-defun)       ;; forward-sentence
+(bind-key "C-M-f" 'forward-word)       ;; forward-sexp
+(bind-key "C-M-b" 'backward-word)      ;; backward-sexp
+(bind-key "M-f"   'forward-sexp)       ;; forward-word
+(bind-key "M-b"   'backward-sexp)      ;; backward-word
+(bind-key "C-M-a" 'backward-sentence)  ;; beginning-of-defun
+(bind-key "C-M-e" 'forward-sentence)   ;; end-of-fun
+(bind-key "M-a"   'beginning-of-defun) ;; backward-sentence
+(bind-key "M-e"   'end-of-defun)       ;; forward-sentence
 ;; scroll
-(global-set-key (kbd "C-v")   'scroll-up-command) ;; scroll-up-command
-(global-set-key (kbd "C-M-v") 'scroll-down)       ;; scroll-other-window
+(bind-key "C-v"   'scroll-up-command) ;; scroll-up-command
+(bind-key "C-M-v" 'scroll-down)       ;; scroll-other-window
 ;; kill
-(global-set-key (kbd "C-w") 'kill-ring-save) ;; kill-region
-(global-set-key (kbd "M-w") 'kill-region)    ;; kill-ring-save
-(global-set-key (kbd "C-y") 'yank)           ;; yank
-(global-set-key (kbd "C-M-y") 'yank-pop)
+(bind-key "C-w" 'kill-ring-save) ;; kill-region
+(bind-key "M-w" 'kill-region)    ;; kill-ring-save
+(bind-key "C-y" 'yank)           ;; yank
+(bind-key "C-M-y" 'yank-pop)
 ;; undo
-(global-set-key (kbd "C-_")   'undo)           ;; undo
-(global-set-key (kbd "C-/")   'undo)           ;; undo
-(global-set-key (kbd "C-M-_") 'undo-tree-redo) ;; undo-redo
-(global-set-key (kbd "C-M-/") 'undo-tree-redo) ;; dabbrev-completion
+(bind-key "C-_"   'undo)           ;; undo
+(bind-key "C-/"   'undo)           ;; undo
+(bind-key "C-M-_" 'undo-tree-redo) ;; undo-redo
+(bind-key "C-M-/" 'undo-tree-redo) ;; dabbrev-completion
 ;; point undo
-(global-set-key (kbd "M-p") 'point-undo)
-(global-set-key (kbd "M-n") 'point-redo)
+(bind-key "M-p" 'point-undo)
+(bind-key "M-n" 'point-redo)
 ;; comment
-(global-set-key (kbd "C-;") 'comment-or-uncomment-region)
+(bind-key "C-;" 'comment-or-uncomment-region)
 ;; configuration
-(global-set-key (kbd "C--") 'toggle-truncate-lines) ;; negative-argument
+(bind-key "C--" 'toggle-truncate-lines) ;; negative-argument
 ;; help
-(global-set-key (kbd "M-?") 'help-for-help) ;; xref-find-references
+(bind-key "M-?" 'help-for-help) ;; xref-find-references
 
 ;;; Editor
 ;; expand-region
-(global-set-key (kbd "C-@")   'er/expand-region)   ;; set-mark-command
-(global-set-key (kbd "C-M-@") 'er/contract-region) ;; mark-sexp
+(bind-key "C-@"   'er/expand-region)   ;; set-mark-command
+(bind-key "C-M-@" 'er/contract-region) ;; mark-sexp
 ;; multiple-cursors
-(global-set-key (kbd "C->")   'mc/mark-next-like-this)
-(global-set-key (kbd "C-M-<") 'mc/unmark-next-like-this)
-(global-set-key (kbd "C-<")   'mc/mark-previous-like-this)
-(global-set-key (kbd "C-M->") 'mc/unmark-previous-like-this)
-(global-set-key (kbd "M-@")   'mc/mark-all-like-this)        ;; mark-word
+(bind-key "C->"   'mc/mark-next-like-this)
+(bind-key "C-M-<" 'mc/unmark-next-like-this)
+(bind-key "C-<"   'mc/mark-previous-like-this)
+(bind-key "C-M->" 'mc/unmark-previous-like-this)
+(bind-key "M-@"   'mc/mark-all-like-this)        ;; mark-word
 ;; visual-regexp
-(global-set-key (kbd "M-%")   'vr/query-replace) ;; query-replace
-(global-set-key (kbd "C-M-%") 'vr/replace)       ;; query-replace-regexp
+(bind-key "M-%"   'vr/query-replace) ;; query-replace
+(bind-key "C-M-%" 'vr/replace)       ;; query-replace-regexp
 ;; anzu
-(global-set-key (kbd "C-,")   'anzu-query-replace-at-cursor-thing)
-(global-set-key (kbd "C-M-,") 'anzu-query-replace-at-cursor)
+(bind-key "C-,"   'anzu-query-replace-at-cursor-thing)
+(bind-key "C-M-," 'anzu-query-replace-at-cursor)

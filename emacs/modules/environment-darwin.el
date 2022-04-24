@@ -17,5 +17,5 @@
   (mtk/darwin-open "Tweetbot"))
 
 ;;; Key bindings
-(global-set-key (kbd "C-x C-t") 'mtk/darwin-open-terminal)
-(global-set-key (kbd "s-E") 'mtk/darwin-open-tweetbot)
+(bind-key "C-x C-t" 'mtk/darwin-open-terminal)
+(bind-key "s-E" 'mtk/darwin-open-tweetbot)

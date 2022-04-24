@@ -20,6 +20,7 @@
 ;; General - Basic
 (straight-use-package '(emacs-kabukicho-theme :type git :host github :repo "mitukiii/emacs-kabukicho-theme"))
 ;; Exetnsion - Basic
+(straight-use-package 'bind-key)
 (straight-use-package 'sudo-edit)
 (straight-use-package 'recentf-ext)
 (straight-use-package 'savekill)

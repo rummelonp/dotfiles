@@ -36,15 +36,16 @@
            (neo-buffer--refresh t))
           (t
            (neotree-select-down-node)))))
-(define-key neotree-mode-map (kbd "<left>") 'mtk/neotree-left)
-(define-key neotree-mode-map (kbd "<right>") 'mtk/neotree-right)
-(define-key neotree-mode-map (kbd "+") 'neotree-create-node)
-(define-key neotree-mode-map (kbd "F") 'neotree-create-node)
-(define-key neotree-mode-map (kbd "C") 'neotree-copy-node)
-(define-key neotree-mode-map (kbd "R") 'neotree-rename-node)
-(define-key neotree-mode-map (kbd "D") 'neotree-delete-node)
-(define-key neotree-mode-map (kbd "D") 'neotree-enter)
-(define-key neotree-mode-map (kbd "C-.") 'neotree-hidden-file-toggle)
+(bind-keys* :map neotree-mode-map
+            ("<left>"  . mtk/neotree-left)
+            ("<right>" . mtk/neotree-right)
+            ("+" . neotree-create-node)
+            ("F" . neotree-create-node)
+            ("C" . neotree-copy-node)
+            ("R" . neotree-rename-node)
+            ("D" . neotree-delete-node)
+            ("D" . neotree-enter)
+            ("C-." . neotree-hidden-file-toggle))
 
 ;; powerline
 (require 'powerline)
