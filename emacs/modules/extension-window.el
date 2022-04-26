@@ -58,40 +58,41 @@
 (set-face-attribute 'powerline-inactive1 nil :foreground inactive-fg :background inactive-bg)
 (set-face-attribute 'powerline-inactive2 nil :foreground inactive-fg :background inactive-bg)
 
-;; tabbar
-(with-eval-after-load 'tabbar
-  ;; face
-  (set-face-attribute 'tabbar-default nil :background inactive-bg :height 1.0)
-  (set-face-attribute 'tabbar-selected nil :foreground active-primary-fg :background active-primary-bg :box nil)
-  (set-face-attribute 'tabbar-selected-modified nil :foreground active-primary-fg :background active-primary-bg :box nil)
-  (set-face-attribute 'tabbar-unselected nil :foreground inactive-fg :background inactive-bg :box nil)
-  (set-face-attribute 'tabbar-modified nil :foreground inactive-fg :background inactive-bg :box nil)
-  (set-face-attribute 'tabbar-separator nil :foreground inactive-bg :background inactive-bg)
-  ;; remove buttons
-  (let ((blank-button (cons (cons "" nil) (cons "" nil))))
-    (setq tabbar-buffer-home-button blank-button)
-    (setq tabbar-scroll-left-button blank-button)
-    (setq tabbar-scroll-right-button blank-button))
-  ;; customize list
-  (defun mtk/tabbar-buffer-list-function ()
-    (cl-remove-if
-     '(lambda (buffer)
-        (cl-find (aref (buffer-name buffer) 0) " *"))
-     (buffer-list)))
-  (setq tabbar-buffer-list-function 'mtk/tabbar-buffer-list-function)
-  ;; customize group
-  (defun mtk/tabbar-buffer-group-function ()
-    (list
-     (let ((name (symbol-name major-mode)))
-       (cond ((or (equal name "web-mode")
-                  (equal name "css-mode")
-                  (equal name "scss-mode")
-                  (equal name "js2-mode")
-                  (equal name "typescript-mode")
-                  (equal name "json-mode"))
-              "web-mode")
-             (t name)))))
-  (setq tabbar-buffer-groups-function 'mtk/tabbar-buffer-group-function))
+;;; Tabbar
+(require 'tabbar)
+;; face
+(set-face-attribute 'tabbar-default nil :background inactive-bg :height 1.0)
+(set-face-attribute 'tabbar-selected nil :foreground active-primary-fg :background active-primary-bg :box nil)
+(set-face-attribute 'tabbar-selected-modified nil :foreground active-primary-fg :background active-primary-bg :box nil)
+(set-face-attribute 'tabbar-unselected nil :foreground inactive-fg :background inactive-bg :box nil)
+(set-face-attribute 'tabbar-modified nil :foreground inactive-fg :background inactive-bg :box nil)
+(set-face-attribute 'tabbar-separator nil :foreground inactive-bg :background inactive-bg)
+;; remove buttons
+(let ((blank-button (cons (cons "" nil) (cons "" nil))))
+  (setq tabbar-buffer-home-button blank-button)
+  (setq tabbar-scroll-left-button blank-button)
+  (setq tabbar-scroll-right-button blank-button))
+;; customize list
+(defun mtk/tabbar-buffer-list-function ()
+  (cl-remove-if
+   '(lambda (buffer)
+      (cl-find (aref (buffer-name buffer) 0) " *"))
+   (buffer-list)))
+(setq tabbar-buffer-list-function 'mtk/tabbar-buffer-list-function)
+;; customize group
+(defun mtk/tabbar-buffer-group-function ()
+  (list
+   (let ((name (symbol-name major-mode)))
+     (cond ((or (equal name "web-mode")
+                (equal name "css-mode")
+                (equal name "scss-mode")
+                (equal name "js2-mode")
+                (equal name "typescript-mode")
+                (equal name "json-mode"))
+            "web-mode")
+           (t name)))))
+(setq tabbar-buffer-groups-function 'mtk/tabbar-buffer-group-function)
+(tabbar-mode t)
 
 ;; popwin
 (with-eval-after-load 'popwin

@@ -82,7 +82,6 @@
  '(show-paren-mode t)
  '(show-paren-style 'mixed)
  '(tab-width 2)
- '(tabbar-mode t nil (tabbar))
  '(tabbar-separator '(1))
  '(tool-bar-mode nil)
  '(truncate-lines t)
