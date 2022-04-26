@@ -84,6 +84,10 @@
 ;; Environment - Darwin
 (straight-use-package 'osx-osascript)
 
+;;; Load custom variables
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
 ;;; Variables
 (defvar darwin-p
   (eq system-type 'darwin))
@@ -121,7 +125,3 @@
       (mtk/try-load file))
      (t
       (mtk/try-load file)))))
-
-;;; Load custom variables
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
