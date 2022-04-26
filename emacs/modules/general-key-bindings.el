@@ -15,18 +15,18 @@
 ;;; Completion
 ;; consult
 (bind-key "C-x C-a" 'consult-recent-file)
-(bind-key "C-x C-f" 'project-find-file)      ;; find-file
-(bind-key "C-x f"   'find-file)              ;; set-fill-column
-(bind-key "C-x C-d" 'mtk/neotree-toggle)     ;; list-directory
-(bind-key "C-x d"   'project-find-dir)       ;; dired
-(bind-key "C-x C-b" 'consult-project-buffer) ;; list-buffer
-(bind-key "C-x b"   'consult-buffer)         ;; switch-to-buffer
+(bind-key "C-x C-f" 'project-find-file)           ;; find-file
+(bind-key "C-x f"   'find-file)                   ;; set-fill-column
+(bind-key "C-x C-d" 'mtk/neotree-toggle)          ;; list-directory
+(bind-key "C-x d"   'project-find-dir)            ;; dired
+(bind-key "C-x C-b" 'consult-project-buffer)      ;; list-buffer
+(bind-key "C-x b"   'consult-buffer)              ;; switch-to-buffer
 (bind-key "C-x g"   'consult-git-grep)
 (bind-key "C-x C-m" 'consult-imenu)
-(bind-key "C-x m"   'consult-imenu-multi)    ;; compose-mail
-(bind-key "C-x C-y" 'yank-from-kill-ring)
-(bind-key "M-g M-g" 'consult-line)           ;; goto-line
-(bind-key "M-g g"   'consult-line-multi)     ;; goto-line
+(bind-key "C-x m"   'consult-imenu-multi)         ;; compose-mail
+(bind-key "C-x C-y" 'consult-yank-from-kill-ring)
+(bind-key "M-g M-g" 'consult-line)                ;; goto-line
+(bind-key "M-g g"   'consult-line-multi)          ;; goto-line
 ;; company
 (bind-key "C-x C-." 'company-complete)
 
@@ -69,9 +69,9 @@
 (bind-key "C-v"   'scroll-up-command) ;; scroll-up-command
 (bind-key "C-M-v" 'scroll-down)       ;; scroll-other-window
 ;; kill
-(bind-key "C-w" 'kill-ring-save) ;; kill-region
-(bind-key "M-w" 'kill-region)    ;; kill-ring-save
-(bind-key "C-y" 'yank)           ;; yank
+(bind-key "C-w"   'kill-ring-save) ;; kill-region
+(bind-key "M-w"   'kill-region)    ;; kill-ring-save
+(bind-key "C-y"   'yank)           ;; yank
 (bind-key "C-M-y" 'yank-pop)
 ;; undo
 (bind-key "C-_"   'undo)           ;; undo

@@ -13,6 +13,9 @@
 
 ;; consult
 (with-eval-after-load 'consult
+  (consult-customize
+   consult-recent-file consult-project-buffer consult-buffer
+   :preview-key nil)
   (require 'orderless))
 
 ;; company

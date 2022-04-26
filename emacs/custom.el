@@ -18,7 +18,7 @@
  '(company-transformers
    '(company-sort-by-statistics company-sort-by-backend-importance))
  '(completion-styles '(orderless))
- '(consult-preview-key nil)
+ '(consult-preview-key 'any)
  '(create-lockfiles nil)
  '(css-indent-offset 2)
  '(cua-enable-cua-keys nil)
@@ -36,6 +36,7 @@
  '(global-undo-tree-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(initial-frame-alist '((width . 160) (height . 40)))
  '(initial-scratch-message nil)
  '(js-indent-level 2)
  '(js2-strict-missing-semi-warning nil)
