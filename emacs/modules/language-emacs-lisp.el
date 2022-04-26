@@ -2,15 +2,13 @@
 ;; language - Emacs Lisp
 ;;
 
-(defun mtk/find-anything-at-point ()
-  (interactive)
-  (let ((vsym (variable-at-point))
-        (fsym (function-called-at-point)))
-    (cond ((and vsym (not (equal vsym 0)))
-           (find-variable-other-window vsym))
-          (fsym
-           (find-function-other-window fsym)))))
-(bind-key "C-." 'mtk/find-anything-at-point emacs-lisp-mode-map)
+(defun mtk/setup-emacs-lisp-mode ()
+  (require 'elisp-slime-nav)
+  (elisp-slime-nav-mode)
+  (bind-keys* :map elisp-slime-nav-mode-map
+              ("C-."   . elisp-slime-nav-describe-elisp-thing-at-point)
+              ("C-M-." . elisp-slime-nav-find-elisp-thing-at-point)))
+(add-hook 'emacs-lisp-mode-hook 'mtk/setup-emacs-lisp-mode)
 
 (defun mtk/byte-compile-this-file ()
   (interactive)

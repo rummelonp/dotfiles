@@ -23,5 +23,4 @@
              ("M-e"   . enh-ruby-end-of-defun))
   (bind-keys :map robe-mode-map
              ("C-."   . robe-doc)
-             ("C-M-." . robe-jump)
-             ("M-."   . pop-tag-mark)))
+             ("C-M-." . robe-jump)))

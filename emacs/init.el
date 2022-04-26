@@ -56,6 +56,7 @@
 (straight-use-package 'consult-flycheck)
 (straight-use-package 'git-gutter)
 ;; Language - Emacs Lisp
+(straight-use-package 'elisp-slime-nav)
 (straight-use-package 'flycheck-package)
 ;; Language - Web
 (straight-use-package 'web-mode)
