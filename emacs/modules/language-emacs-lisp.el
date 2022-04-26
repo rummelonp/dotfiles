@@ -3,6 +3,9 @@
 ;;
 
 (defun mtk/setup-emacs-lisp-mode ()
+  ;; company
+  (setq-local company-backends '(company-elisp))
+  ;; elisp-slime-nav
   (require 'elisp-slime-nav)
   (elisp-slime-nav-mode)
   (bind-keys* :map elisp-slime-nav-mode-map
