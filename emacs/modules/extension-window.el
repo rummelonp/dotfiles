@@ -2,7 +2,7 @@
 ;; Extension - Window
 ;;
 
-;; variables
+;;; Variables
 (defvar active-primary-fg "black")
 (defvar active-primary-bg "#1aa6b1")
 (defvar active-secondary-fg "white")
@@ -12,7 +12,7 @@
 (defvar inactive-fg "gray80")
 (defvar inactive-bg "#181a26")
 
-;; neotree
+;;; NeoTree
 (require 'neotree)
 (defun mtk/neotree-left (arg)
   (interactive "P")
@@ -47,7 +47,7 @@
             ("D" . neotree-enter)
             ("C-." . neotree-hidden-file-toggle))
 
-;; powerline
+;;; Powerline
 (require 'powerline)
 (defpowerline powerline-buffer-id nil)
 (powerline-default-theme)
@@ -94,13 +94,13 @@
 (setq tabbar-buffer-groups-function 'mtk/tabbar-buffer-group-function)
 (tabbar-mode t)
 
-;; popwin
+;;; Popwin
 (with-eval-after-load 'popwin
   (add-to-list 'popwin:special-display-config '("*Backtrace*"))
   (add-to-list 'popwin:special-display-config '("*Warnings*"))
   (add-to-list 'popwin:special-display-config '("*Compile-Log*")))
 
-;; diminish
+;;; Diminish
 (defun mtk/setup-diminish ()
   (require 'diminish)
   (diminish 'abbrev-mode)
