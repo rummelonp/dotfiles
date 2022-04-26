@@ -98,10 +98,9 @@
 (bind-key "C-<"   'mc/mark-previous-like-this)
 (bind-key "C-M->" 'mc/unmark-previous-like-this)
 (bind-key "M-@"   'mc/mark-all-like-this)        ;; mark-word
-;; visual-regexp
-(bind-key "M-%"   'vr/query-replace) ;; query-replace
-(bind-key "C-M-%" 'vr/replace)       ;; query-replace-regexp
 ;; anzu
+(bind-key "M-%"   'anzu-query-replace)                 ;; query-replace
+(bind-key "C-M-%" 'anzu-query-replace-regexp)          ;; query-replace-regexp
 (bind-key "C-,"   'anzu-query-replace-at-cursor-thing)
 (bind-key "C-M-," 'anzu-query-replace-at-cursor)
 ;; string-inflection

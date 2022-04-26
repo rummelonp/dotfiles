@@ -50,7 +50,6 @@
 (straight-use-package 'migemo)
 (straight-use-package 'expand-region)
 (straight-use-package 'multiple-cursors)
-(straight-use-package 'visual-regexp)
 (straight-use-package 'anzu)
 (straight-use-package 'string-inflection)
 (straight-use-package 'flycheck)
