@@ -8,7 +8,6 @@
   (require 'enh-ruby-mode)
   (require 'rinari)
   (require 'robe)
-  (push 'company-robe company-backends)
   (add-hook 'ruby-mode-hook 'enh-ruby-mode)
   (add-hook 'enh-ruby-mode-hook 'robe-mode)
   (add-hook 'enh-ruby-mode-hook 'rinari-minor-mode)
@@ -24,3 +23,7 @@
   (bind-keys :map robe-mode-map
              ("C-."   . robe-doc)
              ("C-M-." . robe-jump)))
+
+(defun mtk/setup-ruby-mode ()
+  (setq-local company-backends '(company-robe (company-dabbrev-code company-keywords))))
+(add-hook 'ruby-mode-hook 'mtk/setup-ruby-mode)
