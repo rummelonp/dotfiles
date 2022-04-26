@@ -20,8 +20,8 @@
 ;; General - Basic
 (straight-use-package '(emacs-kabukicho-theme :type git :host github :repo "mitukiii/emacs-kabukicho-theme"))
 ;; Exetnsion - Basic
+(straight-use-package 'all-the-icons)
 (straight-use-package 'bind-key)
-(straight-use-package 'sudo-edit)
 (straight-use-package 'recentf-ext)
 (straight-use-package 'savekill)
 (straight-use-package 'undohist)
@@ -30,7 +30,8 @@
 (straight-use-package 'rainbow-mode)
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'direnv)
-(straight-use-package 'all-the-icons)
+(straight-use-package 'sudo-edit)
+(straight-use-package 'git-gutter)
 ;; Extension - Window
 (straight-use-package 'neotree)
 (straight-use-package 'tabbar)
@@ -40,6 +41,7 @@
 ;; Extension - Completion
 (straight-use-package 'vertico)
 (straight-use-package 'consult)
+(straight-use-package 'migemo)
 (straight-use-package 'orderless)
 (straight-use-package 'marginalia)
 (straight-use-package 'company)
@@ -47,14 +49,13 @@
 (straight-use-package 'company-statistics)
 (straight-use-package '(company-anywhere :type git :host github :repo "zk-phi/company-anywhere"))
 ;; Extension - Editor
-(straight-use-package 'migemo)
 (straight-use-package 'expand-region)
 (straight-use-package 'multiple-cursors)
 (straight-use-package 'anzu)
 (straight-use-package 'string-inflection)
+;; Language - General
 (straight-use-package 'flycheck)
 (straight-use-package 'consult-flycheck)
-(straight-use-package 'git-gutter)
 ;; Language - Emacs Lisp
 (straight-use-package 'elisp-slime-nav)
 (straight-use-package 'flycheck-package)
@@ -100,7 +101,7 @@
     extension-basic
     extension-window
     extension-completion
-    extension-editor
+    language-general
     language-emacs-lisp
     language-web
     language-ruby

@@ -17,6 +17,12 @@
    consult-recent-file consult-project-buffer consult-buffer
    :preview-key nil))
 
+;; migemo
+(require 'migemo)
+(migemo-init)
+(set-process-query-on-exit-flag migemo-process nil)
+(bind-key "C-i" 'migemo-isearch-toggle-migemo isearch-mode-map)
+
 ;; orderless
 (with-eval-after-load 'orderless
   ;; https://nyoho.jp/diary/?date=20210615
