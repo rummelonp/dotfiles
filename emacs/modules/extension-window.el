@@ -83,7 +83,9 @@
 (defun mtk/tabbar-buffer-group-function ()
   (list
    (let ((name (symbol-name major-mode)))
-     (cond ((or (equal name "web-mode")
+     (cond ((or (equal name "html-mode")
+                (equal name "nxml-mode")
+                (equal name "web-mode")
                 (equal name "css-mode")
                 (equal name "scss-mode")
                 (equal name "js2-mode")
