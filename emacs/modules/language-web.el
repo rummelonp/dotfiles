@@ -11,8 +11,10 @@
 (add-to-list 'auto-mode-alist '("\\.vue$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
+(with-eval-after-load 'web-mode
+  (require 'company-web-html))
+
 (defun mtk/setup-web-mode ()
-  (require 'company-web-html)
   (setq-local company-backends
-              '((company-web-html company-dabbrev-code))))
+              '((company-web-html company-dabbrev-code company-dabbrev))))
 (add-hook 'web-mode-hook 'mtk/setup-web-mode)

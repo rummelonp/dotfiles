@@ -2,15 +2,15 @@
 ;; language - Emacs Lisp
 ;;
 
-(defun mtk/setup-emacs-lisp-mode ()
-  ;; company
-  (setq-local company-backends '(company-elisp))
-  ;; elisp-slime-nav
+(with-eval-after-load 'elisp-mode
   (require 'elisp-slime-nav)
-  (elisp-slime-nav-mode)
+  (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
   (bind-keys :map elisp-slime-nav-mode-map
              ("C-."   . elisp-slime-nav-describe-elisp-thing-at-point)
              ("C-M-." . elisp-slime-nav-find-elisp-thing-at-point)))
+
+(defun mtk/setup-emacs-lisp-mode ()
+  (setq-local company-backends '(company-elisp)))
 (add-hook 'emacs-lisp-mode-hook 'mtk/setup-emacs-lisp-mode)
 
 (defun mtk/byte-compile-this-file ()

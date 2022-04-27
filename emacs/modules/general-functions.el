@@ -59,7 +59,7 @@
           (put tabset 'template nil)
           (tabbar-display-update)))))
 
-;; other functions
+;; misc functions
 (defun mtk/copy-current-directory ()
   (interactive)
   (kill-new (file-name-directory buffer-file-name)))

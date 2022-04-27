@@ -85,12 +85,12 @@
 (bind-key "C-;" 'comment-or-uncomment-region)
 ;; configuration
 (bind-key "C--" 'toggle-truncate-lines) ;; negative-argument
+;; navigation
+(bind-key* "M-." 'pop-tag-mark) ;; xref-find-definitions
 ;; help
 (bind-key "M-?" 'help-for-help) ;; xref-find-references
 
 ;;; Editor
-;; navigation
-(bind-key* "M-." 'pop-tag-mark) ;; xref-find-definitions
 ;; expand-region
 (bind-key "C-@"   'er/expand-region)   ;; set-mark-command
 (bind-key "C-M-@" 'er/contract-region) ;; mark-sexp
