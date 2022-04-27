@@ -45,3 +45,4 @@
   (unless (eq major-mode 'markdown-mode)
     (delete-trailing-whitespace)))
 (add-hook 'before-save-hook 'mtk/maybe-delete-trailing-whitespace)
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
