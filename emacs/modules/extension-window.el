@@ -113,5 +113,6 @@
   (diminish 'mmm-mode)
   (diminish 'rainbow-mode)
   (diminish 'robe-mode)
-  (diminish 'undo-tree-mode))
+  (diminish 'undo-tree-mode)
+  (diminish 'which-key-mode))
 (add-hook 'after-change-major-mode-hook 'mtk/setup-diminish)
