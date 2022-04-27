@@ -62,11 +62,11 @@
 ;; other functions
 (defun mtk/copy-current-directory ()
   (interactive)
-  (kill-new buffer-file-name))
+  (kill-new (file-name-directory buffer-file-name)))
 
 (defun mtk/copy-current-file-path ()
   (interactive)
-  (kill-new (file-name-directory buffer-file-name)))
+  (kill-new buffer-file-name))
 
 (defun mtk/insert-class-name-from-file-name ()
   (interactive)
