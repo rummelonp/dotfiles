@@ -90,7 +90,7 @@
 
 ;;; Editor
 ;; navigation
-(bind-key "M-." 'pop-tag-mark) ;; xref-find-definitions
+(bind-key* "M-." 'pop-tag-mark) ;; xref-find-definitions
 ;; expand-region
 (bind-key "C-@"   'er/expand-region)   ;; set-mark-command
 (bind-key "C-M-@" 'er/contract-region) ;; mark-sexp
