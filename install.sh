@@ -46,6 +46,7 @@ fi
 
 # ruby
 link_file ruby/.gemrc   .gemrc
+link_file ruby/.irbrc   .irbrc
 link_file ruby/.pryrc   .pryrc
 link_file ruby/.railsrc .railsrc
 

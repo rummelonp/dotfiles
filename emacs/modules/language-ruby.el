@@ -2,6 +2,8 @@
 ;; Language - Ruby
 ;;
 
+(add-to-list 'auto-mode-alist '("\\.irbrc$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.pryrc$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Brewfile$" . ruby-mode))
 
 (with-eval-after-load 'ruby-mode

@@ -18,6 +18,7 @@ unlink_file .tmux
 unlink_file .tmux.conf
 unlink_file .tmux.local.conf
 unlink_file .gemrc
+unlink_file .irbrc
 unlink_file .pryrc
 unlink_file .railsrc
 unlink_file .percol.d
