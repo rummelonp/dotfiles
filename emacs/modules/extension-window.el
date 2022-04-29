@@ -82,17 +82,15 @@
 ;; customize group
 (defun mtk/tabbar-buffer-group-function ()
   (list
-   (let ((name (symbol-name major-mode)))
-     (cond ((or (equal name "html-mode")
-                (equal name "nxml-mode")
-                (equal name "web-mode")
-                (equal name "css-mode")
-                (equal name "scss-mode")
-                (equal name "js2-mode")
-                (equal name "typescript-mode")
-                (equal name "json-mode"))
-            "web-mode")
-           (t name)))))
+   (cond ((member major-mode
+                  '(web-mode
+                    html-mode nxml-mode
+                    css-mode scss-mode
+                    js-mode js-jsx-mode javascript-mode
+                    typescript-mode mtk/web-typescript-mode
+                    json-mode jsonc-mode))
+          "web-mode")
+         (t (symbol-name major-mode)))))
 (setq tabbar-buffer-groups-function 'mtk/tabbar-buffer-group-function)
 (tabbar-mode t)
 

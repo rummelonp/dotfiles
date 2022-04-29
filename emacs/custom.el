@@ -43,6 +43,11 @@
  '(kill-ring-max 10000)
  '(kill-whole-line t)
  '(line-number-mode t)
+ '(lsp-disabled-clients '(deno-ls))
+ '(lsp-enable-indentation nil)
+ '(lsp-headerline-breadcrumb-enable nil)
+ '(lsp-typescript-server "ts-ls")
+ '(lsp-ui-doc-position 'at-point)
  '(make-backup-files nil)
  '(marginalia-mode t)
  '(menu-bar-mode t)
@@ -97,7 +102,9 @@
  '(web-mode-part-padding 0)
  '(web-mode-script-padding 0)
  '(web-mode-style-padding 0)
- '(which-key-mode t))
+ '(which-key-mode t)
+ '(xref-show-definitions-function 'consult-xref)
+ '(xref-show-xrefs-function 'consult-xref))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

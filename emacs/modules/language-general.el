@@ -2,6 +2,14 @@
 ;; Language - General
 ;;
 
+;; lsp-mode
+(with-eval-after-load #'lsp-mode
+  (require 'lsp-ui)
+  (bind-keys :map lsp-mode-map
+             ("C-x C-o" . consult-lsp-diagnostics)
+             ("C-M-."   . lsp-find-definition))
+  (bind-key "C-." 'lsp-ui-doc-glance 'lsp-ui-doc-mode-map))
+
 ;; flycheck
 (with-eval-after-load 'flycheck
   (defun mtk/flycheck-mode-line-status-text (&optional status)

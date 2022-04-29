@@ -55,6 +55,9 @@
 (straight-use-package 'anzu)
 (straight-use-package 'string-inflection)
 ;; Language - General
+(straight-use-package 'lsp-mode)
+(straight-use-package 'lsp-ui)
+(straight-use-package 'consult-lsp)
 (straight-use-package 'flycheck)
 (straight-use-package 'consult-flycheck)
 ;; Language - Emacs Lisp
@@ -64,8 +67,8 @@
 (straight-use-package 'web-mode)
 (straight-use-package 'company-web)
 (straight-use-package 'scss-mode)
-(straight-use-package 'js2-mode)
 (straight-use-package 'typescript-mode)
+(straight-use-package 'lsp-javascript-typescript)
 (straight-use-package 'json-mode)
 ;: Language - Ruby
 (straight-use-package 'ruby-mode)

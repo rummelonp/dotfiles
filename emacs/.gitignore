@@ -21,3 +21,7 @@
 
 # multiple-cursors.el
 /.mc-lists.el
+
+# lsp-mode.el
+/.cache
+/.lsp-session-v1
