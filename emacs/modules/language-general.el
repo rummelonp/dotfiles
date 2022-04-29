@@ -6,6 +6,7 @@
 (with-eval-after-load #'lsp-mode
   (bind-keys :map lsp-mode-map
              ("C-x C-o" . consult-lsp-diagnostics)
+             ("M-,"     . lsp-execute-code-action)
              ("C-."     . lsp-describe-thing-at-point)
              ("C-M-."   . lsp-find-definition)))
 
