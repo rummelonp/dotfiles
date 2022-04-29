@@ -33,7 +33,7 @@
 
 ;;; Window
 ;; frame
-(bind-key "C-z" nil) ;; suspend-frame
+(unbind-key "C-z") ;; suspend-frame
 ;; window
 (bind-key  "C-x `" 'delete-other-windows)                  ;; next-error
 (bind-key* "C-t"   'mtk/next-window-or-split-horizontally) ;; transpose-charas
@@ -87,7 +87,8 @@
 ;; configuration
 (bind-key "C--" 'toggle-truncate-lines) ;; negative-argument
 ;; navigation
-(bind-key* "M-." 'pop-tag-mark) ;; xref-find-definitions
+(unbind-key "M-,")               ;; xref-pop-marker-stack
+(bind-key*  "M-." 'pop-tag-mark) ;; xref-find-definitions
 ;; help
 (bind-key "M-?" 'help-for-help) ;; xref-find-references
 
