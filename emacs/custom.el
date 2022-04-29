@@ -34,6 +34,8 @@
  '(global-flycheck-mode t)
  '(global-git-gutter-mode t)
  '(global-undo-tree-mode t)
+ '(highlight-indent-guides-delay 0)
+ '(highlight-indent-guides-responsive 'top)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-frame-alist '((width . 160) (height . 40)))

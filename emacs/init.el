@@ -83,6 +83,7 @@
 (straight-use-package 'swift-mode)
 (straight-use-package 'go-mode)
 (straight-use-package 'yaml-mode)
+(straight-use-package 'highlight-indent-guides)
 (straight-use-package 'dockerfile-mode)
 (straight-use-package 'terraform-mode)
 (straight-use-package 'markdown-mode)
