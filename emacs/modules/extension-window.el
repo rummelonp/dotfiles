@@ -107,6 +107,7 @@
   (diminish 'company-box-mode)
   (diminish 'eldoc-mode)
   (diminish 'elisp-slime-nav-mode)
+  (diminish 'emmet-mode)
   (diminish 'git-gutter-mode)
   (diminish 'mmm-mode)
   (diminish 'rainbow-mode)

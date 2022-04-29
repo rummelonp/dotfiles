@@ -13,6 +13,7 @@
   (setq-local company-backends
               '((company-web-html company-dabbrev-code company-dabbrev))))
 (add-hook 'web-mode-hook 'mtk/setup-web-mode)
+(add-hook 'web-mode-hook 'emmet-mode)
 
 ;; typescript
 (define-derived-mode mtk/web-typescript-mode web-mode "Web[TS]")

@@ -66,6 +66,7 @@
 ;; Language - Web
 (straight-use-package 'web-mode)
 (straight-use-package 'company-web)
+(straight-use-package 'emmet-mode)
 (straight-use-package 'scss-mode)
 (straight-use-package 'typescript-mode)
 (straight-use-package 'lsp-javascript-typescript)
