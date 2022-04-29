@@ -4,11 +4,10 @@
 
 ;; lsp-mode
 (with-eval-after-load #'lsp-mode
-  (require 'lsp-ui)
   (bind-keys :map lsp-mode-map
              ("C-x C-o" . consult-lsp-diagnostics)
-             ("C-M-."   . lsp-find-definition))
-  (bind-key "C-." 'lsp-ui-doc-glance 'lsp-ui-doc-mode-map))
+             ("C-."     . lsp-describe-thing-at-point)
+             ("C-M-."   . lsp-find-definition)))
 
 ;; flycheck
 (with-eval-after-load 'flycheck
