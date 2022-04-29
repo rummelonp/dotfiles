@@ -60,6 +60,7 @@
 (straight-use-package 'consult-lsp)
 (straight-use-package 'flycheck)
 (straight-use-package 'consult-flycheck)
+(straight-use-package '(auto-fix :type git :host github :repo "tomoya/auto-fix.el"))
 ;; Language - Emacs Lisp
 (straight-use-package 'elisp-slime-nav)
 (straight-use-package 'flycheck-package)

@@ -13,6 +13,7 @@
   (add-hook 'ruby-mode-hook 'enh-ruby-mode)
   (add-hook 'enh-ruby-mode-hook 'robe-mode)
   (add-hook 'enh-ruby-mode-hook 'rinari-minor-mode)
+  (add-hook 'enh-ruby-mode-hook 'auto-fix-mode)
   (bind-keys :map enh-ruby-mode-map
              ("C-M-f" . forward-word)                ;; enh-ruby-forward-sexp
              ("C-M-b" . backward-word)               ;; enh-ruby-backward-sexp
@@ -21,11 +22,14 @@
              ("C-M-a" . enh-ruby-beginning-of-block) ;; enh-ruby-beginning-of-defun
              ("C-M-e" . enh-ruby-end-of-block)       ;; enh-ruby-end-of-defun
              ("M-a"   . enh-ruby-beginning-of-defun)
-             ("M-e"   . enh-ruby-end-of-defun))
+             ("M-e"   . enh-ruby-end-of-defun)
+             ("M-,"   . auto-fix))
   (bind-keys :map robe-mode-map
              ("C-."   . robe-doc)
              ("C-M-." . robe-jump)))
 
 (defun mtk/setup-ruby-mode ()
-  (setq-local company-backends '(company-robe (company-dabbrev-code company-keywords))))
+  (setq-local company-backends '(company-robe (company-dabbrev-code company-keywords)))
+  (setq-local auto-fix-command "rubocop")
+  (setq-local auto-fix-option "-A"))
 (add-hook 'ruby-mode-hook 'mtk/setup-ruby-mode)

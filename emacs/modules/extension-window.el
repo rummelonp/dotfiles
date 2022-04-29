@@ -104,6 +104,7 @@
 (defun mtk/setup-diminish ()
   (require 'diminish)
   (diminish 'abbrev-mode)
+  (diminish 'auto-fix-mode)
   (diminish 'company-box-mode)
   (diminish 'eldoc-mode)
   (diminish 'elisp-slime-nav-mode)
