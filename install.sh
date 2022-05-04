@@ -56,6 +56,9 @@ link_dir percol .percol.d
 # bin
 link_dir bin .bin
 
+# karabiner
+link_dir karabiner .config/karabiner
+
 # idea
 link_dir idea/keymaps "Library/Application Support/JetBrains/IdeaIC2021.2/keymaps"
 link_dir idea/keymaps "Library/Application Support/JetBrains/RubyMine2022.1/keymaps"
