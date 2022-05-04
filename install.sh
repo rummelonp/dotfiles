@@ -56,9 +56,6 @@ link_dir percol .percol.d
 # bin
 link_dir bin .bin
 
-# espanso
-link_dir espanso Library/Preferences/espanso
-
 # idea
 link_dir idea/keymaps "Library/Application Support/JetBrains/IdeaIC2021.2/keymaps"
 link_dir idea/keymaps "Library/Application Support/JetBrains/RubyMine2022.1/keymaps"
