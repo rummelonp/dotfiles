@@ -86,6 +86,7 @@ cask "rancher"
 cask "rectangle"
 cask "slack"
 cask "tweetbot"
+cask "visual-studio-code"
 mas "1Password", id: 443987910
 mas "Keynote", id: 409183694
 mas "Kindle", id: 405399194
