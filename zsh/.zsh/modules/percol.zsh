@@ -33,7 +33,8 @@ bindkey '^r' percol-select-history
 bindkey '^s' percol-cd-ghq
 
 ### Functions ###
-# ppgrep -- find or signal processes by name
+
+# ppgrep -- find processes by name
 # ppgrep [query ...]
 function ppgrep() {
     typeset percol
@@ -48,7 +49,7 @@ function ppgrep() {
     fi
 }
 
-# ppkill -- terminate or signal a process
+# ppkill -- signal processes by name
 # ppkill [-s signal_name] [query ...]
 function ppkill() {
     typeset query
@@ -68,47 +69,11 @@ function ppkill() {
     eval "ppgrep $query | xargs kill $signal"
 }
 
-# pproject -- find project
-# pproject [path ...]
-function pproject() {
-    if (( $#DOCUMENT_DIR == 0 )); then
-        if [ -d $HOME/Documents ]; then
-            DOCUMENT_DIR=($HOME/Documents)
-        fi
-        if [ -d $HOME/Dropbox ]; then
-            DOCUMENT_DIR=($HOME/Dropbox $DOCUMENT_DIR[*])
-        fi
-    fi
-    typeset -a paths
-    if (( $# > 0 )); then
-        paths=($@)
-    else
-        paths=($DOCUMENT_DIR)
-    fi
-    SELECTED_FILE=(
-        $($(which -p fd) --hidden '^\.git$' $paths |
-              sed -e 's/\/\.git//' -e "s|${HOME}|~|" |
-              sort |
-              percol |
-              sed 's/ /\\ /g'
-        )
-    )
-    if (( $#SELECTED_FILE > 0 )); then
-        echo $SELECTED_FILE
-    fi
-}
-
-# pdoc -- find document
+# pdoc -- find documents
 # pdoc [path ...]
 function pdoc() {
-    if (( $#DOCUMENT_DIR == 0 )); then
-        if [ -d $HOME/Documents ]; then
-            DOCUMENT_DIR=($HOME/Documents)
-        fi
-        if [ -d $HOME/Dropbox ]; then
-            DOCUMENT_DIR=($HOME/Dropbox $DOCUMENT_DIR[*])
-        fi
-    fi
+    [ -d $HOME/Documents ] && DOCUMENT_DIR=($HOME/Documents $DOCUMENT_DIR[*])
+    [ -d $HOME/Dropbox   ] && DOCUMENT_DIR=($HOME/Dropbox   $DOCUMENT_DIR[*])
     typeset -a paths
     if (( $# > 0 )); then
         paths=($@)
@@ -116,11 +81,11 @@ function pdoc() {
         paths=($DOCUMENT_DIR)
     fi
     SELECTED_FILE=(
-        $(fd '.+\.(md|pdf|key|numbers|pages|pptx?|xlsx?|docx?)$' --exclude=node_modules --exclude=vendor --exclude=build $paths |
+        $(fd '.+\.(md|pdf|key|numbers|pages|pptx?|xlsx?|docx?)$' $paths |
               sed -e "s|${HOME}|~|" |
               sort |
-              percol |
-              sed 's/ /\\ /g'
+              percol --match-method=migemo |
+              sed 's| |\\ |g'
         )
     )
     if (( $#SELECTED_FILE > 0 )); then
