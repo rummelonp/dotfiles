@@ -90,6 +90,11 @@ if (( $+commands[go] )); then
     path=($GOPATH/bin $path)
 fi
 
+# Rust
+if [ -f $HOME/.cargo/env ]; then
+    source $HOME/.cargo/env
+fi
+
 # Android
 if (( $+commands[brew] )); then
     export ANDROID_SDK_ROOT=$(brew --prefix)/share/android-sdk

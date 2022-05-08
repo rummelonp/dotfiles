@@ -55,6 +55,7 @@ brew "ruby-build"
 brew "rbenv"
 brew "redis", restart_service: true
 brew "rename"
+brew "rustup-init"
 brew "sd"
 brew "shellcheck"
 brew "terraform"

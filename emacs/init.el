@@ -77,6 +77,9 @@
 (straight-use-package 'enh-ruby-mode)
 (straight-use-package 'robe)
 (straight-use-package 'rinari)
+;; Language - Rust
+(straight-use-package 'rust-mode)
+(straight-use-package 'cargo)
 ;; Language - Misc
 (straight-use-package 'scala-mode)
 (straight-use-package 'kotlin-mode)
@@ -112,6 +115,7 @@
     language-emacs-lisp
     language-web
     language-ruby
+    language-rust
     language-misc
     general-functions
     general-key-bindings

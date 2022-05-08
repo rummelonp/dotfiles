@@ -110,6 +110,7 @@
   (diminish 'elisp-slime-nav-mode)
   (diminish 'emmet-mode)
   (diminish 'git-gutter-mode)
+  (diminish 'lsp-lens-mode)
   (diminish 'mmm-mode)
   (diminish 'rainbow-mode)
   (diminish 'robe-mode)
