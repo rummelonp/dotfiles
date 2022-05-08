@@ -18,9 +18,19 @@ function percol-select-history() {
     CURSOR=$#BUFFER
     zle -R -c
 }
+
+function percol-cd-ghq() {
+    BUFFER=$(ghq list | percol --query "$LBUFFER" |
+                 sed -e "s|^|${GHQ_ROOT}/|g" -e "s|${HOME}|~|g" -e 's| |\\ |g')
+    zle accept-line
+    zle -R -c
+}
+
 zle -N percol-select-history
+zle -N percol-cd-ghq
 
 bindkey '^r' percol-select-history
+bindkey '^s' percol-cd-ghq
 
 ### Functions ###
 # ppgrep -- find or signal processes by name

@@ -105,3 +105,9 @@ fi
 if (( $+commands[direnv] )); then
     eval "$(direnv hook zsh)"
 fi
+
+# ghq
+if (( $+commands[ghq] )); then
+    export GHQ_ROOT="$HOME/Repos"
+    cdpath=($GHQ_ROOT/github.com/mitukiii $cdpath)
+fi
