@@ -96,6 +96,11 @@ if (( $+commands[brew] )); then
     path=($ANDROID_SDK_ROOT/platform-tools $path)
 fi
 
+# Rancher
+if [ -d $HOME/.rd/bin ]; then
+    path=($HOME/.rd/bin $path)
+fi
+
 # Direnv
 if (( $+commands[direnv] )); then
     eval "$(direnv hook zsh)"
