@@ -30,6 +30,7 @@
 (bind-key "M-g g"   'consult-line-multi)          ;; goto-line
 ;; company
 (bind-key "C-x C-." 'company-complete)
+(unbind-key "C-x .") ;; set-fill-prefix
 
 ;;; Window
 ;; frame
