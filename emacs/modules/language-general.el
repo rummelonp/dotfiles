@@ -6,9 +6,10 @@
 (with-eval-after-load #'lsp-mode
   (bind-keys :map lsp-mode-map
              ("C-x C-o" . consult-lsp-diagnostics)
-             ("M-,"     . lsp-execute-code-action)
+             ("C-x ."   . lsp-execute-code-action)
              ("C-."     . lsp-describe-thing-at-point)
-             ("C-M-."   . lsp-find-definition)))
+             ("C-M-."   . lsp-find-definition)
+             ("M-s-l"   . lsp-format-buffer)))
 
 ;; flycheck
 (with-eval-after-load 'flycheck

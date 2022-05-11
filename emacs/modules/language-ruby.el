@@ -23,7 +23,7 @@
              ("C-M-e" . enh-ruby-end-of-block)       ;; enh-ruby-end-of-defun
              ("M-a"   . enh-ruby-beginning-of-defun)
              ("M-e"   . enh-ruby-end-of-defun)
-             ("M-,"   . auto-fix))
+             ("M-s-l" . auto-fix))
   (bind-keys :map robe-mode-map
              ("C-."   . robe-doc)
              ("C-M-." . robe-jump)))
