@@ -60,4 +60,7 @@ link_dir bin .bin
 link_dir karabiner .config/karabiner
 
 # idea
-link_dir idea/keymaps "Library/Application Support/Google/AndroidStudio2021.1/keymaps"
+if [[ $OSTYPE =~ darwin ]]; then
+    link_dir idea/colors  "Library/Application Support/Google/AndroidStudio2021.2/colors"
+    link_dir idea/keymaps "Library/Application Support/Google/AndroidStudio2021.2/keymaps"
+fi

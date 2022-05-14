@@ -24,4 +24,5 @@ unlink_file .railsrc
 unlink_file .percol.d
 unlink_file .bin
 unlink_file .config/karabiner
-unlink_file "Library/Application Support/Google/AndroidStudio2021.1/keymaps"
+unlink_file "Library/Application Support/Google/AndroidStudio2021.2/colors"
+unlink_file "Library/Application Support/Google/AndroidStudio2021.2/keymaps"
