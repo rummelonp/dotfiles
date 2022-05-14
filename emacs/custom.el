@@ -9,8 +9,6 @@
  '(anzu-use-migemo t)
  '(backup-inhibited t t)
  '(column-number-mode t)
- '(company-idle-delay 0)
- '(company-minimum-prefix-length 2)
  '(company-require-match 'never)
  '(company-selection-wrap-around t)
  '(company-statistics-mode t)
