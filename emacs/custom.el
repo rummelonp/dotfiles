@@ -106,6 +106,7 @@
  '(web-mode-script-padding 0)
  '(web-mode-style-padding 0)
  '(which-key-mode t)
+ '(which-key-posframe-mode t)
  '(xref-show-definitions-function 'consult-xref)
  '(xref-show-xrefs-function 'consult-xref))
 (custom-set-faces

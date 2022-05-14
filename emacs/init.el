@@ -23,6 +23,7 @@
 (straight-use-package 'all-the-icons)
 (straight-use-package 'bind-key)
 (straight-use-package 'which-key)
+(straight-use-package 'which-key-posframe)
 (straight-use-package 'recentf-ext)
 (straight-use-package 'savekill)
 (straight-use-package 'undohist)
