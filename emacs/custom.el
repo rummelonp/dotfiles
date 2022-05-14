@@ -25,6 +25,8 @@
  '(direnv-always-show-summary nil)
  '(direnv-mode t)
  '(enh-ruby-deep-indent-paren nil)
+ '(flycheck-display-errors-delay 0.5)
+ '(flycheck-posframe-position 'window-bottom-right-corner)
  '(git-gutter:update-interval 5)
  '(global-anzu-mode t)
  '(global-auto-revert-mode t)
@@ -111,4 +113,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(flycheck-posframe-face ((t (:inherit default :background "#464752" :box (:line-width (1 . 1) :color "#464752" :style flat-button))))))

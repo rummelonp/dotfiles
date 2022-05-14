@@ -5,6 +5,7 @@
 (with-eval-after-load 'elisp-mode
   (require 'elisp-slime-nav)
   (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
+  (add-hook 'emacs-lisp-mode-hook 'flycheck-posframe-mode)
   (bind-keys :map elisp-slime-nav-mode-map
              ("C-."   . elisp-slime-nav-describe-elisp-thing-at-point)
              ("C-M-." . elisp-slime-nav-find-elisp-thing-at-point)))

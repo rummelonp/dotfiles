@@ -14,6 +14,7 @@
   (add-hook 'enh-ruby-mode-hook 'robe-mode)
   (add-hook 'enh-ruby-mode-hook 'rinari-minor-mode)
   (add-hook 'enh-ruby-mode-hook 'auto-fix-mode)
+  (add-hook 'enh-ruby-mode-hook 'flycheck-posframe-mode)
   (bind-keys :map enh-ruby-mode-map
              ("C-M-f" . forward-word)                ;; enh-ruby-forward-sexp
              ("C-M-b" . backward-word)               ;; enh-ruby-backward-sexp

@@ -59,6 +59,7 @@
 (straight-use-package 'lsp-ui)
 (straight-use-package 'consult-lsp)
 (straight-use-package 'flycheck)
+(straight-use-package 'flycheck-posframe)
 (straight-use-package 'consult-flycheck)
 (straight-use-package '(auto-fix :type git :host github :repo "tomoya/auto-fix.el"))
 ;; Language - Emacs Lisp
