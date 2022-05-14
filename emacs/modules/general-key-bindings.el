@@ -21,13 +21,14 @@
 (bind-key "C-x d"   'project-find-dir)            ;; dired
 (bind-key "C-x C-b" 'consult-project-buffer)      ;; list-buffer
 (bind-key "C-x b"   'consult-buffer)              ;; switch-to-buffer
-(bind-key "C-x g"   'consult-git-grep)
+(bind-key "C-x C-g" 'consult-line)
+(bind-key "C-x g"   'consult-goto-line)
 (bind-key "C-x C-m" 'consult-imenu)
 (bind-key "C-x m"   'consult-imenu-multi)         ;; compose-mail
 (bind-key "C-x C-o" 'consult-flycheck)            ;; delete-blank-lines
 (bind-key "C-x C-y" 'consult-yank-from-kill-ring)
-(bind-key "M-g M-g" 'consult-line)                ;; goto-line
-(bind-key "M-g g"   'consult-line-multi)          ;; goto-line
+(bind-key "M-g M-g" 'consult-line-multi)          ;; goto-line
+(bind-key "M-g g"   'consult-git-grep)            ;; goto-line
 ;; company
 (bind-key "C-x C-." 'company-complete)
 (unbind-key "C-x .") ;; set-fill-prefix
