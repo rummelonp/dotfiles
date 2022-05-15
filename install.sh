@@ -59,6 +59,12 @@ link_dir bin .bin
 # karabiner
 link_dir karabiner .config/karabiner
 
+# code
+if [[ $OSTYPE =~ darwin ]]; then
+    link_file code/settings.json    "Library/Application Support/Code/User/settings.json"
+    link_file code/keybindings.json "Library/Application Support/Code/User/keybindings.json"
+fi
+
 # idea
 if [[ $OSTYPE =~ darwin ]]; then
     link_dir idea/colors  "Library/Application Support/Google/AndroidStudio2021.2/colors"
