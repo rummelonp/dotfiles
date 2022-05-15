@@ -2,12 +2,10 @@
 ;; Language - Web
 ;;
 
+;; html
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'"  . web-mode))
-(add-to-list 'auto-mode-alist '("\\.json\\'"  . jsonc-mode))
-(add-to-list 'auto-mode-alist '("\\.jsonc\\'" . jsonc-mode))
 
-;; html
 (with-eval-after-load 'web-mode
   (require 'company-web-html))
 
@@ -30,3 +28,7 @@
   (setq-local company-backends '(company-capf)))
 (add-hook 'typescript-mode-hook 'mtk/setup-typescript-mode)
 (add-hook 'mtk/web-typescript-mode-hook 'mtk/setup-typescript-mode)
+
+;; json
+(with-eval-after-load 'json-mode
+  (bind-key "M-s-l" 'json-mode-beautify json-mode-map))
