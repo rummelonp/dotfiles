@@ -30,6 +30,7 @@
 (straight-use-package 'undo-tree)
 (straight-use-package 'point-undo)
 (straight-use-package 'direnv)
+(straight-use-package 'wgrep)
 (straight-use-package 'sudo-edit)
 (straight-use-package 'magit)
 (straight-use-package 'git-gutter)

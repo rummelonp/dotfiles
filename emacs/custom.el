@@ -106,6 +106,7 @@
  '(web-mode-part-padding 0)
  '(web-mode-script-padding 0)
  '(web-mode-style-padding 0)
+ '(wgrep-auto-save-buffer t)
  '(which-key-mode t)
  '(which-key-posframe-mode t)
  '(xref-show-definitions-function 'consult-xref)
