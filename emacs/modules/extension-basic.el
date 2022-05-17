@@ -18,6 +18,6 @@
 (require 'savekill)
 (undohist-initialize)
 (require 'point-undo)
+(require 'magit)
 (add-hook 'prog-mode-hook 'rainbow-mode)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-(require 'magit)
