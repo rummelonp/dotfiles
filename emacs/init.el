@@ -31,6 +31,7 @@
 (straight-use-package 'point-undo)
 (straight-use-package 'rainbow-mode)
 (straight-use-package 'rainbow-delimiters)
+(straight-use-package 'magit)
 (straight-use-package 'direnv)
 (straight-use-package 'sudo-edit)
 (straight-use-package 'git-gutter)

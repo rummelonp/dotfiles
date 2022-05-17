@@ -16,6 +16,9 @@
 # undohist.el
 /undohist/
 
+# magit.el
+/transient/
+
 # company.el
 /company-statistics-cache.el
 

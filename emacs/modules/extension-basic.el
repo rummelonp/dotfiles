@@ -20,3 +20,4 @@
 (require 'point-undo)
 (add-hook 'prog-mode-hook 'rainbow-mode)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(require 'magit)
