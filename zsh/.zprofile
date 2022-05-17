@@ -11,6 +11,7 @@ case "$OSTYPE" in
     darwin*)
         export EDITOR='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
         export JAVA_HOME='/Applications/Android Studio.app/Contents/jre/Contents/Home/'
+        export MANPAGER="sh -c 'col -bx | bat -l man -p'"
         ;;
     *)
         export EDITOR='vim'

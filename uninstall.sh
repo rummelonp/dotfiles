@@ -23,6 +23,7 @@ unlink_file .pryrc
 unlink_file .railsrc
 unlink_file .percol.d
 unlink_file .bin
+unlink_file .config/bat
 unlink_file .config/karabiner
 unlink_file "Library/Application Support/Code/User/settings.json"
 unlink_file "Library/Application Support/Code/User/keybindings.json"

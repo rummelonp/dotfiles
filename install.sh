@@ -56,6 +56,9 @@ link_dir percol .percol.d
 # bin
 link_dir bin .bin
 
+# bat
+link_dir bat .config/bat
+
 # karabiner
 link_dir karabiner .config/karabiner
 
