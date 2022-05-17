@@ -9,10 +9,15 @@
              ("C-M-v" . vertico-scroll-down)
              ("M-v"   . vertico-scroll-down)
              ("C-s"   . vertico-next)
-             ("C-r"   . vertico-previous)))
+             ("C-r"   . vertico-previous)
+             ("C-."   . embark-act)
+             ("C-,"   . embark-export)
+             ("C-SPC" . embark-collect)))
 
 ;; consult
 (with-eval-after-load 'consult
+  (with-eval-after-load 'embark
+    (require 'embark-consult))
   (consult-customize
    consult-recent-file consult-project-buffer consult-buffer
    :preview-key nil))
