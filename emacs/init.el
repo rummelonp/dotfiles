@@ -33,6 +33,7 @@
 (straight-use-package 'wgrep)
 (straight-use-package 'sudo-edit)
 (straight-use-package 'magit)
+(straight-use-package 'magit-delta)
 (straight-use-package 'git-gutter)
 (straight-use-package 'rainbow-mode)
 (straight-use-package 'rainbow-delimiters)

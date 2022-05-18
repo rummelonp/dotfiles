@@ -19,5 +19,6 @@
 (undohist-initialize)
 (require 'point-undo)
 (require 'magit)
+(add-hook 'magit-mode-hook 'magit-delta-mode)
 (add-hook 'prog-mode-hook 'rainbow-mode)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)

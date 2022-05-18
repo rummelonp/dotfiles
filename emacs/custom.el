@@ -50,6 +50,7 @@
  '(lsp-headerline-breadcrumb-enable nil)
  '(lsp-typescript-server "ts-ls")
  '(lsp-ui-doc-position 'at-point)
+ '(magit-delta-default-dark-theme "Kabukicho")
  '(make-backup-files nil)
  '(marginalia-mode t)
  '(menu-bar-mode t)
