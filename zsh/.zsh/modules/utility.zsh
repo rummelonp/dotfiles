@@ -29,12 +29,15 @@ case $OSTYPE in
         ;;
 esac
 
-alias grep='grep --color=auto --exclude-dir=.git --exclude-dir=.svn'
+alias grep='grep --color=auto --exclude-dir=.git'
 alias less='less --raw-control-chars'
-alias du='du -h'
-alias df='df -h'
 
-alias fd='fd --hidden --exclude=.git'
+alias du='du -h'
+alias dur='dust'
+alias dui='ncdu'
+
+alias df='df -h'
+alias dfr='duf'
 
 # Shorthand
 alias ..='cd ..'
@@ -54,11 +57,12 @@ alias diff='colordiff'
 
 alias g='git'
 alias t='tmux'
-alias d='diff'
-alias h='history'
 alias v='view'
+alias b='bat'
+alias d='diff'
 alias e='emacsclient --no-wait'
 alias i='studio'
+alias c='code'
 alias o='open'
 
 alias netstat-all='lsof -nP -iTCP'
@@ -72,17 +76,12 @@ case $OSTYPE in
         alias -g I='| xargs -n10 studio'
         alias -g O='| xargs open'
         alias -g C='| pbcopy'
-        alias -g S='| gsed'
-        ;;
-    *)
-        alias -g S='| sed'
         ;;
 esac
 
 alias -g G='| grep'
 alias -g L='| less'
-alias -g H='| head'
-alias -g T='| tail'
+alias -g B='| bat'
 
 ### Ruby ###
 alias bi='bundle install'
