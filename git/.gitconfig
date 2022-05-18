@@ -8,8 +8,6 @@
   quotepath    = false
 [init]
   defaultBranch = master
-[help]
-  autocorrect = 1
 [advice]
   skippedCherryPicks = false
 [merge]
