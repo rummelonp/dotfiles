@@ -8,6 +8,22 @@
   quotepath    = false
 [init]
   defaultBranch = master
+[help]
+  autocorrect = 1
+[advice]
+  skippedCherryPicks = false
+[merge]
+  ff = false
+[fetch]
+  prune = true
+[pull]
+  rebase = true
+[push]
+  default = simple
+[log]
+  date = iso
+[pretty]
+  colorful = %C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(cyan)%an%C(reset) %s %C(auto)%d%C(reset)
 [color]
   ui = auto
 [color "diff"]
@@ -19,22 +35,6 @@
   new        = bold cyan
   commit     = bold yellow
   whitespace = normal magenta
-[help]
-  autocorrect = 1
-[log]
-  date = iso
-[advice]
-  skippedCherryPicks = false
-[pretty]
-  colorful = %C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(cyan)%an%C(reset) %s %C(auto)%d%C(reset)
-[merge]
-  ff = false
-[fetch]
-  prune = true
-[pull]
-  rebase = true
-[push]
-  default = simple
 [alias]
   # status
   s  = status --short
