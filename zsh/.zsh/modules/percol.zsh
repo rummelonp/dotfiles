@@ -72,13 +72,14 @@ function ppkill() {
 # pdoc -- find documents
 # pdoc [path ...]
 function pdoc() {
-    [ -d $HOME/Documents ] && DOCUMENT_DIR=($HOME/Documents $DOCUMENT_DIR[*])
-    [ -d $HOME/Dropbox   ] && DOCUMENT_DIR=($HOME/Dropbox   $DOCUMENT_DIR[*])
-    typeset -a paths
+    typeset -aU document_dir
+    [ -d $HOME/Documents ] && document_dir=($HOME/Documents $document_dir[*])
+    [ -d $HOME/Dropbox   ] && document_dir=($HOME/Dropbox   $document_dir[*])
+    typeset -aU paths
     if (( $# > 0 )); then
         paths=($@)
     else
-        paths=($DOCUMENT_DIR)
+        paths=($document_dir)
     fi
     SELECTED_FILE=(
         $(fd '.+\.(md|pdf|key|numbers|pages|pptx?|xlsx?|docx?)$' $paths |
