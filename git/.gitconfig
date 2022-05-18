@@ -3,15 +3,18 @@
   email = mail@mitukiii.jp
 [core]
   excludesfile = ~/.gitignore
-  pager        = less
+  pager        = delta
   autocrlf     = input
   quotepath    = false
+[interactive]
+  diffFilter = delta --color-only
 [init]
   defaultBranch = master
 [advice]
   skippedCherryPicks = false
 [merge]
   ff = false
+  conflictStyle = diff3
 [fetch]
   prune = true
 [pull]
@@ -20,6 +23,8 @@
   default = simple
 [log]
   date = iso
+[diff]
+  colorMoved = default
 [pretty]
   colorful = %C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(cyan)%an%C(reset) %s %C(auto)%d%C(reset)
 [color]
@@ -33,6 +38,35 @@
   new        = bold cyan
   commit     = bold yellow
   whitespace = normal magenta
+[delta]
+  features = kabukicho
+[delta "kabukicho"]
+  commit-decoration-style = "yellow" box ul
+  dark = true
+  file-style = "#e0b401" ul
+  file-decoration-style = none
+  file-added-label = [+]
+  file-copied-label = [==]
+  file-modified-label = [*]
+  file-removed-label = [-]
+  file-renamed-label = [->]
+  hunk-header-style = file line-number syntax
+  hunk-header-decoration-style = none
+  hunk-header-file-style = "#44475a"
+  hunk-header-line-number-style = bold "#b141f1"
+  line-numbers = true
+  line-numbers-left-style = black
+  line-numbers-right-style = black
+  line-numbers-minus-style = "#f92aad"
+  line-numbers-plus-style = "#61e2ff"
+  line-numbers-zero-style = "#44475a"
+  minus-emph-style = syntax bold "#b11aa6"
+  minus-style = syntax "#580c53"
+  plus-emph-style = syntax bold "#1AA6B1"
+  plus-style = syntax "#0C5358"
+  zero-style = syntax
+  whitespace-error-style = "#280050" reverse
+  syntax-theme = Kabukicho
 [alias]
   # status
   s  = status --short
