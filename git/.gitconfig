@@ -139,9 +139,9 @@
   pst = push --tags
   psm = push --mirror
   # log
-  l   = log --graph --stat --name-status
-  la  = log --graph --stat --patch
-  law = log --graph --stat --patch --word-diff
+  l   = log --stat
+  la  = log --stat --patch
+  lg  = log --stat --graph
   ll  = log --graph --pretty=colorful
   lla = log --graph --pretty=colorful --all
   # diff
