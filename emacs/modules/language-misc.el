@@ -9,6 +9,7 @@
 (add-to-list 'auto-mode-alist '("/TODO\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.[pi]uml\\'" . plantuml-mode))
 
+(add-hook 'nxml-mode-hook 'rainbow-mode)
 (add-hook 'yaml-mode-hook 'highlight-indent-guides-mode)
 
 (defun mtk/setup-makefile-mode ()
