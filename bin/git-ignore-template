@@ -1,3 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
-curl -L "https://www.toptal.com/developers/gitignore/api/$(IFS=,; echo "$*")"
+if [[ $# == 0 || "$1" == "list" ]]; then
+    curl --silent --location "https://www.toptal.com/developers/gitignore/api/list" \
+        | sed -e 's/,/ /g' -e 's/ /\n/g'
+    echo
+else
+    curl --silent --location "https://www.toptal.com/developers/gitignore/api/$(IFS=,; echo "$*")"
+fi
