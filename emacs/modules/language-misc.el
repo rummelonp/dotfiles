@@ -4,6 +4,7 @@
 
 (require 'generic-x)
 
+(add-to-list 'auto-mode-alist '("\\.zshrc.local\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.icls\\'" . xml-mode))
 (add-to-list 'auto-mode-alist '("\\.aws/credentials\\'" . conf-mode))
 (add-to-list 'auto-mode-alist '("/TODO\\'" . markdown-mode))
