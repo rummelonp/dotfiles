@@ -50,9 +50,6 @@ link_file ruby/.irbrc   .irbrc
 link_file ruby/.pryrc   .pryrc
 link_file ruby/.railsrc .railsrc
 
-# percol
-link_dir percol .percol.d
-
 # bin
 link_dir bin .bin
 

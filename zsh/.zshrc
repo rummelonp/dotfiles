@@ -14,7 +14,7 @@ module_names=(
     prompt
     # Extensions
     ssh
-    percol
+    fzf
     # Environment dependent
     darwin
 )

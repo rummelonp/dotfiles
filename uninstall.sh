@@ -21,7 +21,6 @@ unlink_file .gemrc
 unlink_file .irbrc
 unlink_file .pryrc
 unlink_file .railsrc
-unlink_file .percol.d
 unlink_file .bin
 unlink_file .config/bat
 unlink_file .config/karabiner

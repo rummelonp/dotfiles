@@ -186,9 +186,9 @@
   skip       = update-index --skip-worktree
   noskip     = update-index --no-skip-worktree
   skip-files = ! git ls-files -v | grep '^S' | awk '{ print $2 }'
-  # percol
-  pshow   = ! git log --all --pretty=colorful | percol | awk '{ print $1 }' | xargs git show
-  preflog = ! git reflog | percol | awk '{ print $1 }' | xargs git show
+  # fzf
+  fshow   = ! git log --all --pretty=colorful --color | fzf --ansi | awk '{ print $1 }' | xargs git show
+  freflog = ! git reflog --color | fzf --ansi | awk '{ print $1 }' | xargs git show
 [secrets]
   providers = git secrets --aws-provider
   patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
