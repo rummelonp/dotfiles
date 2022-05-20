@@ -15,6 +15,7 @@ module_names=(
     # Extensions
     ssh
     fzf
+    migemo
     # Environment dependent
     darwin
 )
