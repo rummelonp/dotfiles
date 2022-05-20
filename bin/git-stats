@@ -1,22 +1,21 @@
-#!/bin/sh
+#!/bin/bash
 
-stats() {
-    local desc="$1"
-    local from="$2"
-    local to="${3:-$from}"
-    local since="$(date -v${from} +'%Y-%m-%d') 00:00:00"
-    local until="$(date -v${to} +'%Y-%m-%d') 23:59:59"
+function stats() {
+    local desc from to since until
+    desc="$1"
+    from="$2"
+    to="${3:-$from}"
+    since="$(date -v"$from" +'%Y-%m-%d') 00:00:00"
+    until="$(date -v"$to" +'%Y-%m-%d') 23:59:59"
 
-    echo $desc
+    echo "$desc"
     git log --author="$(git config --get user.name)" --oneline --shortstat --no-merges --since="'$since'" --until="'$until'" \
-        | grep -E 'files? changed' \
+        | rg 'files? changed' \
         | awk 'BEGIN { i=0; d=0 }
                      { i+=$4; d+=$6 }
                END   { print "  " i " insertions(+), " d " deletions(-)" }'
 }
 
-
-stats 'This week'  -6d +0d
 stats 'Today'      +0d
 stats 'Yesterday'  -1d
 stats '2 days ago' -2d
@@ -24,3 +23,8 @@ stats '3 days ago' -3d
 stats '4 days ago' -4d
 stats '5 days ago' -5d
 stats '6 days ago' -6d
+stats 'This week'  -6d +0d
+stats 'Last week'  -2w -1w
+stats 'This month' -1m +0d
+stats 'Last month' -2m -1m
+stats 'This year'  -1y +0d
