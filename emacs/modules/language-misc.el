@@ -10,6 +10,7 @@
 (add-to-list 'auto-mode-alist '("/TODO\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.[pi]uml\\'" . plantuml-mode))
 
+(add-hook 'sh-mode-hook 'flycheck-posframe-mode)
 (add-hook 'nxml-mode-hook 'rainbow-mode)
 (add-hook 'yaml-mode-hook 'highlight-indent-guides-mode)
 
