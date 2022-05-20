@@ -9,8 +9,8 @@ module_names=(
     editor
     history
     directory
-    utility
     completion
+    utility
     prompt
     # Extensions
     ssh

@@ -122,3 +122,13 @@ eval "$(_ruby_command_bundle rubocop)"
 ### Python ###
 alias saba='python -m http.server > /dev/null 2>&1 &'
 alias shimesaba='pkill -f "python -m http.server"'
+
+### Android ###
+function adb_mult() {
+    for device in $(adb devices | sed '1,1d' | awk '{ print $1 }'); do
+        typeset cmd="adb -s $device $*"
+        echo "$cmd"
+        eval "$cmd"
+    done
+}
+compdef _adb adb_mult
