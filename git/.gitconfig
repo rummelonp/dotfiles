@@ -70,12 +70,18 @@
 [alias]
   # status
   s  = status --short
+  sn = ! git status -s | awk '{ print $2 }'
   st = status
   # show
   sh  = show --ignore-all-space
+  sh1 = show --ignore-all-space HEAD~1
+  sh2 = show --ignore-all-space HEAD~2
+  sh3 = show --ignore-all-space HEAD~3
+  sh4 = show --ignore-all-space HEAD~4
+  sh5 = show --ignore-all-space HEAD~5
   shw = show --word-diff
   shs = show --stat
-  shn = show --name-only
+  shn = ! git show --oneline --name-only | tail -n+2
   sha = show --diff-filter=A
   shm = show --diff-filter=M
   # add
@@ -93,6 +99,7 @@
   cpn = cherry-pick --no-commit
   # checkout
   co  = checkout
+  cop = checkout --patch
   cob = checkout -b
   cod = checkout develop
   com = checkout master
@@ -117,7 +124,6 @@
   m  = merge
   mf = merge --ff
   mn = merge --no-ff
-  ms = merge --squash
   # branch
   b   = branch
   bm  = branch --move
@@ -161,7 +167,14 @@
   drw  = diff release --word-diff
   dor  = diff origin/release --ignore-all-space
   dorw = diff origin/release --word-diff
-  du   = diff --name-only --diff-filter=U
+  ds   = diff --stat
+  dn   = diff --name-only
+  dna  = diff --name-only --diff-filter=A
+  dnm  = diff --name-only --diff-filter=M
+  dnu  = diff --name-only --diff-filter=U
+  # ls-files
+  ls  = ls-files
+  lso = ls-files -o
   # submodule
   sm = submodule
   # grep
@@ -171,14 +184,12 @@
   gril = grep --ignore-case --files-with-matches
   grli = grep --ignore-case --files-with-matches
   # update-index
-  skip   = update-index --skip-worktree
-  noskip = update-index --no-skip-worktree
-  # sh
-  skip-files= "!f() { git ls-files -v | grep '^S' | awk '{ print $2 }'; }; f"
-  log-files = "!f() { git log $1..$2 --name-only --oneline | grep --invert-match ' ' | sort --unique; }; f"
-  pshow     = "!f() { git log --all --pretty=colorful | percol | cut -d' ' -f1 | xargs git show; }; f;"
-  preflog   = "!f() { git reflog | percol | cut -d' ' -f1 | xargs git show; }; f;"
-  pls-files = "!f() { echo $(git ls-files | percol | sed 's/ /\\ /g'); }; f;"
+  skip       = update-index --skip-worktree
+  noskip     = update-index --no-skip-worktree
+  skip-files = ! git ls-files -v | grep '^S' | awk '{ print $2 }'
+  # percol
+  pshow   = ! git log --all --pretty=colorful | percol | awk '{ print $1 }' | xargs git show
+  preflog = ! git reflog | percol | awk '{ print $1 }' | xargs git show
 [secrets]
   providers = git secrets --aws-provider
   patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
