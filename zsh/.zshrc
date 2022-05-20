@@ -15,7 +15,6 @@ module_names=(
     # Extensions
     ssh
     percol
-    autojump
     # Environment dependent
     darwin
 )
