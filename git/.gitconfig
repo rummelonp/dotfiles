@@ -14,7 +14,6 @@
   skippedCherryPicks = false
 [merge]
   ff = false
-  conflictStyle = diff3
 [fetch]
   prune = true
 [pull]
