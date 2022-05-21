@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+k = %w[カ ク ケ コ].shuffle
+r = %w[リ ロ].shuffle
+puts [
+  k.shift,
+  '二',
+  k.shift,
+  r.shift,
+  'ーム',
+  k.shift,
+  r.shift,
+  'ッ',
+  k.shift
+].join('')
