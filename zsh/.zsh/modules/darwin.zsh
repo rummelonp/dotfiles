@@ -29,7 +29,11 @@ bindkey '^y' _paste-as-yank
 bindkey '^x^e' _open-emacs
 
 ### Functions ###
+
 function man-preview() {
     man -t $@ | open -f -a Preview
 }
 compdef _man man-preview
+
+alias notifier='terminal-notifier -sound default -activate com.apple.Terminal'
+alias -g N="&& notifier -message '（╹ω╹）' || notifier -message '（☓ω☓）'"
