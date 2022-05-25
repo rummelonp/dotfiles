@@ -109,6 +109,7 @@
   (diminish 'eldoc-mode)
   (diminish 'elisp-slime-nav-mode)
   (diminish 'emmet-mode)
+  (diminish 'flutter-test-mode "Flutter")
   (diminish 'git-gutter-mode)
   (diminish 'lsp-lens-mode)
   (diminish 'mmm-mode)

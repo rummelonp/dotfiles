@@ -34,6 +34,7 @@
  '(global-flycheck-mode t)
  '(global-git-gutter-mode t)
  '(global-undo-tree-mode t)
+ '(gud-key-prefix "")
  '(highlight-indent-guides-delay 0)
  '(highlight-indent-guides-responsive 'top)
  '(indent-tabs-mode nil)

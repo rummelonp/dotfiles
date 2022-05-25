@@ -86,6 +86,10 @@
 ;; Language - Rust
 (straight-use-package 'rust-mode)
 (straight-use-package 'cargo)
+;; Language - Flutter
+(straight-use-package 'dart-mode)
+(straight-use-package 'lsp-dart)
+(straight-use-package 'flutter)
 ;; Language - Misc
 (straight-use-package 'scala-mode)
 (straight-use-package 'kotlin-mode)
@@ -122,6 +126,7 @@
     language-web
     language-ruby
     language-rust
+    language-flutter
     language-misc
     general-functions
     general-key-bindings
