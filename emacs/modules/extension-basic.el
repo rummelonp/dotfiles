@@ -16,7 +16,6 @@
 ;; misc
 (require 'bind-key)
 (require 'savekill)
-(undohist-initialize)
 (require 'point-undo)
 (require 'magit)
 (add-hook 'magit-mode-hook 'magit-delta-mode)

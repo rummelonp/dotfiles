@@ -13,9 +13,6 @@
 # savekill.el
 /kill-ring-saved.el
 
-# undohist.el
-/undohist/
-
 # magit.el
 /transient/
 

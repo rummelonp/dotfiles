@@ -26,7 +26,6 @@
 (straight-use-package 'which-key-posframe)
 (straight-use-package 'recentf-ext)
 (straight-use-package 'savekill)
-(straight-use-package 'undohist)
 (straight-use-package 'undo-tree)
 (straight-use-package 'point-undo)
 (straight-use-package 'direnv)
