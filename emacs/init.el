@@ -82,6 +82,7 @@
 (straight-use-package 'enh-ruby-mode)
 (straight-use-package 'robe)
 (straight-use-package 'rinari)
+(straight-use-package 'rspec-mode)
 ;; Language - Rust
 (straight-use-package 'rust-mode)
 (straight-use-package 'cargo)
