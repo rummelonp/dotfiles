@@ -49,7 +49,10 @@
 
 ;;; Powerline
 (require 'powerline)
-(defpowerline powerline-buffer-id nil)
+(defpowerline powerline-buffer-id
+  (if buffer-file-name
+      (all-the-icons-icon-for-file buffer-file-name)
+  (all-the-icons-icon-for-buffer)))
 (powerline-default-theme)
 (set-face-attribute 'mode-line nil :foreground active-secondary-fg :background active-secondary-bg)
 (set-face-attribute 'powerline-active1 nil :foreground active-primary-fg :background active-primary-bg)
