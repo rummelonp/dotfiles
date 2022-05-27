@@ -40,18 +40,40 @@
         (delete-window (treemacs-get-local-window))
       (treemacs-select-window))))
 
-;; tabbar functions
-(defun mtk/tabbar-sort-tab ()
+;; centaur-tabs functions
+(defun mtk/centaur-tabs-group-cycle ()
   (interactive)
-  (let* ((tabset (tabbar-current-tabset 't))
-         (tabs (tabbar-tabs tabset)))
+  (pcase centaur-tabs-buffer-groups-function
+    ('mtk/centaur-tabs-group-by-project
+     (setq centaur-tabs-buffer-groups-function 'mtk/centaur-tabs-group-by-major-mode)
+     (message "Group tabs by major-mode"))
+    (_
+     (setq centaur-tabs-buffer-groups-function 'mtk/centaur-tabs-group-by-project)
+     (message "Group tabs by porject")))
+  (centaur-tabs-display-update))
+
+(defun mtk/centaur-tabs-list-cycle ()
+  (interactive)
+  (pcase centaur-tabs-buffer-list-function
+    ('mtk/centaur-tabs-list-all
+     (setq centaur-tabs-buffer-list-function 'mtk/centaur-tabs-list-hide-emacs)
+     (message "Hide *Emacs* tabs"))
+    (_
+     (setq centaur-tabs-buffer-list-function 'mtk/centaur-tabs-list-all)
+     (message "Show all tabs")))
+  (centaur-tabs-display-update))
+
+(defun mtk/centaur-tabs-sort ()
+  (interactive)
+  (let* ((tabset (centaur-tabs-current-tabset 't))
+         (tabs (centaur-tabs-tabs tabset)))
     (if (and tabset tabs)
         (progn
           (set tabset (sort tabs (lambda (b1 b2)
                                    (string-lessp (buffer-file-name (car b1))
                                                  (buffer-file-name (car b2))))))
           (put tabset 'template nil)
-          (tabbar-display-update)))))
+          (centaur-tabs-display-update)))))
 
 ;; misc functions
 (defun mtk/copy-current-directory ()

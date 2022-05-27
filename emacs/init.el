@@ -42,7 +42,7 @@
 ;; Extension - Window
 (straight-use-package 'treemacs)
 (straight-use-package 'treemacs-all-the-icons)
-(straight-use-package 'tabbar)
+(straight-use-package 'centaur-tabs)
 (straight-use-package 'powerline)
 (straight-use-package 'nyan-mode)
 (straight-use-package 'popwin)
