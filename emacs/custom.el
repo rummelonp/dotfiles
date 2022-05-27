@@ -66,6 +66,8 @@
  '(neo-default-system-application "open")
  '(neo-theme 'icons)
  '(neo-vc-integration '(face char))
+ '(nyan-minimum-window-width 96)
+ '(nyan-mode t)
  '(plantuml-default-exec-mode 'executable)
  '(plantuml-executable-path
    (cl-find-if 'executable-find

@@ -40,6 +40,7 @@
 (straight-use-package 'neotree)
 (straight-use-package 'tabbar)
 (straight-use-package 'powerline)
+(straight-use-package 'nyan-mode)
 (straight-use-package 'popwin)
 (straight-use-package 'diminish)
 ;; Extension - Completion
