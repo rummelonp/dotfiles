@@ -5,9 +5,11 @@
 ;; dired
 (with-eval-after-load 'dired
   (require 'dired-x)
+  (require 'dired+)
   (bind-keys :map dired-mode-map
              ("F" . dired-create-empty-file)
              ("r" . wdired-change-to-wdired-mode)))
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 ;; recentf
 (with-eval-after-load 'recentf

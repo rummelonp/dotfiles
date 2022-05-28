@@ -3,6 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(all-the-icons-dired-monochrome nil)
  '(all-the-icons-scale-factor 1.0)
  '(anzu-mode-lighter "")
  '(anzu-replace-to-string-separator " => ")
@@ -22,6 +23,8 @@
  '(cua-enable-cua-keys nil)
  '(cua-mode t)
  '(delete-auto-save-files t)
+ '(diredp-hide-details-initially-flag nil)
+ '(diredp-hide-details-propagate-flag nil)
  '(direnv-always-show-summary nil)
  '(direnv-mode t)
  '(enh-ruby-deep-indent-paren nil)

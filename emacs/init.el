@@ -21,6 +21,8 @@
 (straight-use-package '(emacs-kabukicho-theme :type git :host github :repo "mitukiii/emacs-kabukicho-theme"))
 ;; Exetnsion - Basic
 (straight-use-package 'all-the-icons)
+(straight-use-package 'all-the-icons-dired)
+(straight-use-package 'dired+)
 (straight-use-package 'bind-key)
 (straight-use-package 'which-key)
 (straight-use-package 'which-key-posframe)
