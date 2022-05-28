@@ -44,7 +44,7 @@
            ("C" . neotree-copy-node)
            ("R" . neotree-rename-node)
            ("D" . neotree-delete-node)
-           ("D" . neotree-enter)
+           ("E" . neotree-enter)
            ("C-." . neotree-hidden-file-toggle))
 
 ;;; Powerline
