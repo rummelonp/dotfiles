@@ -102,6 +102,7 @@
  '(truncate-lines t)
  '(typescript-indent-level 2)
  '(undo-tree-auto-save-history nil)
+ '(undohist-ignored-files "^magit")
  '(uniquify-ignore-buffers-re "*[^*]+*")
  '(vc-follow-symlinks t)
  '(vertico-count 20)
