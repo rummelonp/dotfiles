@@ -105,7 +105,6 @@
 
 ;;; Diminish
 (defun mtk/setup-diminish ()
-  (require 'diminish)
   (diminish 'abbrev-mode)
   (diminish 'auto-fix-mode)
   (diminish 'cargo-minor-mode)
