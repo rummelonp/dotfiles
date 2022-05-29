@@ -99,6 +99,9 @@
  '(tab-width 2)
  '(tabbar-separator '(1))
  '(tool-bar-mode nil)
+ '(treemacs-indentation 1)
+ '(treemacs-space-between-root-nodes nil)
+ '(treemacs-user-mode-line-format 'none)
  '(truncate-lines t)
  '(typescript-indent-level 2)
  '(undo-tree-auto-save-history nil)
@@ -123,4 +126,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(flycheck-posframe-face ((t (:inherit default :background "#464752" :box (:line-width (1 . 1) :color "#464752" :style flat-button))))))
+ '(flycheck-posframe-face ((t (:inherit default :background "#464752" :box (:line-width (1 . 1) :color "#464752" :style flat-button)))))
+ '(treemacs-all-the-icons-root-face ((t (:inherit font-lock-string-face))))
+ '(treemacs-root-face ((t (:inherit font-lock-keyword-face :underline t :height 1.0)))))

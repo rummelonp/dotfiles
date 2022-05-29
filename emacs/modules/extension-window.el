@@ -12,40 +12,19 @@
 (defvar inactive-fg "gray80")
 (defvar inactive-bg "#181a26")
 
-;;; NeoTree
-(require 'neotree)
-(defun mtk/neotree-left (arg)
-  (interactive "P")
-  (let* ((path (neo-buffer--get-filename-current-line))
-         (file-p (and path (not (file-directory-p path)))))
-    (cond (file-p
-           (neotree-previous-line))
-          ((neo-buffer--expanded-node-p path)
-           (neo-buffer--set-expand path nil)
-           (neo-buffer--refresh t))
-          (t
-           (neotree-select-up-node)))))
-(defun mtk/neotree-right (arg)
-  (interactive "P")
-  (let* ((path (neo-buffer--get-filename-current-line))
-         (file-p (and path (not (file-directory-p path)))))
-    (cond (file-p
-           (neotree-next-line))
-          ((not (neo-buffer--expanded-node-p path))
-           (neo-buffer--set-expand path t)
-           (neo-buffer--refresh t))
-          (t
-           (neotree-select-down-node)))))
-(bind-keys :map neotree-mode-map
-           ("<left>"  . mtk/neotree-left)
-           ("<right>" . mtk/neotree-right)
-           ("+" . neotree-create-node)
-           ("F" . neotree-create-node)
-           ("C" . neotree-copy-node)
-           ("R" . neotree-rename-node)
-           ("D" . neotree-delete-node)
-           ("E" . neotree-enter)
-           ("C-." . neotree-hidden-file-toggle))
+;;; Treemacs
+(require 'treemacs)
+(require 'treemacs-all-the-icons)
+(treemacs-load-theme "all-the-icons")
+(bind-keys :map treemacs-mode-map
+           ("+" . treemacs-create-dir)
+           ("F" . treemacs-create-file)
+           ("C" . treemacs-copy-file)
+           ("D" . treemacs-delete-file)
+           ("C-M-n" . treemacs-next-neighbour)
+           ("C-M-p" . treemacs-previous-neighbour)
+           ("M-n" . treemacs-next-project)
+           ("M-p" . treemacs-previous-project))
 
 ;;; Powerline
 (require 'powerline)

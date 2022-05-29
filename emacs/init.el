@@ -38,7 +38,8 @@
 (straight-use-package 'rainbow-mode)
 (straight-use-package 'rainbow-delimiters)
 ;; Extension - Window
-(straight-use-package 'neotree)
+(straight-use-package 'treemacs)
+(straight-use-package 'treemacs-all-the-icons)
 (straight-use-package 'tabbar)
 (straight-use-package 'powerline)
 (straight-use-package 'nyan-mode)

@@ -14,15 +14,15 @@
   (interactive)
   (let* ((win-len (length (window-list)))
          (current-win (selected-window))
-         (neotree-win (neo-global--get-window))
+         (treemacs-win (treemacs-get-local-window))
          (next-win (next-window)))
     (cond ((or (eq win-len 1)
-               (and neotree-win
-                    (not (eq current-win neotree-win))
+               (and treemacs-win
+                    (not (eq current-win treemacs-win))
                     (eq win-len 2)))
            (split-window-horizontally)
            (other-window 1))
-          ((eq next-win neotree-win)
+          ((eq next-win treemacs-win)
            (other-window 2))
           (t
            (other-window 1)))))
@@ -31,20 +31,14 @@
   (interactive)
   (other-window -1))
 
-;; neotree functions
-(defun mtk/neotree-toggle ()
+;; treemacs functions
+(defun mtk/treemacs-toggle ()
   (interactive)
   (let* ((path (or buffer-file-name (expand-file-name default-directory)))
          (project (cdr (project-current nil path))))
-    (if (eq (selected-window) (neo-global--get-window))
-        (neotree-hide)
-      (progn
-        (if project
-            (progn
-              (neotree-dir project)
-              (neotree-find path))
-          (neo-global--open))
-        (neo-global--select-window)))))
+    (if (eq (selected-window) (treemacs-get-local-window))
+        (delete-window (treemacs-get-local-window))
+      (treemacs-select-window))))
 
 ;; tabbar functions
 (defun mtk/tabbar-sort-tab ()

@@ -1,3 +1,5 @@
+/.cache
+
 # straight.el
 /straight/
 
@@ -26,6 +28,5 @@
 /.mc-lists.el
 
 # lsp-mode.el
-/.cache
 /.lsp-session-v1
 /.dap-breakpoints
