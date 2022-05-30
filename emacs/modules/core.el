@@ -1,17 +1,17 @@
 ;;
-;; General - Basic
+;; Core
 ;;
 
-;; environment
+;; Environment
 (set-language-environment "Japanese")
 (set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8)
 
-;; theme
-(load-theme 'kabukicho t)
+;; Theme
 (set-frame-parameter nil 'alpha 95)
+(load-theme 'kabukicho t)
 
-;; font
+;; Font
 ;; | 数字 | アルファベット | 日本語 | 絵文字 |
 ;; | 0123 | abcdefghijklmn | あいう | 🍎🍎🍎 |
 (defun mtk/set-font-to-hackgen ()
@@ -34,15 +34,17 @@
     (mtk/set-font-to-hackgen)
   (mtk/set-font-to-monaco))
 
-;; server
+;; Server
 (require 'server)
 (unless (server-running-p)
   (server-start))
 
-;; misc
+;; Misc
 (require 'savehist)
+
 (defun mtk/maybe-delete-trailing-whitespace ()
   (unless (eq major-mode 'markdown-mode)
     (delete-trailing-whitespace)))
 (add-hook 'before-save-hook 'mtk/maybe-delete-trailing-whitespace)
+
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)

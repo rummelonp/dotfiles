@@ -1,8 +1,8 @@
 ;;
-;; Language - Web
+;; Lang - Web
 ;;
 
-;; html
+;; HTML
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'"  . web-mode))
 
@@ -15,7 +15,7 @@
 (add-hook 'web-mode-hook 'mtk/setup-web-mode)
 (add-hook 'web-mode-hook 'emmet-mode)
 
-;; typescript
+;; TypeScript
 (define-derived-mode mtk/web-typescript-mode web-mode "Web[TS]")
 (add-to-list 'auto-mode-alist '("\\.js\\'"  . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.ts\\'"  . typescript-mode))
@@ -29,6 +29,6 @@
 (add-hook 'typescript-mode-hook 'mtk/setup-typescript-mode)
 (add-hook 'mtk/web-typescript-mode-hook 'mtk/setup-typescript-mode)
 
-;; json
+;; JSON
 (with-eval-after-load 'json-mode
   (bind-key "M-s-l" 'json-mode-beautify json-mode-map))

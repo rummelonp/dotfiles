@@ -1,5 +1,5 @@
 ;;
-;; Language - Ruby
+;; Lang - Dart
 ;;
 
 (add-hook 'dart-mode-hook #'lsp)

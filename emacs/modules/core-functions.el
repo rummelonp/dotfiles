@@ -1,15 +1,15 @@
 ;;
-;; General - Functions
+;; Core - Functions
 ;;
 
-;; command protection
+;; Command Protection
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
-;; aliases
+;; Aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; window functions
+;; Window Functions
 (defun mtk/next-window-or-split-horizontally ()
   (interactive)
   (let* ((win-len (length (window-list)))
@@ -31,7 +31,7 @@
   (interactive)
   (other-window -1))
 
-;; treemacs functions
+;; Treemacs Functions
 (defun mtk/treemacs-toggle ()
   (interactive)
   (let* ((path (or buffer-file-name (expand-file-name default-directory)))
@@ -40,7 +40,7 @@
         (delete-window (treemacs-get-local-window))
       (treemacs-select-window))))
 
-;; centaur-tabs functions
+;; CentaurTabs Functions
 (defun mtk/centaur-tabs-group-cycle ()
   (interactive)
   (pcase centaur-tabs-buffer-groups-function
@@ -75,7 +75,7 @@
           (put tabset 'template nil)
           (centaur-tabs-display-update)))))
 
-;; misc functions
+;; Misc Functions
 (defun mtk/copy-current-directory ()
   (interactive)
   (kill-new (file-name-directory buffer-file-name)))

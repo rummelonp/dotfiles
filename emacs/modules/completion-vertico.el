@@ -1,8 +1,7 @@
 ;;
-;; Extension - Completion
+;; Completion - Vetico
 ;;
 
-;; vertico
 (with-eval-after-load 'vertico
   (bind-keys :map vertico-map
              ("C-v"   . vertico-scroll-up)
@@ -14,7 +13,7 @@
              ("C-,"   . embark-export)
              ("C-SPC" . embark-collect)))
 
-;; consult
+;; Consult & Embark
 (with-eval-after-load 'consult
   (with-eval-after-load 'embark
     (require 'embark-consult))
@@ -22,13 +21,13 @@
    consult-recent-file consult-project-buffer consult-buffer
    :preview-key nil))
 
-;; migemo
+;; Migemo
 (require 'migemo)
 (migemo-init)
 (set-process-query-on-exit-flag migemo-process nil)
 (bind-key "C-i" 'migemo-isearch-toggle-migemo isearch-mode-map)
 
-;; orderless
+;; Orderless
 (with-eval-after-load 'orderless
   ;; https://nyoho.jp/diary/?date=20210615
   (defun orderless-migemo (component)
@@ -53,14 +52,3 @@
           (org-roam-node (styles orderless-migemo-style))
           (unicode-name (styles orderless-migemo-style))
           (variable (styles orderless-default-style)))))
-
-;; company
-(with-eval-after-load 'company
-  (bind-keys :map company-active-map
-             ("C-M-v" . company-previous-page)
-             ("C-s"   . company-filter-candidates)
-             ("C-M-s" . company-search-candidates)
-             ("C-i"   . company-complete)
-             ("C-."   . company-show-location))
-  (add-hook 'company-mode-hook 'company-box-mode)
-  (require 'company-anywhere))

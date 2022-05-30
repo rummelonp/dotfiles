@@ -1,10 +1,10 @@
 ;;
-;; Environment - Darwin
+;; OS - MacOS
 ;;
 
 (require 'osx-osascript)
 
-;;; Functions
+;; Functions
 (defun mtk/darwin-open (name)
   (osascript-run-str (concat "tell application \"" name "\" to activate window")))
 
@@ -16,6 +16,6 @@
   (interactive)
   (mtk/darwin-open "Tweetbot"))
 
-;;; Key bindings
+;; Key Bindings
 (bind-key "C-x C-t" 'mtk/darwin-open-terminal)
 (bind-key "s-E" 'mtk/darwin-open-tweetbot)

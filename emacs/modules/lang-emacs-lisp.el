@@ -1,5 +1,5 @@
 ;;
-;; language - Emacs Lisp
+;; Lang - Emacs Lisp
 ;;
 
 (with-eval-after-load 'elisp-mode
