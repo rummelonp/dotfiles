@@ -22,6 +22,7 @@
 ;; Diminish
 (defun mtk/setup-diminish ()
   (diminish 'abbrev-mode)
+  (diminish 'all-the-icons-dired-mode)
   (diminish 'auto-fix-mode)
   (diminish 'cargo-minor-mode)
   ;; (diminish 'company-mode)
