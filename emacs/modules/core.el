@@ -20,7 +20,7 @@
   (setq face-font-rescale-alist '(("Hiragino Maru Gothic ProN" . 1.0)
                                   ("Apple Color Emoji" . 0.8)))
   (set-fontset-font t 'japanese-jisx0208 '("Hiragino Maru Gothic ProN"))
-  (set-fontset-font t 'unicode '("Apple Color Emoji")))
+  (set-fontset-font t 'symbol '("Apple Color Emoji")))
 
 (defun mtk/set-font-to-monaco ()
   (interactive)
@@ -28,7 +28,7 @@
   (setq face-font-rescale-alist '(("Hiragino Maru Gothic ProN" . 1.2)
                                   ("Apple Color Emoji" . 0.9)))
   (set-fontset-font t 'japanese-jisx0208 '("Hiragino Maru Gothic ProN"))
-  (set-fontset-font t 'unicode '("Apple Color Emoji")))
+  (set-fontset-font t 'symbol '("Apple Color Emoji")))
 
 (if (find-font (font-spec :name "HackGen"))
     (mtk/set-font-to-hackgen)
