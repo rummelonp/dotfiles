@@ -94,6 +94,7 @@ cask "slack"
 cask "tweetbot"
 cask "visual-studio-code"
 mas "1Password", id: 443987910
+mas "Flow", id: 1423210932
 mas "Keynote", id: 409183694
 mas "Kindle", id: 405399194
 mas "LINE", id: 539883307
