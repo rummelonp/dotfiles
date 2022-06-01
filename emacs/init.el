@@ -109,8 +109,9 @@
 (straight-use-package 'enh-ruby-mode)
 (straight-use-package 'robe)
 (straight-use-package 'rinari)
-(straight-use-package '(auto-fix :type git :host github :repo "tomoya/auto-fix.el"))
 (straight-use-package 'rspec-mode)
+(straight-use-package 'minitest)
+(straight-use-package '(auto-fix :type git :host github :repo "tomoya/auto-fix.el"))
 ;; Lang - Rust
 (straight-use-package 'rust-mode)
 (straight-use-package 'cargo)

@@ -79,6 +79,7 @@
  '(migemo-isearch-min-length 2)
  '(migemo-regex-dictionary nil)
  '(migemo-user-dictionary nil)
+ '(minitest-use-rails t)
  '(neo-default-system-application "open")
  '(neo-mode-line-type 'none)
  '(neo-theme 'icons)

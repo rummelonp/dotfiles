@@ -2,6 +2,7 @@
 ;; Lang - Ruby
 ;;
 
+;; Ruby
 (add-to-list 'auto-mode-alist '("\\.irbrc\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.pryrc\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Brewfile\\'" . ruby-mode))
@@ -36,3 +37,18 @@
   (setq-local auto-fix-command "rubocop")
   (setq-local auto-fix-option "-A"))
 (add-hook 'ruby-mode-hook 'mtk/setup-ruby-mode)
+
+;; RSpec
+(with-eval-after-load 'rspec-mode
+  (bind-keys :map rspec-mode-map
+             ("C-c C-v" . rspec-verify)
+             ("C-c C-e" . rspec-verify-single)
+             ("C-c C-r" . rspec-rerun)
+             ("C-c C-f" . rspec-run-last-failed)))
+
+;; Minitest
+(with-eval-after-load 'minitest
+  (bind-keys :map minitest-mode-map
+             ("C-c C-v" . minitest-verify)
+             ("C-c C-e" . minitest-verify-single)
+             ("C-c C-r" . minitest-rerun)))
