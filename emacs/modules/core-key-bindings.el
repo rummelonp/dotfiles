@@ -106,7 +106,7 @@
 (bind-key "C-x C-a" 'consult-recent-file)
 (bind-key "C-x C-f" 'project-find-file)           ;; find-file
 (bind-key "C-x f"   'find-file)                   ;; set-fill-column
-(bind-key "C-x C-d" 'mtk/treemacs-toggle)         ;; list-directory
+(bind-key "C-x C-d" 'consult-dir)                 ;; list-directory
 (bind-key "C-x d"   'project-find-dir)            ;; dired
 (bind-key "C-x C-b" 'consult-project-buffer)      ;; list-buffer
 (bind-key "C-x b"   'consult-buffer)              ;; switch-to-buffer

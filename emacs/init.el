@@ -62,6 +62,7 @@
 ;; Completion - Vertico
 (straight-use-package 'vertico)
 (straight-use-package 'consult)
+(straight-use-package 'consult-dir)
 (straight-use-package 'embark)
 (straight-use-package 'embark-consult)
 (straight-use-package 'migemo)
