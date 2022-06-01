@@ -9,7 +9,6 @@
 (with-eval-after-load 'ruby-mode
   (require 'enh-ruby-mode)
   (require 'robe)
-  (require 'rinari)
   (add-hook 'ruby-mode-hook 'enh-ruby-mode)
   (add-hook 'enh-ruby-mode-hook 'robe-mode)
   (add-hook 'enh-ruby-mode-hook 'rinari-minor-mode)

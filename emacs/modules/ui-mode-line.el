@@ -3,8 +3,6 @@
 ;;
 
 ;; Powerline
-(require 'powerline)
-
 (defpowerline powerline-buffer-id
   (if buffer-file-name
       (all-the-icons-icon-for-file buffer-file-name)

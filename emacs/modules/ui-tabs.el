@@ -2,7 +2,6 @@
 ;; UI - Tabs
 ;;
 
-(require 'centaur-tabs)
 (centaur-tabs-mode)
 
 ;; Font
