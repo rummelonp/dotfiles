@@ -68,6 +68,7 @@
  '(magit-delta-default-dark-theme "Kabukicho")
  '(make-backup-files nil)
  '(marginalia-mode t)
+ '(markdown-toc-indentation-space 2)
  '(menu-bar-mode t)
  '(migemo-command
    (cl-find-if 'executable-find

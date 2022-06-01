@@ -118,6 +118,10 @@
 (straight-use-package 'dart-mode)
 (straight-use-package 'lsp-dart)
 (straight-use-package 'flutter)
+;; Lang - Markdown
+(straight-use-package 'markdown-mode)
+(straight-use-package 'markdown-toc)
+(straight-use-package 'grip-mode)
 ;; Lang - Misc
 (straight-use-package 'scala-mode)
 (straight-use-package 'kotlin-mode)
@@ -125,7 +129,6 @@
 (straight-use-package 'swift-mode)
 (straight-use-package 'go-mode)
 (straight-use-package 'yaml-mode)
-(straight-use-package 'markdown-mode)
 (straight-use-package 'plantuml-mode)
 ;; OS - MacOS
 (straight-use-package 'osx-osascript)
@@ -169,6 +172,7 @@
     lang-ruby
     lang-rust
     lang-dart
+    lang-markdown
     lang-misc
     core-functions
     core-key-bindings

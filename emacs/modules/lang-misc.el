@@ -13,8 +13,5 @@
 ;; YAML
 (add-hook 'yaml-mode-hook 'highlight-indent-guides-mode)
 
-;; Markdown
-(add-to-list 'auto-mode-alist '("/TODO\\'" . markdown-mode))
-
 ;; PlantUML
 (add-to-list 'auto-mode-alist '("\\.[pi]uml\\'" . plantuml-mode))
