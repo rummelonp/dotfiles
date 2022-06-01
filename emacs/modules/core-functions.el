@@ -49,7 +49,7 @@
      (message "Group tabs by major-mode"))
     (_
      (setq centaur-tabs-buffer-groups-function 'mtk/centaur-tabs-group-by-project)
-     (message "Group tabs by porject")))
+     (message "Group tabs by project")))
   (centaur-tabs-display-update))
 
 (defun mtk/centaur-tabs-list-cycle ()
