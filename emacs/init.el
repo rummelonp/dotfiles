@@ -68,6 +68,7 @@
 (straight-use-package 'migemo)
 (straight-use-package 'orderless)
 (straight-use-package 'marginalia)
+(straight-use-package 'all-the-icons-completion)
 (straight-use-package 'wgrep)
 ;; Completion - Company
 (straight-use-package 'company)
