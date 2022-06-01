@@ -73,6 +73,8 @@
 (straight-use-package 'company-box)
 (straight-use-package 'company-statistics)
 (straight-use-package '(company-anywhere :type git :host github :repo "zk-phi/company-anywhere"))
+;; Completion - Copilot
+(straight-use-package '(copilot :type git :host github :repo "zerolfx/copilot.el" :files ("dist" "*.el")))
 ;; Checker - Syntax
 (straight-use-package 'flycheck)
 (straight-use-package 'flycheck-posframe)
@@ -153,6 +155,7 @@
     ui-misc
     completion-vertico
     completion-company
+    completion-copilot
     checker-syntax
     tools-lsp
     tools-misc

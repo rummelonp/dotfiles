@@ -26,6 +26,7 @@
   (diminish 'cargo-minor-mode)
   ;; (diminish 'company-mode)
   (diminish 'company-box-mode)
+  (diminish 'copilot-mode)
   (diminish 'eldoc-mode)
   (diminish 'elisp-slime-nav-mode)
   (diminish 'emmet-mode)
