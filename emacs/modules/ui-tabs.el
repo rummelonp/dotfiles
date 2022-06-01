@@ -27,11 +27,11 @@
 
 ;; Customize Project Name
 (defun centaur-tabs-project-name ()
-  (let ((project-path (project-root (project-current))))
-    (if project-path
+  (let ((project (project-current)))
+    (if project
 	      (format "Project: %s"
                 (file-name-nondirectory
-                 (directory-file-name project-path)))
+                 (directory-file-name (project-root project))))
       centaur-tabs-common-group-name)))
 
 ;; Customize Group
