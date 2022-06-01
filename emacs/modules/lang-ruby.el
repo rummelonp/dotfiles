@@ -7,13 +7,10 @@
 (add-to-list 'auto-mode-alist '("Brewfile\\'" . ruby-mode))
 
 (with-eval-after-load 'ruby-mode
-  (require 'enh-ruby-mode)
-  (require 'robe)
-  (add-hook 'ruby-mode-hook 'enh-ruby-mode)
-  (add-hook 'enh-ruby-mode-hook 'robe-mode)
-  (add-hook 'enh-ruby-mode-hook 'rinari-minor-mode)
-  (add-hook 'enh-ruby-mode-hook 'auto-fix-mode)
   (add-hook 'enh-ruby-mode-hook 'flycheck-posframe-mode)
+
+  (require 'enh-ruby-mode)
+  (add-hook 'ruby-mode-hook 'enh-ruby-mode)
   (bind-keys :map enh-ruby-mode-map
              ("C-M-f" . forward-word)                ;; enh-ruby-forward-sexp
              ("C-M-b" . backward-word)               ;; enh-ruby-backward-sexp
@@ -24,9 +21,15 @@
              ("M-a"   . enh-ruby-beginning-of-defun)
              ("M-e"   . enh-ruby-end-of-defun)
              ("M-s-l" . auto-fix))
+
+  (require 'robe)
+  (add-hook 'enh-ruby-mode-hook 'robe-mode)
   (bind-keys :map robe-mode-map
              ("C-."   . robe-doc)
-             ("C-M-." . robe-jump)))
+             ("C-M-." . robe-jump))
+
+  (add-hook 'enh-ruby-mode-hook 'rinari-minor-mode)
+  (add-hook 'enh-ruby-mode-hook 'auto-fix-mode))
 
 (defun mtk/setup-ruby-mode ()
   (setq-local company-backends '(company-robe (company-dabbrev-code company-keywords)))
