@@ -74,6 +74,7 @@
  '(migemo-dictionary
    (cl-find-if 'file-exists-p
                '("/opt/homebrew/share/migemo/utf-8/migemo-dict" "/usr/local/share/migemo/utf-8/migemo-dict" "/usr/share/cmigemo/utf-8/migemo-dict")))
+ '(migemo-isearch-min-length 2)
  '(migemo-regex-dictionary nil)
  '(migemo-user-dictionary nil)
  '(neo-default-system-application "open")
