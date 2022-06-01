@@ -34,8 +34,7 @@
 ;; Treemacs Functions
 (defun mtk/treemacs-toggle ()
   (interactive)
-  (let* ((path (or buffer-file-name (expand-file-name default-directory)))
-         (project (cdr (project-current nil path))))
+  (let* ((path (or buffer-file-name (expand-file-name default-directory))))
     (if (eq (selected-window) (treemacs-get-local-window))
         (delete-window (treemacs-get-local-window))
       (treemacs-select-window))))
