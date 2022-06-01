@@ -3,9 +3,16 @@
 ;;
 
 (with-eval-after-load 'elisp-mode
+  (require 'macrostep)
+  (require 'highlight-quoted)
   (require 'elisp-slime-nav)
+  (require 'elisp-demos)
+  (advice-add 'describe-function-1 :after #'elisp-demos-advice-describe-function-1)
+  (add-hook 'emacs-lisp-mode-hook 'highlight-quoted-mode)
   (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
   (add-hook 'emacs-lisp-mode-hook 'flycheck-posframe-mode)
+  (bind-keys :map emacs-lisp-mode-map
+             ("C-c C-e" . macrostep-expand))
   (bind-keys :map elisp-slime-nav-mode-map
              ("C-."   . elisp-slime-nav-describe-elisp-thing-at-point)
              ("C-M-." . elisp-slime-nav-find-elisp-thing-at-point)))

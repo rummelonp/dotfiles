@@ -91,7 +91,10 @@
 (straight-use-package 'terraform-mode)
 (straight-use-package 'nginx-mode)
 ;; Lang - Emacs Lisp
+(straight-use-package 'highlight-quoted)
+(straight-use-package 'macrostep)
 (straight-use-package 'elisp-slime-nav)
+(straight-use-package 'elisp-demos)
 (straight-use-package 'flycheck-package)
 ;; Lang - Web
 (straight-use-package 'web-mode)
