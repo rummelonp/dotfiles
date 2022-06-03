@@ -69,19 +69,18 @@ fi
 
 # Ruby
 if (( $+commands[rbenv] )); then
-    eval "$(rbenv init -)"
+    eval "$(rbenv init --no-rehash -)"
 fi
 
 # Python
 if (( $+commands[pyenv] )); then
-    eval "$(pyenv init --path)"
-    eval "$(pyenv init -)"
+    eval "$(pyenv init --no-rehash -)"
     eval "$(pip completion --zsh)"
 fi
 
 # Node
 if (( $+commands[nodenv] )); then
-    eval "$(nodenv init -)"
+    eval "$(nodenv init --no-rehash -)"
     eval "$(npm completion --zsh)"
 fi
 
