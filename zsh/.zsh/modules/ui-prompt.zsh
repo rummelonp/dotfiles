@@ -24,13 +24,13 @@ function _precmd-rprompt() {
 add-zsh-hook precmd _precmd-rprompt
 
 function _chpwd-rprompt() {
-    if which rbenv > /dev/null; then
+    if (( $+commands[rbenv] )); then
         psvar[2]=$(rbenv version | cut -d' ' -f1)
     fi
-    if which pyenv > /dev/null; then
+    if (( $+commands[pyenv] )); then
         psvar[3]=$(pyenv version | cut -d' ' -f1)
     fi
-    if which nodenv > /dev/null; then
+    if (( $+commands[nodenv] )); then
         psvar[4]=$(nodenv version | cut -d ' ' -f1)
     fi
 }

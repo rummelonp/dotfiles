@@ -2,7 +2,7 @@
 # Fuzzy finder
 #
 
-if ! which fzf > /dev/null; then
+if (( ! $+commands[fzf] )); then
     return
 fi
 

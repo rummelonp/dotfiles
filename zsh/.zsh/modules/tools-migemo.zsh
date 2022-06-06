@@ -2,7 +2,7 @@
 # C/Migemo
 #
 
-if ! which cmigemo > /dev/null; then
+if (( ! $+commands[cmigemo] )); then
     return
 fi
 

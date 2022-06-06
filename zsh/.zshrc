@@ -4,20 +4,20 @@
 
 ### Load modules ###
 module_names=(
-    # Basic
-    environment
-    editor
-    history
-    directory
-    completion
-    utility
-    prompt
-    # Extensions
-    ssh
-    fzf
-    migemo
-    # Environment dependent
-    darwin
+    core-environment
+    core-editor
+    core-history
+    core-directory
+    core-utility
+    core-completion
+    ui-prompt
+    tools-ssh
+    tools-fzf
+    tools-migemo
+    lang-ruby
+    lang-python
+    lang-android
+    os-darwin
 )
 for module_name in $module_names; do
     source $HOME/.zsh/modules/$module_name.zsh

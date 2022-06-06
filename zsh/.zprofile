@@ -104,11 +104,6 @@ if [ -d $HOME/.rd/bin ]; then
     path=($HOME/.rd/bin $path)
 fi
 
-# Direnv
-if (( $+commands[direnv] )); then
-    eval "$(direnv hook zsh)"
-fi
-
 # ghq
 if (( $+commands[ghq] )); then
     export GHQ_ROOT="$HOME/Repos"
