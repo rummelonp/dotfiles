@@ -62,11 +62,6 @@ if (( $+commands[brew] )); then
     )
 fi
 
-# Scala
-if (( $+commands[cs] )); then
-    path=("$HOME/Library/Application Support/Coursier/bin" $path)
-fi
-
 # Ruby
 if (( $+commands[rbenv] )); then
     eval "$(rbenv init --no-rehash -)"
@@ -82,10 +77,15 @@ if (( $+commands[nodenv] )); then
     eval "$(nodenv init --no-rehash -)"
 fi
 
-# Go
-if (( $+commands[go] )); then
-    export GOPATH="$HOME/.go"
-    path=($GOPATH/bin $path)
+# Scala
+if (( $+commands[cs] )); then
+    path=("$HOME/Library/Application Support/Coursier/bin" $path)
+fi
+
+# Android
+if (( $+commands[brew] )); then
+    export ANDROID_SDK_ROOT=$(brew --prefix)/share/android-sdk
+    path=($ANDROID_SDK_ROOT/platform-tools $path)
 fi
 
 # Rust
@@ -93,10 +93,10 @@ if [ -f $HOME/.cargo/env ]; then
     source $HOME/.cargo/env
 fi
 
-# Android
-if (( $+commands[brew] )); then
-    export ANDROID_SDK_ROOT=$(brew --prefix)/share/android-sdk
-    path=($ANDROID_SDK_ROOT/platform-tools $path)
+# Go
+if (( $+commands[go] )); then
+    export GOPATH="$HOME/.go"
+    path=($GOPATH/bin $path)
 fi
 
 # Rancher
@@ -108,4 +108,5 @@ fi
 if (( $+commands[ghq] )); then
     export GHQ_ROOT="$HOME/Repos"
     cdpath=($GHQ_ROOT/github.com/mitukiii $cdpath)
+    fpath=($GHQ_ROOT/github.com/mitukiii/zsh-completions/src $fpath)
 fi
