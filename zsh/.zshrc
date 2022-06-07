@@ -12,6 +12,7 @@ module_names=(
     core-completion
     ui-prompt
     tools-ssh
+    tools-direnv
     tools-fzf
     tools-migemo
     lang-ruby
