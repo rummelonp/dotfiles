@@ -12,6 +12,5 @@
 
 (with-eval-after-load 'markdown-mode
   (bind-keys :map markdown-mode-map
-             ("C-."     . markdown-follow-link-at-point)
              ("C-c C-e" . markdown-toc-generate-or-refresh-toc)
              ("C-c C-p" . mtk/grip-mode-once)))

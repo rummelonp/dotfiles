@@ -4,8 +4,9 @@
 
 (with-eval-after-load #'lsp-mode
   (bind-keys :map lsp-mode-map
-             ("C-x C-o" . consult-lsp-diagnostics)
-             ("C-x ."   . lsp-execute-code-action)
              ("C-."     . lsp-describe-thing-at-point)
              ("C-M-."   . lsp-find-definition)
-             ("M-s-l"   . lsp-format-buffer)))
+             ("C-,"     . lsp-rename)
+             ("M-,"     . lsp-execute-code-action)
+             ("M-s-l"   . lsp-format-buffer)
+             ("C-x C-o" . consult-lsp-diagnostics)))
