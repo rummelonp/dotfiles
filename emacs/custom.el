@@ -21,6 +21,7 @@
  '(centaur-tabs-show-navigation-buttons t)
  '(centaur-tabs-show-new-tab-button nil)
  '(column-number-mode t)
+ '(company-minimum-prefix-length 2)
  '(company-require-match 'never)
  '(company-selection-wrap-around t)
  '(company-statistics-mode t)
