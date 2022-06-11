@@ -117,13 +117,13 @@
 ;; Lang - Scala
 (straight-use-package 'scala-mode)
 (straight-use-package 'lsp-metals)
-;; Lang - Rust
-(straight-use-package 'rust-mode)
-(straight-use-package 'cargo)
 ;; Lang - Dart
 (straight-use-package 'dart-mode)
 (straight-use-package 'lsp-dart)
 (straight-use-package 'flutter)
+;; Lang - Rust
+(straight-use-package 'rust-mode)
+(straight-use-package 'cargo)
 ;; Lang - Markdown
 (straight-use-package 'markdown-mode)
 (straight-use-package 'markdown-toc)
@@ -179,8 +179,8 @@
     lang-javascript
     lang-ruby
     lang-scala
-    lang-rust
     lang-dart
+    lang-rust
     lang-markdown
     lang-misc
     core-functions
