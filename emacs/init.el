@@ -114,6 +114,8 @@
 (straight-use-package 'rinari)
 (straight-use-package 'rspec-mode)
 (straight-use-package 'minitest)
+;; Lang - Python
+(straight-use-package 'pip-requirements)
 ;; Lang - Scala
 (straight-use-package 'scala-mode)
 (straight-use-package 'lsp-metals)
