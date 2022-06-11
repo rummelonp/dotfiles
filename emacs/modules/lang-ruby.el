@@ -20,8 +20,7 @@
              ("C-M-a" . enh-ruby-beginning-of-block) ;; enh-ruby-beginning-of-defun
              ("C-M-e" . enh-ruby-end-of-block)       ;; enh-ruby-end-of-defun
              ("M-a"   . enh-ruby-beginning-of-defun)
-             ("M-e"   . enh-ruby-end-of-defun)
-             ("M-s-l" . auto-fix))
+             ("M-e"   . enh-ruby-end-of-defun))
 
   (require 'robe)
   (add-hook 'enh-ruby-mode-hook 'robe-mode)

@@ -81,6 +81,7 @@
 (straight-use-package 'flycheck)
 (straight-use-package 'flycheck-posframe)
 (straight-use-package 'consult-flycheck)
+(straight-use-package '(auto-fix :type git :host github :repo "tomoya/auto-fix.el"))
 ;; Tools - LSP
 (straight-use-package 'lsp-mode)
 (straight-use-package 'lsp-ui)
@@ -113,7 +114,6 @@
 (straight-use-package 'rinari)
 (straight-use-package 'rspec-mode)
 (straight-use-package 'minitest)
-(straight-use-package '(auto-fix :type git :host github :repo "tomoya/auto-fix.el"))
 ;; Lang - Rust
 (straight-use-package 'rust-mode)
 (straight-use-package 'cargo)

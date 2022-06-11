@@ -2,6 +2,7 @@
 ;; Checker - Syntax
 ;;
 
+;; Flycheck
 (with-eval-after-load 'flycheck
   (defun mtk/flycheck-mode-line-status-text (&optional status)
     (let* ((active (powerline-selected-window-active))
@@ -19,3 +20,11 @@
                    (`suspicious "🙃"))))
       (concat " " flycheck-mode-line-prefix text)))
   (setq flycheck-mode-line '(:eval (mtk/flycheck-mode-line-status-text))))
+
+;; Auto Fix
+(defvar auto-fix-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "M-s-l") 'auto-fix)
+    map)
+  "Keymap for `auto-fix-mode'.")
+(require 'auto-fix)
