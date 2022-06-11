@@ -89,17 +89,17 @@
 ;; treemacs
 (bind-key "s-1" 'mtk/treemacs-toggle)
 ;; centaur-tabs
-(bind-key "C-x C-n" 'centaur-tabs-forward)        ;; set-goal-column
-(bind-key "C-x C-p" 'centaur-tabs-backward)       ;; mark-page
-(bind-key "s-}"     'centaur-tabs-forward)
-(bind-key "s-{"     'centaur-tabs-backward)
-(bind-key "C-x n"   'centaur-tabs-forward-group)  ;; save-buffers-kill-terminal
-(bind-key "C-x p"   'centaur-tabs-backward-group)
-(bind-key "s-2"     'centaur-tabs-toggle-groups)
-(bind-key "s-3"     'mtk/centaur-tabs-group-cycle)
-(bind-key "s-4"     'mtk/centaur-tabs-list-cycle)
-(bind-key "s-0"     'mtk/centaur-tabs-sort)
-(bind-key "C-x j"   'mtk/centaur-tabs-sort)
+(bind-key  "C-x C-n" 'centaur-tabs-forward)        ;; set-goal-column
+(bind-key  "C-x C-p" 'centaur-tabs-backward)       ;; mark-page
+(bind-key  "s-}"     'centaur-tabs-forward)
+(bind-key  "s-{"     'centaur-tabs-backward)
+(bind-key* "C-x n"   'centaur-tabs-forward-group)  ;; save-buffers-kill-terminal
+(bind-key  "C-x p"   'centaur-tabs-backward-group)
+(bind-key  "s-2"     'centaur-tabs-toggle-groups)
+(bind-key  "s-3"     'mtk/centaur-tabs-group-cycle)
+(bind-key  "s-4"     'mtk/centaur-tabs-list-cycle)
+(bind-key  "s-0"     'mtk/centaur-tabs-sort)
+(bind-key  "C-x j"   'mtk/centaur-tabs-sort)
 
 ;;; Completion
 ;; consult
