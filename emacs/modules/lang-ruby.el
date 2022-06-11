@@ -8,10 +8,10 @@
 (add-to-list 'auto-mode-alist '("Brewfile\\'" . ruby-mode))
 
 (with-eval-after-load 'ruby-mode
-  (add-hook 'enh-ruby-mode-hook 'flycheck-posframe-mode)
-
   (require 'enh-ruby-mode)
   (add-hook 'ruby-mode-hook 'enh-ruby-mode)
+  (add-hook 'enh-ruby-mode-hook 'flycheck-posframe-mode)
+  (add-hook 'enh-ruby-mode-hook 'auto-fix-mode)
   (bind-keys :map enh-ruby-mode-map
              ("C-M-f" . forward-word)                ;; enh-ruby-forward-sexp
              ("C-M-b" . backward-word)               ;; enh-ruby-backward-sexp
@@ -28,8 +28,7 @@
              ("C-."   . robe-doc)
              ("C-M-." . robe-jump))
 
-  (add-hook 'enh-ruby-mode-hook 'rinari-minor-mode)
-  (add-hook 'enh-ruby-mode-hook 'auto-fix-mode))
+  (add-hook 'enh-ruby-mode-hook 'rinari-minor-mode))
 
 (defun mtk/setup-ruby-mode ()
   (setq-local company-backends '(company-robe (company-dabbrev-code company-keywords)))
