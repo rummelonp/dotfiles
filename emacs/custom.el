@@ -62,6 +62,7 @@
  '(kill-whole-line t)
  '(line-number-mode t)
  '(lsp-enable-indentation nil)
+ '(lsp-file-watch-threshold 3000)
  '(lsp-headerline-breadcrumb-enable nil)
  '(lsp-ui-doc-position 'at-point)
  '(magit-delta-default-dark-theme "Kabukicho")
