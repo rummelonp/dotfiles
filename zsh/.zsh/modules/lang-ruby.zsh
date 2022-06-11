@@ -2,10 +2,14 @@
 # Ruby
 #
 
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+### Aliases ###
 alias bi='bundle install'
 alias bu='bundle update'
 alias be='bundle exec'
 
+### Functions ###
 function _ruby_command() {
     typeset cmd=$1
     <<EOF
