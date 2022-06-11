@@ -100,7 +100,9 @@
 (straight-use-package 'web-mode)
 (straight-use-package 'company-web)
 (straight-use-package 'emmet-mode)
+;; Lang - CSS
 (straight-use-package 'scss-mode)
+;; Lang - JavaScript
 (straight-use-package 'typescript-mode)
 (straight-use-package 'lsp-javascript-typescript)
 (straight-use-package 'json-mode)
@@ -171,6 +173,7 @@
     tools-misc
     lang-emacs-lisp
     lang-web
+    lang-javascript
     lang-ruby
     lang-rust
     lang-dart
