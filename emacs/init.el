@@ -114,6 +114,9 @@
 (straight-use-package 'rinari)
 (straight-use-package 'rspec-mode)
 (straight-use-package 'minitest)
+;; Lang - Scala
+(straight-use-package 'scala-mode)
+(straight-use-package 'lsp-metals)
 ;; Lang - Rust
 (straight-use-package 'rust-mode)
 (straight-use-package 'cargo)
@@ -126,7 +129,6 @@
 (straight-use-package 'markdown-toc)
 (straight-use-package 'grip-mode)
 ;; Lang - Misc
-(straight-use-package 'scala-mode)
 (straight-use-package 'kotlin-mode)
 (straight-use-package 'groovy-mode)
 (straight-use-package 'swift-mode)
@@ -176,6 +178,7 @@
     lang-css
     lang-javascript
     lang-ruby
+    lang-scala
     lang-rust
     lang-dart
     lang-markdown
