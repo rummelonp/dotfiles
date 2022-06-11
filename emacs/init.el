@@ -173,6 +173,7 @@
     tools-misc
     lang-emacs-lisp
     lang-web
+    lang-css
     lang-javascript
     lang-ruby
     lang-rust
