@@ -11,6 +11,7 @@
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . mtk/web-typescript-mode))
 
 (defun mtk/setup-typescript-mode ()
+  (setq-local lsp-enabled-clients '(ts-ls vls eslint))
   (lsp)
   (setq-local company-backends '(company-capf)))
 (add-hook 'typescript-mode-hook 'mtk/setup-typescript-mode)
