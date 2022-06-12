@@ -17,7 +17,7 @@ function ${cmd}() {
     if [ -f bin/${cmd} ]; then
         bin/${cmd} "\$@"
     elif [ -f Gemfile ]; then
-        bundle exec ${cmd} "\$@"
+        \$(rbenv root)/shims/bundle exec ${cmd} "\$@"
     else
         \$(rbenv root)/shims/${cmd} "\$@"
     fi
