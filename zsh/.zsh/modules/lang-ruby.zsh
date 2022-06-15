@@ -17,15 +17,22 @@ function ${cmd}() {
     if [ -f bin/${cmd} ]; then
         bin/${cmd} "\$@"
     elif [ -f Gemfile ]; then
-        \$(rbenv root)/shims/bundle exec ${cmd} "\$@"
+        command bundle exec ${cmd} "\$@"
     else
-        \$(rbenv root)/shims/${cmd} "\$@"
+        command ${cmd} "\$@"
     fi
 }
 EOF
 }
 
-eval "$(_ruby_command bundle)"
+function bundle() {
+    if [ -f bin/bundle ]; then
+        bin/bundle "$@"
+    else
+        command bundle "$@"
+    fi
+}
+
 eval "$(_ruby_command rails)"
 eval "$(_ruby_command rake)"
 eval "$(_ruby_command rspec)"
