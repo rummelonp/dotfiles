@@ -77,5 +77,15 @@
     "key": "alt+w",
     "command": "emacs.C-w",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+.",
+    "command": "editor.action.peekDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+  },
+  {
+    "key": "ctrl+alt+.",
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
   }
 ]

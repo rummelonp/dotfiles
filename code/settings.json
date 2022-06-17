@@ -2,5 +2,6 @@
   "editor.fontFamily": "HackGen, Monaco",
   "editor.fontSize": 16,
   "editor.tabSize": 2,
-  "workbench.colorTheme": "Kabukichō"
+  "workbench.colorTheme": "Kabukichō",
+  "editor.inlineSuggest.enabled": true
 }
