@@ -12,4 +12,5 @@
   (setq-local company-backends
               '((company-web-html company-dabbrev-code company-dabbrev))))
 (add-hook 'web-mode-hook 'mtk/setup-web-mode)
+(add-hook 'web-mode-hook 'highlight-indent-guides-mode)
 (add-hook 'web-mode-hook 'emmet-mode)
