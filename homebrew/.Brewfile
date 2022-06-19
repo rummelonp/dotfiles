@@ -78,6 +78,7 @@ brew "getsentry/tools/sentry-cli"
 brew "messense/macos-cross-toolchains/aarch64-unknown-linux-gnu"
 brew "messense/macos-cross-toolchains/x86_64-unknown-linux-gnu"
 brew "minio/stable/minio"
+cask "1password"
 cask "alfred"
 cask "android-ndk"
 cask "android-sdk"
@@ -102,7 +103,6 @@ cask "rectangle"
 cask "slack"
 cask "tweetbot"
 cask "visual-studio-code"
-mas "1Password", id: 443987910
 mas "Flow", id: 1423210932
 mas "Keynote", id: 409183694
 mas "Kindle", id: 405399194
