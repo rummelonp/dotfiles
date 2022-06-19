@@ -83,6 +83,7 @@ cask "android-ndk"
 cask "android-sdk"
 cask "android-studio"
 cask "appcleaner"
+cask "authy"
 cask "bartender"
 cask "discord"
 cask "dropbox"
@@ -110,6 +111,7 @@ mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pocket", id: 568494494
+mas "Skitch", id: 425955336
 mas "Spark", id: 1176895641
 mas "Todoist", id: 585829637
 mas "TweetDeck", id: 485812721
