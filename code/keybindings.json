@@ -80,8 +80,7 @@
   },
   {
     "key": "ctrl+.",
-    "command": "editor.action.peekDefinition",
-    "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    "command": "editor.action.showDefinitionPreviewHover"
   },
   {
     "key": "ctrl+alt+.",
