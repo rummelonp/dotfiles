@@ -110,6 +110,7 @@
 ;: Lang - Ruby
 (straight-use-package 'ruby-mode)
 (straight-use-package 'enh-ruby-mode)
+(straight-use-package 'rbs-mode)
 (straight-use-package 'robe)
 (straight-use-package 'rinari)
 (straight-use-package 'rspec-mode)
