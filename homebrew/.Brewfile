@@ -114,6 +114,5 @@ mas "Pocket", id: 568494494
 mas "Skitch", id: 425955336
 mas "Spark", id: 1176895641
 mas "Todoist", id: 585829637
-mas "TweetDeck", id: 485812721
 mas "Twitter", id: 1482454543
 mas "Xcode", id: 497799835
