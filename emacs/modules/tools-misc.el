@@ -13,3 +13,8 @@
 
 ;; Dockerfile
 (add-hook 'dockerfile-mode-hook #'lsp)
+
+;; Terraform
+(with-eval-after-load 'terraform-mode
+  (bind-keys :map terraform-mode-map
+             ("M-s-l" . terraform-format-buffer)))
