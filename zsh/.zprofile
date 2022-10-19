@@ -90,8 +90,8 @@ fi
 
 # Dart
 if (( $+commands[dart] )); then
-    export path=($HOME/.pub-cache/bin $path)
     export FVM_HOME=$HOME/.fvm
+    path=($HOME/.pub-cache/bin $FVM_HOME/default/bin $path)
 fi
 
 # Rust
