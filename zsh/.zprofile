@@ -88,6 +88,12 @@ if (( $+commands[brew] )); then
     path=($ANDROID_SDK_ROOT/platform-tools $path)
 fi
 
+# Dart
+if (( $+commands[dart] )); then
+    export path=($HOME/.pub-cache/bin $path)
+    export FVM_HOME=$HOME/.fvm
+fi
+
 # Rust
 if [ -f $HOME/.cargo/env ]; then
     source $HOME/.cargo/env
