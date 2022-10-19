@@ -53,7 +53,7 @@ brew "node-build"
 brew "nodenv"
 brew "oath-toolkit"
 brew "plantuml"
-brew "postgresql", restart_service: true
+brew "postgresql@14"
 brew "pwgen"
 brew "pyenv"
 brew "ruby-build"
