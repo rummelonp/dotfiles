@@ -34,6 +34,7 @@ brew "gh"
 brew "ghq"
 brew "git"
 brew "git-delta"
+brew "git-filter-repo"
 brew "git-secrets"
 brew "gnu-sed"
 brew "gnu-tar"
@@ -44,7 +45,7 @@ brew "htop"
 brew "httpie"
 brew "imagemagick"
 brew "jq"
-brew "kotlin"
+brew "kotlin", link: false
 brew "ktlint"
 brew "mas"
 brew "mint"
@@ -55,7 +56,7 @@ brew "node-build"
 brew "nodenv"
 brew "oath-toolkit"
 brew "plantuml"
-brew "postgresql@14"
+brew "postgresql@14", restart_service: true
 brew "pwgen"
 brew "pyenv"
 brew "ruby-build"
@@ -116,5 +117,4 @@ mas "Pocket", id: 568494494
 mas "Skitch", id: 425955336
 mas "Spark", id: 1176895641
 mas "Todoist", id: 585829637
-mas "Twitter", id: 1482454543
 mas "Xcode", id: 497799835
