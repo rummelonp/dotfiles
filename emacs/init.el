@@ -48,6 +48,8 @@
 (straight-use-package 'magit)
 (straight-use-package 'magit-delta)
 (straight-use-package 'git-gutter)
+(straight-use-package 'emojify)
+(straight-use-package '(gitmoji :type git :host github :repo "janusvm/emacs-gitmoji" :files ("*.el" "data")))
 ;; UI - File Tree
 (straight-use-package 'treemacs)
 (straight-use-package 'treemacs-all-the-icons)

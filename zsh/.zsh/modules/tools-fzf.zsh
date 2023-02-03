@@ -74,15 +74,24 @@ function _fzf-file() {
     zle reset-prompt
 }
 
+function _fzf-gitmoji() {
+    local emoji=$(gitmoji -l | fzf | cut -d' ' -f1)
+    echo -n "$emoji" | pbcopy
+    LBUFFER="${LBUFFER}${emoji}"
+    zle reset-prompt
+}
+
 zle -N _fzf-history
 zle -N _fzf-ghq
 zle -N _fzf-cd
 zle -N _fzf-file
+zle -N _fzf-gitmoji
 
 bindkey '^r'   _fzf-history
 bindkey '^x^a' _fzf-ghq
 bindkey '^x^b' _fzf-cd
 bindkey '^x^f' _fzf-file
+bindkey '^x^g' _fzf-gitmoji
 
 ### Functions ###
 function fzf-dir() {
