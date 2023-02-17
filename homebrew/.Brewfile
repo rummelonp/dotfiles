@@ -74,6 +74,7 @@ brew "terraform"
 brew "tidy-html5"
 brew "tmux"
 brew "tree"
+brew "vips"
 brew "wget"
 brew "zsh"
 brew "zsh-completions"
@@ -117,5 +118,6 @@ mas "Pages", id: 409201541
 mas "Pocket", id: 568494494
 mas "Skitch", id: 425955336
 mas "Spark", id: 1176895641
+mas "TestFlight", id: 899247664
 mas "Todoist", id: 585829637
 mas "Xcode", id: 497799835
