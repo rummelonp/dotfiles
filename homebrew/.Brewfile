@@ -45,7 +45,7 @@ brew "htop"
 brew "httpie"
 brew "imagemagick"
 brew "jq"
-brew "kotlin", link: false
+brew "kotlin"
 brew "ktlint"
 brew "mas"
 brew "mint"
