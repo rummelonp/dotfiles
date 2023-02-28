@@ -109,6 +109,7 @@
 (straight-use-package 'typescript-mode)
 (straight-use-package 'lsp-javascript-typescript)
 (straight-use-package 'json-mode)
+(straight-use-package '(emacs-prisma-mode :type git :host github :repo "pimeys/emacs-prisma-mode"))
 ;: Lang - Ruby
 (straight-use-package 'ruby-mode)
 (straight-use-package 'enh-ruby-mode)
