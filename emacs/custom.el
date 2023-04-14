@@ -93,7 +93,6 @@
    (cl-find-if 'executable-find
                '("/opt/homebrew/bin/plantuml" "/usr/local/bin/plantuml")))
  '(plantuml-indent-level 2)
- '(plantuml-output-type "svg" t)
  '(popwin-mode t)
  '(powerline-default-separator 'utf-8)
  '(powerline-display-hud nil)
