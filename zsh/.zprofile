@@ -89,7 +89,7 @@ if (( $+commands[brew] )); then
 fi
 
 # Dart
-if (( $+commands[dart] )); then
+if (( $+commands[fvm] )); then
     export FVM_HOME=$HOME/.fvm
     path=($HOME/.pub-cache/bin $FVM_HOME/default/bin $path)
 fi
