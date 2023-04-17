@@ -3,7 +3,7 @@
 ## Install
 
 ```sh
-git clone git://github.com/mitukiii/dotfiles.git
+git clone git://github.com/rummelonp/dotfiles.git
 
 # Link dotfiles
 dotfiles/install.sh

@@ -113,6 +113,6 @@ fi
 # ghq
 if (( $+commands[ghq] )); then
     export GHQ_ROOT="$HOME/Repos"
-    cdpath=($GHQ_ROOT/github.com/mitukiii $cdpath)
-    fpath=($GHQ_ROOT/github.com/mitukiii/zsh-completions/src $fpath)
+    cdpath=($GHQ_ROOT/github.com/rummelonp $cdpath)
+    fpath=($GHQ_ROOT/github.com/rummelonp/zsh-completions/src $fpath)
 fi

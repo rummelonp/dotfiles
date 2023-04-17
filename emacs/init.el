@@ -18,7 +18,7 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 ;; Core - UI
-(straight-use-package '(emacs-kabukicho-theme :type git :host github :repo "mitukiii/emacs-kabukicho-theme"))
+(straight-use-package '(emacs-kabukicho-theme :type git :host github :repo "rummelonp/emacs-kabukicho-theme"))
 (straight-use-package 'all-the-icons)
 (straight-use-package 'rainbow-mode)
 (straight-use-package 'rainbow-delimiters)
