@@ -12,10 +12,5 @@
   (interactive)
   (rmp/darwin-open "Terminal"))
 
-(defun rmp/darwin-open-tweetbot ()
-  (interactive)
-  (rmp/darwin-open "Tweetbot"))
-
 ;; Key Bindings
 (bind-key "C-x C-t" 'rmp/darwin-open-terminal)
-(bind-key "s-E" 'rmp/darwin-open-tweetbot)
