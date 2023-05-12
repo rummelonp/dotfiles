@@ -14,7 +14,7 @@
 ;; Font
 ;; | 数字 | アルファベット | 日本語 | 絵文字 |
 ;; | 0123 | abcdefghijklmn | あいう | 🍎🍎🍎 |
-(defun mtk/set-font-to-hackgen ()
+(defun rmp/set-font-to-hackgen ()
   (interactive)
   (set-face-attribute 'default nil :family "HackGen" :height 160)
   (setq face-font-rescale-alist '(("Hiragino Maru Gothic ProN" . 1.0)
@@ -22,7 +22,7 @@
   (set-fontset-font t 'japanese-jisx0208 '("Hiragino Maru Gothic ProN"))
   (set-fontset-font t 'symbol '("Apple Color Emoji")))
 
-(defun mtk/set-font-to-monaco ()
+(defun rmp/set-font-to-monaco ()
   (interactive)
   (set-face-attribute 'default nil :family "Monaco" :height 140)
   (setq face-font-rescale-alist '(("Hiragino Maru Gothic ProN" . 1.2)
@@ -31,8 +31,8 @@
   (set-fontset-font t 'symbol '("Apple Color Emoji")))
 
 (if (find-font (font-spec :name "HackGen"))
-    (mtk/set-font-to-hackgen)
-  (mtk/set-font-to-monaco))
+    (rmp/set-font-to-hackgen)
+  (rmp/set-font-to-monaco))
 
 ;; Server
 (require 'server)
@@ -42,9 +42,9 @@
 ;; Misc
 (require 'savehist)
 
-(defun mtk/maybe-delete-trailing-whitespace ()
+(defun rmp/maybe-delete-trailing-whitespace ()
   (unless (eq major-mode 'markdown-mode)
     (delete-trailing-whitespace)))
-(add-hook 'before-save-hook 'mtk/maybe-delete-trailing-whitespace)
+(add-hook 'before-save-hook 'rmp/maybe-delete-trailing-whitespace)
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)

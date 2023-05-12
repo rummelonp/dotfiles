@@ -10,7 +10,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Window Functions
-(defun mtk/next-window-or-split-horizontally ()
+(defun rmp/next-window-or-split-horizontally ()
   (interactive)
   (let* ((win-len (length (window-list)))
          (current-win (selected-window))
@@ -27,12 +27,12 @@
           (t
            (other-window 1)))))
 
-(defun mtk/prev-window ()
+(defun rmp/prev-window ()
   (interactive)
   (other-window -1))
 
 ;; Treemacs Functions
-(defun mtk/treemacs-toggle ()
+(defun rmp/treemacs-toggle ()
   (interactive)
   (let* ((path (or buffer-file-name (expand-file-name default-directory))))
     (if (eq (selected-window) (treemacs-get-local-window))
@@ -40,29 +40,29 @@
       (treemacs-select-window))))
 
 ;; CentaurTabs Functions
-(defun mtk/centaur-tabs-group-cycle ()
+(defun rmp/centaur-tabs-group-cycle ()
   (interactive)
   (pcase centaur-tabs-buffer-groups-function
-    ('mtk/centaur-tabs-group-by-project
-     (setq centaur-tabs-buffer-groups-function 'mtk/centaur-tabs-group-by-major-mode)
+    ('rmp/centaur-tabs-group-by-project
+     (setq centaur-tabs-buffer-groups-function 'rmp/centaur-tabs-group-by-major-mode)
      (message "Group tabs by major-mode"))
     (_
-     (setq centaur-tabs-buffer-groups-function 'mtk/centaur-tabs-group-by-project)
+     (setq centaur-tabs-buffer-groups-function 'rmp/centaur-tabs-group-by-project)
      (message "Group tabs by project")))
   (centaur-tabs-display-update))
 
-(defun mtk/centaur-tabs-list-cycle ()
+(defun rmp/centaur-tabs-list-cycle ()
   (interactive)
   (pcase centaur-tabs-buffer-list-function
-    ('mtk/centaur-tabs-list-all
-     (setq centaur-tabs-buffer-list-function 'mtk/centaur-tabs-list-hide-emacs)
+    ('rmp/centaur-tabs-list-all
+     (setq centaur-tabs-buffer-list-function 'rmp/centaur-tabs-list-hide-emacs)
      (message "Hide *Emacs* tabs"))
     (_
-     (setq centaur-tabs-buffer-list-function 'mtk/centaur-tabs-list-all)
+     (setq centaur-tabs-buffer-list-function 'rmp/centaur-tabs-list-all)
      (message "Show all tabs")))
   (centaur-tabs-display-update))
 
-(defun mtk/centaur-tabs-sort ()
+(defun rmp/centaur-tabs-sort ()
   (interactive)
   (let* ((tabset (centaur-tabs-current-tabset 't))
          (tabs (centaur-tabs-tabs tabset)))
@@ -75,15 +75,15 @@
           (centaur-tabs-display-update)))))
 
 ;; Misc Functions
-(defun mtk/copy-current-directory ()
+(defun rmp/copy-current-directory ()
   (interactive)
   (kill-new (file-name-directory buffer-file-name)))
 
-(defun mtk/copy-current-file-path ()
+(defun rmp/copy-current-file-path ()
   (interactive)
   (kill-new buffer-file-name))
 
-(defun mtk/insert-class-name-from-file-name ()
+(defun rmp/insert-class-name-from-file-name ()
   (interactive)
   (insert
    (let ((fn (capitalize (file-name-nondirectory

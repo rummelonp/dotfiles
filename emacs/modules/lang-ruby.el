@@ -30,11 +30,11 @@
 
   (add-hook 'enh-ruby-mode-hook 'rinari-minor-mode))
 
-(defun mtk/setup-ruby-mode ()
+(defun rmp/setup-ruby-mode ()
   (setq-local company-backends '(company-robe (company-dabbrev-code company-keywords)))
   (setq-local auto-fix-command "rubocop")
   (setq-local auto-fix-option "-A"))
-(add-hook 'ruby-mode-hook 'mtk/setup-ruby-mode)
+(add-hook 'ruby-mode-hook 'rmp/setup-ruby-mode)
 
 ;; RSpec
 (with-eval-after-load 'rspec-mode

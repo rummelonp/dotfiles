@@ -17,15 +17,15 @@
 
   (advice-add 'describe-function-1 :after #'elisp-demos-advice-describe-function-1))
 
-(defun mtk/setup-emacs-lisp-mode ()
+(defun rmp/setup-emacs-lisp-mode ()
   (setq-local company-backends '(company-elisp)))
-(add-hook 'emacs-lisp-mode-hook 'mtk/setup-emacs-lisp-mode)
+(add-hook 'emacs-lisp-mode-hook 'rmp/setup-emacs-lisp-mode)
 
-(defun mtk/byte-compile-this-file ()
+(defun rmp/byte-compile-this-file ()
   (interactive)
   (when (eq major-mode 'emacs-lisp-mode)
     (byte-compile-file buffer-file-name)))
-(add-hook 'after-save-hook 'mtk/byte-compile-this-file)
+(add-hook 'after-save-hook 'rmp/byte-compile-this-file)
 
 (with-eval-after-load 'flycheck
   (flycheck-package-setup))

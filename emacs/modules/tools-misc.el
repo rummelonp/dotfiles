@@ -7,9 +7,9 @@
 (add-to-list 'auto-mode-alist '("\\.aws/credentials\\'" . conf-mode))
 
 ;; Makefile
-(defun mtk/setup-makefile-mode ()
+(defun rmp/setup-makefile-mode ()
   (setq-local indent-tabs-mode t))
-(add-hook 'makefile-mode-hook 'mtk/setup-makefile-mode)
+(add-hook 'makefile-mode-hook 'rmp/setup-makefile-mode)
 
 ;; Dockerfile
 (add-hook 'dockerfile-mode-hook #'lsp)

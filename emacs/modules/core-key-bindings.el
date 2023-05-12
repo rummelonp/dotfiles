@@ -17,8 +17,8 @@
 (unbind-key "C-z") ;; suspend-frame
 ;; window
 (bind-key  "C-x `" 'delete-other-windows)                  ;; next-error
-(bind-key* "C-t"   'mtk/next-window-or-split-horizontally) ;; transpose-charas
-(bind-key  "C-S-t" 'mtk/prev-window)
+(bind-key* "C-t"   'rmp/next-window-or-split-horizontally) ;; transpose-charas
+(bind-key  "C-S-t" 'rmp/prev-window)
 (bind-key  "M-t"   'delete-window)                         ;; transpose-words
 ;; server
 (bind-key "C-x C-c" 'server-edit) ;; save-buffers-kill-terminal
@@ -87,7 +87,7 @@
 
 ;;; UI
 ;; treemacs
-(bind-key "s-1" 'mtk/treemacs-toggle)
+(bind-key "s-1" 'rmp/treemacs-toggle)
 ;; centaur-tabs
 (bind-key  "C-x C-n" 'centaur-tabs-forward)        ;; set-goal-column
 (bind-key  "C-x C-p" 'centaur-tabs-backward)       ;; mark-page
@@ -96,10 +96,10 @@
 (bind-key* "C-x n"   'centaur-tabs-forward-group)  ;; save-buffers-kill-terminal
 (bind-key  "C-x p"   'centaur-tabs-backward-group)
 (bind-key  "s-2"     'centaur-tabs-toggle-groups)
-(bind-key  "s-3"     'mtk/centaur-tabs-group-cycle)
-(bind-key  "s-4"     'mtk/centaur-tabs-list-cycle)
-(bind-key  "s-0"     'mtk/centaur-tabs-sort)
-(bind-key  "C-x j"   'mtk/centaur-tabs-sort)
+(bind-key  "s-3"     'rmp/centaur-tabs-group-cycle)
+(bind-key  "s-4"     'rmp/centaur-tabs-list-cycle)
+(bind-key  "s-0"     'rmp/centaur-tabs-sort)
+(bind-key  "C-x j"   'rmp/centaur-tabs-sort)
 
 ;;; Completion
 ;; consult

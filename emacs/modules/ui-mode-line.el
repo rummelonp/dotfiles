@@ -18,7 +18,7 @@
 (set-face-attribute 'powerline-inactive2 nil :foreground line-inactive-fg :background line-inactive-bg)
 
 ;; Diminish
-(defun mtk/setup-diminish ()
+(defun rmp/setup-diminish ()
   (diminish 'abbrev-mode)
   (diminish 'all-the-icons-dired-mode)
   (diminish 'auto-fix-mode)
@@ -39,4 +39,4 @@
   (diminish 'rspec-mode)
   (diminish 'undo-tree-mode)
   (diminish 'which-key-mode))
-(add-hook 'after-change-major-mode-hook 'mtk/setup-diminish)
+(add-hook 'after-change-major-mode-hook 'rmp/setup-diminish)

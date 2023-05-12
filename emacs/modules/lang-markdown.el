@@ -4,7 +4,7 @@
 
 (add-to-list 'auto-mode-alist '("/TODO\\'" . markdown-mode))
 
-(defun mtk/grip-mode-once ()
+(defun rmp/grip-mode-once ()
   (interactive)
   (if (bound-and-true-p grip-mode)
       (grip-browse-preview)
@@ -13,4 +13,4 @@
 (with-eval-after-load 'markdown-mode
   (bind-keys :map markdown-mode-map
              ("C-c C-e" . markdown-toc-generate-or-refresh-toc)
-             ("C-c C-p" . mtk/grip-mode-once)))
+             ("C-c C-p" . rmp/grip-mode-once)))

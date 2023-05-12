@@ -196,7 +196,7 @@
 
 ;;; Load Modules
 (add-to-list 'load-path "~/.emacs.d/modules")
-(defun mtk/try-load (file)
+(defun rmp/try-load (file)
   (condition-case e
       (load file)
     (error
@@ -205,8 +205,8 @@
   (let ((file (symbol-name file)))
     (cond
      ((and darwin-p (string-match-p "macos" file))
-      (mtk/try-load file))
+      (rmp/try-load file))
      ((and linux-p (string-match-p "linux" file))
-      (mtk/try-load file))
+      (rmp/try-load file))
      (t
-      (mtk/try-load file)))))
+      (rmp/try-load file)))))

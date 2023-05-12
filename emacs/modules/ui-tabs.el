@@ -35,7 +35,7 @@
       centaur-tabs-common-group-name)))
 
 ;; Customize Group
-(defun mtk/centaur-tabs-group-by-major-mode ()
+(defun rmp/centaur-tabs-group-by-major-mode ()
   (list
    (cond
     ((or (string-equal "*" (substring (buffer-name) 0 1))
@@ -48,7 +48,7 @@
              html-mode nxml-mode
              css-mode scss-mode
              js-mode js-jsx-mode javascript-mode
-             typescript-mode mtk/web-typescript-mode
+             typescript-mode rmp/web-typescript-mode
              json-mode jsonc-mode))
      "Web")
     (t
@@ -59,7 +59,7 @@
         "-mode" ""
         (symbol-name major-mode))))))))
 
-(defun mtk/centaur-tabs-group-by-project ()
+(defun rmp/centaur-tabs-group-by-project ()
   (list
    (cond
     ((or (string-equal "*" (substring (buffer-name) 0 1))
@@ -70,12 +70,12 @@
     (t
      (centaur-tabs-get-group-name (current-buffer))))))
 
-(setq centaur-tabs-buffer-groups-function 'mtk/centaur-tabs-group-by-major-mode)
+(setq centaur-tabs-buffer-groups-function 'rmp/centaur-tabs-group-by-major-mode)
 
 ;; Customize List
-(defalias 'mtk/centaur-tabs-list-all 'centaur-tabs-buffer-list)
+(defalias 'rmp/centaur-tabs-list-all 'centaur-tabs-buffer-list)
 
-(defun mtk/centaur-tabs-list-hide-emacs ()
+(defun rmp/centaur-tabs-list-hide-emacs ()
   (centaur-tabs-filter-out
    'centaur-tabs-hide-tab-cached
    (delq nil
@@ -87,4 +87,4 @@
 			                   ((buffer-live-p b) b)))
 	                  (buffer-list)))))
 
-(setq centaur-tabs-buffer-list-function 'mtk/centaur-tabs-list-hide-emacs)
+(setq centaur-tabs-buffer-list-function 'rmp/centaur-tabs-list-hide-emacs)

@@ -4,7 +4,7 @@
 
 ;; Flycheck
 (with-eval-after-load 'flycheck
-  (defun mtk/flycheck-mode-line-status-text (&optional status)
+  (defun rmp/flycheck-mode-line-status-text (&optional status)
     (let* ((active (powerline-selected-window-active))
            (text (pcase (or status flycheck-last-status-change)
                    (`not-checked "😴")
@@ -19,7 +19,7 @@
                    (`interrupted "🤯")
                    (`suspicious "🙃"))))
       (concat " " flycheck-mode-line-prefix text)))
-  (setq flycheck-mode-line '(:eval (mtk/flycheck-mode-line-status-text))))
+  (setq flycheck-mode-line '(:eval (rmp/flycheck-mode-line-status-text))))
 
 ;; Auto Fix
 (defvar auto-fix-mode-map

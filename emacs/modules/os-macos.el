@@ -5,17 +5,17 @@
 (require 'osx-osascript)
 
 ;; Functions
-(defun mtk/darwin-open (name)
+(defun rmp/darwin-open (name)
   (osascript-run-str (concat "tell application \"" name "\" to activate window")))
 
-(defun mtk/darwin-open-terminal ()
+(defun rmp/darwin-open-terminal ()
   (interactive)
-  (mtk/darwin-open "Terminal"))
+  (rmp/darwin-open "Terminal"))
 
-(defun mtk/darwin-open-tweetbot ()
+(defun rmp/darwin-open-tweetbot ()
   (interactive)
-  (mtk/darwin-open "Tweetbot"))
+  (rmp/darwin-open "Tweetbot"))
 
 ;; Key Bindings
-(bind-key "C-x C-t" 'mtk/darwin-open-terminal)
-(bind-key "s-E" 'mtk/darwin-open-tweetbot)
+(bind-key "C-x C-t" 'rmp/darwin-open-terminal)
+(bind-key "s-E" 'rmp/darwin-open-tweetbot)
