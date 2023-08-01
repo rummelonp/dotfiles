@@ -26,5 +26,5 @@ unlink_file .config/bat
 unlink_file .config/karabiner
 unlink_file "Library/Application Support/Code/User/settings.json"
 unlink_file "Library/Application Support/Code/User/keybindings.json"
-unlink_file "Library/Application Support/Google/AndroidStudio2022.2/colors"
-unlink_file "Library/Application Support/Google/AndroidStudio2022.2/keymaps"
+unlink_file "Library/Application Support/Google/AndroidStudio2022.3/colors"
+unlink_file "Library/Application Support/Google/AndroidStudio2022.3/keymaps"
