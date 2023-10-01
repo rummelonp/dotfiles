@@ -119,5 +119,4 @@ mas "Pocket", id: 568494494
 mas "Skitch", id: 425955336
 mas "Spark", id: 1176895641
 mas "TestFlight", id: 899247664
-mas "Todoist", id: 585829637
 mas "Xcode", id: 497799835
