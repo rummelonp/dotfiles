@@ -110,7 +110,7 @@ cask "slack"
 cask "visual-studio-code"
 mas "Flow", id: 1423210932
 mas "Keynote", id: 409183694
-mas "Kindle", id: 405399194
+mas "Kindle", id: 302584613
 mas "LINE", id: 539883307
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
