@@ -109,7 +109,9 @@ cask "pastebot"
 cask "rancher"
 cask "rectangle"
 cask "slack"
+cask "unity-hub"
 cask "visual-studio-code"
+cask "zoom"
 mas "Flow", id: 1423210932
 mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
