@@ -3,4 +3,4 @@
 ;;
 
 (require 'magit)
-(add-hook 'magit-mode-hook 'magit-delta-mode)
+;; (add-hook 'magit-mode-hook 'magit-delta-mode)
