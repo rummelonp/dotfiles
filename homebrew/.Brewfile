@@ -121,11 +121,9 @@ cask "slack"
 cask "unity-hub"
 cask "visual-studio-code"
 cask "zoom"
-mas "Flow", id: 1423210932
 mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
 mas "LINE", id: 539883307
-mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pocket", id: 568494494
