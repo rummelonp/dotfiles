@@ -93,6 +93,7 @@
   ca   = commit --all
   cam  = commit --amend
   caam = commit --all --amend
+  toriaezu = ! git commit -m \"$(date +'%Y-%m-%d %H:%M')\"
   # cherry-pick
   cp  = cherry-pick
   cpn = cherry-pick --no-commit
