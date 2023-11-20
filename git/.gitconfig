@@ -19,7 +19,7 @@
 [pull]
   rebase = true
 [push]
-  default = simple
+  default = current
 [log]
   date = iso
 [diff]
