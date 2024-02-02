@@ -60,7 +60,6 @@ brew "mecab"
 brew "mecab-ipadic"
 brew "minio"
 brew "mint"
-brew "mitmproxy"
 brew "mysql", restart_service: true
 brew "ncdu"
 brew "nkf"
