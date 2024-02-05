@@ -83,7 +83,7 @@ if (( $+commands[nodenv] )); then
 fi
 
 # Scala
-if (( $+commands[coursier] )); then
+if (( $+commands[cs] )); then
     path=("$HOME/Library/Application Support/Coursier/bin" $path)
 fi
 
