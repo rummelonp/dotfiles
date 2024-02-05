@@ -72,6 +72,11 @@ if (( $+commands[pyenv] )); then
     eval "$(pyenv init --no-rehash -)"
 fi
 
+# Python
+if (( $+commands[plenv] )); then
+    eval "$(plenv init --no-rehash -)"
+fi
+
 # Node
 if (( $+commands[nodenv] )); then
     eval "$(nodenv init --no-rehash -)"

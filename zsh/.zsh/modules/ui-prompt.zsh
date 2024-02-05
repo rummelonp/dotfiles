@@ -27,8 +27,8 @@ function _chpwd-rprompt() {
     if (( $+commands[rbenv] )); then
         psvar[2]=$(rbenv version | cut -d' ' -f1)
     fi
-    if (( $+commands[pyenv] )); then
-        psvar[3]=$(pyenv version | cut -d' ' -f1)
+    if (( $+commands[plenv] )); then
+        psvar[3]=$(plenv version | cut -d' ' -f1)
     fi
     if (( $+commands[nodenv] )); then
         psvar[4]=$(nodenv version | cut -d ' ' -f1)

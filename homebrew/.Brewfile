@@ -67,6 +67,7 @@ brew "node-build"
 brew "nodenv"
 brew "oath-toolkit"
 brew "plantuml"
+brew "plenv"
 brew "postgresql@14", restart_service: true
 brew "pwgen"
 brew "pyenv"
