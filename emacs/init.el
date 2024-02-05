@@ -184,6 +184,7 @@
     lang-css
     lang-javascript
     lang-ruby
+    lang-perl
     lang-scala
     lang-dart
     lang-rust
