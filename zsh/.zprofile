@@ -72,7 +72,7 @@ if (( $+commands[pyenv] )); then
     eval "$(pyenv init --no-rehash -)"
 fi
 
-# Python
+# Perl
 if (( $+commands[plenv] )); then
     eval "$(plenv init --no-rehash -)"
 fi
