@@ -120,6 +120,9 @@
 (straight-use-package 'minitest)
 ;; Lang - Python
 (straight-use-package 'pip-requirements)
+;; Lang - Perl
+(straight-use-package 'cperl-mode)
+(straight-use-package 'cpanfile-mode)
 ;; Lang - Scala
 (straight-use-package 'scala-mode)
 (straight-use-package 'lsp-metals)
