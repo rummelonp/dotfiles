@@ -30,6 +30,7 @@
    '(company-sort-by-statistics company-sort-by-backend-importance))
  '(completion-styles '(orderless))
  '(consult-preview-key 'any)
+ '(copilot-indent-offset-warning-disable t)
  '(create-lockfiles nil)
  '(css-indent-offset 2)
  '(cua-enable-cua-keys nil)
