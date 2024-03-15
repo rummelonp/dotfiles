@@ -74,14 +74,28 @@
           (put tabset 'template nil)
           (centaur-tabs-display-update)))))
 
+
+;; GitHub Functions
+(defun rmp/github-browse ()
+  (interactive)
+  (shell-command-to-string
+   (concat "gh browse " (file-name-nondirectory buffer-file-name))))
+
 ;; Misc Functions
 (defun rmp/copy-current-directory ()
   (interactive)
-  (kill-new (file-name-directory buffer-file-name)))
+  (kill-new
+   (file-name-directory
+    (if (magit-inside-worktree-p t)
+        (magit-file-relative-name)
+    buffer-file-name))))
 
 (defun rmp/copy-current-file-path ()
   (interactive)
-  (kill-new buffer-file-name))
+  (kill-new
+    (if (magit-inside-worktree-p t)
+        (magit-file-relative-name)
+    buffer-file-name)))
 
 (defun rmp/insert-class-name-from-file-name ()
   (interactive)
