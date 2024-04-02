@@ -7,6 +7,7 @@
 (add-to-list 'auto-mode-alist '("\\.t\\'"  . cperl-mode))
 
 (defun rmp/setup-cperl-mode ()
+  (run-hooks 'prog-mode-hook)
   (lsp)
   (add-hook 'before-save-hook 'lsp-format-buffer t t))
 
