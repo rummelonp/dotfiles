@@ -126,10 +126,11 @@
   mn = merge --no-ff
   # branch
   b   = branch
+  br  = branch
   bm  = branch --move
   bd  = branch --delete
-  br  = branch --no-merged
-  brv = branch -vv --no-merged
+  brm = branch --merged
+  brn = branch --no-merged
   # fetch
   f   = fetch
   fa  = fetch --all
