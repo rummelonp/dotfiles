@@ -11,6 +11,7 @@
 (add-hook 'nxml-mode-hook 'rainbow-mode)
 
 ;; YAML
+(add-to-list 'auto-mode-alist '("\\.ya?ml\\.tmpl\\'" . yaml-mode))
 (add-hook 'yaml-mode-hook 'highlight-indent-guides-mode)
 
 ;; PlantUML
