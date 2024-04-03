@@ -17,10 +17,6 @@
 
   (advice-add 'describe-function-1 :after #'elisp-demos-advice-describe-function-1))
 
-(defun rmp/setup-emacs-lisp-mode ()
-  (setq-local company-backends '(company-elisp)))
-(add-hook 'emacs-lisp-mode-hook 'rmp/setup-emacs-lisp-mode)
-
 (defun rmp/byte-compile-this-file ()
   (interactive)
   (when (eq major-mode 'emacs-lisp-mode)
