@@ -93,9 +93,6 @@
 (straight-use-package 'consult-lsp)
 ;; Tools - Misc
 (straight-use-package 'direnv)
-(straight-use-package 'dockerfile-mode)
-(straight-use-package 'terraform-mode)
-(straight-use-package 'nginx-mode)
 ;; Prog - Emacs Lisp
 (straight-use-package 'highlight-quoted)
 (straight-use-package 'macrostep)
@@ -145,9 +142,13 @@
 (straight-use-package 'groovy-mode)
 (straight-use-package 'swift-mode)
 (straight-use-package 'go-mode)
+(straight-use-package 'dockerfile-mode)
+(straight-use-package 'terraform-mode)
+(straight-use-package 'plantuml-mode)
+;; Text - Misc
+(straight-use-package 'nginx-mode)
 (straight-use-package 'csv-mode)
 (straight-use-package 'yaml-mode)
-(straight-use-package 'plantuml-mode)
 ;; OS - MacOS
 (straight-use-package 'osx-osascript)
 
@@ -184,7 +185,6 @@
     completion-copilot
     checker-syntax
     tools-lsp
-    tools-misc
     prog-emacs-lisp
     prog-web
     prog-css
@@ -196,6 +196,7 @@
     prog-rust
     prog-markdown
     prog-misc
+    text-misc
     core-functions
     core-key-bindings
     os-macos
