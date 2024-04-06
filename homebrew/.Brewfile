@@ -80,6 +80,7 @@ brew "rbenv"
 brew "redis", restart_service: true
 brew "rename"
 brew "ripgrep"
+brew "ripgrep-all"
 brew "rustup-init"
 brew "sd"
 brew "shellcheck"
