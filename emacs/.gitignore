@@ -1,35 +1,40 @@
-/.cache
+/.cache/
 
-# straight.el
-/straight/
-
-# recentf.el
-/recentf
-
-# project.el
-/projects
-
-# savehist.el
-/history
-
-# savekill.el
-/kill-ring-saved.el
-
-# undohist.el
-/undohist/
-
-# magit.el
-/transient/
-
-# emojify.el
-/emojis
-
-# company.el
+# company
 /company-statistics-cache.el
 
-# multiple-cursors.el
+# emojify
+/emojis
+
+# lsp-mode
+/.lsp-session-v1
+
+# lsp-mode -> (lsp-dart, lsp-metals) -> dap-mode
+/.dap-breakpoints
+
+# magit -> transient
+/transient/
+
+# multiple-cursors
 /.mc-lists.el
 
-# lsp-mode.el
-/.lsp-session-v1
-/.dap-breakpoints
+# project
+/projects
+
+# recentf
+/recentf
+
+# savehist
+/history
+
+# savekill
+/kill-ring-saved.el
+
+# straight
+/straight/
+
+# undohist
+/undohist/
+
+# url
+/url/
