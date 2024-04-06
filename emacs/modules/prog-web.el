@@ -1,5 +1,5 @@
 ;;
-;; Lang - Web
+;; Prog - Web
 ;;
 
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))

@@ -1,5 +1,5 @@
 ;;
-;; Lang - Dart
+;; Prog - Dart
 ;;
 
 (add-hook 'dart-mode-hook #'lsp)

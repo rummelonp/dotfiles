@@ -1,5 +1,5 @@
 ;;
-;; Lang - Markdown
+;; Prog - Markdown
 ;;
 
 (add-to-list 'auto-mode-alist '("/TODO\\'" . markdown-mode))

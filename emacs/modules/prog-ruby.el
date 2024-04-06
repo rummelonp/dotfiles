@@ -1,5 +1,5 @@
 ;;
-;; Lang - Ruby
+;; Prog - Ruby
 ;;
 
 ;; Ruby

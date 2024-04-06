@@ -1,5 +1,5 @@
 ;;
-;; Lang - CSS
+;; Prog - CSS
 ;;
 
 (add-hook 'css-mode-hook #'lsp)

@@ -1,5 +1,5 @@
 ;;
-;; Lang - Misc
+;; Prog - Misc
 ;;
 
 ;; Shell Script

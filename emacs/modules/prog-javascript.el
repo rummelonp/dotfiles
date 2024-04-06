@@ -1,5 +1,5 @@
 ;;
-;; Lang - JavaScript
+;; Prog - JavaScript
 ;;
 
 ;; TypeScript

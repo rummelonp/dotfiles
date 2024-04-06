@@ -1,5 +1,5 @@
 ;;
-;; Lang - Scala
+;; Prog - Scala
 ;;
 
 (with-eval-after-load 'scala-mode

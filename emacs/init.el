@@ -96,24 +96,24 @@
 (straight-use-package 'dockerfile-mode)
 (straight-use-package 'terraform-mode)
 (straight-use-package 'nginx-mode)
-;; Lang - Emacs Lisp
+;; Prog - Emacs Lisp
 (straight-use-package 'highlight-quoted)
 (straight-use-package 'macrostep)
 (straight-use-package 'elisp-slime-nav)
 (straight-use-package 'elisp-demos)
 (straight-use-package 'flycheck-package)
-;; Lang - Web
+;; Prog - Web
 (straight-use-package 'web-mode)
 (straight-use-package 'company-web)
 (straight-use-package 'emmet-mode)
-;; Lang - CSS
+;; Prog - CSS
 (straight-use-package 'scss-mode)
-;; Lang - JavaScript
+;; Prog - JavaScript
 (straight-use-package 'typescript-mode)
 (straight-use-package 'lsp-javascript-typescript)
 (straight-use-package 'json-mode)
 (straight-use-package '(emacs-prisma-mode :type git :host github :repo "pimeys/emacs-prisma-mode"))
-;: Lang - Ruby
+;: Prog - Ruby
 (straight-use-package 'ruby-mode)
 (straight-use-package 'enh-ruby-mode)
 (straight-use-package 'rbs-mode)
@@ -121,26 +121,26 @@
 (straight-use-package 'rinari)
 (straight-use-package 'rspec-mode)
 (straight-use-package 'minitest)
-;; Lang - Python
+;; Prog - Python
 (straight-use-package 'pip-requirements)
-;; Lang - Perl
+;; Prog - Perl
 (straight-use-package 'cperl-mode)
 (straight-use-package 'cpanfile-mode)
-;; Lang - Scala
+;; Prog - Scala
 (straight-use-package 'scala-mode)
 (straight-use-package 'lsp-metals)
-;; Lang - Dart
+;; Prog - Dart
 (straight-use-package 'dart-mode)
 (straight-use-package 'lsp-dart)
 (straight-use-package 'flutter)
-;; Lang - Rust
+;; Prog - Rust
 (straight-use-package 'rust-mode)
 (straight-use-package 'cargo)
-;; Lang - Markdown
+;; Prog - Markdown
 (straight-use-package 'markdown-mode)
 (straight-use-package 'markdown-toc)
 (straight-use-package 'grip-mode)
-;; Lang - Misc
+;; Prog - Misc
 (straight-use-package 'kotlin-mode)
 (straight-use-package 'groovy-mode)
 (straight-use-package 'swift-mode)
@@ -185,17 +185,17 @@
     checker-syntax
     tools-lsp
     tools-misc
-    lang-emacs-lisp
-    lang-web
-    lang-css
-    lang-javascript
-    lang-ruby
-    lang-perl
-    lang-scala
-    lang-dart
-    lang-rust
-    lang-markdown
-    lang-misc
+    prog-emacs-lisp
+    prog-web
+    prog-css
+    prog-javascript
+    prog-ruby
+    prog-perl
+    prog-scala
+    prog-dart
+    prog-rust
+    prog-markdown
+    prog-misc
     core-functions
     core-key-bindings
     os-macos

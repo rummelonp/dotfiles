@@ -1,5 +1,5 @@
 ;;
-;; Lang - Perl
+;; Prog - Perl
 ;;
 
 (add-to-list 'auto-mode-alist '("\\.pl\\'" . cperl-mode))
