@@ -139,12 +139,15 @@
 (straight-use-package 'markdown-toc)
 (straight-use-package 'grip-mode)
 ;; Prog - Misc
+(straight-use-package 'graphql-mode)
 (straight-use-package 'kotlin-mode)
 (straight-use-package 'groovy-mode)
 (straight-use-package 'swift-mode)
 (straight-use-package 'go-mode)
 (straight-use-package 'dockerfile-mode)
+(straight-use-package 'docker-compose-mode)
 (straight-use-package 'terraform-mode)
+(straight-use-package 'company-terraform)
 (straight-use-package 'plantuml-mode)
 ;; Text - Misc
 (straight-use-package 'nginx-mode)

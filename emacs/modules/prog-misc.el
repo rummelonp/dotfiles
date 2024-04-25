@@ -7,6 +7,7 @@
 
 ;; Terraform
 (with-eval-after-load 'terraform-mode
+  (company-terraform-init)
   (bind-keys :map terraform-mode-map
              ("M-s-l" . terraform-format-buffer)))
 
