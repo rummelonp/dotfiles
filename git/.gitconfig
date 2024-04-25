@@ -78,6 +78,10 @@
   sh3 = show --ignore-all-space HEAD~3
   sh4 = show --ignore-all-space HEAD~4
   sh5 = show --ignore-all-space HEAD~5
+  sh6 = show --ignore-all-space HEAD~6
+  sh7 = show --ignore-all-space HEAD~7
+  sh8 = show --ignore-all-space HEAD~8
+  sh9 = show --ignore-all-space HEAD~9
   shw = show --word-diff
   shs = show --stat
   shn = ! git show --oneline --name-only | tail -n+2
