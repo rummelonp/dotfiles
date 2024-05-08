@@ -93,7 +93,6 @@
 (straight-use-package 'consult-lsp)
 ;; Tools - Misc
 (straight-use-package 'direnv)
-(straight-use-package 'wakatime-mode)
 ;; Prog - Emacs Lisp
 (straight-use-package 'highlight-quoted)
 (straight-use-package 'macrostep)
@@ -189,7 +188,6 @@
     completion-copilot
     checker-syntax
     tools-lsp
-    tools-misc
     prog-emacs-lisp
     prog-web
     prog-css
