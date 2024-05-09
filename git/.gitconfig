@@ -180,6 +180,7 @@
   # ls-files
   ls  = ls-files
   lso = ls-files -o
+  lsg = "! f() { git ls-files $2 | grep $1; }; f"
   # submodule
   sm = submodule
   # grep
