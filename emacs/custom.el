@@ -87,7 +87,7 @@
  '(neo-vc-integration '(face char))
  '(neo-window-fixed-size nil)
  '(neo-window-width 30)
- '(nyan-minimum-window-width 96)
+ '(nyan-minimum-window-width 120)
  '(nyan-mode t)
  '(plantuml-default-exec-mode 'executable)
  '(plantuml-executable-path
