@@ -5,6 +5,9 @@
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'"  . web-mode))
 
+(setq web-mode-engines-alist
+      '(("template-toolkit" . "\\.html?\\'" )))
+
 (with-eval-after-load 'web-mode
   (require 'company-web-html))
 
