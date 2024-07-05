@@ -76,15 +76,12 @@
 (defalias 'rmp/centaur-tabs-list-all 'centaur-tabs-buffer-list)
 
 (defun rmp/centaur-tabs-list-hide-emacs ()
-  (centaur-tabs-filter-out
-   'centaur-tabs-hide-tab-cached
-   (delq nil
-         (cl-mapcar #'(lambda (b)
-                        (cond
-			                   ((eq (current-buffer) b) b)
-			                   ((buffer-file-name b) b)
-			                   ((cl-find (aref (buffer-name b) 0) " *") nil)
-			                   ((buffer-live-p b) b)))
-	                  (buffer-list)))))
+  (seq-filter (lambda (b)
+                (cond
+			           ((eq (current-buffer) b) b)
+			           ((buffer-file-name b) b)
+			           ((cl-find (aref (buffer-name b) 0) " *") nil)
+			           ((buffer-live-p b) b)))
+	            (buffer-list)))
 
 (setq centaur-tabs-buffer-list-function 'rmp/centaur-tabs-list-hide-emacs)
