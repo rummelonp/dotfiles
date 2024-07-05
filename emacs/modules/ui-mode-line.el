@@ -23,7 +23,7 @@
   (diminish 'all-the-icons-dired-mode)
   (diminish 'auto-fix-mode)
   (diminish 'cargo-minor-mode)
-  ;; (diminish 'company-mode)
+  (diminish 'company-mode)
   (diminish 'company-box-mode)
   (diminish 'copilot-mode)
   (diminish 'eldoc-mode)

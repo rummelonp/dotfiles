@@ -42,6 +42,7 @@
  '(direnv-mode t)
  '(enh-ruby-deep-indent-paren nil)
  '(flycheck-display-errors-delay 0.5)
+ '(flycheck-mode-line-prefix "")
  '(flycheck-posframe-position 'window-bottom-right-corner)
  '(git-gutter:update-interval 5)
  '(global-anzu-mode t)
