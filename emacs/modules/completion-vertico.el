@@ -50,6 +50,7 @@
           (file (styles orderless-migemo-style))
           (imenu (styles orderless-migemo-style))
           (org-roam-node (styles orderless-migemo-style))
+          (project-file (styles orderless-migemo-style))
           (symbol (styles orderless-default-style))
           (unicode-name (styles orderless-migemo-style))
           (variable (styles orderless-default-style)))))
