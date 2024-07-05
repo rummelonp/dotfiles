@@ -6,7 +6,7 @@
 (add-to-list 'auto-mode-alist '("\\.pm\\'" . cperl-mode))
 (add-to-list 'auto-mode-alist '("\\.t\\'"  . cperl-mode))
 
-(defun cperl-imenu-create-index ()
+(defun rmp/cperl-imenu-create-index ()
   (let (index)
     ;; constant
     (let (list)
@@ -32,6 +32,6 @@
   (run-hooks 'prog-mode-hook)
   (lsp)
   (add-hook 'before-save-hook 'lsp-format-buffer t t)
-  (setq-local imenu-create-index-function 'cperl-imenu-create-index))
+  (setq-local imenu-create-index-function 'rmp/cperl-imenu-create-index))
 
 (add-hook 'cperl-mode-hook 'rmp/setup-cperl-mode)
