@@ -3,7 +3,7 @@
 ;;
 
 ;;; Darwin Modifier
-(when darwin-p
+(when rmp/darwin-p
   (setq mac-control-modifier 'control)
   (setq mac-option-modifier 'meta)
   (setq mac-command-modifier 'super)

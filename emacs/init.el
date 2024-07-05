@@ -160,21 +160,21 @@
 (load custom-file)
 
 ;;; Variables
-(defvar line-primary-fg "black")
-(defvar line-primary-bg "#1aa6b1")
-(defvar line-light-fg "white")
-(defvar line-light-bg "gray40")
-(defvar line-dark-fg "white")
-(defvar line-dark-bg "grey22")
-(defvar line-inactive-fg "gray80")
-(defvar line-inactive-bg "#181a26")
+(defvar rmp/line-primary-fg "black")
+(defvar rmp/line-primary-bg "#1aa6b1")
+(defvar rmp/line-light-fg "white")
+(defvar rmp/line-light-bg "gray40")
+(defvar rmp/line-dark-fg "white")
+(defvar rmp/line-dark-bg "grey22")
+(defvar rmp/line-inactive-fg "gray80")
+(defvar rmp/line-inactive-bg "#181a26")
 
-(defvar darwin-p
+(defvar rmp/darwin-p
   (eq system-type 'darwin))
-(defvar linux-p
+(defvar rmp/linux-p
   (eq system-type 'gnu/linux))
 
-(defvar module-files
+(defvar rmp/module-files
   '(
     core
     core-misc
@@ -212,12 +212,12 @@
       (load file)
     (error
      (warn (format "%s: %s" file (error-message-string e))))))
-(cl-dolist (file module-files)
+(cl-dolist (file rmp/module-files)
   (let ((file (symbol-name file)))
     (cond
-     ((and darwin-p (string-match-p "macos" file))
+     ((and rmp/darwin-p (string-match-p "macos" file))
       (rmp/try-load file))
-     ((and linux-p (string-match-p "linux" file))
+     ((and rmp/linux-p (string-match-p "linux" file))
       (rmp/try-load file))
      (t
       (rmp/try-load file)))))

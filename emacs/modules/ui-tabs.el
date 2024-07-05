@@ -10,11 +10,11 @@
   (centaur-tabs-change-fonts "Monaco" 140))
 
 ;; Face
-(set-face-attribute 'tab-line nil :background line-inactive-bg)
-(set-face-attribute 'centaur-tabs-selected nil :foreground line-primary-fg :background line-primary-bg)
-(set-face-attribute 'centaur-tabs-selected-modified nil :foreground line-primary-fg :background line-primary-bg)
-(set-face-attribute 'centaur-tabs-unselected nil :foreground line-dark-fg :background line-dark-bg)
-(set-face-attribute 'centaur-tabs-unselected-modified nil :foreground line-dark-fg :background line-dark-bg)
+(set-face-attribute 'tab-line nil :background rmp/line-inactive-bg)
+(set-face-attribute 'centaur-tabs-selected nil :foreground rmp/line-primary-fg :background rmp/line-primary-bg)
+(set-face-attribute 'centaur-tabs-selected-modified nil :foreground rmp/line-primary-fg :background rmp/line-primary-bg)
+(set-face-attribute 'centaur-tabs-unselected nil :foreground rmp/line-dark-fg :background rmp/line-dark-bg)
+(set-face-attribute 'centaur-tabs-unselected-modified nil :foreground rmp/line-dark-fg :background rmp/line-dark-bg)
 
 ;; Customize Navigation Buttons
 (defun centaur-tabs-line-format--buttons ()

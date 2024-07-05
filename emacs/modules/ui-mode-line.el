@@ -10,12 +10,12 @@
 
 (powerline-default-theme)
 
-(set-face-attribute 'mode-line nil :foreground line-light-fg :background line-light-bg)
-(set-face-attribute 'powerline-active1 nil :foreground line-primary-fg :background line-primary-bg)
-(set-face-attribute 'powerline-active2 nil :foreground line-dark-fg :background line-dark-bg)
-(set-face-attribute 'mode-line-inactive nil :foreground line-inactive-fg :background line-inactive-bg)
-(set-face-attribute 'powerline-inactive1 nil :foreground line-inactive-fg :background line-inactive-bg)
-(set-face-attribute 'powerline-inactive2 nil :foreground line-inactive-fg :background line-inactive-bg)
+(set-face-attribute 'mode-line nil :foreground rmp/line-light-fg :background rmp/line-light-bg)
+(set-face-attribute 'powerline-active1 nil :foreground rmp/line-primary-fg :background rmp/line-primary-bg)
+(set-face-attribute 'powerline-active2 nil :foreground rmp/line-dark-fg :background rmp/line-dark-bg)
+(set-face-attribute 'mode-line-inactive nil :foreground rmp/line-inactive-fg :background rmp/line-inactive-bg)
+(set-face-attribute 'powerline-inactive1 nil :foreground rmp/line-inactive-fg :background rmp/line-inactive-bg)
+(set-face-attribute 'powerline-inactive2 nil :foreground rmp/line-inactive-fg :background rmp/line-inactive-bg)
 
 ;; Diminish
 (defun rmp/setup-diminish ()
