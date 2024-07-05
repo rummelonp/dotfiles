@@ -43,12 +43,13 @@
                                  orderless-regexp
                                  orderless-migemo)))
   (setq completion-category-overrides
-        '((command (styles orderless-default-style))
-          (file (styles orderless-migemo-style))
-          (buffer (styles orderless-migemo-style))
-          (symbol (styles orderless-default-style))
+        '((buffer (styles orderless-migemo-style))
           (consult-location (styles orderless-migemo-style))
           (consult-multi (styles orderless-migemo-style))
+          (command (styles orderless-default-style))
+          (file (styles orderless-migemo-style))
+          (imenu (styles orderless-migemo-style))
           (org-roam-node (styles orderless-migemo-style))
+          (symbol (styles orderless-default-style))
           (unicode-name (styles orderless-migemo-style))
           (variable (styles orderless-default-style)))))
