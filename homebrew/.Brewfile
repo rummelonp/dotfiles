@@ -82,7 +82,7 @@ brew "redis", restart_service: true
 brew "rename"
 brew "ripgrep"
 brew "ripgrep-all"
-brew "rustup-init"
+brew "rustup"
 brew "sd"
 brew "shellcheck"
 brew "sshuttle"
