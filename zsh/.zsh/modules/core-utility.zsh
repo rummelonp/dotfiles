@@ -71,7 +71,7 @@ alias netstat-listen='lsof -nP -iTCP -sTCP:LISTEN'
 ### Global ###
 case $OSTYPE in
     darwin*)
-        alias -g emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+        alias -g emacsclient='/Applications/Emacs.app/Contents/MacOS/bin-arm64-11/emacsclient'
         alias -g E='| xargs emacsclient --no-wait'
         alias -g I='| xargs -n10 studio'
         alias -g O='| xargs open'
