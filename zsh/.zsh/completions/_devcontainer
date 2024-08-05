@@ -1,0 +1,80 @@
+#compdef devcontainer
+# ------------------------------------------------------------------------------
+# Description
+# -----------
+#
+#  Completion script for Dev Container CLI (https://github.com/devcontainers/cli).
+#
+# ------------------------------------------------------------------------------
+# Authors
+# -------
+#
+#  * Kazuya Takeshima (https://github.com/rummelonp)
+#
+# ------------------------------------------------------------------------------
+
+_devcontainer() {
+  local context state line curcontext="$curcontext"
+
+  if (( CURRENT > 2 )); then
+    (( CURRENT-- ))
+    shift words
+    _call_function - "_devcontainer_${words[1]}" || _normal
+  else
+    _devcontainer_commands
+  fi
+}
+
+_devcontainer_commands() {
+  local -a commands
+  commands=(
+    up'[Create and run dev container]'
+    set-up'[Set up an existing container as a dev container]'
+    build'[Build a dev container image]'
+    run-user-commands'[Run user commands]'
+    read-configuration'[Read configuration]'
+    outdated'[Show current and available versions]'
+    upgrade'[Upgrade lockfile]'
+    features'[Features commands]'
+    templates'[Templates commands]'
+    exec'[Execute a command on a running dev container]'
+  )
+
+  _values 'commands' $commands
+}
+
+_devcontainer_up() {
+  _arguments \
+    --workspace-folder'[Workspace folder path. The devcontainer.json will be looked up relative to this path.]:path:_directories'
+}
+
+_devcontainer_build() {
+  _arguments \
+    --workspace-folder'[Workspace folder path. The devcontainer.json will be looked up relative to this path.]:path:_directories'
+}
+
+_devcontainer_exec() {
+  local curcontext="$curcontext" state line
+
+  _arguments \
+    --workspace-folder'[Workspace folder path. The devcontainer.json will be looked up relative to this path.]:path:_directories' \
+    '1:cmd:->cmd' \
+    '*::args:->args' \
+
+  case "$state" in
+    cmd)
+      _command_names -e
+      ;;
+    args)
+      _call_function - "_${line[2]}" || _normal
+      ;;
+  esac
+}
+
+# Local Variables:
+# mode: Shell-Script
+# sh-indentation: 2
+# indent-tabs-mode: nil
+# sh-basic-offset: 2
+# End:
+# vim: ft=zsh sw=2 ts=2 et
