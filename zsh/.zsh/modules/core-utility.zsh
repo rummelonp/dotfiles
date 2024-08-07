@@ -65,6 +65,8 @@ alias i='studio'
 alias c='code'
 alias o='open'
 
+alias dog='doggo'
+
 alias netstat-all='lsof -nP -iTCP'
 alias netstat-listen='lsof -nP -iTCP -sTCP:LISTEN'
 
