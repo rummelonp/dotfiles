@@ -2,7 +2,12 @@
 ;; Init
 ;;
 
-(require 'cl-lib)
+;;; Disable Magic File Name & GC
+(defconst rmp/file-name-handler-alist file-name-handler-alist)
+(defconst rmp/gc-cons-threshold gc-cons-threshold)
+
+(setq file-name-handler-alist nil)
+(setq gc-cons-threshold most-positive-fixnum)
 
 ;;; Packages
 (defvar bootstrap-version)
@@ -221,3 +226,7 @@
       (rmp/try-load file))
      (t
       (rmp/try-load file)))))
+
+;; Enable Magic File Name & GC
+(setq file-name-handler-alist rmp/file-name-handler-alist)
+(setq gc-cons-threshold rmp/gc-cons-threshold)
