@@ -9,10 +9,10 @@ zstyle ':vcs_info:*' enable git svn
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr '+'
 zstyle ':vcs_info:*' unstagedstr '!'
-zstyle ':vcs_info:*' formats '(%s) - [%b]'
-zstyle ':vcs_info:*' actionformats '(%s) - [%b|%a]'
-zstyle ':vcs_info:git:*' formats '(%s) - [%c%u%b]'
-zstyle ':vcs_info:git:*' actionformats '(%s) - [%c%u%b|%a]'
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+zstyle ':vcs_info:git:*' formats '[%c%u%b]'
+zstyle ':vcs_info:git:*' actionformats '[%c%u%b|%a]'
 
 ### Hook ###
 autoload -Uz add-zsh-hook
