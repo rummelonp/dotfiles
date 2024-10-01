@@ -23,7 +23,7 @@
 ;; server
 (bind-key "C-x C-c" 'server-edit) ;; save-buffers-kill-terminal
 ;; buffer
-(bind-key "M-k" 'kill-this-buffer) ;; kill-sentence
+(bind-key "M-k" 'kill-current-buffer) ;; kill-sentence
 ;; newline and indent
 (bind-key "C-m"   'newline-and-indent)      ;; newline
 (bind-key "C-j"   'indent-new-comment-line) ;; electric-newline-and-maybe-indent
