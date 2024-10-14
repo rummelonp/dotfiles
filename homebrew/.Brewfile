@@ -64,7 +64,7 @@ brew "mecab-ipadic"
 brew "minio"
 brew "mint"
 brew "mkcert"
-brew "mysql", restart_service: true
+brew "mysql@8.0", link: true
 brew "ncdu"
 brew "nkf"
 brew "node-build"
