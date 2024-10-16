@@ -138,6 +138,8 @@
 ;; Prog - Rust
 (straight-use-package 'rust-mode)
 (straight-use-package 'cargo)
+;; Prog - Go
+(straight-use-package 'go-mode)
 ;; Prog - Markdown
 (straight-use-package 'markdown-mode)
 (straight-use-package 'markdown-toc)
@@ -147,7 +149,6 @@
 (straight-use-package 'kotlin-mode)
 (straight-use-package 'groovy-mode)
 (straight-use-package 'swift-mode)
-(straight-use-package 'go-mode)
 (straight-use-package 'dockerfile-mode)
 (straight-use-package 'docker-compose-mode)
 (straight-use-package 'terraform-mode)
@@ -202,6 +203,7 @@
     prog-scala
     prog-dart
     prog-rust
+    prog-go
     prog-markdown
     prog-misc
     text-misc
