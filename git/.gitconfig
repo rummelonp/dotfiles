@@ -189,7 +189,7 @@
   grl  = grep --files-with-matches
   gril = grep --ignore-case --files-with-matches
   grli = grep --ignore-case --files-with-matches
-  todo = grep --line-number -E "(TODO|FIXME|HACK)"
+  todo = grep --line-number -E "(TODO|FIXME|HACK|XXX)"
   # update-index
   skip       = update-index --skip-worktree
   noskip     = update-index --no-skip-worktree
