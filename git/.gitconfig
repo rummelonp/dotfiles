@@ -197,8 +197,8 @@
   # gh
   pr-search = "! f() { gh pr list --state all --search \"$1\" --web; }; f"
   # fzf
-  fshow   = ! git log --all --pretty=colorful --color | fzf --ansi | awk '{ print $1 }' | xargs git show
-  freflog = ! git reflog --color | fzf --ansi | awk '{ print $1 }' | xargs git show
+  flog    = ! git log --all --pretty=colorful --color "$@" | fzf --ansi --multi --preview 'git show {1} | delta' | awk '{ print $1 }' | xargs git show
+  freflog = ! git reflog --color | fzf --ansi --multi --preview 'git show {1} | delta' | awk '{ print $1 }' | xargs git show
 [secrets]
   providers = git secrets --aws-provider
   patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
