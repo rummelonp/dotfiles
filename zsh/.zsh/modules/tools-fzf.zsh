@@ -33,6 +33,8 @@ export FZF_DEFAULT_OPTS="
     --bind ctrl-alt-v:page-up
     --bind right:page-down
     --bind left:page-up
+    --bind ctrl-d:preview-page-down
+    --bind ctrl-u:preview-page-up
     --bind home:first
     --bind end:last
     --bind ctrl-r:toggle-sort
