@@ -140,6 +140,7 @@
 (straight-use-package 'cargo)
 ;; Prog - Go
 (straight-use-package 'go-mode)
+(straight-use-package 'gotest)
 ;; Prog - Markdown
 (straight-use-package 'markdown-mode)
 (straight-use-package 'markdown-toc)
