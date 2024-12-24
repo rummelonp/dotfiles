@@ -4,5 +4,6 @@
   "editor.tabSize": 2,
   "editor.inlineSuggest.enabled": true,
   "explorer.confirmDelete": false,
-  "workbench.colorTheme": "Kabukichō"
+  "workbench.colorTheme": "Kabukichō",
+  "editor.minimap.enabled": false
 }
