@@ -87,6 +87,7 @@
 (straight-use-package '(company-anywhere :type git :host github :repo "zk-phi/company-anywhere"))
 ;; Completion - Copilot
 (straight-use-package '(copilot :type git :host github :repo "copilot-emacs/copilot.el" :files ("dist" "*.el")))
+(straight-use-package '(copilot-chat :type git :host github :repo "chep/copilot-chat.el" :files ("*.el")))
 ;; Checker - Syntax
 (straight-use-package 'flycheck)
 (straight-use-package 'flycheck-posframe)
