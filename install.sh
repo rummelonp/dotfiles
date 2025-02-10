@@ -67,6 +67,6 @@ fi
 
 # idea
 if [[ $OSTYPE =~ darwin ]]; then
-    link_dir idea/colors  "Library/Application Support/Google/AndroidStudio2023.1/colors"
-    link_dir idea/keymaps "Library/Application Support/Google/AndroidStudio2023.1/keymaps"
+    link_dir idea/colors  "Library/Application Support/Google/AndroidStudio2024.2/colors"
+    link_dir idea/keymaps "Library/Application Support/Google/AndroidStudio2024.2/keymaps"
 fi
