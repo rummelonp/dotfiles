@@ -155,6 +155,7 @@
 (straight-use-package 'terraform-mode)
 (straight-use-package 'company-terraform)
 (straight-use-package 'plantuml-mode)
+(straight-use-package 'mermaid-mode)
 ;; Text - Misc
 (straight-use-package 'nginx-mode)
 (straight-use-package 'csv-mode)
