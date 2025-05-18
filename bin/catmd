@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+for file in "$@"; do
+  [ -d "$file" ] && continue
+  [[ "$file" == *.zip ]] && continue
+
+  echo "\`\`\`${file}"
+  cat "$file"
+  echo '```'
+  echo
+done
