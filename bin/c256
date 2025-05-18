@@ -1,0 +1,122 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'matrix'
+
+StandardRGB = Data.define(:r, :g, :b) do
+  def self.from_hex(hex)
+    r, g, b = hex.sub(/^#/, '').scan(/../).map { it.to_i(16) }
+    new(r, g, b)
+  end
+
+  def to_hex    = format('#%<r>02x%<g>02x%<b>02x', r:, g:, b:)
+  def to_lab    = to_linear.to_xyz.to_lab
+  def to_linear = LinearRGB.from_standard_rgb(self)
+
+  # https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit
+  def to_ansi
+    fg = bright? ? 30 : 97 # Black / Bright White
+    bg = "48;2;#{r};#{g};#{b}"
+    "\e[#{fg};#{bg}m#{to_hex}\e[0m"
+  end
+
+  # https://www.w3.org/TR/AERT/#color-contrast
+  def bright?    = brightness >= 125
+  def brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000.0
+end
+
+LinearRGB = Data.define(:r, :g, :b) do
+  def self.from_standard_rgb(srgb)
+    r, g, b = [srgb.r, srgb.g, srgb.b].map { linearize(it / 255.0) }
+    new(r, g, b)
+  end
+
+  # https://ja.wikipedia.org/wiki/SRGB#sRGB%E3%81%8B%E3%82%89CIE_XYZ%E3%81%B8
+  def self.linearize(channel)
+    if channel <= 0.04045
+      channel / 12.92
+    else
+      ((channel + 0.055) / 1.055)**2.4
+    end
+  end
+
+  def to_xyz = XYZ.from_linear_rgb(self)
+end
+
+# https://ja.wikipedia.org/wiki/SRGB#sRGB%E3%81%8B%E3%82%89CIE_XYZ%E3%81%B8
+LINEAR_RGB_TO_XYZ = Matrix[
+  [0.4124, 0.3576, 0.1805],
+  [0.2126, 0.7152, 0.0722],
+  [0.0193, 0.1192, 0.9505]
+]
+
+XYZ = Data.define(:x, :y, :z) do
+  def self.from_linear_rgb(lrgb)
+    x, y, z = (LINEAR_RGB_TO_XYZ * Vector[lrgb.r, lrgb.g, lrgb.b]).to_a
+    new(x, y, z)
+  end
+
+  def to_lab = Lab.from_xyz(self)
+end
+
+# https://en.wikipedia.org/wiki/CIELAB_color_space#From_CIE_XYZ_to_CIELAB
+XN = 95.0489  / 100.0
+YN = 100.0    / 100.0
+ZN = 108.8840 / 100.0
+
+Lab = Data.define(:l, :a, :b) do
+  # https://ja.wikipedia.org/wiki/Lab%E8%89%B2%E7%A9%BA%E9%96%93#CIE_XYZ_%E3%81%8B%E3%82%89%E3%81%AE%E5%A4%89%E6%8F%9B
+  def self.f(t)
+    if t > (6.0 / 29.0)**3
+      t**(1.0 / 3.0)
+    else
+      ((1.0 / 3.0 * ((29.0 / 6.0)**2)) * t) + (4.0 / 29.0)
+    end
+  end
+
+  # https://ja.wikipedia.org/wiki/Lab%E8%89%B2%E7%A9%BA%E9%96%93#CIE_XYZ_%E3%81%8B%E3%82%89%E3%81%AE%E5%A4%89%E6%8F%9B
+  def self.from_xyz(xyz)
+    fx = f(xyz.x / XN)
+    fy = f(xyz.y / YN)
+    fz = f(xyz.z / ZN)
+
+    new(
+      (116 * fy) - 16,
+      500 * (fx - fy),
+      200 * (fy - fz)
+    )
+  end
+
+  # https://ja.wikipedia.org/wiki/%E3%83%A6%E3%83%BC%E3%82%AF%E3%83%AA%E3%83%83%E3%83%89%E8%B7%9D%E9%9B%A2
+  def euclidean_distance(other)
+    Math.sqrt(((l - other.l)**2) + ((a - other.a)**2) + ((b - other.b)**2))
+  end
+end
+
+COLORS_ANSI = [
+  '#000000', '#800000', '#008000', '#808000',
+  '#000080', '#800080', '#008080', '#c0c0c0',
+  '#808080', '#ff0000', '#00ff00', '#ffff00',
+  '#0000ff', '#ff00ff', '#00ffff', '#ffffff'
+].map { StandardRGB.from_hex(it) }
+
+COLORS_CUBE = [0, 95, 135, 175, 215, 255].repeated_permutation(3).map do |r, g, b|
+  StandardRGB.new(r, g, b)
+end
+
+COLORS_GRAY = (8..238).step(10).map do
+  StandardRGB.new(it, it, it)
+end
+
+COLORS_256 = (COLORS_ANSI + COLORS_CUBE + COLORS_GRAY).map do
+  [it, it.to_lab]
+end
+
+ARGV.each do |hex|
+  rgb = StandardRGB.from_hex(hex)
+  lab = rgb.to_lab
+  nearest_colors = COLORS_256.sort_by { |_, v| lab.euclidean_distance(v) }
+                             .take(10)
+                             .map(&:first)
+  puts "#{rgb.to_ansi} -> #{nearest_colors.map(&:to_ansi).join(', ')}"
+end
