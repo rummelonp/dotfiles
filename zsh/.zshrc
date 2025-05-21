@@ -11,7 +11,6 @@ module_names=(
     core-utility
     core-completion
     ui-prompt
-    tools-ssh
     tools-direnv
     tools-fzf
     tools-migemo
