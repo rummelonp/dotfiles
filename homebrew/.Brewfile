@@ -70,6 +70,7 @@ brew "nodenv"
 brew "oath-toolkit"
 brew "pam-reattach"
 brew "perltidy"
+brew "pinact"
 brew "plantuml"
 brew "plenv"
 brew "postgresql@14", restart_service: :changed
