@@ -84,7 +84,7 @@
   sh9 = show --ignore-all-space HEAD~9
   shw = show --word-diff
   shs = show --stat
-  shn = ! git show --oneline --name-only | tail -n+2
+  shn = "! f() { git show $1 --oneline --name-only | tail -n+2; }; f"
   sha = show --diff-filter=A
   shm = show --diff-filter=M
   # add
