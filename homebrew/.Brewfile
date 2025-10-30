@@ -111,6 +111,7 @@ cask "android-studio"
 cask "appcleaner"
 cask "aws-vpn-client"
 cask "chatgpt"
+cask "codex"
 cask "discord"
 cask "dropbox"
 cask "emacs-app"
@@ -143,3 +144,5 @@ mas "Skitch", id: 425955336
 mas "Spark", id: 1176895641
 mas "TestFlight", id: 899247664
 mas "Xcode", id: 497799835
+go "github.com/fujimura/git-gsub"
+go "golang.org/x/tools/gopls"
