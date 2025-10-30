@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+for src in "$@"; do
+  base="$(basename "$src")"
+  dir="$(dirname "$src")"
+  name="${base%.*}"
+  dst="$dir/${name}_resize.jpg"
+
+  echo "$src -> $dst"
+  magick "$src" \
+    -auto-orient \
+    -filter Lanczos \
+    -resize '1024x1024>' \
+    -sampling-factor 4:4:4 \
+    -define jpeg:optimize-coding=true \
+    -define jpeg:dct-method=float \
+    -quality 92 \
+    -interlace Plane \
+    "$dst"
+done
