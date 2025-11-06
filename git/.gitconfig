@@ -73,6 +73,7 @@
   st = status
   # show
   sh  = show --ignore-all-space
+  sh0 = show --ignore-all-space
   sh1 = show --ignore-all-space HEAD~1
   sh2 = show --ignore-all-space HEAD~2
   sh3 = show --ignore-all-space HEAD~3
