@@ -6,6 +6,7 @@
 (define-derived-mode rmp/web-typescript-mode web-mode "Web[TS]")
 (add-to-list 'auto-mode-alist '("\\.js\\'"     . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.ts\\'"     . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.cjs\\'"    . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.mjs\\'"    . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'"    . rmp/web-typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'"    . rmp/web-typescript-mode))
