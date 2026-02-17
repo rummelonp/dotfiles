@@ -178,6 +178,7 @@
   dna  = diff --name-only --diff-filter=A
   dnm  = diff --name-only --diff-filter=M
   dnu  = diff --name-only --diff-filter=U
+  dcn  = diff --cached --name-only
   # ls-files
   ls  = ls-files
   lso = ls-files -o
