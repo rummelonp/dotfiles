@@ -125,6 +125,7 @@
 (straight-use-package 'minitest)
 ;; Prog - Python
 (straight-use-package 'pip-requirements)
+(straight-use-package 'lsp-pyright)
 ;; Prog - Perl
 (straight-use-package 'cperl-mode)
 (straight-use-package 'cpanfile-mode)
@@ -206,6 +207,7 @@
     prog-dart
     prog-rust
     prog-go
+    prog-python
     prog-markdown
     prog-misc
     text-misc
