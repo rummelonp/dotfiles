@@ -24,6 +24,9 @@ unlink_file .railsrc
 unlink_file .bin
 unlink_file .config/bat
 unlink_file .config/karabiner
+unlink_file .npmrc
+unlink_file .yarnrc.yml
+unlink_file "Library/Preferences/pnpm/rc"
 unlink_file "Library/Application Support/Code/User/settings.json"
 unlink_file "Library/Application Support/Code/User/keybindings.json"
 unlink_file "Library/Application Support/Google/AndroidStudio2023.1/colors"

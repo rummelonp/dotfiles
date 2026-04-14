@@ -50,6 +50,14 @@ link_file ruby/.irbrc   .irbrc
 link_file ruby/.pryrc   .pryrc
 link_file ruby/.railsrc .railsrc
 
+# node
+link_file node/.npmrc      .npmrc
+link_file node/.yarnrc.yml .yarnrc.yml
+
+if [[ $OSTYPE =~ darwin ]]; then
+    link_file node/pnpm-rc "Library/Preferences/pnpm/rc"
+fi
+
 # bin
 link_dir bin .bin
 
