@@ -87,6 +87,11 @@ if (( $+commands[cs] )); then
     path=("$HOME/Library/Application Support/Coursier/bin" $path)
 fi
 
+# Google Cloud SDK
+if [ -d /opt/homebrew/share/google-cloud-sdk ]; then
+    path=(/opt/homebrew/share/google-cloud-sdk/bin $path)
+fi
+
 # Android
 if (( $+commands[brew] )); then
     export ANDROID_SDK_ROOT=$(brew --prefix)/share/android-sdk
