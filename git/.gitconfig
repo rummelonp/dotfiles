@@ -136,6 +136,9 @@
   bd  = branch --delete
   brm = branch --merged
   brn = branch --no-merged
+  # worktree
+  w  = worktree
+  wl = worktree list
   # fetch
   f   = fetch
   fa  = fetch --all
