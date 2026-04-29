@@ -121,7 +121,3 @@
 ;; company
 (bind-key   "C-x C-." 'company-complete)
 (unbind-key "C-x .") ;; set-fill-prefix
-;; copilot
-(bind-key "C-x ."   'copilot-complete)
-(bind-key "C-<tab>" 'copilot-accept-completion)
-(bind-key "S-<tab>" 'copilot-accept-completion)
