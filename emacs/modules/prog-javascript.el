@@ -22,5 +22,8 @@
 (add-hook 'rmp/web-typescript-mode-hook 'rmp/setup-typescript-mode)
 
 ;; JSON
+(add-to-list 'auto-mode-alist '("\\.jsonc\\'" . jsonc-mode))
+(add-to-list 'auto-mode-alist '("\\.json5\\'" . jsonc-mode))
+
 (with-eval-after-load 'json-mode
   (bind-key "M-s-l" 'json-mode-beautify json-mode-map))
