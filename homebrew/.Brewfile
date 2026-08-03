@@ -29,7 +29,7 @@ brew "bat"
 brew "caddy"
 # Decentralized dependency manager for Cocoa
 brew "carthage"
-# Enables you to reproduce the CircleCI environment locally
+# Official command-line tool for CircleCI
 brew "circleci"
 # Cross-platform make
 brew "cmake"
@@ -239,7 +239,7 @@ cask "codex"
 cask "discord"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
-# Text editor
+# GNU Emacs text editor
 cask "emacs-app"
 # Cross-platform Text Expander written in Rust
 cask "espanso"
