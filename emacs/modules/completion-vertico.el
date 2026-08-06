@@ -14,6 +14,7 @@
              ("C-SPC" . embark-collect)))
 
 ;; Consult & Embark
+(eval-when-compile (require 'consult))
 (with-eval-after-load 'consult
   (with-eval-after-load 'embark
     (require 'embark-consult))
@@ -28,6 +29,7 @@
 (bind-key "C-i" 'migemo-isearch-toggle-migemo isearch-mode-map)
 
 ;; Orderless
+(eval-when-compile (require 'orderless))
 (with-eval-after-load 'orderless
   ;; https://nyoho.jp/diary/?date=20210615
   (defun orderless-migemo (component)

@@ -1,4 +1,5 @@
 /.cache/
+/eln-cache/
 
 # company
 /company-statistics-cache.el
