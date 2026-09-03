@@ -4,11 +4,13 @@ DOTFILES_HOME=$(cd "$(dirname "${0}")" && pwd)
 
 function link_file() {
     local src="${DOTFILES_HOME}/${1}" dest="${HOME}/${2}"
+    mkdir -p "$(dirname "${dest}")"
     ln -fsv "${src}" "${dest}"
 }
 
 function link_dir() {
     local src="${DOTFILES_HOME}/${1}" dest="${HOME}/${2}"
+    mkdir -p "$(dirname "${dest}")"
     if [ -L "${dest}" ]; then rm "${dest}"; fi
     ln -sv "${src}" "${dest}"
 }
