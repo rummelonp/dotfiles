@@ -75,6 +75,9 @@ fi
 
 # idea
 if [[ $OSTYPE =~ darwin ]]; then
-    link_dir idea/colors  "Library/Application Support/Google/AndroidStudio2025.2.3/colors"
-    link_dir idea/keymaps "Library/Application Support/Google/AndroidStudio2025.2.3/keymaps"
+    as_data_dir=$(jq -r '.dataDirectoryName' "/Applications/Android Studio.app/Contents/Resources/product-info.json" 2>/dev/null)
+    if [ -n "${as_data_dir}" ] && [ "${as_data_dir}" != "null" ]; then
+        link_dir idea/colors  "Library/Application Support/Google/${as_data_dir}/colors"
+        link_dir idea/keymaps "Library/Application Support/Google/${as_data_dir}/keymaps"
+    fi
 fi

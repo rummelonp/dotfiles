@@ -29,5 +29,8 @@ unlink_file .yarnrc.yml
 unlink_file "Library/Preferences/pnpm/rc"
 unlink_file "Library/Application Support/Code/User/settings.json"
 unlink_file "Library/Application Support/Code/User/keybindings.json"
-unlink_file "Library/Application Support/Google/AndroidStudio2023.1/colors"
-unlink_file "Library/Application Support/Google/AndroidStudio2023.1/keymaps"
+for dir in "${HOME}"/Library/Application\ Support/Google/AndroidStudio*/; do
+    [ -d "${dir}" ] || continue
+    unlink_file "${dir#${HOME}/}colors"
+    unlink_file "${dir#${HOME}/}keymaps"
+done
