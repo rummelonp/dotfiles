@@ -34,3 +34,6 @@ for dir in "${HOME}"/Library/Application\ Support/Google/AndroidStudio*/; do
     unlink_file "${dir#${HOME}/}colors"
     unlink_file "${dir#${HOME}/}keymaps"
 done
+
+unlink_file .claude/CLAUDE.md
+unlink_file .claude/settings.json

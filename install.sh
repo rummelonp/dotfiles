@@ -85,3 +85,7 @@ if [[ $OSTYPE =~ darwin ]]; then
         link_dir idea/keymaps "Library/Application Support/Google/${as_data_dir}/keymaps"
     fi
 fi
+
+# claude
+link_file claude/CLAUDE.md     .claude/CLAUDE.md
+link_file claude/settings.json .claude/settings.json
