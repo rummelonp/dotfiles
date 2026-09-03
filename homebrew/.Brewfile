@@ -125,6 +125,8 @@ brew "mint"
 brew "mise"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
+# Open source relational database management system
+brew "mysql@8.4", link: true
 # NCurses Disk Usage
 brew "ncdu"
 # Selects the right Node package manager based on lockfiles
@@ -169,8 +171,6 @@ brew "ripgrep-all"
 brew "rustup"
 # Intuitive find & replace CLI
 brew "sd"
-# Command-line utility to interact with Sentry
-brew "sentry-cli"
 # Advanced console-based IP subnet calculator
 brew "sipcalc"
 # Proxy server that works as a poor man's VPN
@@ -270,6 +270,8 @@ cask "pastebot"
 cask "rancher"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# Command-line utility to interact with Sentry
+cask "sentry-cli"
 # Plugin for AWS CLI to start and end sessions that connect to managed instances
 cask "session-manager-plugin"
 # Team communication and collaboration software
