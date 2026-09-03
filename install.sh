@@ -89,3 +89,10 @@ fi
 # claude
 link_file claude/CLAUDE.md     .claude/CLAUDE.md
 link_file claude/settings.json .claude/settings.json
+
+# skills
+for dir in "${DOTFILES_HOME}"/skills/*/; do
+    name=$(basename "${dir}")
+    link_dir "skills/${name}" ".claude/skills/${name}"
+    link_dir "skills/${name}" ".agents/skills/${name}"
+done

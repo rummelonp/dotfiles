@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+DOTFILES_HOME=$(cd "$(dirname "${0}")" && pwd)
+
 function unlink_file() {
     local dest="${HOME}/${1}"
     if [ -L "${dest}" ]; then rm -v "${dest}"; fi
@@ -37,3 +39,9 @@ done
 
 unlink_file .claude/CLAUDE.md
 unlink_file .claude/settings.json
+
+for dir in "${DOTFILES_HOME}"/skills/*/; do
+    name=$(basename "${dir}")
+    unlink_file ".claude/skills/${name}"
+    unlink_file ".agents/skills/${name}"
+done
