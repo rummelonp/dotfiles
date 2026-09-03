@@ -101,3 +101,9 @@ for dir in "${DOTFILES_HOME}"/claude/skills/*/; do
     name=$(basename "${dir}")
     link_dir "claude/skills/${name}" ".claude/skills/${name}"
 done
+
+# drop symlinks whose target left the repo; real dirs are never matched
+for dir in "${HOME}/.claude/skills" "${HOME}/.agents/skills"; do
+    [ -d "${dir}" ] || continue
+    find "${dir}" -maxdepth 1 -type l ! -exec test -e {} \; -print -delete
+done
