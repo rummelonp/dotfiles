@@ -45,3 +45,7 @@ for dir in "${DOTFILES_HOME}"/skills/*/; do
     unlink_file ".claude/skills/${name}"
     unlink_file ".agents/skills/${name}"
 done
+
+for dir in "${DOTFILES_HOME}"/claude/skills/*/; do
+    unlink_file ".claude/skills/$(basename "${dir}")"
+done

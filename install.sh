@@ -96,3 +96,8 @@ for dir in "${DOTFILES_HOME}"/skills/*/; do
     link_dir "skills/${name}" ".claude/skills/${name}"
     link_dir "skills/${name}" ".agents/skills/${name}"
 done
+
+for dir in "${DOTFILES_HOME}"/claude/skills/*/; do
+    name=$(basename "${dir}")
+    link_dir "claude/skills/${name}" ".claude/skills/${name}"
+done
