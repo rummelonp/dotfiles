@@ -121,3 +121,7 @@ Sessionx.vim
 [._]*.un~
 
 # End of https://www.toptal.com/developers/gitignore/api/osx,emacs,vim,tags
+
+### Claude Code ###
+# plansDirectory is relative to the project root
+.claude/plans/
