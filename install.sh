@@ -12,8 +12,11 @@ function link_dir() {
     local src="${DOTFILES_HOME}/${1}" dest="${HOME}/${2}"
     mkdir -p "$(dirname "${dest}")"
     if [ -L "${dest}" ]; then rm "${dest}"; fi
-    # silently keep real dirs: machine-only skills live next to symlinked ones
-    if [ -e "${dest}" ]; then return; fi
+    # keep real dirs: machine-only skills live next to symlinked ones
+    if [ -e "${dest}" ]; then
+        echo "warn: ${dest} is not a symlink, skipped" >&2
+        return
+    fi
     ln -sv "${src}" "${dest}"
 }
 
