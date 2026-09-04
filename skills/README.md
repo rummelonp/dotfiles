@@ -6,6 +6,9 @@
 Claude ハーネス固有の語彙に依存するスキルは、代わりに
 [`../claude/skills/`](../claude/skills/) に置いて `~/.claude/skills/` へだけ配る。
 
+Codex 固有のツールやタスク管理に依存するスキルは、
+[`../codex/skills/`](../codex/skills/) に置いて `~/.agents/skills/` へだけ配る。
+
 ## 出所
 
 | スキル | 上流 | ライセンス | 取得日 | 改変 |
@@ -19,6 +22,8 @@ Claude ハーネス固有の語彙に依存するスキルは、代わりに
 | --- | --- | --- | --- | --- |
 | `grill-me` | [mattpocock/skills](https://github.com/mattpocock/skills) `skills/productivity/grill-me` | MIT（[LICENSE](../claude/skills/grill-me/LICENSE) 同梱） | 2026-09-03 | なし |
 | `empirical-prompt-tuning` | [mizchi/skills](https://github.com/mizchi/skills) `meta/empirical-prompt-tuning` | 上流に個別 LICENSE なし。README に「明示ライセンスのないスキルは MIT 扱い」の記述 | 2026-09-03 | なし |
+
+`../codex/skills/` の `empirical-prompt-tuning` は同じ上流を基に、Codex のサブエージェントと取得可能なメトリクスに合わせて改変している。
 
 ## 上流の更新を取り込む
 
