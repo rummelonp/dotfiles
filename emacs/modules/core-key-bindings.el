@@ -116,6 +116,7 @@
 (bind-key "C-x m"   'consult-imenu-multi)         ;; compose-mail
 (bind-key "C-x C-o" 'consult-flycheck)            ;; delete-blank-lines
 (bind-key "C-x C-y" 'consult-yank-from-kill-ring)
+(bind-key "C-x c"   'rmp/consult-claude-plan)
 (bind-key "M-g M-g" 'consult-line-multi)          ;; goto-line
 (bind-key "M-g g"   'consult-git-grep)            ;; goto-line
 ;; company

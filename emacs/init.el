@@ -195,6 +195,7 @@
     completion-company
     checker-syntax
     tools-lsp
+    tools-claude
     prog-emacs-lisp
     prog-web
     prog-css

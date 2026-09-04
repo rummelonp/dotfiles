@@ -51,6 +51,7 @@
           (command (styles orderless-default-style))
           (file (styles orderless-migemo-style))
           (imenu (styles orderless-migemo-style))
+          (multi-category (styles orderless-migemo-style))
           (org-roam-node (styles orderless-migemo-style))
           (project-file (styles orderless-migemo-style))
           (symbol (styles orderless-default-style))
