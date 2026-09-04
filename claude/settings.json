@@ -69,6 +69,7 @@
       "Bash(tail:*)",
       "Bash(terraform fmt:*)",
       "Bash(terraform plan:*)",
+      "Bash(terraform validate:*)",
       "Bash(test:*)",
       "Bash(timeout:*)",
       "Bash(tmux:*)",
