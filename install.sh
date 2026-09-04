@@ -93,6 +93,9 @@ fi
 link_file claude/CLAUDE.md     .claude/CLAUDE.md
 link_file claude/settings.json .claude/settings.json
 
+# codex
+link_file codex/AGENTS.md .codex/AGENTS.md
+
 # skills
 for dir in "${DOTFILES_HOME}"/skills/*/; do
     name=$(basename "${dir}")
@@ -103,6 +106,11 @@ done
 for dir in "${DOTFILES_HOME}"/claude/skills/*/; do
     name=$(basename "${dir}")
     link_dir "claude/skills/${name}" ".claude/skills/${name}"
+done
+
+for dir in "${DOTFILES_HOME}"/codex/skills/*/; do
+    name=$(basename "${dir}")
+    link_dir "codex/skills/${name}" ".agents/skills/${name}"
 done
 
 # drop symlinks whose target left the repo; real dirs are never matched

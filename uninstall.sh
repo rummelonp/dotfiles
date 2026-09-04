@@ -39,6 +39,7 @@ done
 
 unlink_file .claude/CLAUDE.md
 unlink_file .claude/settings.json
+unlink_file .codex/AGENTS.md
 
 for dir in "${DOTFILES_HOME}"/skills/*/; do
     name=$(basename "${dir}")
@@ -48,4 +49,8 @@ done
 
 for dir in "${DOTFILES_HOME}"/claude/skills/*/; do
     unlink_file ".claude/skills/$(basename "${dir}")"
+done
+
+for dir in "${DOTFILES_HOME}"/codex/skills/*/; do
+    unlink_file ".agents/skills/$(basename "${dir}")"
 done
