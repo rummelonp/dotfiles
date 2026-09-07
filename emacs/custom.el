@@ -28,7 +28,7 @@
  '(company-tooltip-align-annotations t)
  '(company-transformers
    '(company-sort-by-statistics company-sort-by-backend-importance))
- '(completion-styles '(orderless))
+ '(completion-styles '(orderless basic))
  '(consult-preview-key 'any)
  '(create-lockfiles nil)
  '(css-indent-offset 2)
