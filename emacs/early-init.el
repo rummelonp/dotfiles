@@ -10,6 +10,15 @@
 (add-to-list 'warning-suppress-types '(files missing-lexbind-cookie))
 (add-to-list 'warning-suppress-log-types '(files missing-lexbind-cookie))
 
+(push '(alpha . 95) default-frame-alist)
+
+;; Child frames (posframe, cfrs) inherit default-frame-alist, and a
+;; translucent popup shows the code underneath it.
+(defun rmp/make-child-frame-opaque (frame)
+  (when (frame-parent frame)
+    (set-frame-parameter frame 'alpha nil)))
+(add-hook 'after-make-frame-functions 'rmp/make-child-frame-opaque)
+
 (custom-set-variables
  '(inhibit-startup-screen t)
  '(inhibit-startup-message t)

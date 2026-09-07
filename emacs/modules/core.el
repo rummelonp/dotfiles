@@ -8,7 +8,6 @@
 (prefer-coding-system 'utf-8)
 
 ;; Theme
-(set-frame-parameter nil 'alpha 95)
 (load-theme 'kabukicho t)
 
 ;; Font
