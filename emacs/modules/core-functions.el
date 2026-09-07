@@ -34,10 +34,9 @@
 ;; Treemacs Functions
 (defun rmp/treemacs-toggle ()
   (interactive)
-  (let* ((path (or buffer-file-name (expand-file-name default-directory))))
-    (if (eq (selected-window) (treemacs-get-local-window))
-        (delete-window (treemacs-get-local-window))
-      (treemacs-select-window))))
+  (if (eq (selected-window) (treemacs-get-local-window))
+      (delete-window (treemacs-get-local-window))
+    (treemacs-select-window)))
 
 ;; CentaurTabs Functions
 (defun rmp/centaur-tabs-group-cycle ()
