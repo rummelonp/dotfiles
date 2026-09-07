@@ -111,7 +111,6 @@
 (straight-use-package 'scss-mode)
 ;; Prog - JavaScript
 (straight-use-package 'typescript-mode)
-(straight-use-package 'lsp-javascript-typescript)
 (straight-use-package 'json-mode)
 (straight-use-package '(emacs-prisma-mode :type git :host github :repo "pimeys/emacs-prisma-mode"))
 ;: Prog - Ruby
