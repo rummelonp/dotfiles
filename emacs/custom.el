@@ -105,7 +105,6 @@
  '(require-final-newline t)
  '(ring-bell-function 'ignore)
  '(ruby-deep-indent-paren nil)
- '(ruby-use-smie nil t)
  '(savehist-mode t)
  '(savekill-max-saved-items 1000)
  '(scroll-bar-mode nil)
