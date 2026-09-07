@@ -22,9 +22,11 @@
 
 # project
 /projects
+/projects.eld
 
 # recentf
 /recentf
+/recentf.eld
 
 # savehist
 /history
