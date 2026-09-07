@@ -100,7 +100,6 @@
  '(require-final-newline t)
  '(ring-bell-function 'ignore)
  '(savehist-mode t)
- '(savekill-max-saved-items 1000)
  '(scroll-bar-mode nil)
  '(show-paren-delay 0)
  '(show-paren-mode t)

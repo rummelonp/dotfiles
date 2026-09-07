@@ -27,4 +27,3 @@
 ;; Editor
 (with-eval-after-load 'recentf
   (require 'recentf-ext))
-(require 'savekill)

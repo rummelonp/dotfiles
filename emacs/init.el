@@ -49,7 +49,6 @@
 (straight-use-package 'sudo-edit)
 ;; Core - Editor
 (straight-use-package 'recentf-ext)
-(straight-use-package 'savekill)
 ;; Editing
 (straight-use-package 'anzu)
 (straight-use-package 'multiple-cursors)
