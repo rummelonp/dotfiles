@@ -101,18 +101,21 @@ function fzf-dir() {
     local root is_git
     _fzf-fd-setup "$@"
 
-    local cmd="fd --strip-cwd-prefix --follow --type directory --base-directory='$root'"
-    if (( $is_git == 0 )); then
-        cmd+=" --hidden --exclude=.git $args | sort"
-    else
-        cmd+=" --exclude=Library $args"
-    fi
+    local -a cmd=(fd --strip-cwd-prefix --follow --type directory --base-directory "$root")
+    local -a finder=(fzf --sort --preview "cd ${(q)root} && ls --color {}" --query "$LBUFFER")
 
-    local dir=$(eval "$cmd" | fzf --sort --preview "cd \"$root\" && ls --color {}" --query "$LBUFFER")
+    local dir
+    if (( $is_git == 0 )); then
+        cmd+=(--hidden --exclude=.git "${args[@]}")
+        dir=$("${cmd[@]}" | sort | "${finder[@]}")
+    else
+        cmd+=(--exclude=Library "${args[@]}")
+        dir=$("${cmd[@]}" | "${finder[@]}")
+    fi
     [[ -z "$dir" ]] && return 0
 
     dir=$(_fzf-normalize-path "$root" "$dir")
-    echo "$dir"
+    print -r -- "$dir"
 }
 
 function fzf-file() {
@@ -120,20 +123,21 @@ function fzf-file() {
     local root is_git
     _fzf-fd-setup "$@"
 
-    local cmd="fd --strip-cwd-prefix --follow --type file --type symlink --base-directory='$root'"
-    if (( $is_git == 0 )); then
-        cmd+=" --hidden --exclude=.git $args | sort"
-    else
-        cmd+=" --exclude=Library $args"
-    fi
-    local filter="fzf --multi --sort --preview 'cd \"$root\" && bat --style=plain --color=always {}'"
+    local -a cmd=(fd --strip-cwd-prefix --follow --type file --type symlink --base-directory "$root")
+    local -a finder=(fzf --multi --sort --preview "cd ${(q)root} && bat --style=plain --color=always {}")
 
     local file
-    eval "$cmd | $filter" | while read file; do
+    if (( $is_git == 0 )); then
+        cmd+=(--hidden --exclude=.git "${args[@]}")
+        "${cmd[@]}" | sort | "${finder[@]}"
+    else
+        cmd+=(--exclude=Library "${args[@]}")
+        "${cmd[@]}" | "${finder[@]}"
+    fi | while IFS= read -r file; do
         file=$(_fzf-normalize-path "$root" "$file")
-        echo -n "$file "
+        print -rn -- "$file "
     done
-    echo
+    print
 }
 
 function fzf-doc() {
@@ -163,28 +167,36 @@ function _fzf-fd-setup() {
                 root="${1/--base-directory=}"
                 ;;
             *)
-                args=($args $1)
+                args+=("$1")
                 ;;
         esac
         shift
     done
 
-    root=$(eval "realpath $(_fzf-escape-path "${root:-.}")")
+    root=$(realpath -- "${root:-.}")
 
     (cd "$root" && git rev-parse --is-inside-work-tree > /dev/null 2>&1)
     is_git=$?
 }
 
-function _fzf-escape-path() {
-    echo "$@" | sed 's| |\\ |g'
-}
-
+# The result is appended to LBUFFER, so it has to survive being re-parsed by the
+# shell. Only the ~ that stands in for $HOME is left unquoted, and it is
+# prepended after quoting so a path that merely contains ~ stays literal.
 function _fzf-normalize-path() {
     if (( $is_git == 0 )); then
-        _fzf-escape-path "$2"
-    else
-        _fzf-escape-path $(echo "$1/$2" | sed "s|$HOME|~|g")
+        print -r -- "${(q)2}"
+        return
     fi
+
+    local full="$1/$2"
+    if [[ "$full" != "$HOME" && "$full" != "$HOME"/* ]]; then
+        print -r -- "${(q)full}"
+        return
+    fi
+
+    local rest="${full#"$HOME"}"
+    rest="${rest#/}"
+    print -r -- "~${rest:+/${(q)rest}}"
 }
 
 ### Aliases ###
