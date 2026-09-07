@@ -4,19 +4,18 @@
 
 ;; Flycheck
 (defun rmp/flycheck-mode-line-status-text (&optional status)
-  (let* ((active (powerline-selected-window-active))
-         (text (pcase (or status flycheck-last-status-change)
-                 (`not-checked "😴")
-                 (`no-checker "😎")
-                 (`running "🤔")
-                 (`errored "😭")
-                 (`finished
-                  (let-alist (flycheck-count-errors flycheck-current-errors)
-                    (if (or .error .warning)
-                        (concat (when .error "😰") (when .warning "😥"))
-                      "🤩")))
-                 (`interrupted "🤯")
-                 (`suspicious "🙃"))))
+  (let ((text (pcase (or status flycheck-last-status-change)
+                (`not-checked "😴")
+                (`no-checker "😎")
+                (`running "🤔")
+                (`errored "😭")
+                (`finished
+                 (let-alist (flycheck-count-errors flycheck-current-errors)
+                   (if (or .error .warning)
+                       (concat (when .error "😰") (when .warning "😥"))
+                     "🤩")))
+                (`interrupted "🤯")
+                (`suspicious "🙃"))))
     (concat " " flycheck-mode-line-prefix text)))
 (with-eval-after-load 'flycheck
   (setq flycheck-mode-line '(:eval (rmp/flycheck-mode-line-status-text))))
