@@ -164,7 +164,7 @@
 (straight-use-package 'osx-osascript)
 
 ;;; Load Custom Variables
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
 ;;; Variables
@@ -213,7 +213,7 @@
     ))
 
 ;;; Load Modules
-(add-to-list 'load-path "~/.emacs.d/modules")
+(add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
 (defun rmp/try-load (file)
   (condition-case e
       (load file)
