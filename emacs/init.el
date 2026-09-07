@@ -179,8 +179,6 @@
 
 (defvar rmp/darwin-p
   (eq system-type 'darwin))
-(defvar rmp/linux-p
-  (eq system-type 'gnu/linux))
 
 (defvar rmp/module-files
   '(
@@ -212,7 +210,6 @@
     text-misc
     core-functions
     core-key-bindings
-    os-macos
     ))
 
 ;;; Load Modules
@@ -222,15 +219,9 @@
       (load file)
     (error
      (warn (format "%s: %s" file (error-message-string e))))))
-(cl-dolist (file rmp/module-files)
-  (let ((file (symbol-name file)))
-    (cond
-     ((and rmp/darwin-p (string-match-p "macos" file))
-      (rmp/try-load file))
-     ((and rmp/linux-p (string-match-p "linux" file))
-      (rmp/try-load file))
-     (t
-      (rmp/try-load file)))))
+(dolist (file rmp/module-files)
+  (rmp/try-load (symbol-name file)))
+(when rmp/darwin-p (rmp/try-load "os-macos"))
 
 ;; Enable Magic File Name & GC
 (setq file-name-handler-alist rmp/file-name-handler-alist)
