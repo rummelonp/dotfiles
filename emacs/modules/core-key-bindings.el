@@ -61,7 +61,7 @@
 (bind-key "C--" 'toggle-truncate-lines) ;; negative-argument
 ;; navigation
 (unbind-key "C-M-.")             ;; xref-find-apropos
-(bind-key*  "M-." 'pop-tag-mark) ;; xref-find-definitions
+(bind-key*  "M-." 'xref-go-back) ;; xref-find-definitions
 ;; help
 (bind-key "M-?" 'help-for-help) ;; xref-find-references
 
@@ -71,7 +71,7 @@
 (bind-key   "C-M-%" 'anzu-query-replace-regexp)          ;; query-replace-regexp
 (bind-key   "C-,"   'anzu-query-replace-at-cursor-thing)
 (bind-key   "C-M-," 'anzu-query-replace-at-cursor)
-(unbind-key "M-,")                                       ;; xref-pop-marker-stack
+(unbind-key "M-,")                                       ;; xref-go-back
 ;; multiple-cursors
 (bind-key "C->"   'mc/mark-next-like-this)
 (bind-key "C-M-<" 'mc/unmark-next-like-this)
