@@ -100,7 +100,6 @@
  '(savehist-mode t)
  '(savekill-max-saved-items 1000)
  '(scroll-bar-mode nil)
- '(scss-compile-at-save nil)
  '(show-paren-delay 0)
  '(show-paren-mode t)
  '(show-paren-style 'mixed)
