@@ -55,6 +55,7 @@
   whitespace = normal magenta
 [delta]
   features = kabukicho
+  navigate = true
 [delta "kabukicho"]
   commit-decoration-style = "yellow" box ul
   dark = true
