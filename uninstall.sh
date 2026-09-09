@@ -33,8 +33,8 @@ unlink_file "Library/Application Support/Code/User/settings.json"
 unlink_file "Library/Application Support/Code/User/keybindings.json"
 for dir in "${HOME}"/Library/Application\ Support/Google/AndroidStudio*/; do
     [ -d "${dir}" ] || continue
-    unlink_file "${dir#${HOME}/}colors"
-    unlink_file "${dir#${HOME}/}keymaps"
+    unlink_file "${dir#"${HOME}"/}colors"
+    unlink_file "${dir#"${HOME}"/}keymaps"
 done
 
 unlink_file .claude/CLAUDE.md
