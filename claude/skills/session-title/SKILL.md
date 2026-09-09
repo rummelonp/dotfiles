@@ -7,6 +7,7 @@ description: Name the current session following the user's convention. Invoke at
 
 セッション名は `<絵文字> <本体>` の形式。
 デスクトップアプリでは `set_session_title`、CLI では `/rename <name>` を使う。
+`set_session_title` は `session_id` が必須で、自分の id は `get_session` に `"self"` を渡すと分かる（scratchpad のパスにある UUID は別物で、渡しても `not found` になる）。
 どちらも無い環境ではこの skill を適用しない（代わりの命名や報告は不要）。
 
 ## 種別
