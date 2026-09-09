@@ -28,7 +28,8 @@
   autoSquash = true
   autoStash  = true
 [push]
-  default = current
+  default         = current
+  autoSetupRemote = true
 [log]
   date = iso
 [diff]
