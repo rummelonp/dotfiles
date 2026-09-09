@@ -2,7 +2,10 @@
 # Ruby
 #
 
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+# ruby-build reads this only when compiling, but the `brew --prefix openssl@3` fork ran every shell.
+if [[ -n $HOMEBREW_PREFIX ]]; then
+    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$HOMEBREW_PREFIX/opt/openssl@3"
+fi
 
 ### Aliases ###
 alias bi='bundle install'
