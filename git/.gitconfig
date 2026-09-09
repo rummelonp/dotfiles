@@ -32,6 +32,8 @@
   autoSetupRemote = true
 [log]
   date = iso
+[branch]
+  sort = -committerdate
 [diff]
   colorMoved = default
 [pretty]
