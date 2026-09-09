@@ -25,6 +25,7 @@
   rebase = true
 [rebase]
   updateRefs = true
+  autoSquash = true
 [push]
   default = current
 [log]
