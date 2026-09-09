@@ -3,7 +3,16 @@
 #
 
 autoload -Uz compinit
-compinit -i
+# -C skips the fpath rescan that cost ~500 ms per shell; rebuild daily for new completions.
+_zcompdump=${ZDOTDIR:-$HOME}/.zcompdump
+# Match into an array: [[ ]] does not glob, so the test there would always pass.
+_zcompdump_fresh=($_zcompdump(Nmh-24))
+if (( $#_zcompdump_fresh )); then
+    compinit -C -d $_zcompdump
+else
+    compinit -i -d $_zcompdump
+fi
+unset _zcompdump{_fresh,}
 
 ### Options ###
 setopt COMPLETE_IN_WORD  # Complete from both ends of a word.
