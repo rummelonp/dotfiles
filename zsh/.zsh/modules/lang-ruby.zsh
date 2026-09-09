@@ -13,21 +13,6 @@ alias bu='bundle update'
 alias be='bundle exec'
 
 ### Functions ###
-function _ruby_command() {
-    typeset cmd=$1
-    <<EOF
-function ${cmd}() {
-    if [ -f bin/${cmd} ]; then
-        bin/${cmd} "\$@"
-    elif [ -f Gemfile ]; then
-        command bundle exec ${cmd} "\$@"
-    else
-        command ${cmd} "\$@"
-    fi
-}
-EOF
-}
-
 function bundle() {
     if [ -f bin/bundle ]; then
         bin/bundle "$@"
@@ -36,9 +21,16 @@ function bundle() {
     fi
 }
 
-eval "$(_ruby_command rails)"
-eval "$(_ruby_command rake)"
-eval "$(_ruby_command rspec)"
-eval "$(_ruby_command parallel_rspec)"
-eval "$(_ruby_command rubocop)"
-eval "$(_ruby_command annotate)"
+# Assigning to functions[] defines these in-process; building the bodies as text forked a sub-shell each.
+typeset _ruby_command
+for _ruby_command in rails rake rspec parallel_rspec rubocop annotate; do
+    functions[$_ruby_command]="
+if [ -f bin/$_ruby_command ]; then
+    bin/$_ruby_command \"\$@\"
+elif [ -f Gemfile ]; then
+    command bundle exec $_ruby_command \"\$@\"
+else
+    command $_ruby_command \"\$@\"
+fi"
+done
+unset _ruby_command
