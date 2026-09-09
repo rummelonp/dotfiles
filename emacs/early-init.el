@@ -3,9 +3,8 @@
 (setq package-enable-at-startup nil)
 (setq load-prefer-newer t)
 
-;; Emacs 31 warns for every dynamically scoped source file.  Keep the
-;; existing modules dynamically scoped, but avoid flooding *Warnings* while
-;; they are migrated deliberately.
+;; company-anywhere carries no file header and company-statistics rewrites its
+;; cache on exit, so neither can hold a lexbind cookie.  Drop this with company.
 (require 'warnings)
 (add-to-list 'warning-suppress-types '(files missing-lexbind-cookie))
 (add-to-list 'warning-suppress-log-types '(files missing-lexbind-cookie))

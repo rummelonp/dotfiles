@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;;
 ;; Text - Misc
 ;;
