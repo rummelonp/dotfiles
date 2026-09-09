@@ -125,3 +125,9 @@ Sessionx.vim
 ### Claude Code ###
 # plansDirectory is relative to the project root
 .claude/plans/
+
+### Secrets ###
+# exception to the editor-generated-only scope above: an accidental commit here
+# costs a history rewrite and a credential rotation
+.env
+*.pem
