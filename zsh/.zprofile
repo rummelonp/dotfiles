@@ -48,18 +48,21 @@ cdpath=(
 )
 
 # Homebrew
+# Don't inline shellenv for speed: it changes often upstream and the drift would be silent.
 if (( $+commands[brew] )); then
     eval "$(brew shellenv)"
     path=(
-        $(brew --prefix)/{sbin,bin}
-        $(brew --prefix)/opt/{gnu-sed,gnu-tar,grep}/libexec/gnubin
+        $HOMEBREW_PREFIX/{sbin,bin}
+        $HOMEBREW_PREFIX/opt/{gnu-sed,gnu-tar,grep}/libexec/gnubin
         $path
     )
     fpath=(
-        $(brew --prefix)/share/zsh-completions
-        $(brew --prefix)/share/zsh/{functions,site-functions}
+        $HOMEBREW_PREFIX/share/zsh-completions
+        $HOMEBREW_PREFIX/share/zsh/{functions,site-functions}
         $fpath
     )
+    # A nested interactive shell skips this file (see .zshenv) and inherits fpath via FPATH.
+    export FPATH
 fi
 
 # Ruby
@@ -94,7 +97,7 @@ fi
 
 # Android
 if (( $+commands[brew] )); then
-    export ANDROID_SDK_ROOT=$(brew --prefix)/share/android-sdk
+    export ANDROID_SDK_ROOT=$HOMEBREW_PREFIX/share/android-sdk
     path=($ANDROID_SDK_ROOT/platform-tools $path)
 fi
 
