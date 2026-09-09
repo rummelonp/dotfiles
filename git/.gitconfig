@@ -23,6 +23,8 @@
   prune = true
 [pull]
   rebase = true
+[rebase]
+  updateRefs = true
 [push]
   default = current
 [log]
