@@ -37,6 +37,7 @@
 [tag]
   sort = version:refname
 [diff]
+  algorithm    = histogram
   colorMoved   = default
   colorMovedWS = allow-indentation-change
 [pretty]
