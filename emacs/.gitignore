@@ -31,9 +31,6 @@
 # savehist
 /history
 
-# savekill
-/kill-ring-saved.el
-
 # straight
 /straight/
 
