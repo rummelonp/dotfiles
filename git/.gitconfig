@@ -17,6 +17,8 @@
 [merge]
   ff            = false
   conflictStyle = zdiff3
+[rerere]
+  enabled = true
 [fetch]
   prune = true
 [pull]
