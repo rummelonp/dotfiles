@@ -37,7 +37,8 @@
 [tag]
   sort = version:refname
 [diff]
-  colorMoved = default
+  colorMoved   = default
+  colorMovedWS = allow-indentation-change
 [pretty]
   colorful = %C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(cyan)%an%C(reset) %s %C(auto)%d%C(reset)
 [color]
