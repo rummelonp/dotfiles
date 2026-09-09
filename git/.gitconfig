@@ -12,6 +12,8 @@
   defaultBranch = master
 [advice]
   skippedCherryPicks = false
+[commit]
+  verbose = true
 [merge]
   ff = false
 [fetch]
