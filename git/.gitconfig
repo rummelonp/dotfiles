@@ -34,6 +34,8 @@
   date = iso
 [branch]
   sort = -committerdate
+[tag]
+  sort = version:refname
 [diff]
   colorMoved = default
 [pretty]
