@@ -15,7 +15,8 @@
 [commit]
   verbose = true
 [merge]
-  ff = false
+  ff            = false
+  conflictStyle = zdiff3
 [fetch]
   prune = true
 [pull]
