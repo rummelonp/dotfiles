@@ -202,19 +202,19 @@ brew "zsh"
 # Additional completion definitions for zsh
 brew "zsh-completions"
 # ecspresso is a deployment tool for Amazon ECS
-brew "kayac/tap/ecspresso"
+brew "kayac/tap/ecspresso", trusted: true
 # Simple cli to manage Flutter SDK versions per project
-brew "leoafarias/fvm/fvm"
+brew "leoafarias/fvm/fvm", trusted: true
 # aarch64-unknown-linux-gnu Toolchain
-brew "messense/macos-cross-toolchains/aarch64-unknown-linux-gnu"
+brew "messense/macos-cross-toolchains/aarch64-unknown-linux-gnu", trusted: true
 # x86_64-unknown-linux-gnu Toolchain
-brew "messense/macos-cross-toolchains/x86_64-unknown-linux-gnu"
+brew "messense/macos-cross-toolchains/x86_64-unknown-linux-gnu", trusted: true
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
-brew "oven-sh/bun/bun"
+brew "oven-sh/bun/bun", trusted: true
 # Automated code review tool integrated with any code analysis tools regardless of programming language.
-brew "reviewdog/tap/reviewdog"
+brew "reviewdog/tap/reviewdog", trusted: true
 # The easiest idempotent schema management by SQL.
-brew "sqldef/sqldef/mysqldef"
+brew "sqldef/sqldef/mysqldef", trusted: true
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
