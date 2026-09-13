@@ -28,7 +28,11 @@ Codex 固有のツールやタスク管理に依存するスキルは、
 | `grill-me` | [mattpocock/skills](https://github.com/mattpocock/skills) `skills/productivity/grill-me` | MIT（[LICENSE](../claude/skills/grill-me/LICENSE) 同梱） | 2026-09-03 | なし |
 | `empirical-prompt-tuning` | [mizchi/skills](https://github.com/mizchi/skills) `meta/empirical-prompt-tuning` | 上流に個別 LICENSE なし。README に「明示ライセンスのないスキルは MIT 扱い」の記述 | 2026-09-03 | なし |
 
-`../codex/skills/` の `empirical-prompt-tuning` は同じ上流を基に、Codex のサブエージェントと取得可能なメトリクスに合わせて改変している。
+`../codex/skills/` に置いているものも同じ扱い:
+
+| スキル | 上流 | ライセンス | 取得日 | 改変 |
+| --- | --- | --- | --- | --- |
+| `empirical-prompt-tuning` | [mizchi/skills](https://github.com/mizchi/skills) `meta/empirical-prompt-tuning` | 上流に個別 LICENSE なし。README に「明示ライセンスのないスキルは MIT 扱い」の記述 | 2026-09-04 | `../claude/skills/` 版と同じ上流を基に、Codex のサブエージェントと取得可能なメトリクス（`tool_uses`/`duration_ms` 相当が取れない等）に合わせて改変 |
 
 ## 上流の更新を取り込む
 
