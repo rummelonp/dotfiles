@@ -149,6 +149,8 @@ brew "pinact"
 brew "plantuml"
 # Perl binary manager
 brew "plenv"
+# Fast, disk space efficient package manager
+brew "pnpm"
 # Password generator
 brew "pwgen"
 # Python version management
@@ -223,6 +225,8 @@ cask "1password-cli"
 cask "alfred"
 # Tools for building Android applications
 cask "android-studio"
+# Terminal interface for Antigravity agents
+cask "antigravity-cli"
 # Application uninstaller
 cask "appcleaner"
 # Managed client-based VPN service to securely access AWS resources
