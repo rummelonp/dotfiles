@@ -240,6 +240,6 @@ description: agent 向けテキスト指示（skill / slash command / task プ�
 ## 関連
 
 - `superpowers:writing-skills` — skill 作成時の TDD アプローチ。本 skill の「subagent で baseline → 修正 → 再実行」と本質的に同じ
-- `retrospective-codify` — タスク後の学び固定化。本 skill はプロンプト開発中、retrospective-codify はタスク終了後、と使い分ける
+- `lesson-persistence` — タスク後の学び固定化。本 skill はプロンプト開発中、lesson-persistence はタスク終了後、と使い分ける
 - `superpowers:dispatching-parallel-agents` — 複数シナリオを並列で走らせるときの作法
 - `waxa-eval` — `waxa` CLI の運用マニュアル。 eval / iterate ループを YAML scenario と永続 ledger で外部プロセスに自動化する。 本 skill (empirical-prompt-tuning) は **方法論と session 内 Task-tool subagent フロー**、 `waxa-eval` は **CLI 操作と YAML authoring** を担当する補完関係。 empirical は Iter 0 の静的整合チェック、 `[critical]` タグ付きチェックリスト、 `tool_uses` ベースの skill 診断 (CLI プロセスからは届かない領域) を担う。 waxa-eval は永続性 / CI 再現性 / 外部 adoption gate が要るときに使う。
