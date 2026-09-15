@@ -64,7 +64,6 @@
   - 自分で再読することを bias-free 評価や empirical 評価の代用にしない。
   - 新規サブエージェントを起動できない場合は bias-free 評価と称さず、`empirical-prompt-tuning` skill の構造審査に切り替える。
 - Long-running batch（Bash の 10 分上限を超える、多 repo に回すなど）はサブエージェントに委譲するか、`run_in_background` + `Monitor` を使う。
-- 直列依存を無理に並列化しない。
 
 ## コンテキストとトークン
 
