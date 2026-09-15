@@ -104,6 +104,5 @@
   - 実行前に「承認ダイアログが出たら承認して」とユーザーへ伝える。
   - ハングして見えるのは承認待ち。
   - `Permission denied` はサンドボックス内、`Connection refused` は 1Password 未起動（`open -a 1Password`）、`signing failed` は承認拒否かロック中。
-- 新規 PR を作成したら、直後にその URL を Google Chrome で開く。
-  - Chrome を操作できない環境では URL を報告に含めるだけでよい。
+- 新規 PR を作成したら、URL を報告に含める。
 - PR がマージされた、または作業を破棄したら、対応する worktree と branch を都度片付ける（`git worktree remove`、ローカル branch 削除）。
