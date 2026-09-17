@@ -103,7 +103,7 @@
 
 - 自動命名されたブランチのまま作業を進めない。最初のコミットの前に、作業内容が読める名前へ切り直す（`git switch -c <名前>`）。
   - 命名形式は repo の GEMINI.md または AGENTS.md に従う。無ければ `gemini/<名前>` とする。
-- diff を確認する前に、対象 branch が現在の base に対して古くないかを `git merge-base` で確認する。古ければ rebase/merge してから diff を取る。
+- PR を作成・更新する前に、`git fetch` してから `git merge-base` で base に対する古さを確認し、古ければ rebase/merge してから diff を取る。
 - PR は明示的に「Ready で」などの指示がない限り必ず Draft で作成する（Ready 化はユーザー指示があったときだけ）。
 - PR テンプレートがあればその構成を厳守する。
 - 行ったこと全ての羅列ではなく、何のためにどのように行ったかを簡潔にまとめる。

@@ -98,7 +98,7 @@
 - 自動命名されたブランチ・worktree のまま作業を進めない。最初のコミットの前に、作業内容が読める名前へ切り直す（`git switch -c <名前>`）。
   - 命名形式は repo の CLAUDE.md に従う。無ければ既存の命名を `git branch -r --sort=-committerdate | head` で見て合わせる。
   - チップ（worktree セッション）で始まったときは自動命名になっているので必ず確認する。worktree のディレクトリ名までは直さなくてよい。
-- diff を確認する前に、対象 branch が現在の base に対して古くないかを `git merge-base` で確認する。古ければ rebase/merge してから diff を取る。
+- PR を作成・更新する前に、`git fetch` してから `git merge-base` で base に対する古さを確認し、古ければ rebase/merge してから diff を取る。
 - PR は明示的に「ready で」などの指示がない限り必ず `--draft` で作成する（ready 化はユーザー指示があったときだけ）。
 - PR テンプレートがあればその構成を厳守する。
 - 行ったこと全ての羅列ではなく、何のためにどのように行ったかを簡潔にまとめる。
