@@ -40,6 +40,8 @@ done
 unlink_file .claude/CLAUDE.md
 unlink_file .claude/settings.json
 unlink_file .codex/AGENTS.md
+unlink_file .gemini/config/GEMINI.md
+unlink_file .gemini/config/config.json
 
 for dir in "${DOTFILES_HOME}"/skills/*/; do
     name=$(basename "${dir}")

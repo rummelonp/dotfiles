@@ -97,6 +97,10 @@ link_file claude/settings.json .claude/settings.json
 # codex
 link_file codex/AGENTS.md .codex/AGENTS.md
 
+# gemini
+link_file gemini/GEMINI.md   .gemini/config/GEMINI.md
+link_file gemini/config.json .gemini/config/config.json
+
 # skills
 for dir in "${DOTFILES_HOME}"/skills/*/; do
     name=$(basename "${dir}")
