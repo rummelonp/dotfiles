@@ -1,8 +1,11 @@
 {
   "$schema": "https://antigravity.google/schemas/config.json",
   "userSettings": {
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_EAGER",
+    "enableTerminalSandbox": false,
     "globalPermissionGrants": {
       "allow": [
+        "command(agy *)",
         "command(aws * describe-*)",
         "command(aws * get-*)",
         "command(aws * list-*)",
@@ -21,6 +24,7 @@
         "command(date *)",
         "command(devcontainer *)",
         "command(diff *)",
+        "command(diff)",
         "command(dig *)",
         "command(docker *)",
         "command(echo *)",
@@ -35,8 +39,11 @@
         "command(gh *)",
         "command(ghq *)",
         "command(git *)",
+        "command(git check-ignore)",
+        "command(git status)",
         "command(go *)",
         "command(grep *)",
+        "command(grep)",
         "command(gsutil cat *)",
         "command(gsutil ls *)",
         "command(head *)",
@@ -44,6 +51,7 @@
         "command(jq *)",
         "command(less *)",
         "command(ls *)",
+        "command(ls)",
         "command(lsof *)",
         "command(mkdir *)",
         "command(mv *)",
@@ -74,7 +82,6 @@
         "command(wc *)",
         "command(which *)",
         "command(yarn *)",
-        "read_file(~/.gitignore)",
         "read_file(/tmp/**)",
         "read_file(/private/tmp/**)",
         "write_file(/tmp/**)",
@@ -82,6 +89,24 @@
         "read_url(*)",
         "mcp(Control_Chrome/*)",
         "mcp(chrome-devtools/*)"
+      ],
+      "ask": [
+        "command(gh issue comment *)",
+        "command(gh issue close *)",
+        "command(gh issue create *)",
+        "command(gh pr comment *)",
+        "command(gh pr create *)",
+        "command(gh pr merge *)",
+        "command(gh pr review *)",
+        "command(git * clean *)",
+        "command(git clean *)",
+        "command(git push *)",
+        "command(op run *)",
+        "command(rm -rf *)",
+        "command(terraform apply *)",
+        "command(terraform import *)",
+        "command(terraform state *)",
+        "mcp(chrome-devtools/evaluate_script)"
       ],
       "deny": [
         "command(aws * get-*credential*)",
@@ -117,29 +142,18 @@
         "read_file(~/.claude.json)",
         "read_file(~/.codex/auth.json)",
         "read_file(~/.config/gcloud/**)",
+        "read_file(~/.gemini/jetski-standalone-oauth-token)",
         "read_file(~/.gemini/oauth_creds.json)",
         "read_file(~/.gnupg/**)",
         "read_file(~/.gsutil/**)",
         "read_file(~/.npmrc)",
         "read_file(~/.ssh/**)"
-      ],
-      "ask": [
-        "command(gh issue comment *)",
-        "command(gh issue close *)",
-        "command(gh issue create *)",
-        "command(gh pr comment *)",
-        "command(gh pr create *)",
-        "command(gh pr merge *)",
-        "command(gh pr review *)",
-        "command(git * clean *)",
-        "command(git clean *)",
-        "command(git push *)",
-        "command(op run *)",
-        "command(rm -rf *)",
-        "command(terraform apply *)",
-        "command(terraform import *)",
-        "command(terraform state *)"
       ]
-    }
+    },
+    "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
+    "permissionGrantsV2Migrated": true,
+    "permissionPreset": "AGENT_PERMISSION_PRESET_TURBO",
+    "remoteControlHostname": "macbook-air-local-frozen-sky",
+    "sandboxEnabledAtV2Migration": true
   }
 }
