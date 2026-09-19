@@ -96,6 +96,10 @@ link_file claude/settings.json .claude/settings.json
 
 # codex
 link_file codex/AGENTS.md .codex/AGENTS.md
+for file in "${DOTFILES_HOME}"/codex/agents/*.toml; do
+    [ -f "${file}" ] || continue
+    link_file "codex/agents/$(basename "${file}")" ".codex/agents/$(basename "${file}")"
+done
 
 # gemini
 link_file gemini/GEMINI.md   .gemini/config/GEMINI.md

@@ -40,6 +40,10 @@ done
 unlink_file .claude/CLAUDE.md
 unlink_file .claude/settings.json
 unlink_file .codex/AGENTS.md
+for file in "${DOTFILES_HOME}"/codex/agents/*.toml; do
+    [ -f "${file}" ] || continue
+    unlink_file ".codex/agents/$(basename "${file}")"
+done
 unlink_file .gemini/config/GEMINI.md
 unlink_file .gemini/config/config.json
 
