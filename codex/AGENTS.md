@@ -52,7 +52,7 @@
   - 履歴継承とモデル上書きを併用できないツールでは `fork_turns="none"` で起動し、役割に必要な文脈と完了条件を依頼文に含める。
   - 調査、探索、fan-out：`explorer`。機械的な修正、通常の実装、執筆の起草と書き換え：`implementer`。
   - `senior_implementer` へ上げるのは、`risk-based-review` の高リスク以上、複数 package にまたがる実装、難度が高いと判断した実装や原稿、`implementer` が複数回失敗したものに限る。
-  - レビュー、bias-free 評価、指摘を返すだけの推敲：`risk-based-review` の表の段と、作った側の一段上の、高いほうを採る。通常は `reviewer`、高リスク以上または `senior_implementer` が作った成果物は `frontier_reviewer`。原稿を書き換える推敲は起草と同じ扱いにする。
+  - レビュー、bias-free 評価、指摘を返すだけの推敲：`risk-based-review` の Reviewer Profile と、作った側の一段上の、高いほうを採る。通常は `reviewer`、高リスク以上または `senior_implementer` が作った成果物は `frontier_reviewer`。原稿を書き換える推敲は起草と同じ扱いにする。
   - `frontier_reviewer` は TOML の effort を既定とし、非常に高リスクの変更、複雑な論理・境界条件の検証、または初回判断が不確かなときだけ high を明示して起動する。
   - 設計判断（高リスク変更の事前検討を含む）、構成の検討、難しい原因分析（複数回失敗した、原因を特定できない）：`architect`。大量生成と定型作業には使わない。分析や設計を `architect` に任せた後も実装は `implementer` / `senior_implementer` が担い、その実装が複数回失敗したときだけ `architect` と同じモデルを明示指定した作業エージェントに実装させる。通常リスクの範囲では、correctness は実装者の格上げでなくレビュー強度で担保する。
   - `architect` と同じモデルが作ったものは一段上が無いので、新規の `frontier_reviewer` に独立レビューを依頼する。同じモデルでも新しいコンテキストであることは崩さない。
