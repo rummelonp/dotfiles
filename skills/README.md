@@ -1,7 +1,7 @@
 # skills
 
 エージェント非依存のスキル。`install.sh` が 1 個ずつ symlink して
-`~/.claude/skills/` と `~/.agents/skills/` の両方に配る。
+`~/.claude/skills/`、`~/.agents/skills/`、`~/.gemini/config/skills/` の 3 箇所に配る。
 
 Claude ハーネス固有の語彙に依存するスキルは、代わりに
 [`../claude/skills/`](../claude/skills/) に置いて `~/.claude/skills/` へだけ配る。

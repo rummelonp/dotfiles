@@ -102,8 +102,7 @@ for file in "${DOTFILES_HOME}"/codex/agents/*.toml; do
 done
 
 # gemini
-link_file gemini/GEMINI.md   .gemini/config/GEMINI.md
-link_file gemini/config.json .gemini/config/config.json
+link_dir gemini .gemini/config
 
 # skills
 for dir in "${DOTFILES_HOME}"/skills/*/; do
@@ -127,3 +126,4 @@ for dir in "${HOME}/.claude/skills" "${HOME}/.agents/skills"; do
     [ -d "${dir}" ] || continue
     find "${dir}" -maxdepth 1 -type l ! -exec test -e {} \; -print -delete
 done
+

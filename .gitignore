@@ -1,2 +1,7 @@
 /karabiner/automatic_backups/*
 !/karabiner/automatic_backups/.keep
+
+/gemini/*
+!/gemini/GEMINI.md
+!/gemini/config.json
+!/gemini/skills/

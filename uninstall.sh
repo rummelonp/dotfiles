@@ -44,8 +44,7 @@ for file in "${DOTFILES_HOME}"/codex/agents/*.toml; do
     [ -f "${file}" ] || continue
     unlink_file ".codex/agents/$(basename "${file}")"
 done
-unlink_file .gemini/config/GEMINI.md
-unlink_file .gemini/config/config.json
+unlink_file .gemini/config
 
 for dir in "${DOTFILES_HOME}"/skills/*/; do
     name=$(basename "${dir}")
