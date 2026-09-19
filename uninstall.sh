@@ -56,6 +56,7 @@ done
 for dir in "${DOTFILES_HOME}"/claude/skills/*/; do
     unlink_file ".claude/skills/$(basename "${dir}")"
 done
+unlink_file .agents/skills/lesson-persistence
 
 for dir in "${DOTFILES_HOME}"/codex/skills/*/; do
     unlink_file ".agents/skills/$(basename "${dir}")"
