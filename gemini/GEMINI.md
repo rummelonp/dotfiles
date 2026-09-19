@@ -65,7 +65,7 @@
   - 領域ごとのリスク分類はプロジェクトの `GEMINI.md` または `AGENTS.md` が上書きしてよい。
 - bias-free 評価（skill、prompt、自分の生成物の検証）は新規サブエージェントに任せる。
   - 自分で再読することを bias-free 評価の代用にしない。
-  - 新規サブエージェントを起動できない場合は bias-free 評価と称さず、評価していない旨を報告に書く。
+  - 新規サブエージェントを起動できない場合は bias-free 評価と称さず、`empirical-prompt-tuning` skill の構造審査に切り替える。
 - Long-running batch（通常の呼び出しで完了を待てない、多 repo に回すなど）はサブエージェントか background task（ `manage_task` ）に任せ、メインが進捗と結果を統括する。
 - 直列依存を無理に並列化しない。
 
