@@ -1,4 +1,3 @@
-tap "dart-lang/dart"
 tap "kayac/tap"
 tap "leoafarias/fvm"
 tap "messense/macos-cross-toolchains"
