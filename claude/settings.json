@@ -168,6 +168,12 @@
     ]
   },
   "model": "opus[1m]",
+  "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
   "enabledPlugins": {
     "i-have-adhd@i-have-adhd": true,
     "fast-jev-compaction@fast-jev-compaction": true
