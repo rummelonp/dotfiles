@@ -81,21 +81,14 @@
 - 「考えて」「まとめて」「整理して」「計画して」などの表現は検討・提案の依頼であり、変更実行の指示ではない。
 - Plan モードの承認は計画への合意であり、外部サービスへの書き込みの承認は含まない。
 
-## PR 運用
+## ブランチと PR
 
+- PR は明示指示がない限り Draft で作成する。PR の作成・更新、PR ブランチへの push、マージ後や作業破棄時の片付けは `pr-workflow` skill に従う。
 - 自動命名されたブランチや worktree のまま作業を進めない。最初のコミット前に、作業内容が伝わる名前に切り直す（`git switch -c <名前>`）。
   - 命名形式はリポジトリの `CLAUDE.md` に従う。指定がなければ `git branch -r --sort=-committerdate | head` で既存の命名を確認して合わせる。
   - チップ（worktree セッション）で開始した際は自動命名されているため必ず確認する（worktree のディレクトリ名までは変更不要）。
-- PR の作成・更新前には `git fetch` し、`git merge-base HEAD origin/<base>` が `origin/<base>` の先端と異なれば rebase / merge してから diff を確認する。
-- PR は「ready で」などの明示指示がない限り、必ず `--draft` で作成する（Ready への切り替えはユーザー指示時のみ）。
-- PR テンプレートが存在する場合はその構成を厳守する。
-- PR 本文には目的と変更内容を書き、作業の経緯やコミット一覧を並べない。
-- Ready にした PR のブランチには force push しない。修正は新規コミットとして積む（amend / rebase は force push が必要になるため避ける）。
-  - Draft の間は amend / rebase による force push を行ってよい。
 - push / fetch 実行時は 1Password の SSH 承認が必要となる。
   - サンドボックス外で実行し、timeout は 60 秒に設定する。
   - 実行直前に「承認ダイアログが出たら承認して」とユーザーに伝える。
   - 処理が停止して見える場合は承認待ち状態である。
   - エラー時の判断: `Permission denied` はサンドボックス内での実行、`Connection refused` は 1Password 未起動（`open -a 1Password`）、`signing failed` は承認拒否またはロック中。
-- 新規 PR を作成した際は、報告に URL を含める。
-- PR のマージ後、または作業破棄時は、不要になった worktree とブランチを都度削除する（`git worktree remove`、ローカルブランチ削除）。

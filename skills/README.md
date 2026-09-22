@@ -28,6 +28,7 @@ Antigravity 固有のスキルは [`../gemini/skills/`](../gemini/skills/) に�
 | `completion-verification` | [obra/superpowers](https://github.com/obra/superpowers) `skills/verification-before-completion` | MIT（[LICENSE](completion-verification/LICENSE) 同梱） | 2026-09-14 | Iron Law、ゲート手順、言い訳潰し表の構造を移植して日本語化、判定を完了/要修正の 2 値に変更し横展開チェックを追加、TDD 儀式は削除。wshobson/agents `code-review-preshipment` の SHIP/SHIP WITH FIXES/DO NOT SHIP 方式は比較検討のうえ不採用（本文からの引用なし） |
 | `risk-based-review` | [obra/superpowers](https://github.com/obra/superpowers) `skills/requesting-code-review` | MIT（[LICENSE](risk-based-review/LICENSE) 同梱） | 2026-09-14 | ディスパッチ手順（git SHA の取得コマンド含む）、出力フォーマット、Red Flags を移植して日本語化、レビュー要否の判定ロジックを CLAUDE.md の 4 段階リスク分類に置き換え |
 | `empirical-prompt-tuning` | [mizchi/skills](https://github.com/mizchi/skills) `empirical-prompt-tuning` | 上流に個別 LICENSE なし。README に「明示ライセンスのないスキルは MIT 扱い」の記述 | 2026-09-03 | Claude / Codex / Gemini の各エージェントの起動ツールと取得可能メトリクス（Codex/Gemini では `tool_uses`/`duration_ms` が親に返らない等）の違いを吸収する Executor Profile を新設して統合 |
+| `pr-workflow` | 自作 | - | 2026-09-23 | CLAUDE.md / AGENTS.md / GEMINI.md の PR 運用のうち、PR 作成・更新時だけ使う手順を切り出した。ブランチ名と push / fetch の実行方法はエージェントごとに違うので、各規則ファイルに残している。切り出す際に、Ready の PR は merge で取り込む、force push は `--force-with-lease --force-if-includes` を使う、差分は `--stat` を先に見る、の 3 点を補った |
 
 `../claude/skills/` に置いているものも同じ扱い:
 
