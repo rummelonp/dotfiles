@@ -1,12 +1,12 @@
 ---
 name: model-routing
-description: Use before launching a subagent, to choose its role, the model and launch settings for that role, and whether to escalate to a higher tier after repeated failures.
+description: Use before launching a subagent, to choose its role, the model and launch settings for that role, whether to escalate to a higher tier after repeated failures, and how to write the delegation prompt and handle the report.
 ---
 
-# サブエージェントのモデル選択
+# サブエージェントの役割選択と委譲
 
 サブエージェントを起動する前に役割を選び、その役割に割り当てたモデルと起動設定で起動する。
-役割と選択の原則は Claude Code、Codex、Antigravity で共通とし、割り当てと例外だけをエージェントごとに定める。
+役割、選択の原則、依頼と報告の受け取りは Claude Code、Codex、Antigravity で共通とし、割り当てと例外だけをエージェントごとに定める。
 エージェントごとの例外は、選択の原則より優先する。
 
 ## 役割
@@ -29,6 +29,18 @@ description: Use before launching a subagent, to choose its role, the model and 
 - レビューの段は、`risk-based-review` で決めた強度に対応する役割と、作成側の一段上のうち高い方にする。同じ段のレビューは、作成時の誤った前提を引き継ぎやすい。
 - 作成側に一段上の段がない場合は、同じ段の新規サブエージェントに依頼し、コンテキストを分けて独立性を保つ。高リスク以上では、一段上げられない代わりに観点 A / B の 2 本に分けて依頼する（観点の定義は `risk-based-review`）。
 - 委譲時は、作成に使った役割とモデルを記録する（記録先は plan ファイルやコミット trailer など、リポジトリの慣習に従う）。レビューの段を決めるときに必要になる。
+
+## 依頼と報告の受け取り
+
+- 依頼文の冒頭で、サブエージェントとして起動したことを伝える。伝えないと、自身をメインと誤認し、親からの追加指示をプロンプトインジェクションとみなして拒むことがある。
+- 1 本に独立した複数タスクをまとめない。実行が長引くほど、利用上限に達したときの損失が大きくなる。
+- 作業だけでなく判断と責任も委ね、完了条件を明示して一気通貫で完遂させる。曖昧な点は判断基準を添えて委譲し、確認の往復で止めない（真に必要な相談は除く）。
+- 報告はメインの判断に必要な情報だけに絞らせる。
+  - 調査: 結論、根拠（ファイルと行）、リスク、未解決点、次のアクション。
+  - 実装: 変更概要、変更ファイル、設計判断、検証結果、懸念点。
+  - ログ、ファイル全文、diff 全文、思考過程は返させない。
+- メインは結論、根拠、不確実な点と、判断に使う該当行だけを直接確認する。サブエージェントの調査手順をなぞり直さない（差分とテスト結果の確認は除く）。情報が足りなければ追加指示で補う。
+- 利用上限に達したと判断できる場合は再投入せず、到達したことと未完了の範囲をユーザーに報告して指示を待つ。上限で中断したレビューを「指摘なし」と解釈しない。
 
 ## 割り当て（Claude Code）
 
