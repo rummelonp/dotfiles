@@ -12,6 +12,7 @@
 
 ## 注意
 
+- `claude/CLAUDE.md`・`codex/AGENTS.md`・`gemini/GEMINI.md` は同じ規則を環境ごとに書いたもの。1 つを直すときは他の 2 つの対応箇所も確認し、差分を環境による違いだけにする。
 - `claude/CLAUDE.md` と `claude/settings.json` は `~/.claude/` へ配られる**ユーザー設定**で、このリポジトリ自身の設定ではない。
 - `codex/AGENTS.md` と `codex/agents/*.toml` は `~/.codex/` へ配られる**ユーザー設定**で、このリポジトリ自身の設定ではない。
 - `gemini/` ディレクトリは `~/.gemini/config/` へ配られる**ユーザー設定**で、このリポジトリ自身の設定ではない。
