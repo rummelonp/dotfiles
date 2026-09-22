@@ -29,7 +29,7 @@ description: Empirically evaluate agent-facing instructions with fresh subagents
 
 | エージェント | 起動ツール | 役割（`model-routing`） | 取得可能メトリクス | 収束判定でのメトリクス扱い |
 |---|---|---|---|---|
-| **Claude Code** | `Task`（または `Agent` ツール） | 評価対象の指示を実際に使う役割 | `tool_uses`, `duration_ms`（usage meta より） | 変動率（steps ±10%, duration ±15%）を含めて判定 |
+| **Claude Code** | `Agent`（`subagent_type` に役割名を指定） | 評価対象の指示を実際に使う役割 | `tool_uses`, `duration_ms`（usage meta より） | 変動率（steps ±10%, duration ±15%）を含めて判定 |
 | **OpenAI Codex** | `spawn_agent` | 評価対象の指示を実際に使う役割（該当する TOML がなければ汎用エージェント） | なし（標準化された値は返らない） | 扱わない（精度と質的不明瞭点・自己申告 retries のみ） |
 | **Antigravity (Gemini)** | `invoke_subagent` | 評価対象の指示を実際に使う役割 | なし（親に返るのはテキストメッセージのみ） | 扱わない（精度と質的不明瞭点・自己申告 retries のみ） |
 
