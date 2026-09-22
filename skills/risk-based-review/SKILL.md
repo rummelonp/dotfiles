@@ -1,6 +1,6 @@
 ---
 name: risk-based-review
-description: Use when deciding whether a change needs independent review, how strong it should be, which model must run it, and how to dispatch the reviewer and any re-review with a git diff range, read-only constraints, and a structured output format.
+description: Use when deciding whether a change needs independent review, how strong it should be, which reviewer role must run it, and how to dispatch the reviewer and any re-review with a git diff range, read-only constraints, and a structured output format.
 ---
 
 # リスクに応じたレビュー依頼
@@ -17,35 +17,23 @@ description: Use when deciding whether a change needs independent review, how st
 |---|---|---|---|---|
 | 軽微 | 文言、CSS、明白な小修正 / 誤字、言い換え | 依頼しない（自分で確認する） | — | — |
 | 通常 | 一般的な feature、refactor、test / 記事 1 本、章の部分改稿 | 誤りがすぐ検知できなければ 1 本 | 標準レビュアー (Standard) | 0 回 |
-| 高リスク | DB schema、migration、認証・認可、データ整合性 / 他が依存する章の構成変更 | 1 本 | 高強度レビュアー (Strong) | 1 回 |
+| 高リスク | DB schema、migration、認証・認可、データ整合性 / 他が依存する章の構成変更 | 1 本（`model-routing` で観点を分けて 2 本にする場合を除く） | 高強度レビュアー (Strong) | 1 回 |
 | 非常に高リスク | データ損失、race condition、security boundary / 撤回できない公開物 | 観点を分けて 2 本 | 高強度レビュアー 2 本（観点 A / B） | 2 回 |
 
 判定軸: 誤りが機械的な検査や一読で検知できるか（テスト、型検査、lint、通読）、容易に戻せるか（可逆性）、他箇所へ波及するか。分類の決定根拠は具体的な例示ではなく判定軸とし、表中の例はあくまで目安とする。
 
-## エージェント別 Reviewer Profile
+## レビュアーの選び方
 
-各コーディングエージェントの特性・モデル構成に応じて、レビュアーを以下のようにディスパッチする。
+レビュアーの役割とモデルは `model-routing` skill で選ぶ。
 
-| エージェント | 標準レビュアー (Standard) | 高強度レビュアー (Strong) |
-|---|---|---|
-| **Claude Code** | `Opus` | `Opus`（観点を特化した重点検証プロンプト。Opus の結論に確信が持てない場合のみ `Fable` で追加検証し、既出指摘の真偽判定に限る） |
-| **Codex** | カスタム設定: `reviewer`<br>標準・不在時: 組み込み `explorer`（新規・read-only） | カスタム設定: `frontier_reviewer`（TOML 既定: medium、超高リスク等で high）<br>標準・不在時: 組み込み `explorer`（新規・read-only、観点特化指示） |
-| **Antigravity (Gemini)** | `TypeName: research` (または `self`), `Model: inherit` | `TypeName: research` (または `self`), `Model: inherit`（観点を特化した重点検証プロンプト） |
-
-### レビュアーの強度決定ルール
-
-- **階層モデル環境（Claude / Codex）**:
-  - 表の段と「作成側の一段上」のどちらか高い方を採用する。作成側が人間・メインセッション・委譲サブエージェントのいずれであっても、表の段は固定とする。同段のレビューは作成時の誤った前提を引き継ぎやすいため、一段引き上げる方を優先する。
-  - 最上位モデル（Claude では `Opus`）が作成した成果物は一段上のモデルが存在しないため、同一モデルの新規サブエージェントに依頼し、コンテキストの完全独立で担保する。高リスク以上では、一段引き上げられない代わりに観点 A / B の 2 本に分けて依頼する。
-  - レビュー段の決定に不可欠なため、委譲時は作成に使用したモデルを記録する（記録先は plan doc、コミット trailer、decisions-log 等の慣習に従う）。
-  - **Codex でのフォールバック**: 現在のエージェント一覧、または `~/.codex/agents/` / `.codex/agents/` に該当 TOML がある場合は `reviewer` / `frontier_reviewer` を使用する。存在しない標準環境では組み込み `explorer` を新規起動し、起動 API で sandbox 指定できる場合は read-only を設定、指定不能な場合はプロンプト上でファイル編集・再委譲の禁止を明示する。モデルや effort を確実に指定できない場合はセッションの値を継承し、強度は「新規コンテキスト」「観点の特化」「非常に高リスク時の 2 本ディスパッチ」で担保する。
-- **単一フラッグシップモデル環境（Gemini）**:
-  - 常に新規サブエージェント（`inherit`）を起動し、新しいコンテキストで bias-free な独立レビューを担保する。
-  - 高リスク以上の強度はモデルの格上げではなく、**「コンテキストの完全独立」＋「プロンプトによる観点の特化・厳密化」**、および非常に高リスクでの **2 本ディスパッチ（観点 A / B）** によって担保する。
+- 標準レビュアー (Standard) には「標準レビュー」、高強度レビュアー (Strong) には「高強度レビュー」の役割を使う。作成側が人間・メインセッション・サブエージェントのいずれでも、表の強度は変えない。
+- 作成側の一段上の段がこれより高い場合は、そちらを優先する（`model-routing` の選択の原則）。
+- 高強度レビュアーには、観点を特化した重点検証の依頼文を渡す。
+- 一段上の段がなく同じ段で依頼する場合も、強度はモデルの格上げではなく、新規コンテキストと観点の特化で担保する。
 
 ### 観点分割（観点 A / B）の定義
 
-「非常に高リスク」で 2 本ディスパッチする際、または単一モデル環境で多角的に検証する際は、以下の 2 観点に分けて依頼する。
+「非常に高リスク」で 2 本ディスパッチする際、`model-routing` の選択の原則で一段上の段がないため 2 本に分ける際、または一段上の段がない環境で多角的に検証する際は、以下の 2 観点に分けて依頼する。
 
 - **観点 A: 正しさ・仕様適合性 (Correctness & Edge Cases)**:
   - 期待される要件や仕様を過不足なく満たしているか。
@@ -81,8 +69,8 @@ BASE_SHA=$(git merge-base origin/HEAD HEAD)  # 初回。起点は repo の既定
    - 作業内容の概要（DESCRIPTION）
    - 期待する要件や元になったプラン（PLAN_OR_REQUIREMENTS）
    - BASE_SHA / HEAD_SHA
-   - レビュー観点（通常は総合、非常に高リスクでは観点 A または観点 B を明示）
-   - レビュアーの強度・モデル（Reviewer Profile に準拠）
+   - レビュー観点（通常は総合、2 本に分ける場合は観点 A または観点 B を明示）
+   - レビュアーの強度と、`model-routing` で選んだ役割・モデル
    - 差分が全面的に書き換わる成果物（章構成の入れ替えなど）は、diff だけでなく HEAD の全文も読ませる（diff だけでは論旨の整合性を判定できないため）。
    - レビュアーは read-only（コードを変更しない）。
    - レビュアー自身はさらにサブエージェントを起動しない。

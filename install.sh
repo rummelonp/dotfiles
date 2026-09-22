@@ -93,6 +93,10 @@ fi
 # claude
 link_file claude/CLAUDE.md     .claude/CLAUDE.md
 link_file claude/settings.json .claude/settings.json
+for file in "${DOTFILES_HOME}"/claude/agents/*.md; do
+    [ -f "${file}" ] || continue
+    link_file "claude/agents/$(basename "${file}")" ".claude/agents/$(basename "${file}")"
+done
 
 # codex
 link_file codex/AGENTS.md .codex/AGENTS.md

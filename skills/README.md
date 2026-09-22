@@ -1,13 +1,21 @@
 # skills
 
 エージェント非依存のスキル。`install.sh` が 1 個ずつ symlink して
-`~/.claude/skills/`、`~/.agents/skills/`、`~/.gemini/config/skills/` の 3 箇所に配る。
+`~/.claude/skills/` と `~/.agents/skills/` に配る。
+Antigravity には `gemini/skills/` に置いた相対 symlink で配るため、スキルを追加したらそこにも手で link を張る。
 
 Claude ハーネス固有の語彙に依存するスキルは、代わりに
 [`../claude/skills/`](../claude/skills/) に置いて `~/.claude/skills/` へだけ配る。
 
 Codex 固有のツールやタスク管理に依存するスキルは、
 [`../codex/skills/`](../codex/skills/) に置いて `~/.agents/skills/` へだけ配る。
+
+Antigravity 固有のスキルは [`../gemini/skills/`](../gemini/skills/) に実ディレクトリで置く
+（`gemini/` ごと `~/.gemini/config/` へ link されるため）。
+
+同じ名前のスキルを 3 つのエージェント用に書き分けることもある。
+`model-routing` は役割の定義と選び方を 3 つで同じ文面にし、モデルの割り当てだけを書き分ける。
+共有スキルはモデル名を持たず、`model-routing` の役割名で参照する。
 
 ## 出所
 
@@ -16,7 +24,7 @@ Codex 固有のツールやタスク管理に依存するスキルは、
 | `grilling` | [mattpocock/skills](https://github.com/mattpocock/skills) `skills/productivity/grilling` | MIT（[LICENSE](grilling/LICENSE) 同梱） | 2026-09-03 | なし |
 | `japanese-tech-writing` | [k16shikano 氏の gist](https://gist.github.com/k16shikano/fd287c3133457c4fd8f5601d34aa817d) | Unlicense | 2026-09-03 | なし |
 | `systematic-debugging` | [obra/superpowers](https://github.com/obra/superpowers) `skills/systematic-debugging` | MIT（[LICENSE](systematic-debugging/LICENSE) 同梱） | 2026-09-14 | `superpowers:test-driven-development`／`superpowers:verification-before-completion` へのプラグイン内参照を削除・付け替え、CLAUDE.md のバグ対応原則を追記。他は無改変 |
-| `parallel-task-orchestration` | 自作（参考: wshobson/agents `agent-teams`、swarms `parallel-task`/`swarm-planner`） | - | 2026-09-14 | 上流の実装は使わず、着想（wave 実行、ファイル所有権チェック）のみを参考に文面は書き下ろし。Claude / Codex / Gemini の各エージェントの起動ツール・役割マッピング・作業領域分離の違いを吸収する Dispatch Profile を新設してマルチエージェント対応 |
+| `parallel-task-orchestration` | 自作（参考: wshobson/agents `agent-teams`、swarms `parallel-task`/`swarm-planner`） | - | 2026-09-14 | 上流の実装は使わず、着想（wave 実行、ファイル所有権チェック）のみを参考に文面は書き下ろし。Claude / Codex / Gemini の各エージェントの起動ツール・作業領域分離の違いを吸収する Dispatch Profile を新設してマルチエージェント対応（役割とモデルの対応は `model-routing` へ分離） |
 | `completion-verification` | [obra/superpowers](https://github.com/obra/superpowers) `skills/verification-before-completion` | MIT（[LICENSE](completion-verification/LICENSE) 同梱） | 2026-09-14 | Iron Law、ゲート手順、言い訳潰し表の構造を移植して日本語化、判定を完了/要修正の 2 値に変更し横展開チェックを追加、TDD 儀式は削除。wshobson/agents `code-review-preshipment` の SHIP/SHIP WITH FIXES/DO NOT SHIP 方式は比較検討のうえ不採用（本文からの引用なし） |
 | `risk-based-review` | [obra/superpowers](https://github.com/obra/superpowers) `skills/requesting-code-review` | MIT（[LICENSE](risk-based-review/LICENSE) 同梱） | 2026-09-14 | ディスパッチ手順（git SHA の取得コマンド含む）、出力フォーマット、Red Flags を移植して日本語化、レビュー要否の判定ロジックを CLAUDE.md の 4 段階リスク分類に置き換え |
 | `empirical-prompt-tuning` | [mizchi/skills](https://github.com/mizchi/skills) `empirical-prompt-tuning` | 上流に個別 LICENSE なし。README に「明示ライセンスのないスキルは MIT 扱い」の記述 | 2026-09-03 | Claude / Codex / Gemini の各エージェントの起動ツールと取得可能メトリクス（Codex/Gemini では `tool_uses`/`duration_ms` が親に返らない等）の違いを吸収する Executor Profile を新設して統合 |

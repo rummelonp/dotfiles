@@ -46,12 +46,13 @@ fan-out（並列展開）はディレクトリや年月など自然な単位で�
 ## エージェント別 Dispatch Profile
 
 各コーディングエージェントのツール仕様と並行実行モデルに応じて、タスクを以下のようにディスパッチする。
+各タスクの担当の役割とモデルは `model-routing` skill で選び、プランファイルの `owner` 列に役割とモデルを記録する（検収時に `risk-based-review` のレビュー段を決めるときに必要になる）。
 
-| エージェント | 起動ツール | 調査・fan-out | 通常実装・定型 | 高難度実装・高リスク | 設計判断・構成検討 |
-|---|---|---|---|---|---|
-| **Claude Code** | `Task`（または `Agent`） | `Sonnet` | `Sonnet` | `Opus` | `Opus` |
-| **OpenAI Codex** | `spawn_agent` | `explorer` | `implementer` | `senior_implementer` | `architect` |
-| **Antigravity (Gemini)** | `invoke_subagent` | `TypeName: research`<br>`Model: inherit` | `TypeName: self`<br>`Model: inherit` | `TypeName: self`<br>`Model: inherit` | メインセッション、または<br>`TypeName: research` / `self`<br>`Model: inherit` |
+| エージェント | 起動ツール |
+|---|---|
+| **Claude Code** | `Task`（または `Agent`） |
+| **OpenAI Codex** | `spawn_agent` |
+| **Antigravity (Gemini)** | `invoke_subagent` |
 
 ### エージェント別の並行ディスパッチと作業領域分離
 
@@ -60,26 +61,10 @@ fan-out（並列展開）はディレクトリや年月など自然な単位で�
   - 作業領域分離: 原則としてサブエージェント（同一ツリー内でのファイル所有権分離）で処理する。複数パッケージにまたがる作業、数時間規模に及ぶ作業、開発サーバーや E2E テストの長時間稼働、作業途中にユーザーが介入・確認する可能性がある場合、会話を保存し後から再開・追加依頼したい場合のみ別セッション（worktree + branch）を立てる。
 - **OpenAI Codex**:
   - 並行実行: `spawn_agent` により複数のエージェントをディスパッチする。
-  - 役割とモデル: `~/.codex/agents/*.toml` でモデルと effort を管理する。ツールが役割指定に対応しない場合は、対象 TOML の `model` と `model_reasoning_effort` に対応する effort 引数を両方明示し、`developer_instructions` の行動制約を依頼文に含める。
-  - 履歴継承と制約: 履歴継承とモデル上書きを併用できないツールでは `fork_turns="none"` で起動する。調査担当（`explorer`）ではファイル編集・再委譲の禁止を明記し、指定可能な環境では `sandbox_mode`（read-only）を渡す。
   - 作業領域分離: 原則としてサブエージェントで処理する。複数パッケージにまたがる作業、数時間規模に及ぶ作業、開発サーバーや E2E テストの長時間稼働、作業途中にユーザーが介入・確認する可能性がある場合、会話を保存し後から再開・追加依頼したい場合のみ worktree で分ける。
 - **Antigravity (Gemini)**:
   - 並行実行: `invoke_subagent` の `Subagents` 配列に複数エントリをまとめて指定し、1 回のツール呼び出しで並行起動する（メインのコンテキスト保護と往復オーバーヘッド削減）。
-  - 役割とモデル: メインセッション・サブエージェントともに Gemini 3.8 Flash (Medium) を標準とする。`Model` は原則として既定値の `inherit` を使用する。定型の大量 fan-out で速度やトークン消費を最優先する場合のみ `flash_lite` を指定してよい。
-  - `TypeName`: 調査・探索・fan-out は読み取り専用の `research`、実装・修正は `self` を選ぶ。
   - 作業領域分離: `Workspace` は既定で親と同じ作業ツリー（`inherit`）を使う。親の作業ツリーを触られたくない並行作業、複数パッケージ、数時間規模、サーバーや E2E の長時間稼働では `share` や `branch` を指定する。
-
-### 役割・モデル選定の階層化ルール
-
-- **階層モデル環境（Claude / Codex）**:
-  - 安価な順（Claude: Sonnet → Opus / Codex: implementer → senior_implementer → architect）に役割に応じて選ぶ。統括セッション自身のモデルは選択に影響させない。Claude の Fable は、Opus が複数回失敗したタスクと Opus の結論に確信が持てない場合の追加検証に限る。
-  - 通常リスクの実装では、正しさは実装者の格上げではなくレビュー強度で担保する。設計や原因分析を上位モデル（Opus / architect）に任せても、実装の段は役割表で選び直す（architect には、実装が複数回失敗したときのみ実装させる）。
-  - 迷ったら安価な方から試し、品質不足なら一段引き上げる。上位モデルがない（または起動失敗した）場合は元の段のまま継続する。
-- **単一フラッグシップモデル環境（Antigravity）**:
-  - モデルの格上げは行わず、常に新規サブエージェント（`inherit`）の起動による「コンテキストの完全独立」と「プロンプトによる責務定義の厳密化」によって正しさと品質を担保する。
-  - 役割の分担は `TypeName`（`research` / `self`）とプロンプトで制御する。
-- **プランファイルへのモデル・ロール記録**:
-  - wave 内のタスク割り当て時は、作成に使用したモデル / ロールをプランファイルの `owner` 列に記録する。検収時のレビュー段の決定（`risk-based-review` の作成側一段上ルールの適用）に不可欠となる。
 
 ## 外部への書き込み
 

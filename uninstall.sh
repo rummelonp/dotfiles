@@ -39,6 +39,10 @@ done
 
 unlink_file .claude/CLAUDE.md
 unlink_file .claude/settings.json
+for file in "${DOTFILES_HOME}"/claude/agents/*.md; do
+    [ -f "${file}" ] || continue
+    unlink_file ".claude/agents/$(basename "${file}")"
+done
 unlink_file .codex/AGENTS.md
 for file in "${DOTFILES_HOME}"/codex/agents/*.toml; do
     [ -f "${file}" ] || continue
