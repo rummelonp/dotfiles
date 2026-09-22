@@ -44,7 +44,7 @@ description: Use before launching a subagent, to choose its role, the model and 
 
 ## 割り当て（Codex）
 
-段は `~/.codex/agents/*.toml` の `model` で決まり、この skill にはモデル名を書かない（モデルと reasoning effort は TOML だけで管理する）。
+段は `~/.codex/agents/*.toml` の `model` で決まり、この skill にはモデル名を書かない（通常の起動で使うモデルと reasoning effort は TOML で管理する）。
 段の上下は各 TOML の `model` の価格順で決まる。現在の TOML では `explorer` と `implementer` が最も安価で、`senior_implementer` と `reviewer` がその上、`architect` と `frontier_reviewer` が最上位になる。
 
 | 役割 | エージェント |
@@ -56,17 +56,17 @@ description: Use before launching a subagent, to choose its role, the model and 
 | 標準レビュー | `reviewer` |
 | 高強度レビュー | `frontier_reviewer` |
 
-- 役割（エージェント名）の指定が、モデルの指定に当たる。モデルを直接指定するのは、下記のように役割指定が使えない場合に限る。
+- 役割（エージェント名）の指定が、モデルの指定に当たる。モデルを直接指定するのは、役割指定が使えない場合と、下記の例外で TOML と異なる設定を使う場合に限る。カスタムエージェントの TOML に書かれたモデルと effort は起動時の指定より優先される。
 - 委譲ツールが役割指定に対応しない（または利用できない）場合は、対象 TOML の `model` と `model_reasoning_effort` に対応する effort 引数を両方明示し、`developer_instructions` の行動制約を依頼文に含める。
 - `sandbox_mode` を指定できる環境では TOML と同じ値を渡す。指定できない場合は、対象ロールの `developer_instructions` に従う制約を依頼文に明記する。read-only の役割では編集と再委譲の禁止を明記し、それが技術的な書き込み制限ではない旨を結果に記録する。
-- 履歴継承とモデル上書きを併用できないツールでは `fork_turns="none"` で起動し、文脈と完了条件を依頼文に明記する。
+- 独立レビューと bias-free 評価は `fork_turns="none"` で起動し、必要な文脈と完了条件を依頼文に明記する。その他の委譲でも、履歴継承とモデル上書きを併用できないツールでは同じ方法を使う。
 - 作成に使った役割を記録するときは effort も記録する。モデルを明示的に上書きしたときは effort も指定する。
 
 ## 例外と制約（Codex）
 
-- `architect` には実装させない。実装が複数回失敗したときだけ、`architect` と同じモデルを明示指定した別の作業エージェントに実装を委譲する。役割は上位実装のままとし、土台は `senior_implementer`、effort と `sandbox_mode` はその TOML の値を使う。
+- `architect` には実装させない。実装が複数回失敗したときだけ、組み込みの `worker` に `architect` の TOML のモデルと `senior_implementer` の TOML の effort を明示して実装を委譲する。役割は上位実装として記録し、`senior_implementer` の `developer_instructions` を依頼文に含める。`sandbox_mode` は同じ TOML に指定があればそれに従い、なければ親の設定を継承する。
 - `architect` と同じモデルの成果物は、新規の `frontier_reviewer` にレビューを依頼する（同じモデルでもコンテキストは必ず分ける。高リスク以上では選択の原則どおり 2 本に分ける）。
-- `frontier_reviewer` は TOML の effort を既定とする。超高リスクな変更、複雑な論理や境界条件の検証、初回の判断が不確かな場合だけ `high` を明示する。
+- `frontier_reviewer` は TOML の effort を既定とする。超高リスクな変更、複雑な論理や境界条件の検証、初回の判断が不確かな場合だけ、組み込みの `default` に `frontier_reviewer` の TOML のモデルと effort `high` を明示し、同 TOML の `developer_instructions` を依頼文に含める。read-only の制約は上記の `sandbox_mode` の規則に従う。
 - 該当する TOML がない環境（現在のエージェント一覧にも `~/.codex/agents/`、`.codex/agents/` にもない）では、レビューを組み込みの `explorer` の新規起動で代替する。
   - 起動 API で sandbox を指定できれば read-only にし、できなければ編集と再委譲の禁止を依頼文に明記する。
   - モデルや effort を確実に指定できない場合はセッションの値を継承し、強度は新規コンテキストと観点の特化、非常に高リスクでの 2 本立てで担保する。
