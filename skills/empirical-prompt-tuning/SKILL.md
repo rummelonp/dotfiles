@@ -289,7 +289,6 @@ Claude Code 環境等で `tool_uses` が取得できる場合、**シナリオ�
 
 - `superpowers:writing-skills`（外部発想）— skill 作成時の TDD アプローチ。本 skill の「subagent で baseline → 修正 → 再実行」と本質的に同じ。
 - `lesson-persistence`（Claude 環境のみ）— タスク後の学び固定化。本 skill はプロンプト開発中、lesson-persistence はタスク終了後、と使い分ける。
-- `parallel-task-orchestration` — 複数シナリオを並列で走らせるときの作法。
 - `waxa-eval`（外部ツール）— `waxa` CLI の運用マニュアル。eval / iterate ループを YAML scenario と永続 ledger で外部プロセスに自動化する。
 
 ## License
