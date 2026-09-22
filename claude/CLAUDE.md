@@ -86,7 +86,7 @@
 ## ブランチと PR
 
 - PR は明示指示がない限り Draft で作成する。PR の作成・更新、PR ブランチへの push、マージ後や作業破棄時の片付けは `pr-workflow` skill に従う。
-- 自動命名されたブランチや worktree のまま作業を進めない。最初のコミット前に、作業内容が伝わる名前に切り直す（`git switch -c <名前>`）。
+- 自動命名されたブランチや worktree のまま作業を進めない。最初のコミット前（コミットを伴う委譲の前）に、作業内容が伝わる名前に切り直す（`git switch -c <名前>`）。
   - 命名形式はリポジトリの `CLAUDE.md` に従う。指定がなければ `git branch -r --sort=-committerdate | head` で既存の命名を確認して合わせる。
   - チップ（worktree セッション）で開始した際は自動命名されているため必ず確認する（worktree のディレクトリ名までは変更不要）。
 - push / fetch 実行時は 1Password の SSH 承認が必要となる。

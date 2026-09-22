@@ -58,11 +58,12 @@ description: Use when deciding whether a change needs independent review, how st
 ## 依頼手順
 
 1. **diff range を決める**:
-初回は作業全体を対象とする。再レビュー時は修正コミットのみに絞る。
+初回は今回の作業全体を対象とする。再レビュー時は修正コミットのみに絞る。
+base の取り込みより前に依頼する（取り込み後は base 側の変更が範囲に混ざる）。
 
 ```bash
 HEAD_SHA=$(git rev-parse HEAD)
-BASE_SHA=$(git merge-base origin/HEAD HEAD)  # 初回。起点は repo の既定ブランチ
+BASE_SHA=<作業開始前に記録した HEAD>  # 初回。記録がなく、ブランチ全体が今回の作業なら $(git merge-base origin/<base> HEAD)
 ```
 
 2. **レビュアーをディスパッチする**: 新規サブエージェントに以下を渡す。
