@@ -3,6 +3,7 @@
   "cleanupPeriodDays": 365,
   "env": {
     "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "235000",
+    "CLAUDE_CODE_ENABLE_FUNCTION_HOOKS": "1",
     "CLAUDE_CODE_THRIFTY_SONIC": "0"
   },
   "permissions": {
@@ -168,13 +169,20 @@
   },
   "model": "opus[1m]",
   "enabledPlugins": {
-    "i-have-adhd@i-have-adhd": true
+    "i-have-adhd@i-have-adhd": true,
+    "fast-jev-compaction@fast-jev-compaction": true
   },
   "extraKnownMarketplaces": {
     "i-have-adhd": {
       "source": {
         "source": "github",
         "repo": "ayghri/i-have-adhd"
+      }
+    },
+    "fast-jev-compaction": {
+      "source": {
+        "source": "github",
+        "repo": "tamaratran/fast-jev-compaction"
       }
     }
   },
@@ -187,5 +195,12 @@
   "plansDirectory": ".claude/plans",
   "tui": "fullscreen",
   "theme": "dark-daltonized",
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "pluginConfigs": {
+    "fast-jev-compaction@fast-jev-compaction": {
+      "options": {
+        "compactAtPercent": 85
+      }
+    }
+  }
 }
