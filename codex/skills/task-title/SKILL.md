@@ -1,6 +1,6 @@
 ---
 name: task-title
-description: Name or rename the current Codex task following the user's convention. Use at the start of a task when instructed by AGENTS.md, or whenever the user asks to name, rename, or retitle a task.
+description: Name or rename the current Codex task following the user's convention. Use only when the user asks to name, rename, or retitle a task.
 ---
 
 # タスク名

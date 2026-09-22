@@ -1,6 +1,6 @@
 ---
 name: session-title
-description: Name the current session following the user's convention. Invoke at the start of a session as instructed by CLAUDE.md, or whenever the user asks to name, rename, or retitle a session.
+description: Name the current session following the user's convention. Use only when the user asks to name, rename, or retitle a session.
 ---
 
 # セッション名
