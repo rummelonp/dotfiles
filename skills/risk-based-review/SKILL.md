@@ -28,7 +28,7 @@ description: Use when deciding whether a change needs independent review, how st
 
 | エージェント | 標準レビュアー (Standard) | 高強度レビュアー (Strong) |
 |---|---|---|
-| **Claude Code** | `Opus`（作成側が Sonnet なら一段上の `Opus`） | 最上位モデル（`Opus`、利用可能な環境なら `Fable` 等） |
+| **Claude Code** | `Opus` | `Opus`（観点を特化した重点検証プロンプト。Opus の結論に確信が持てない場合のみ `Fable` で追加検証し、既出指摘の真偽判定に限る） |
 | **Codex** | カスタム設定: `reviewer`<br>標準・不在時: 組み込み `explorer`（新規・read-only） | カスタム設定: `frontier_reviewer`（TOML 既定: medium、超高リスク等で high）<br>標準・不在時: 組み込み `explorer`（新規・read-only、観点特化指示） |
 | **Antigravity (Gemini)** | `TypeName: research` (または `self`), `Model: inherit` | `TypeName: research` (または `self`), `Model: inherit`（観点を特化した重点検証プロンプト） |
 
@@ -36,7 +36,7 @@ description: Use when deciding whether a change needs independent review, how st
 
 - **階層モデル環境（Claude / Codex）**:
   - 表の段と「作成側の一段上」のどちらか高い方を採用する。作成側が人間・メインセッション・委譲サブエージェントのいずれであっても、表の段は固定とする。同段のレビューは作成時の誤った前提を引き継ぎやすいため、一段引き上げる方を優先する。
-  - 最上位モデルが作成した成果物は一段上のモデルが存在しないため、同一の最上位モデルによる新規サブエージェントに観点を分けて（観点 A / B）依頼する。一段引き上げられない代わりに視点を多角化し、コンテキストの完全独立は維持する。
+  - 最上位モデル（Claude では `Opus`）が作成した成果物は一段上のモデルが存在しないため、同一モデルの新規サブエージェントに依頼し、コンテキストの完全独立で担保する。高リスク以上では、一段引き上げられない代わりに観点 A / B の 2 本に分けて依頼する。
   - レビュー段の決定に不可欠なため、委譲時は作成に使用したモデルを記録する（記録先は plan doc、コミット trailer、decisions-log 等の慣習に従う）。
   - **Codex でのフォールバック**: 現在のエージェント一覧、または `~/.codex/agents/` / `.codex/agents/` に該当 TOML がある場合は `reviewer` / `frontier_reviewer` を使用する。存在しない標準環境では組み込み `explorer` を新規起動し、起動 API で sandbox 指定できる場合は read-only を設定、指定不能な場合はプロンプト上でファイル編集・再委譲の禁止を明示する。モデルや effort を確実に指定できない場合はセッションの値を継承し、強度は「新規コンテキスト」「観点の特化」「非常に高リスク時の 2 本ディスパッチ」で担保する。
 - **単一フラッグシップモデル環境（Gemini）**:

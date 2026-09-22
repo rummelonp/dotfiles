@@ -49,7 +49,7 @@ fan-out（並列展開）はディレクトリや年月など自然な単位で�
 
 | エージェント | 起動ツール | 調査・fan-out | 通常実装・定型 | 高難度実装・高リスク | 設計判断・構成検討 |
 |---|---|---|---|---|---|
-| **Claude Code** | `Task`（または `Agent`） | `Sonnet` | `Sonnet` | `Opus` | `Fable` |
+| **Claude Code** | `Task`（または `Agent`） | `Sonnet` | `Sonnet` | `Opus` | `Opus` |
 | **OpenAI Codex** | `spawn_agent` | `explorer` | `implementer` | `senior_implementer` | `architect` |
 | **Antigravity (Gemini)** | `invoke_subagent` | `TypeName: research`<br>`Model: inherit` | `TypeName: self`<br>`Model: inherit` | `TypeName: self`<br>`Model: inherit` | メインセッション、または<br>`TypeName: research` / `self`<br>`Model: inherit` |
 
@@ -72,8 +72,8 @@ fan-out（並列展開）はディレクトリや年月など自然な単位で�
 ### 役割・モデル選定の階層化ルール
 
 - **階層モデル環境（Claude / Codex）**:
-  - 安価な順（Claude: Sonnet → Opus → Fable / Codex: implementer → senior_implementer → architect）に役割に応じて選ぶ。統括セッション自身のモデルは選択に影響させない。
-  - 通常リスクの実装では、正しさは実装者の格上げではなくレビュー強度で担保する。設計や原因分析を上位モデル（Fable / architect）に任せた後も、実装は通常担当（Sonnet / implementer）が担い、実装が複数回失敗したときのみ上位モデル自身に実装させる。
+  - 安価な順（Claude: Sonnet → Opus / Codex: implementer → senior_implementer → architect）に役割に応じて選ぶ。統括セッション自身のモデルは選択に影響させない。Claude の Fable は、Opus が複数回失敗したタスクと Opus の結論に確信が持てない場合の追加検証に限る。
+  - 通常リスクの実装では、正しさは実装者の格上げではなくレビュー強度で担保する。設計や原因分析を上位モデル（Opus / architect）に任せても、実装の段は役割表で選び直す（architect には、実装が複数回失敗したときのみ実装させる）。
   - 迷ったら安価な方から試し、品質不足なら一段引き上げる。上位モデルがない（または起動失敗した）場合は元の段のまま継続する。
 - **単一フラッグシップモデル環境（Antigravity）**:
   - モデルの格上げは行わず、常に新規サブエージェント（`inherit`）の起動による「コンテキストの完全独立」と「プロンプトによる責務定義の厳密化」によって正しさと品質を担保する。
