@@ -79,6 +79,7 @@ BASE_SHA=$(git merge-base origin/HEAD HEAD)  # 初回。起点は repo の既定
 
 3. **結果に対応する**:
    - Critical / Important（blocking）な指摘は直ちに修正する。
+     - 再レビューの上限が 0 回なら、修正を `completion-verification` で確かめて受け入れる。解消できなければユーザーに報告する。
    - Minor（non-blocking）な指摘は後回しにしてよいが記録を残す。
    - レビュアーの指摘が誤っていると判断した場合は、客観的根拠（コードやテスト結果）を示して反論する。
 

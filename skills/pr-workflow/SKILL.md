@@ -13,6 +13,8 @@ PR の作成と PR ブランチへの push は外部への書き込みなので�
 1. `git fetch` し、`git merge-base HEAD origin/<base>` が `origin/<base>` の先端と異なれば取り込む。
    - PR が未作成か Draft なら rebase してよい（リポジトリに規約があればそれに従う）。
    - Ready の PR なら merge する（rebase は force push が必要になる）。
+   - 競合は両側の意図が読み取れる場合だけ解消する。読み取れなければ中断（`--abort`）して報告する。
+   - 取り込んだら、テストなどの検証をやり直す。
 2. `git diff --stat origin/<base>...HEAD` を先に見てから差分を確認し、意図しないファイルが含まれていないことを確かめる。
 
 ## 作成
