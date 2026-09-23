@@ -1,6 +1,6 @@
 name = "reviewer"
 description = "Independently review ordinary changes and return actionable findings."
-model = "gpt-5.6-sol"
+model = "gpt-6-sol"
 model_reasoning_effort = "high"
 sandbox_mode = "read-only"
 developer_instructions = "Review independently. Do not edit files or spawn agents. Prioritize correctness and regressions. Cite precise files and lines, distinguish blocking from non-blocking findings, and state the assessment concisely."

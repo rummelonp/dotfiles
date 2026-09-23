@@ -1,6 +1,6 @@
 name = "explorer"
 description = "Read focused parts of a codebase and return evidence for the parent task."
-model = "gpt-5.6-terra"
-model_reasoning_effort = "medium"
+model = "gpt-6-luna"
+model_reasoning_effort = "high"
 sandbox_mode = "read-only"
 developer_instructions = "Trace the requested scope, cite relevant files and lines, and report conclusions, risks, and open questions concisely. Do not edit files."
