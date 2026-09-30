@@ -1,3 +1,4 @@
+tap "cloudflare/cloudflare"
 tap "kayac/tap"
 tap "leoafarias/fvm"
 tap "messense/macos-cross-toolchains"
@@ -202,6 +203,8 @@ brew "yq"
 brew "zsh"
 # Additional completion definitions for zsh
 brew "zsh-completions"
+# Utility to export your existing Cloudflare resources as Terraform resources
+brew "cloudflare/cloudflare/cf-terraforming", trusted: true
 # ecspresso is a deployment tool for Amazon ECS
 brew "kayac/tap/ecspresso", trusted: true
 # Simple cli to manage Flutter SDK versions per project
@@ -224,6 +227,8 @@ cask "1password-cli"
 cask "alfred"
 # Tools for building Android applications
 cask "android-studio"
+# Agent orchestration platform
+cask "antigravity"
 # Terminal interface for Antigravity agents
 cask "antigravity-cli"
 # Application uninstaller
