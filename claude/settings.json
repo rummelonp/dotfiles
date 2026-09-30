@@ -176,7 +176,8 @@
   },
   "enabledPlugins": {
     "i-have-adhd@i-have-adhd": true,
-    "fast-jev-compaction@fast-jev-compaction": true
+    "fast-jev-compaction@fast-jev-compaction": true,
+    "explainer@explainer": true
   },
   "extraKnownMarketplaces": {
     "i-have-adhd": {
@@ -189,6 +190,12 @@
       "source": {
         "source": "github",
         "repo": "tamaratran/fast-jev-compaction"
+      }
+    },
+    "explainer": {
+      "source": {
+        "source": "github",
+        "repo": "mizchi/explainer"
       }
     }
   },
