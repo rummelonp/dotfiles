@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Override the develop/master aliases in ~/.gitconfig with this repository's branches.
+
+function show() {
+    git config --local --get-regexp '^alias\.(co|rb|do?)[dm]w?$'
+}
+
+function set_role() {
+    local key="$1" branch="$2"
+    git config --local "alias.co$key"    "checkout $branch"
+    git config --local "alias.rb$key"    "rebase $branch"
+    git config --local "alias.d$key"     "diff $branch --ignore-all-space"
+    git config --local "alias.d${key}w"  "diff $branch --word-diff"
+    git config --local "alias.do$key"    "diff origin/$branch --ignore-all-space"
+    git config --local "alias.do${key}w" "diff origin/$branch --word-diff"
+}
+
+if [[ $# == 0 ]]; then
+    show
+elif [[ $# == 2 ]]; then
+    set_role d "$1"
+    set_role m "$2"
+else
+    echo 'usage: git roles [<develop-branch> <master-branch>]' >&2
+    exit 1
+fi
