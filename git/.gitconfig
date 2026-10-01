@@ -125,12 +125,10 @@
   cob = checkout -b
   cod = checkout develop
   com = checkout master
-  cor = checkout release
   # rebase
   rb  = rebase
   rbd = rebase develop
   rbm = rebase master
-  rbr = rebase release
   rbi = rebase --interactive
   rbo = rebase --onto
   rbc = rebase --continue
@@ -189,10 +187,6 @@
   dmw  = diff master --word-diff
   dom  = diff origin/master --ignore-all-space
   domw = diff origin/master --word-diff
-  dr   = diff release --ignore-all-space
-  drw  = diff release --word-diff
-  dor  = diff origin/release --ignore-all-space
-  dorw = diff origin/release --word-diff
   ds   = diff --stat
   dn   = diff --name-only
   dna  = diff --name-only --diff-filter=A
