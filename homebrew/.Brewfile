@@ -143,6 +143,8 @@ brew "oath-toolkit"
 brew "pam-reattach"
 # Indents and reformats Perl scripts to make them easier to read
 brew "perltidy"
+# Pairwise Independent Combinatorial Tool
+brew "pict"
 # Pins GitHub Actions to full hashes and versions
 brew "pinact"
 # Draw UML diagrams
