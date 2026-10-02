@@ -32,7 +32,7 @@ Antigravity 固有のスキルは [`../gemini/skills/`](../gemini/skills/) に�
 
 | スキル | 上流 | ライセンス | 取得日 | 改変 |
 | --- | --- | --- | --- | --- |
-| `lesson-persistence` | [mizchi/skills](https://github.com/mizchi/skills) `meta/retrospective-codify` | 上流に個別 LICENSE なし。README に「明示ライセンスのないスキルは MIT 扱い」の記述 | 2026-09-14 | Workflow、提示フォーマット、Red Flags を移植して日本語化。3 分岐（ast-grep rule/CLAUDE.md rule/新規 skill）のうち ast-grep rule を削除し、残りをこのユーザーの自動メモリ 4 分類にマッピングし直し |
+| `learn` | [mizchi/skills](https://github.com/mizchi/skills) `meta/retrospective-codify` | 上流に個別 LICENSE なし。README に「明示ライセンスのないスキルは MIT 扱い」の記述 | 2026-09-14 | Workflow、提示フォーマット、Red Flags を移植して日本語化。3 分岐（ast-grep rule/CLAUDE.md rule/新規 skill）のうち ast-grep rule を削除し、残りをこのユーザーの自動メモリ 4 分類にマッピングし直し |
 
 ## 上流の更新を取り込む
 
