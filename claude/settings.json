@@ -168,12 +168,6 @@
     ]
   },
   "model": "opus[1m]",
-  "effortLevel": "high",
-  "modelSettings": {
-    "claude-opus-5-5": {
-      "effortLevel": "high"
-    }
-  },
   "enabledPlugins": {
     "i-have-adhd@i-have-adhd": true,
     "fast-jev-compaction@fast-jev-compaction": true,
@@ -205,15 +199,22 @@
       "少女祈祷中"
     ]
   },
-  "plansDirectory": ".claude/plans",
-  "tui": "fullscreen",
-  "theme": "dark-daltonized",
-  "agentPushNotifEnabled": true,
+  "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
   "pluginConfigs": {
     "fast-jev-compaction@fast-jev-compaction": {
       "options": {
         "compactAtPercent": 85
       }
     }
-  }
+  },
+  "plansDirectory": ".claude/plans",
+  "tui": "fullscreen",
+  "theme": "dark-daltonized",
+  "agentPushNotifEnabled": true,
+  "advisorModel": "fable"
 }
