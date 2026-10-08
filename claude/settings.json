@@ -126,10 +126,8 @@
       "Bash(gh pr revert:*)",
       "Bash(gh pr review:*)",
       "Bash(gh pr update-branch:*)",
-      "Bash(git * clean *)",
       "Bash(git -* ps*)",
       "Bash(git -* push*)",
-      "Bash(git clean:*)",
       "Bash(git commit * -n*)",
       "Bash(git commit *--no-veri*)",
       "Bash(git commit -n*)",
@@ -140,7 +138,6 @@
       "Bash(git switch *--force*)",
       "Bash(git switch -f*)",
       "Bash(op run:*)",
-      "Bash(rm -rf:*)",
       "Bash(terraform * apply*)",
       "Bash(terraform * destroy*)",
       "Bash(terraform * import*)",
@@ -148,8 +145,7 @@
       "Bash(terraform apply:*)",
       "Bash(terraform destroy:*)",
       "Bash(terraform import:*)",
-      "Bash(terraform state:*)",
-      "mcp__chrome-devtools__evaluate_script"
+      "Bash(terraform state:*)"
     ]
   },
   "model": "opus[1m]",
