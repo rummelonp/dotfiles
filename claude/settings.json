@@ -74,6 +74,8 @@
       "Bash(gcloud * versions access*)",
       "Bash(gcloud *auth describe*)",
       "Bash(npm publish:*)",
+      "Bash(op * item get*)",
+      "Bash(op * read*)",
       "Bash(op item get:*)",
       "Bash(op read:*)",
       "Bash(pnpm publish:*)",
