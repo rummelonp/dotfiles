@@ -77,6 +77,7 @@
       "Bash(gh auth status*-t*)",
       "Bash(gh auth token:*)",
       "Bash(git credential*)",
+      "Bash(git fetch *--upl*)",
       "Bash(npm publish:*)",
       "Bash(op * item get*)",
       "Bash(op * read*)",
