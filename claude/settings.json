@@ -45,6 +45,7 @@
       "Read(//tmp/**)",
       "WebFetch(domain:*)",
       "WebSearch",
+      "mcp__Claude_Code_iOS_Simulator__control",
       "mcp__Control_Chrome__get_page_content",
       "mcp__Control_Chrome__list_tabs",
       "mcp__chrome-devtools__get_console_message",
