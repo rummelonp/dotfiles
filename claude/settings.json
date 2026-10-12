@@ -151,7 +151,8 @@
   "enabledPlugins": {
     "i-have-adhd@i-have-adhd": true,
     "fast-jev-compaction@fast-jev-compaction": true,
-    "explainer@explainer": true
+    "explainer@explainer": true,
+    "codex@openai-codex": true
   },
   "extraKnownMarketplaces": {
     "i-have-adhd": {
@@ -170,6 +171,12 @@
       "source": {
         "source": "github",
         "repo": "mizchi/explainer"
+      }
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
       }
     }
   },
