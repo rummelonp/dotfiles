@@ -60,6 +60,9 @@
       "mcp__chrome-devtools__take_screenshot"
     ],
     "deny": [
+      "Bash(*wrangler *auth token*)",
+      "Bash(*wrangler *issue-token*)",
+      "Bash(*wrangler *registries credentials*)",
       "Bash(aws * get-*token*)",
       "Bash(aws * get-login-password*)",
       "Bash(aws * get-parameter*)",
@@ -105,9 +108,19 @@
       "Read(~/.kube/**)",
       "Read(~/.netrc)",
       "Read(~/.npmrc)",
-      "Read(~/.ssh/**)"
+      "Read(~/.ssh/**)",
+      "Read(~/Library/Preferences/.wrangler/config/**)"
     ],
     "ask": [
+      "Bash(*wrangler *--remote*)",
+      "Bash(*wrangler *delete*)",
+      "Bash(*wrangler *deploy *)",
+      "Bash(*wrangler *deploy)",
+      "Bash(*wrangler *purge*)",
+      "Bash(*wrangler *restore*)",
+      "Bash(*wrangler *rollback*)",
+      "Bash(*wrangler *secret bulk*)",
+      "Bash(*wrangler *secret put*)",
       "Bash(gh issue comment:*)",
       "Bash(gh issue close:*)",
       "Bash(gh issue create:*)",
