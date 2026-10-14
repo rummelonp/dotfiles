@@ -60,6 +60,12 @@
       "mcp__chrome-devtools__take_screenshot"
     ],
     "deny": [
+      "Bash(*cf *access token*)",
+      "Bash(*cf *service-tokens*)",
+      "Bash(*cf *temporary-credentials*)",
+      "Bash(*cf *token get*)",
+      "Bash(*cf *tokens create*)",
+      "Bash(*cf *tokens roll*)",
       "Bash(*wrangler *auth token*)",
       "Bash(*wrangler *issue-token*)",
       "Bash(*wrangler *registries credentials*)",
@@ -68,6 +74,7 @@
       "Bash(aws * get-parameter*)",
       "Bash(aws * get-secret-value*)",
       "Bash(cargo publish:*)",
+      "Bash(cloudflare *)",
       "Bash(deno publish:*)",
       "Bash(gcloud * config-helper*)",
       "Bash(gcloud * docker-helper*)",
@@ -109,7 +116,8 @@
       "Read(~/.netrc)",
       "Read(~/.npmrc)",
       "Read(~/.ssh/**)",
-      "Read(~/Library/Preferences/.wrangler/config/**)"
+      "Read(~/Library/Preferences/.wrangler/config/**)",
+      "Read(~/Library/Preferences/cloudflare/config/**)"
     ],
     "ask": [
       "Bash(*wrangler *--remote*)",
