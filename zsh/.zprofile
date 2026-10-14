@@ -85,6 +85,11 @@ if (( $+commands[nodenv] )); then
     eval "$(nodenv init --no-rehash -)"
 fi
 
+# pnpm
+if (( $+commands[pnpm] )); then
+    path=($HOME/Library/pnpm/bin $path)
+fi
+
 # Scala
 if (( $+commands[cs] )); then
     path=("$HOME/Library/Application Support/Coursier/bin" $path)
