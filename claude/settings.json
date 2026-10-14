@@ -165,7 +165,8 @@
     "i-have-adhd@i-have-adhd": true,
     "fast-jev-compaction@fast-jev-compaction": true,
     "explainer@explainer": true,
-    "codex@openai-codex": true
+    "codex@openai-codex": true,
+    "cloudflare@cloudflare": true
   },
   "extraKnownMarketplaces": {
     "i-have-adhd": {
@@ -190,6 +191,12 @@
       "source": {
         "source": "github",
         "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "cloudflare": {
+      "source": {
+        "source": "github",
+        "repo": "cloudflare/skills"
       }
     }
   },
