@@ -5,7 +5,7 @@ description: Use when deciding whether a change needs independent review, how st
 
 # リスクに応じたレビュー依頼
 
-サブエージェント（Task / Agent / Subagent 相当のツール）を持たない環境では本スキルを適用しない。
+サブエージェント（Task / Agent / Subagent 相当のツール）を持たない環境では、独立レビューの代わりに、後述の観点 A / B に沿った構造的な自己審査を行う。独立レビューとは称さない。
 
 ## レビューを依頼するかどうかの判定
 
