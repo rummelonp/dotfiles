@@ -36,6 +36,7 @@ base への追従（rebase や merge）と push は `pr-workflow` に従う。
   単独にしておけば、レビュアーはそのコミットを読まずに済ませられる。
 - リファクタと振る舞いの変更は分ける。
 - 各コミットの時点で整合させ、後のコミットで入るものを参照しない。
+- バグ修正とそのテストの追加は、テストが修正前に失敗するなら同じ意図として 1 コミットに畳み、修正前から通るなら分けたままにする。
 - 最終状態が最初から計画されていたかのようなコミット列にする。
   試行錯誤、レビュー指摘への対応、誤字の修正は、それを入れたコミットへ畳む。
   追加して直後に直すような、中間状態が不自然な連続コミットは 1 つにする。
@@ -50,11 +51,14 @@ base への追従（rebase や merge）と push は `pr-workflow` に従う。
   `rebase.updateRefs` が有効だと、範囲内のコミットを指すブランチは rebase で新しい先端へ一緒に動くので、元の先端が残らない。
 - **既存コミットへの修正**：`git commit --fixup=<sha> -- <paths>` を対象ごとに作り、`GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash <base>` で畳む。
   対象は `git log --oneline <base>..HEAD -- <path>` や `git log -S '<直す箇所の文字列>'` で、直す行を入れたコミットを探す。
+  `fix typo` のように `fixup!` 形式でない手直しコミットが既にあれば、todo でその行を対象の直後へ移し、`pick` を `fixup` に置き換える。
+  この todo の書き換えは後述の並べ替えと同じくスクリプトで行い、行を移すには `perl -0 -i -pe` で todo 全体を 1 つの文字列として扱う。
+  メッセージを直すときは `git commit --allow-empty -m 'amend! <sha>' -m '<新しいメッセージ>'` を作り、同じ autosquash で畳む（`--fixup=reword:<sha>` は `-m` と併用できない）。
 - **全面的な組み直し**：`git reset <base のハッシュ>` で差分を作業ツリーに戻し、意図ごとに add と commit を繰り返す。
   1 ファイルの変更を複数のコミットに分けるときは、途中の状態に編集してコミットし、`git checkout tidy/<目的> -- <path>` で最終版に戻してから次をコミットする。
   途中の状態はファイル編集ツールで作り、シェルのリダイレクトでは書かない（`noclobber` が有効だと上書きが失敗し、最終版のままコミットしてしまう）。
   commit の前に `git diff --cached` の本文を読み、そのコミットに入れる変更だけになっていることを確かめる。
-- **並べ替え、drop、reword**：todo を書き換えるスクリプトを `GIT_SEQUENCE_EDITOR` に渡す。
+- **並べ替え、drop**：todo を書き換えるスクリプトを `GIT_SEQUENCE_EDITOR` に渡す。
   `sed -i` は GNU と BSD で構文が違うので、`perl -i -pe` を使う。
 - **共通の注意**：
   - `git add` はパスを明示し、`-a`、`-A`、`.` を使わない。commit の前に `git diff --cached --stat` を見る。
