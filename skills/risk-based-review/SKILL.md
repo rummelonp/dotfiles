@@ -7,6 +7,12 @@ description: Use when deciding whether a change needs independent review, how st
 
 サブエージェント（Task / Agent / Subagent 相当のツール）を持たない環境では、独立レビューの代わりに、後述の観点 A / B ごとに自分で点検する（観点別の自己点検）。独立レビューとは称さない。
 
+## 用語
+
+- **開始時の HEAD**：ファイルを変更する作業に着手したときの HEAD。規則ファイル（`CLAUDE.md` / `AGENTS.md` / `GEMINI.md`）の指示で、着手時に記録する。
+  記録がなく、ブランチ全体が今回の作業なら `git merge-base HEAD origin/<base>` で代える。
+  どちらでもなければ、範囲をユーザーに確かめる。
+
 ## レビューを依頼するかどうかの判定
 
 毎タスク後に一律でレビューを行う前提は採らない。以下の 4 段階で要否と強度を判断する。
@@ -64,7 +70,7 @@ base の取り込みより前に依頼する（取り込み後は base 側の変
 
 ```bash
 HEAD_SHA=$(git rev-parse HEAD)
-BASE_SHA=<作業開始前に記録した HEAD>  # 初回。記録がなく、ブランチ全体が今回の作業なら $(git merge-base origin/<base> HEAD)
+BASE_SHA=<開始時の HEAD>  # 初回
 ```
 
 2. **レビュアーをディスパッチする**: 新規サブエージェントに以下を渡す。
