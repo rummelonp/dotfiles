@@ -33,7 +33,7 @@ description: Empirically evaluate agent-facing instructions with fresh subagents
 | **OpenAI Codex** | `spawn_agent` | 評価対象の指示を実際に使う役割（該当する TOML がなければ汎用エージェント） | なし（標準化された値は返らない） | 扱わない（精度と質的不明瞭点・自己申告 retries のみ） |
 | **Antigravity (Gemini)** | `invoke_subagent` | 評価対象の指示を実際に使う役割 | なし（親に返るのはテキストメッセージのみ） | 扱わない（精度と質的不明瞭点・自己申告 retries のみ） |
 
-実行者は評価対象の指示を実際に読んで動く立場なので、`subagent-delegation` の「標準レビュー」（bias-free 評価）ではなく、その指示の利用者に当たる役割で起動する。たとえば実装手順の指示なら「実装」、レビュー手順の指示なら「標準レビュー」にする。
+実行者は評価対象の指示を実際に読んで動く立場なので、レビュアーの役割（`subagent-delegation` の「標準レビュー」）に固定せず、その指示の利用者に当たる役割で起動する。たとえば実装手順の指示なら「実装」、レビュー手順の指示なら「標準レビュー」にする。
 
 ### メトリクス階層化の原則
 
