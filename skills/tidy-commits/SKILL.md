@@ -5,7 +5,13 @@ description: Use when asked to tidy, squash, fold, split, reorder, or rebuild th
 
 # コミットの整理
 
-作業ブランチの `<base>..HEAD` にあるコミット列を組み直す。
+作業ブランチの `<起点>..HEAD` にあるコミット列を組み直す。
+`<起点>` は書き換えない最後のコミットのハッシュで、次のように決める。
+- `final-pass` から使うときは、`risk-based-review` の開始時の HEAD にする。
+- ユーザーが範囲を示したら、その起点にする。
+- ブランチ全体を整理するときは、`git merge-base HEAD origin/<base>` にする。
+
+`<起点>` にブランチ名を渡さない。`git rebase -i origin/<base>` は base の先端への追従を兼ねるうえ、`<起点>` より前のコミットも書き換えることがある。
 base への追従（rebase や merge）と push は `pr-workflow` に従う。
 
 ## 着手前の判定
@@ -49,12 +55,12 @@ base への追従（rebase や merge）と push は `pr-workflow` に従う。
 - **元の先端の固定**：書き換える前に `git tag tidy/<目的> HEAD` を打つ。
   backup にブランチは使わない。
   `rebase.updateRefs` が有効だと、範囲内のコミットを指すブランチは rebase で新しい先端へ一緒に動くので、元の先端が残らない。
-- **既存コミットへの修正**：`git commit --fixup=<sha> -- <paths>` を対象ごとに作り、`GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash <base>` で畳む。
-  対象は `git log --oneline <base>..HEAD -- <path>` や `git log -S '<直す箇所の文字列>'` で、直す行を入れたコミットを探す。
+- **既存コミットへの修正**：`git commit --fixup=<sha> -- <paths>` を対象ごとに作り、`GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash <起点>` で畳む。
+  対象は `git log --oneline <起点>..HEAD -- <path>` や `git log -S '<直す箇所の文字列>'` で、直す行を入れたコミットを探す。
   `fix typo` のように `fixup!` 形式でない手直しコミットが既にあれば、todo でその行を対象の直後へ移し、`pick` を `fixup` に置き換える。
   この todo の書き換えは後述の並べ替えと同じくスクリプトで行い、行を移すには `perl -0 -i -pe` で todo 全体を 1 つの文字列として扱う。
   メッセージを直すときは `git commit --allow-empty -m 'amend! <sha>' -m '<新しいメッセージ>'` を作り、同じ autosquash で畳む（`--fixup=reword:<sha>` は `-m` と併用できない）。
-- **全面的な組み直し**：`git reset <base のハッシュ>` で差分を作業ツリーに戻し、意図ごとに add と commit を繰り返す。
+- **全面的な組み直し**：`git reset <起点>` で差分を作業ツリーに戻し、意図ごとに add と commit を繰り返す。
   1 ファイルの変更を複数のコミットに分けるときは、途中の状態に編集してコミットし、`git checkout tidy/<目的> -- <path>` で最終版に戻してから次をコミットする。
   途中の状態はファイル編集ツールで作り、シェルのリダイレクトでは書かない（`noclobber` が有効だと上書きが失敗し、最終版のままコミットしてしまう）。
   commit の前に `git diff --cached` の本文を読み、そのコミットに入れる変更だけになっていることを確かめる。
@@ -73,7 +79,7 @@ base への追従（rebase や merge）と push は `pr-workflow` に従う。
 - 未コミットの変更を残したときは、着手前の `git diff` をリポジトリの外に保存し、整理後の `git diff` と一致することを確かめる。
   タグとの比較はコミット済みのツリーしか見ないので、作業ツリーの変更が失われても気づけない。
 - 各コミットがその時点で成り立つかを確かめる。
-  - 短時間で終わる検査（`package.json` の scripts、`Makefile`、CI の設定から探す）があれば、`git rebase -x '<検査コマンド>' <base>` で各コミットを検査する。
+  - 短時間で終わる検査（`package.json` の scripts、`Makefile`、CI の設定から探す）があれば、`git rebase -x '<検査コマンド>' <起点>` で各コミットを検査する。
   - 検査がない、または依存が入っておらず実行できなければ、各コミットの差分を読み、参照している名前やファイルがそのコミットまでに入っているかを確かめる。報告には、実行した検査ではなく差分を読んで確かめたと書く。
 - 検証が通ったらタグを消し、元の先端のハッシュを報告に残す。
 
