@@ -124,6 +124,7 @@ Sessionx.vim
 
 ### Claude Code ###
 # plansDirectory is relative to the project root
+.claude/settings.local.json
 .claude/plans/
 .claude/worktrees/
 
