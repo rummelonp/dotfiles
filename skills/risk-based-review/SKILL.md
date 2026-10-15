@@ -1,6 +1,6 @@
 ---
 name: risk-based-review
-description: Use when deciding whether a change needs independent review, how strong it should be, which reviewer role must run it, and how to dispatch the reviewer and any re-review with a git diff range, read-only constraints, and a structured output format.
+description: Use when deciding whether a change needs independent review, how strong it should be, which reviewer role must run it, and how to dispatch the reviewer and any re-review with a git diff range, read-only constraints, and a structured output format, or how to self-check per perspective when subagents cannot be launched.
 ---
 
 # リスクに応じたレビュー依頼
@@ -11,7 +11,7 @@ description: Use when deciding whether a change needs independent review, how st
 
 - **自己レビュー**：作った本人が、作成時のコンテキストのまま見直すこと。
 - **独立レビュー**：作成に関わっていない新規サブエージェントが、新しいコンテキストで行うレビュー。コードと文章のほか、skill や prompt の変更も対象とする。
-- **観点別の自己点検**：サブエージェント（Task / Agent / Subagent 相当のツール）を起動できない環境で、独立レビューの代わりに、後述の観点 A / B ごとに自分で点検すること。独立レビューとは称さない。
+- **観点別の自己点検**：サブエージェント（Task / Agent / Subagent 相当のツール）を起動できない環境で、独立レビューの代わりに、観点 A / B ごとに自分で点検すること。独立レビューとは称さない。手順は後述の「観点別の自己点検」節に従う。
 - **開始時の HEAD**：ファイルを変更する作業に着手したときの HEAD。規則ファイル（`CLAUDE.md` / `AGENTS.md` / `GEMINI.md`）の指示で、着手時に記録する。
   記録がなく、ブランチ全体が今回の作業なら `git merge-base HEAD origin/<base>` で代える。
   どちらでもなければ、範囲をユーザーに確かめる。
@@ -100,7 +100,10 @@ BASE_SHA=<開始時の HEAD>  # 初回
      - 記録先の既定は完了報告の次のアクションとし、follow-up として指摘の番号と 1 行の要約を書く。
      - リポジトリに plan doc や decisions-log があれば、そこにも書いてよい。
      - PR 本文や issue への書き込みは外部への書き込みなので、ユーザーから明示的に指示されていなければ承認を得てから行う。
-   - 判定を見送った挙動や論点は 1 行ずつ、範囲外のままでよいかを決める。範囲内と判断したものは、指摘と同じく blocking か non-blocking に分けて扱い、直したものは再レビューで自己発見の修正として一覧に加える。
+   - 判定を見送った挙動や論点は 1 行ずつ、範囲外のままでよいかを決める。
+     - 範囲外のままにしたものは、番号を振らずに完了報告の次のアクションへ 1 行ずつ書く。
+     - 範囲内と判断したものは、指摘と同じく blocking か non-blocking に分けて扱う。
+       直したものは再レビューで自己発見の修正として一覧に加える。再レビューの上限が 0 回なら、blocking の修正と同じく `completion-verification` で確かめて受け入れる。
    - レビュアーの指摘が誤っていると判断した場合は、客観的根拠（コードやテスト結果）を示して反論する。
 
 ## 再レビュー
@@ -126,6 +129,27 @@ BASE_SHA=<開始時の HEAD>  # 初回
 - **ラウンド数は表の上限までとする**。上限到達時に non-blocking が残存している場合は、follow-up として記録（記録先は「結果に対応する」の non-blocking と同じ）した上で受け入れる（記録なき受容は握り潰しであり不可）。
 - **上限到達時であっても blocking が残存している場合は受け入れない**。上限は non-blocking を打ち切るための規定であり、blocking を通過させるためのものではない。ユーザーに報告して指示を仰ぐ。分類を引き上げてラウンド数を増やす行為は禁止とする。
 - **再レビューは初回と同じモデル、同じ役割（同じ強度）で行う**。上限に達する前にモデルの段を引き上げたり、途中でモデルを変えて新たな視点を持ち込ませない。2 本出していた場合は、指摘を出した観点（観点 A / B）のみに再投入し、その観点を依頼文に明記する。指摘元がない（自己発見の修正）か不明な場合は、修正の性質に最も近い観点に再投入する。
+
+## 観点別の自己点検
+
+独立レビューが必要なのにサブエージェントを起動できない環境では、依頼者が自分で以下を行う。
+作成時の前提を引き継ぐので独立レビューの代わりにはならないが、観点を分けて読み直すことで見落としを減らす。
+
+1. 範囲は「依頼手順」の 1 と同じにする。diff の全文を読み、全面的に書き換わる成果物は HEAD の全文も読む。
+2. 表のレビュアーの本数（1 本か 2 本か）によらず、観点 A と観点 B を 1 つずつ順に点検する。1 回の読み直しで両方を見ない。
+3. 指摘はレビュアーの Issues と同じく blocking と non-blocking に分け、通し番号（#1, #2...）と見つけた観点（A / B）を添えて書き出す。範囲外として判定を見送った論点も、理由付きで 1 行ずつ挙げる。
+4. 指摘には「結果に対応する」に従って対応する。
+5. 修正を点検し直す回数の上限は、表の再レビューの上限と同じにする。
+   上限が 0 回なら点検し直さず、blocking の修正も自己発見の修正も `completion-verification` で確かめて受け入れる。
+   1 回以上なら、blocking の修正と、意味の変わる自己発見の修正を、修正コミットだけを対象に点検し直す。
+   自己発見の修正は、番号を振った指摘のどれにも当たらない修正を指す。4 の対応の途中で気づいて直したものと、見送った論点を範囲内と判断して直したものがこれに当たる。これには #n ではなく S1, S2... だけを振る。
+   確かめるのは、指摘が解消されたか（自己発見の修正なら妥当か）と、新たな blocking が生じていないかの 2 点だけにし、新しい non-blocking を探しに行かない。
+   各指摘は、それを見つけた観点だけで読み直す。自己発見の修正は、性質に最も近い観点で読み直す。
+   読み直す観点が複数なら手順 2 と同じく 1 つずつ分けて読み、観点の数によらず 1 回と数える。
+   上限に達しても blocking が残れば、再レビューと同じく受け入れずにユーザーへ報告する。
+6. 完了報告では独立レビューと称さず、観点別の自己点検に切り替えたことをリスク分類の名前とともに書く。
+   `final-pass` を通している場合は、その手順 2 の理由の行に書く。
+   高リスク以上なら、独立レビューを行える環境での実施を次のアクションに書く。
 
 ## Red Flags
 
