@@ -57,7 +57,7 @@
   - 領域ごとのリスク分類は、プロジェクトの `CLAUDE.md` の定義を優先する。
 - bias-free 評価（skill、prompt、自己成果物の検証）は新規サブエージェントに任せる。
   - 自身の再読を bias-free 評価や empirical 評価の代用としない。
-  - 新規サブエージェントが起動できない環境では bias-free 評価と称さず、`empirical-prompt-tuning` skill の構造審査に切り替える。
+  - 新規サブエージェントが起動できない環境では bias-free 評価と称さず、`empirical-prompt-tuning` skill の静的審査に切り替える。
 
 ## コンテキストとトークン
 

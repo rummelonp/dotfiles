@@ -1,6 +1,6 @@
 ---
 name: empirical-prompt-tuning
-description: Empirically evaluate agent-facing instructions with fresh subagents, or perform a lightweight structural review. Use only when the user explicitly requests either mode. Do not auto-invoke after ordinary skill or prompt edits; this workflow is operator-triggered.
+description: Empirically evaluate agent-facing instructions with fresh subagents, or perform a lightweight static review. Use only when the user explicitly requests either mode. Do not auto-invoke after ordinary skill or prompt edits; this workflow is operator-triggered.
 ---
 
 # Empirical Prompt Tuning
@@ -9,7 +9,7 @@ description: Empirically evaluate agent-facing instructions with fresh subagents
 
 ## 適用範囲
 
-ユーザーが empirical 評価または構造審査を明示的に依頼し、次のいずれかに該当する場合に使う。
+ユーザーが empirical 評価または静的審査を明示的に依頼し、次のいずれかに該当する場合に使う。
 通常のスキルやプロンプトの編集・改訂後に自動起動してはならない（オペレーターが明示的にトリガーするワークフロー）。
 
 - skill / slash command / タスクプロンプト / AGENTS.md 節 / 自動化プロンプトを新規作成または大幅改訂した直後
@@ -21,7 +21,7 @@ description: Empirically evaluate agent-facing instructions with fresh subagents
 ## 評価モード
 
 - **Empirical 評価**: 重要度が高い、変更が大きい、頻繁に使う、または実際の失敗を再現したい対象で、適用場面の境界を定義できる場合に選ぶ。新規サブエージェントによる後述のワークフローを実行する。
-- **構造審査モード**: 重要度が低い小変更、全域に適用される文書、または短時間で記述の整合性と明瞭性だけを確認したい場合に選ぶ。サブエージェントを起動できる環境でも意図的に選んでよい。完了報告に「構造審査であり empirical 評価ではない」と明記し、iteration や収束回数には数えない。
+- **静的審査モード**: 重要度が低い小変更、全域に適用される文書、または短時間で記述の整合性と明瞭性だけを確認したい場合に選ぶ。サブエージェントを起動できる環境でも意図的に選んでよい。完了報告に「静的審査であり empirical 評価ではない」と明記し、iteration や収束回数には数えない。
 
 ## エージェント別 Executor Profile
 
@@ -180,7 +180,7 @@ Claude Code 環境等で `tool_uses` が取得できる場合、**シナリオ�
 
 - 代替案 1: 親セッションのユーザーに別セッションを起動して依頼してもらう
 - 代替案 2: 評価を諦め、ユーザーに「empirical evaluation skipped: dispatch unavailable」と明示報告する
-- 代替案 3: 依頼の範囲内であれば **構造審査モード** へ切り替え、empirical 評価ではないことを完了報告に明記する
+- 代替案 3: 依頼の範囲内であれば **静的審査モード** へ切り替え、empirical 評価ではないことを完了報告に明記する
 - **NG**: 自己再読で代替する（バイアスが入るので評価結果を信じてはいけない）
 
 ---

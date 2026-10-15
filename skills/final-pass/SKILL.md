@@ -14,7 +14,7 @@ description: Use after finishing changes to files and before reporting the work 
 1. **検証**: `completion-verification` skill で、変更が動くことを確かめる。
    要修正なら直してから次へ進む（壊れたものをレビューに出さない）。
 2. **独立レビュー**: `risk-based-review` skill のリスク分類（着手時の分類を実際の変更で見直したもの）に従い、必要なら独立レビューを依頼して指摘に対応する。
-   独立レビューが必要なのにサブエージェントを起動できない環境では、同 skill の構造的な自己審査に切り替える。
+   独立レビューが必要なのにサブエージェントを起動できない環境では、同 skill の観点別の自己点検に切り替える。
 3. **文章の見直し**: 今回の作業の diff に含まれるコメントと文章を見直す。
    - コメントは、ユーザー設定の指示（`~/.claude/CLAUDE.md`、`~/.codex/AGENTS.md`、`~/.gemini/config/GEMINI.md` に当たるもの）のコア原則にあるコメントの規範に照らす。
    - 日本語の地の文（文書、コミットメッセージ、PR 本文）は、同じくコア原則の日本語の規範に照らす。
