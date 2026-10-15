@@ -1,6 +1,6 @@
 ---
 name: architect
-description: Design and analysis role from the model-routing skill. Analyze difficult design decisions and root causes before implementation. Use only when model-routing selects this role.
+description: Design and analysis role from the subagent-delegation skill. Analyze difficult design decisions and root causes before implementation. Use only when subagent-delegation selects this role.
 model: opus
 effort: high
 disallowedTools: Edit, Write, NotebookEdit, Agent

@@ -1,5 +1,5 @@
 ---
-name: model-routing
+name: subagent-delegation
 description: Use before launching a subagent, to choose its role, the model and launch settings for that role, whether to escalate to a higher tier after repeated failures, and how to write the delegation prompt and handle the report.
 ---
 

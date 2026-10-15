@@ -1,6 +1,6 @@
 ---
 name: implementer
-description: Implementation role from the model-routing skill. Implement a bounded change or draft text and verify it end to end. Use only when model-routing selects this role.
+description: Implementation role from the subagent-delegation skill. Implement a bounded change or draft text and verify it end to end. Use only when subagent-delegation selects this role.
 model: sonnet
 effort: high
 disallowedTools: Agent

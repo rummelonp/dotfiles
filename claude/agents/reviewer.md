@@ -1,6 +1,6 @@
 ---
 name: reviewer
-description: Review role from the model-routing skill, for both standard and high-strength reviews. Independently review changes, text, or prompts and return actionable findings. Use only when model-routing selects this role.
+description: Review role from the subagent-delegation skill, for both standard and high-strength reviews. Independently review changes, text, or prompts and return actionable findings. Use only when subagent-delegation selects this role.
 model: opus
 effort: high
 disallowedTools: Edit, Write, NotebookEdit, Agent

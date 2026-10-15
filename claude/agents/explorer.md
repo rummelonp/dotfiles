@@ -1,6 +1,6 @@
 ---
 name: explorer
-description: Research role from the model-routing skill. Read focused parts of a codebase, git history, or the web and return evidence for the parent task. Use only when model-routing selects this role.
+description: Research role from the subagent-delegation skill. Read focused parts of a codebase, git history, or the web and return evidence for the parent task. Use only when subagent-delegation selects this role.
 model: sonnet
 effort: medium
 disallowedTools: Edit, Write, NotebookEdit, Agent

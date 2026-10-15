@@ -1,6 +1,6 @@
 ---
 name: senior_implementer
-description: Senior implementation role from the model-routing skill. Implement high-risk, cross-package, or unusually difficult changes and text. Use only when model-routing selects this role.
+description: Senior implementation role from the subagent-delegation skill. Implement high-risk, cross-package, or unusually difficult changes and text. Use only when subagent-delegation selects this role.
 model: opus
 effort: high
 disallowedTools: Agent

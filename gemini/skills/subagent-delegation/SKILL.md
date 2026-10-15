@@ -1,5 +1,5 @@
 ---
-name: model-routing
+name: subagent-delegation
 description: Use before launching a subagent, to choose its role, the model and launch settings for that role, whether to escalate to a higher tier after repeated failures, and how to write the delegation prompt and handle the report.
 ---
 
@@ -43,33 +43,23 @@ description: Use before launching a subagent, to choose its role, the model and 
 - メインは結論、根拠、不確実な点と、判断に使う該当行だけを直接確認する。サブエージェントの調査手順をなぞり直さない（差分とテスト結果の確認は除く）。情報が足りなければ追加指示で補う。
 - 利用上限（上限到達を示すエラー表示）に達したと判断できる場合は、同じセッションやタスクの中で再投入せず、到達したことと未完了の範囲をユーザーに報告して指示を待つ。上限で中断したレビューを「指摘なし」と解釈しない。
 
-## 割り当て（Codex）
+## 割り当て（Antigravity）
 
-段は `~/.codex/agents/*.toml` の `model` で決まり、この skill にはモデル名を書かない（通常の起動で使うモデルと reasoning effort は TOML で管理する）。
-段の上下は各 TOML の `model` の価格順で決まる。現在の TOML では `explorer` と `implementer` が最も安価で、`senior_implementer` と `reviewer` がその上、`architect` と `frontier_reviewer` が最上位になる。
+段は Gemini 3.8 Flash (Medium) の 1 つだけで、メインセッションとサブエージェントで共通とする（`flash_lite` は下記の例外に限る）。
+そのため、レビューには常に「一段上の段がない場合」の原則を適用する。
 
-| 役割 | エージェント |
-|---|---|
-| 調査 | `explorer` |
-| 実装 | `implementer` |
-| 上位実装 | `senior_implementer` |
-| 設計・分析 | `architect` |
-| 標準レビュー | `reviewer` |
-| 高強度レビュー | `frontier_reviewer` |
+| 役割 | `TypeName` | `Model` |
+|---|---|---|
+| 調査 | `research` | `inherit` |
+| 実装 | `self` | `inherit` |
+| 上位実装 | `self` | `inherit` |
+| 設計・分析 | メインセッションで行うか、`research`（コマンド実行が必要なら `self`） | `inherit` |
+| 標準レビュー | `self` | `inherit` |
+| 高強度レビュー | `self` | `inherit` |
 
-- 役割（エージェント名）の指定が、モデルの指定に当たる。モデルを直接指定するのは、役割指定が使えない場合と、下記の例外で TOML と異なる設定を使う場合に限る。カスタムエージェントの TOML に書かれたモデルと effort は起動時の指定より優先される。
-- 委譲ツールが役割指定に対応しない（または利用できない）場合は、対象 TOML の `model` と `model_reasoning_effort` に対応する effort 引数を両方明示し、`developer_instructions` の行動制約を依頼文に含める。
-- `sandbox_mode` を指定できる環境では TOML と同じ値を渡す。指定できない場合は、対象ロールの `developer_instructions` に従う制約を依頼文に明記する。read-only の役割では編集と再委譲の禁止を明記し、それが技術的な書き込み制限ではない旨を結果に記録する。
-- 独立レビューと bias-free 評価は `fork_turns="none"` で起動し、必要な文脈と完了条件を依頼文に明記する。その他の委譲でも、履歴継承とモデル上書きを併用できないツールでは同じ方法を使う。
-- 作成に使った役割を記録するときは effort も記録する。モデルを明示的に上書きしたときは effort も指定する。
+## 例外と制約（Antigravity）
 
-## 例外と制約（Codex）
-
-- `architect` には実装させない。実装が複数回失敗したときだけ、組み込みの `worker` に `architect` の TOML のモデルと `senior_implementer` の TOML の effort を明示して実装を委譲する。役割は上位実装として記録し、`senior_implementer` の `developer_instructions` を依頼文に含める。`sandbox_mode` は同じ TOML に指定があればそれに従い、なければ親の設定を継承する。
-- `architect` と同じモデルの成果物は、新規の `frontier_reviewer` にレビューを依頼する（同じモデルでもコンテキストは必ず分ける。高リスク以上では選択の原則どおり 2 本に分ける）。
-- `frontier_reviewer` は TOML の effort を既定とする。超高リスクな変更、複雑な論理や境界条件の検証、初回の判断が不確かな場合だけ、組み込みの `default` に `frontier_reviewer` の TOML のモデルと effort `high` を明示し、同 TOML の `developer_instructions` を依頼文に含める。read-only の制約は上記の `sandbox_mode` の規則に従う。
-- 該当する TOML がない環境（現在のエージェント一覧にも `~/.codex/agents/`、`.codex/agents/` にもない）では、レビューを組み込みの `explorer` の新規起動で代替する。
-  - 起動 API で sandbox を指定できれば read-only にし、できなければ編集と再委譲の禁止を依頼文に明記する。
-  - モデルや effort を確実に指定できない場合はセッションの値を継承し、強度は新規コンテキストと観点の特化、非常に高リスクでの 2 本立てで担保する。
-- 別系列のモデルが使える場合はセカンドオピニオンも検討するが、Claude Code の自動起動は前提としない。
-- このルーティングは Plus プランを前提とする。Pro に移っても自動では切り替えず、必要に応じて `implementer.toml` と `reviewer.toml` のモデルを一段引き上げ、上の段の並びも合わせて直す。上位モデルの利用拡大は、利用枠と課題の難度を確かめてから判断する。
+- `Model` に `flash_lite` を指定するのは、機械的な修正や定型の大量 fan-out で、速度やトークン消費を最優先する場合に限る。
+- 役割の違いはモデルでは表せないため、`TypeName` と依頼文で担当範囲を厳密に定める。
+- レビューを `self` で起動するのは、テストやコマンドの実行が必要になるため。read-only は依頼文で編集と再委譲を禁じて守り、技術的な書き込み制限ではない旨を結果に記録する。実行が不要なら `research` を使ってよい。
+- 段が 1 つしかないため、観点 A / B の 2 本立ては高リスクには適用せず、`risk-based-review` の「非常に高リスク」に限る。

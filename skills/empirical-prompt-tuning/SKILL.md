@@ -27,13 +27,13 @@ description: Empirically evaluate agent-facing instructions with fresh subagents
 
 各コーディングエージェントのツール仕様と取得可能メトリクスに応じて、以下のように実行者をディスパッチする。
 
-| エージェント | 起動ツール | 役割（`model-routing`） | 取得可能メトリクス | 収束判定でのメトリクス扱い |
+| エージェント | 起動ツール | 役割（`subagent-delegation`） | 取得可能メトリクス | 収束判定でのメトリクス扱い |
 |---|---|---|---|---|
 | **Claude Code** | `Agent`（`subagent_type` に役割名を指定） | 評価対象の指示を実際に使う役割 | `tool_uses`, `duration_ms`（usage meta より） | 変動率（steps ±10%, duration ±15%）を含めて判定 |
 | **OpenAI Codex** | `spawn_agent` | 評価対象の指示を実際に使う役割（該当する TOML がなければ汎用エージェント） | なし（標準化された値は返らない） | 扱わない（精度と質的不明瞭点・自己申告 retries のみ） |
 | **Antigravity (Gemini)** | `invoke_subagent` | 評価対象の指示を実際に使う役割 | なし（親に返るのはテキストメッセージのみ） | 扱わない（精度と質的不明瞭点・自己申告 retries のみ） |
 
-実行者は評価対象の指示を実際に読んで動く立場なので、`model-routing` の「標準レビュー」（bias-free 評価）ではなく、その指示の利用者に当たる役割で起動する。たとえば実装手順の指示なら「実装」、レビュー手順の指示なら「標準レビュー」にする。
+実行者は評価対象の指示を実際に読んで動く立場なので、`subagent-delegation` の「標準レビュー」（bias-free 評価）ではなく、その指示の利用者に当たる役割で起動する。たとえば実装手順の指示なら「実装」、レビュー手順の指示なら「標準レビュー」にする。
 
 ### メトリクス階層化の原則
 
