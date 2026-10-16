@@ -128,6 +128,9 @@ Sessionx.vim
 .claude/plans/
 .claude/worktrees/
 
+### Agent skills ###
+.agents/lanes/
+
 ### Secrets ###
 # exception to the editor-generated-only scope above: an accidental commit here
 # costs a history rewrite and a credential rotation
