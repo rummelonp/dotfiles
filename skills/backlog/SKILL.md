@@ -8,6 +8,7 @@ description: Use when setting up, reading, or updating a project's work-item bac
 作業の**項目**を「ID、状態、種別、依存」の表で持ち、同梱のスクリプトで着手できる項目と依存を引く。
 表を置いた 1 つの Markdown ファイルを**計画**、1 つの置き場所にある計画の全体を**バックログ**と呼ぶ。
 表の書式は置き場所によらず同じにする。
+複数の項目を並列に進めるときは `parallel-lanes` skill に従う（同 skill がこの skill で項目を引き、状態の更新も同 skill が定める）。
 
 ## 書式
 
@@ -71,7 +72,7 @@ repo で追跡する文書 `docs/plans/` に置く（`backlog` skill の書式�
 メモリに置く場合は、そのメモリの索引から引ける名前にする。
 宣言がなければ、次の順に探す。
 
-1. 表のヘッダを持つファイル：`rg -l --hidden --no-ignore -g '*.md' -g '!.git' -g '!node_modules' '^\| # \| 状態 \| 種別 \| 依存 \|'`（追跡しないファイルも探すため、ignore を外す）
+1. 表のヘッダを持つファイル：`rg -l --hidden --no-ignore -g '*.md' -g '!.git' -g '!node_modules' -g '!.agents/lanes' '^\| # \| 状態 \| 種別 \| 依存 \|'`（追跡しないファイルも探すため、ignore を外す。`.agents/lanes/` は `parallel-lanes` が実行ごとに置く表なので除く。同 skill の宣言で別のディレクトリにしていれば、そちらを除く）
 2. 散文のバックログ：`TODO.md`、`ROADMAP.md`、`docs/` や `plans/` の下の計画など
 3. エージェントのメモリの索引
 4. GitHub の issue：`gh` が使え、repo で issue が使われている場合
