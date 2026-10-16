@@ -170,6 +170,7 @@
     ]
   },
   "model": "opus[1m]",
+  "language": "japanese",
   "enabledPlugins": {
     "i-have-adhd@i-have-adhd": true,
     "explainer@explainer": true,
@@ -201,6 +202,19 @@
         "repo": "cloudflare/skills"
       }
     }
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '特に指示がない限り、ユーザーへの応答は日本語で行う。'"
+          }
+        ]
+      }
+    ]
   },
   "spinnerVerbs": {
     "mode": "replace",
