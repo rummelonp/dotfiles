@@ -26,7 +26,7 @@ PR の作成と PR ブランチへの push は外部への書き込みなので�
       - `git rev-parse --verify origin/<ブランチ>` で、そのブランチが今もあると確かめられる。
    5. 既定ブランチ（`gh repo view --json defaultBranchRef --jq .defaultBranchRef.name`）。
 2. `git merge-base HEAD origin/<base>` が `origin/<base>` の先端と異なれば取り込む。
-   - 履歴を書き換えてよいかを `tidy-commits` の着手前の判定 2 で決め、書き換えてよければ rebase する（リポジトリに規約があればそれに従う）。
+   - 履歴を書き換えてよいか、書き換える前の確認、force push の扱いは `tidy-commits` の着手前の判定 2 の表で決める。書き換えてよければ rebase する（リポジトリに規約があればそれに従う）。
    - 書き換えない場合は merge する（rebase は force push が必要になる）。
    - 競合は両側の意図が読み取れる場合だけ解消する。読み取れなければ中断（`--abort`）して報告する。
    - 取り込んだら、テストなどの検証をやり直す。
@@ -42,7 +42,7 @@ PR の作成と PR ブランチへの push は外部への書き込みなので�
 
 ## 更新
 
-- 履歴を書き換えてよいかは `tidy-commits` の着手前の判定 2 に従う。書き換えない場合は、修正を新規コミットとして積み、force push しない。
+- 履歴を書き換えてよいか、書き換える前の確認、force push するかは `tidy-commits` の着手前の判定 2 の表に従う。書き換えない場合は、修正を新規コミットとして積み、force push しない。
 - 書き換えた履歴は `--force-with-lease --force-if-includes` で force push する（直前の `git fetch` でリモート追跡ブランチが更新されていると、`--force-with-lease` だけでは他人の push を上書きする）。
 
 ## 片付け
