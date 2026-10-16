@@ -43,14 +43,14 @@ description: Use when setting up, reading, or updating a project's work-item bac
 
 | 置き場所 | 向いている場面 | 状態を更新する人 |
 |---|---|---|
-| GitHub の issue | issue と PR で回す repo | 読むだけ |
+| GitHub の issue | issue と PR で回す repo | PR のマージで閉じる（`Closes` が効かない取り込みでは、取り込んだ人が閉じる） |
 | repo で追跡する文書 | 計画を履歴に残してよい repo | 項目を完了させるコミット |
 | repo の追跡しないファイル（gitignore したディレクトリ） | 履歴に残したくないが、repo の近くに置きたい | メインセッションだけ |
 | エージェントのメモリ（Claude Code なら自動メモリの `backlog.md`） | 個人 repo | メインセッションだけ |
 
 表は勧める順に並べてあり、向いている場面に当たるもののうち上にあるものを勧める。
 どれに当たるか分からなければ、追跡する文書を勧める。
-issue を先頭にするのは、PR に紐づけた issue がマージで閉じ、ほかの置き場所と二重に持たずに済むため。
+issue を先頭にするのは、PR に紐づけた issue がマージで閉じ（PR の base が既定ブランチの場合）、ほかの置き場所と二重に持たずに済むため。
 追跡する文書を追跡しないファイルより先にするのは、別の worktree からも読め、状態の更新が履歴とレビューに残るため。
 メモリを追跡しないファイルより後にするのは、ほかのエージェントから読めないため（Claude Code のメモリは Codex や Gemini から読めない）。
 
