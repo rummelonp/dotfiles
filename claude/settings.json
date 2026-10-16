@@ -4,7 +4,8 @@
   "env": {
     "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "235000",
     "CLAUDE_CODE_ENABLE_FUNCTION_HOOKS": "1",
-    "CLAUDE_CODE_THRIFTY_SONIC": "0"
+    "CLAUDE_CODE_THRIFTY_SONIC": "0",
+    "CLAUDE_SECURITY_SCAN_TIP": "off"
   },
   "permissions": {
     "defaultMode": "auto",
@@ -61,6 +62,7 @@
       "mcp__chrome-devtools__take_screenshot"
     ],
     "deny": [
+      "Agent(claude-security:claude-security)",
       "Bash(*cf *access token*)",
       "Bash(*cf *service-tokens*)",
       "Bash(*cf *temporary-credentials*)",
@@ -118,7 +120,8 @@
       "Read(~/.npmrc)",
       "Read(~/.ssh/**)",
       "Read(~/Library/Preferences/.wrangler/config/**)",
-      "Read(~/Library/Preferences/cloudflare/config/**)"
+      "Read(~/Library/Preferences/cloudflare/config/**)",
+      "Skill(claude-security:claude-security)"
     ],
     "ask": [
       "Bash(*wrangler *--remote*)",
@@ -175,7 +178,8 @@
     "i-have-adhd@i-have-adhd": true,
     "explainer@explainer": true,
     "codex@openai-codex": true,
-    "cloudflare@cloudflare": true
+    "cloudflare@cloudflare": true,
+    "claude-security@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "i-have-adhd": {
