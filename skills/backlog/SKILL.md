@@ -72,7 +72,7 @@ repo で追跡する文書 `docs/plans/` に置く（`backlog` skill の書式�
 メモリに置く場合は、そのメモリの索引から引ける名前にする。
 宣言がなければ、次の順に探す。
 
-1. 表のヘッダを持つファイル：`rg -l --hidden --no-ignore -g '*.md' -g '!.git' -g '!node_modules' -g '!.agents/lanes' '^\| # \| 状態 \| 種別 \| 依存 \|'`（追跡しないファイルも探すため、ignore を外す。`.agents/lanes/` は `parallel-lanes` が実行ごとに置く表なので除く。同 skill の宣言で別のディレクトリにしていれば、そちらを除く）
+1. 表のヘッダを持つファイル：`rg -l --hidden --no-ignore -g '*.md' -g '!.git' -g '!node_modules' -g '!.agents/lanes' '^\| # \| 状態 \| 種別 \| 依存 \|'`（追跡しないファイルも探すため、ignore を外す。`.agents/lanes/` は `parallel-lanes` が実行ごとに置く記録（バックログがないときは表を含む）なので除く。同 skill の宣言で別のディレクトリにしていれば、そちらを除く）
 2. 散文のバックログ：`TODO.md`、`ROADMAP.md`、`docs/` や `plans/` の下の計画など
 3. エージェントのメモリの索引
 4. GitHub の issue：`gh` が使え、repo で issue が使われている場合
