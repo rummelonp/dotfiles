@@ -154,6 +154,7 @@
     "permissionGrantsV2Migrated": true,
     "permissionPreset": "AGENT_PERMISSION_PRESET_TURBO",
     "remoteControlHostname": "macbook-air-local-frozen-sky",
-    "sandboxEnabledAtV2Migration": true
+    "sandboxEnabledAtV2Migration": true,
+    "themeMode": "THEME_MODE_INHERIT"
   }
 }
