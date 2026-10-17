@@ -91,12 +91,12 @@
 - 自動命名されたブランチや worktree のまま作業を進めない。最初のコミット前（コミットを伴う委譲の前）に、作業内容が伝わる名前に切り直す（`git switch -c <名前>`）。
   - 命名形式はリポジトリの `CLAUDE.md` に従う。指定がなければ既存の作業ブランチ名を確認して合わせ、参考になる例がなければ `feature/` などのプレフィックスを付けない。
   - worktree セッション（アプリが worktree を作って起動したもの。子セッションを含む）で開始した際は自動命名されているため必ず確認する（worktree のディレクトリ名までは変更不要）。
-- push / fetch 実行時は 1Password の SSH 承認が必要となる。
-  - サンドボックス外で実行し、timeout は 60 秒に設定する。
-  - 実行直前に「承認ダイアログが出たら承認して」とユーザーに伝える。
-  - 処理が停止して見える場合は承認待ち状態である。
-  - エラー時の判断: `Permission denied` はサンドボックス内での実行、`Connection refused` は 1Password 未起動（`open -a 1Password`）、`signing failed` は承認拒否またはロック中。
 
 ## シェル環境
 
 - その場で実行するコマンドでは `sed` の代わりに `gsed`（GNU sed）を使う。コミットするファイル（シェルスクリプト、Makefile、CI 設定など）では `gsed` を使わず、そのファイルの既存の書き方に合わせる。
+- `git push` / `git fetch` の実行時は 1Password の SSH 承認が必要となる。
+  - サンドボックス外で実行し、timeout は 60 秒に設定する。
+  - 実行直前に「承認ダイアログが出たら承認して」とユーザーに伝える。
+  - 処理が停止して見える場合は承認待ち状態である。
+  - エラー時の判断: `Permission denied` はサンドボックス内での実行、`Connection refused` は 1Password 未起動（`open -a 1Password`）、`signing failed` は承認拒否またはロック中。
