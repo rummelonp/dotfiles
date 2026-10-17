@@ -26,3 +26,9 @@ unset module_name{s,}
 
 ### Local configuration ###
 source $HOME/.zshrc.local
+
+### Claude Code ###
+# Claude Code writes commands for stock zsh, so drop option tweaks such as NO_CLOBBER and EXTENDED_GLOB.
+if [[ -n $CLAUDECODE ]]; then
+    emulate -R zsh
+fi
