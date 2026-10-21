@@ -301,11 +301,10 @@ function load(files: readonly string[], kinds: readonly string[]): Model {
   const violations: string[] = [];
   const parsed = files.flatMap((file) => parsePlan(file, kinds, violations));
   const allIds = new Set(parsed.map((item) => item.id));
-  const items = parsed.map((item) =>
-    item.ranges.length === 0
-      ? item
-      : { ...item, deps: [...item.deps, ...suffixedInRanges(item, allIds)] },
-  );
+  const items = parsed.map((item) => ({
+    ...item,
+    deps: [...new Set([...item.deps, ...suffixedInRanges(item, allIds)])],
+  }));
 
   const byId = new Map<string, Item>();
   for (const item of items) {

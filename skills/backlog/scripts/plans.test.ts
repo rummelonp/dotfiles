@@ -411,6 +411,23 @@ test("a range does not capture suffixed IDs of other prefixes or outside its bou
   assert.match(stdout, /^D1 未着手\/実装 ← — → — /m);
 });
 
+test("a dependency given both in a range and explicitly is listed once", () => {
+  const dir = fixtureDir();
+  write(
+    dir,
+    "a.md",
+    plan(
+      "| C1 | 未着手 | 実装 | — | c1 |",
+      "| C2 | 未着手 | 実装 | — | c2 |",
+      "| C2a | 未着手 | 実装 | — | split from c2 |",
+      "| D1 | 未着手 | 実装 | C1〜C2、C2、C2a | uses range |",
+    ),
+  );
+  const { status, stdout } = run(["status", "--", "a.md"], { cwd: dir });
+  assert.equal(status, 0);
+  assert.match(stdout, /^ {2}D1 {2}← C1、C2、C2a {2}/m);
+});
+
 test("usage errors exit 2", () => {
   const dir = fixtureDir();
   write(dir, "a.md", plan("| A1 | 未着手 | 実装 | — | x |"));
