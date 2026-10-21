@@ -194,6 +194,7 @@ test("ready groups by kind and lists only unblocked, unstarted items", () => {
       "  A3  解放 0  a.md:11  manual step",
       "[判断] 1 件（解放 = 片付くまで着手できない未完了の項目数）",
       "  A4  解放 0  a.md:12  decide this",
+      "[改善候補] 0 件（解放 = 片付くまで着手できない未完了の項目数）",
       "",
     ].join("\n"),
   );
@@ -301,7 +302,7 @@ const VIOLATIONS: ReadonlyArray<readonly [string, string, RegExp]> = [
     plan("| A1 | 未着手 | 実装 | A2 | x |", "| A2 | 未着手 | 実装 | A1 | y |"),
     /依存が循環している: A1 → A2 → A1/,
   ],
-  ["unknown kind", plan("| A1 | 未着手 | 実施 | — | x |"), /種別 "実施" は 実装 \/ 人手 \/ 判断 \/ 集約/],
+  ["unknown kind", plan("| A1 | 未着手 | 実施 | — | x |"), /種別 "実施" は 実装 \/ 人手 \/ 判断 \/ 改善候補 \/ 集約/],
   ["unknown status", plan("| A1 | 待機 | 実装 | — | x |"), /状態 "待機" は/],
   ["bad ID", plan("| 1A | 未着手 | 実装 | — | x |"), /ID "1A" は ID の文法に合わない/],
   ["prose dependency", plan("| A1 | 未着手 | 実装 | 先に調べる | x |"), /依存 "先に調べる" は ID でも範囲でもない/],
@@ -379,6 +380,22 @@ test("--kind adds a non-autonomous kind and is required for it to pass check", (
   const graph = run(["graph", ...args], { cwd: dir }).stdout;
   assert.match(graph, /^ {4}A1\(\["A1<br\/>ask the PO"\]\)$/m);
   assert.match(graph, /^ {4}A2\["A2<br\/>build"\]$/m);
+});
+
+test("改善候補 is a default kind listed apart from 実装 in ready", () => {
+  const dir = fixtureDir();
+  write(
+    dir,
+    "a.md",
+    plan("| A1 | 未着手 | 改善候補 | — | fix later |", "| A2 | 未着手 | 実装 | — | build |"),
+  );
+  assert.equal(run(["check", "--", "a.md"], { cwd: dir }).status, 0);
+
+  const ready = run(["ready", "--", "a.md"], { cwd: dir }).stdout;
+  assert.match(ready, /^\[改善候補\] 1 件/m);
+  assert.match(ready, /^ {2}A1 {2}解放 0 {2}a\.md:3 {2}fix later$/m);
+  assert.ok(ready.indexOf("[判断]") < ready.indexOf("[改善候補]"));
+  assert.ok(ready.indexOf("[実装]") < ready.indexOf("[改善候補]"));
 });
 
 test("--kind may appear before the command", () => {

@@ -36,7 +36,7 @@ const IMPLEMENTATION = "実装";
 const AGGREGATE = "集約";
 // A kind outside this list is a violation, so a typo cannot silently drop an item from the work
 // an agent picks up on its own. Extra kinds come from --kind and are never autonomous.
-const DEFAULT_KINDS = [IMPLEMENTATION, "人手", "判断", AGGREGATE];
+const DEFAULT_KINDS = [IMPLEMENTATION, "人手", "判断", "改善候補", AGGREGATE];
 /**
  * Items in these states are no longer worked on and drop out of every list. Only 完了 satisfies a
  * dependency: 取りやめ does not, so cancelling an item forces a decision on its open dependents
