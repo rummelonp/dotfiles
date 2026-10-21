@@ -58,14 +58,60 @@ const VALID = [
   "",
 ].join("\n");
 
-test("status summarizes each file and lists items in progress", () => {
+test("status summarizes each file and lists items in progress and items waiting", () => {
   const dir = fixtureDir();
-  write(dir, "a.md", VALID.replace("| A2 | 未着手", "| A2 | 進行中"));
+  write(
+    dir,
+    "a.md",
+    VALID.replace("| A2 | 未着手", "| A2 | 進行中").replace(
+      "bundle |\n",
+      [
+        "bundle |",
+        "| A6 | 未着手 | 人手 | A1、A2〜A4 | after second |",
+        "| A7 | 未着手 | 集約 | A6 | later bundle |",
+        "",
+      ].join("\n"),
+    ),
+  );
   const { status, stdout } = run(["status", "--", "a.md"], { cwd: dir });
   assert.equal(status, 0);
-  assert.match(stdout, /^進行中 {2}a\.md {2}未着手 2、進行中 2、完了 1、見送り 0$/m);
-  assert.match(stdout, /^ {2}A2 {2}a\.md:10 {2}second$/m);
-  assert.doesNotMatch(stdout, /A5 {2}a\.md/);
+  assert.equal(
+    stdout,
+    [
+      "進行中  a.md  未着手 4、進行中 2、完了 1、見送り 0",
+      "",
+      "進行中の項目: ",
+      "  A2  a.md:10  second",
+      "  A5  a.md:13  （集約）bundle",
+      "",
+      "依存待ちの項目（← 待っている未完了の項目）: ",
+      "  A6  ← A2、A3、A4  a.md:14  （人手）after second",
+      "  A7  ← A6  a.md:15  （集約）later bundle",
+      "",
+    ].join("\n"),
+  );
+});
+
+test("status says なし when nothing is in progress or waiting", () => {
+  const dir = fixtureDir();
+  write(dir, "a.md", plan("| A1 | 完了 | 実装 | — | x |", "| A2 | 未着手 | 実装 | A1 | y |"));
+  const { stdout } = run(["status", "--", "a.md"], { cwd: dir });
+  assert.match(stdout, /^進行中の項目: なし$/m);
+  assert.match(stdout, /^依存待ちの項目（← 待っている未完了の項目）: なし$/m);
+});
+
+test("status and ready print the whole 内容", () => {
+  const dir = fixtureDir();
+  const long = "x".repeat(100);
+  write(
+    dir,
+    "a.md",
+    plan(`| A1 | 未着手 | 実装 | — | ${long} |`, `| A2 | 進行中 | 実装 | — | ${long} |`),
+  );
+  const ready = run(["ready", "--", "a.md"], { cwd: dir }).stdout;
+  assert.match(ready, new RegExp(`^ {2}A1 .* ${long}$`, "m"));
+  const status = run(["status", "--", "a.md"], { cwd: dir }).stdout;
+  assert.match(status, new RegExp(`^ {2}A2 .* ${long}$`, "m"));
 });
 
 test("ready groups by kind and lists only unblocked, unstarted items", () => {

@@ -346,7 +346,7 @@ function load(files: readonly string[], kinds: readonly string[]): Model {
   return { items, byId, files, violations };
 }
 
-function printStatus({ items, files }: Model): void {
+function printStatus({ items, byId, files }: Model): void {
   for (const file of files) {
     const own = items.filter((item) => item.file === file);
     const count = (s: Status) => own.filter((item) => item.status === s).length;
@@ -355,10 +355,23 @@ function printStatus({ items, files }: Model): void {
     const state = own.length === 0 ? "項目なし" : derive(own.map((item) => item.status));
     console.log(`${state}  ${display(file)}  ${breakdown}`);
   }
-  const inProgress = items.filter((item) => item.status === "進行中" && item.kind !== AGGREGATE);
+  // Aggregates are listed in both lists: the breakdown counts them, and a count the lists do not
+  // add up to leaves the reader guessing where the item went. With ready, every unsettled item
+  // then appears somewhere, since an unstarted aggregate always waits on an unsettled child.
+  // Kinds other than 実装 are marked because, unlike ready, these lists are not grouped by kind
+  const mark = (item: Item) => (item.kind === IMPLEMENTATION ? "" : `（${item.kind}）`);
+  const inProgress = items.filter((item) => item.status === "進行中");
   console.log(`\n進行中の項目: ${inProgress.length === 0 ? "なし" : ""}`);
-  for (const item of inProgress)
-    console.log(`  ${item.id}  ${item.at}  ${truncate(item.summary, 50)}`);
+  for (const item of inProgress) console.log(`  ${item.id}  ${item.at}  ${mark(item)}${item.summary}`);
+  const waiting = (item: Item) =>
+    item.deps.filter((dep) => {
+      const status = byId.get(dep)?.status;
+      return status !== undefined && !SETTLED.has(status);
+    });
+  const blocked = items.filter((item) => item.status === "未着手" && waiting(item).length > 0);
+  console.log(`\n依存待ちの項目（← 待っている未完了の項目）: ${blocked.length === 0 ? "なし" : ""}`);
+  for (const item of blocked)
+    console.log(`  ${item.id}  ← ${waiting(item).join("、")}  ${item.at}  ${mark(item)}${item.summary}`);
 }
 
 /** Unsettled items that list each ID as a dependency */
@@ -434,8 +447,10 @@ function printReady({ items, byId }: Model, kinds: readonly string[]): void {
       // Array.prototype.sort is stable, so ties keep file order and then row order
       .sort((a, b) => b.count - a.count);
     console.log(`[${kind}] ${group.length} 件（解放 = 片付くまで着手できない未完了の項目数）`);
+    // The whole 内容, unlike deps and graph: an agent shows these to the user and would otherwise
+    // read the rows again from the table
     for (const { item, count } of group)
-      console.log(`  ${item.id}  解放 ${count}  ${item.at}  ${truncate(item.summary, 60)}`);
+      console.log(`  ${item.id}  解放 ${count}  ${item.at}  ${item.summary}`);
   }
 }
 
