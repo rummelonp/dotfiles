@@ -95,4 +95,5 @@ base への追従（rebase や merge）と push は `pr-workflow` に従う。
 - 新しいコミット列（ハッシュと件名）
 - 元の先端のハッシュ
 - ツリー差分の結果と、実行した検査
-- push と force push の要否。判定 2 の表の force push の列で行う条件を満たしていれば push まで行い、その結果を書く。それ以外の push は `pr-workflow` に従い、指示か承認を得てから行う。
+- push 済みのコミットを書き換えたときは、force push について書く。判定 2 の表の force push の列で行う条件を満たしていれば force push まで行ってその結果を書き、満たしていなければ force push が要ることを書く。
+- force push 以外の push は `pr-workflow` に従い、指示か承認を得てから行う。行ったときは結果を書く。push 済みのコミットを書き換えず、push もしていなければ、push について書かない。
