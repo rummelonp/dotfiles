@@ -78,7 +78,7 @@ test("status summarizes each file and lists items in progress and items waiting"
   assert.equal(
     stdout,
     [
-      "進行中  a.md  未着手 4、進行中 2、完了 1、見送り 0",
+      "進行中  a.md  未着手 4、進行中 2、完了 1、取りやめ 0、保留 0",
       "",
       "進行中の項目: ",
       "  A2  a.md:10  second",
@@ -87,6 +87,8 @@ test("status summarizes each file and lists items in progress and items waiting"
       "依存待ちの項目（← 待っている未完了の項目）: ",
       "  A6  ← A2、A3、A4  a.md:14  （人手）after second",
       "  A7  ← A6  a.md:15  （集約）later bundle",
+      "",
+      "保留の項目: なし",
       "",
     ].join("\n"),
   );
@@ -98,6 +100,70 @@ test("status says なし when nothing is in progress or waiting", () => {
   const { stdout } = run(["status", "--", "a.md"], { cwd: dir });
   assert.match(stdout, /^進行中の項目: なし$/m);
   assert.match(stdout, /^依存待ちの項目（← 待っている未完了の項目）: なし$/m);
+  assert.match(stdout, /^保留の項目: なし$/m);
+});
+
+const ON_HOLD = plan(
+  "| O1 | 完了 | 実装 | — | done |",
+  "| O2 | 保留 | 判断 | O1 | decide later |",
+  "| O3 | 未着手 | 実装 | O2 | build after the decision |",
+  "| O4 | 未着手 | 実装 | O3 | build after that |",
+  "| O5 | 未着手 | 実装 | O1 | unrelated |",
+  "| O6 | 保留 | 実装 | — | parked |",
+  "| O7 | 未着手 | 実装 | — | independent |",
+);
+
+test("status lists items on hold last and marks dependencies on hold", () => {
+  const dir = fixtureDir();
+  write(dir, "a.md", ON_HOLD.replace("| O3 | 未着手 | 実装 | O2 |", "| O3 | 未着手 | 実装 | O2、O7 |"));
+  const { status, stdout } = run(["status", "--", "a.md"], { cwd: dir });
+  assert.equal(status, 0);
+  assert.equal(
+    stdout,
+    [
+      "進行中  a.md  未着手 4、進行中 0、完了 1、取りやめ 0、保留 2",
+      "",
+      "進行中の項目: なし",
+      "",
+      "依存待ちの項目（← 待っている未完了の項目）: ",
+      "  O3  ← O2（保留）、O7  a.md:5  build after the decision",
+      "  O4  ← O3  a.md:6  build after that",
+      "",
+      "保留の項目: ",
+      "  O2  a.md:4  （判断）decide later",
+      "  O6  a.md:8  parked",
+      "",
+    ].join("\n"),
+  );
+});
+
+test("ready skips items on hold and items waiting on them, and does not count past them", () => {
+  const dir = fixtureDir();
+  write(
+    dir,
+    "a.md",
+    `${ON_HOLD.replace("| O4 | 未着手 | 実装 | O3 |", "| O4 | 未着手 | 実装 | O3、O7 |")}${[
+      "| O8 | 保留 | 実装 | O7 | held after O7 |",
+      "| O9 | 未着手 | 実装 | O8 | after the held one |",
+      "| O10 | 未着手 | 実装 | O7 | only after O7 |",
+      "",
+    ].join("\n")}`,
+  );
+  const { status, stdout } = run(["ready", "--", "a.md"], { cwd: dir });
+  assert.equal(status, 0);
+  const ids = [...stdout.matchAll(/^ {2}(\w+) {2}解放 (\d+)/gm)].map((m) => `${m[1]}:${m[2]}`);
+  // O7 unblocks O10 only: O8 is on hold, O9 is behind O8, and O4 is behind O2 through O3.
+  // O1 is done, and O3 waits on O2, which is on hold
+  assert.deepEqual(ids, ["O7:1", "O5:0"]);
+  assert.match(stdout, /^\[判断\] 0 件/m);
+});
+
+test("deps lists items on hold with their state", () => {
+  const dir = fixtureDir();
+  write(dir, "a.md", ON_HOLD);
+  const { stdout } = run(["deps", "O3", "--", "a.md"], { cwd: dir });
+  assert.match(stdout, /^O2 保留\/判断 ← — → O3 {2}decide later$/m);
+  assert.match(stdout, /^O3 未着手\/実装 ← O2 → O4 /m);
 });
 
 test("status and ready print the whole 内容", () => {
@@ -206,6 +272,24 @@ const VIOLATIONS: ReadonlyArray<readonly [string, string, RegExp]> = [
     plan("| A1 | 未着手 | 実装 | — | x |", "| A2 | 完了 | 実装 | A1 | y |"),
     /完了した A2 が 未着手 の A1 に依存/,
   ],
+  [
+    "completed item depending on an item on hold",
+    plan("| A1 | 保留 | 実装 | — | x |", "| A2 | 完了 | 実装 | A1 | y |"),
+    /完了した A2 が 保留 の A1 に依存/,
+  ],
+  [
+    "completed item depending on a cancelled one",
+    plan("| A1 | 取りやめ | 実装 | — | x |", "| A2 | 完了 | 実装 | A1 | y |"),
+    /完了した A2 が取りやめの A1 に依存している（依存から外す）/,
+  ],
+  ...(["未着手", "進行中", "保留"] as const).map(
+    (status) =>
+      [
+        `${status} item depending on a cancelled one`,
+        plan("| A1 | 取りやめ | 判断 | — | x |", `| A2 | ${status} | 実装 | A1 | y |`),
+        new RegExp(`${status}の A2 が取りやめの A1 に依存している（A2 も取りやめにするか、依存から外す）`),
+      ] as const,
+  ),
   [
     "aggregate state mismatch",
     plan("| A1 | 完了 | 実装 | — | x |", "| A2 | 未着手 | 集約 | A1 | y |"),
@@ -457,20 +541,70 @@ test("a usage error wins over table violations", () => {
   assert.equal(run(["frobnicate", "--", "a.md"], { cwd: dir }).status, 2);
 });
 
-test("status reports a file without any item as 項目なし, not 見送り", () => {
+test("status reports a file without any item as 項目なし, not 取りやめ", () => {
   const dir = fixtureDir();
   write(dir, "empty.md", "# Notes\n\nno table here\n");
-  write(dir, "skipped.md", plan("| S1 | 見送り | 実装 | — | x |"));
+  write(dir, "cancelled.md", plan("| S1 | 取りやめ | 実装 | — | x |"));
   const { status, stdout } = run(["status", "--", "."], { cwd: dir });
   assert.equal(status, 0);
-  assert.match(stdout, /^項目なし {2}empty\.md {2}未着手 0、進行中 0、完了 0、見送り 0$/m);
-  assert.match(stdout, /^見送り {2}skipped\.md /m);
+  assert.match(stdout, /^項目なし {2}empty\.md {2}未着手 0、進行中 0、完了 0、取りやめ 0、保留 0$/m);
+  assert.match(stdout, /^取りやめ {2}cancelled\.md /m);
 });
 
-test("an aggregate whose children are all 見送り is still derived as 見送り", () => {
+test("a cancelled item may depend on anything, and another cancelled item may depend on it", () => {
   const dir = fixtureDir();
-  write(dir, "a.md", plan("| A1 | 見送り | 実装 | — | x |", "| A2 | 見送り | 集約 | A1 | y |"));
+  write(
+    dir,
+    "a.md",
+    plan(
+      "| A1 | 未着手 | 実装 | — | x |",
+      "| A2 | 保留 | 実装 | — | x |",
+      "| A3 | 取りやめ | 実装 | A1、A2 | x |",
+      "| A4 | 取りやめ | 実装 | A3 | x |",
+    ),
+  );
   assert.equal(run(["check", "--", "a.md"], { cwd: dir }).status, 0);
+});
+
+for (const [children, derived] of [
+  [["取りやめ"], "取りやめ"],
+  [["取りやめ", "取りやめ"], "取りやめ"],
+  [["完了", "完了"], "完了"],
+  [["完了", "取りやめ"], "完了"],
+  [["保留", "保留"], "保留"],
+  [["完了", "保留", "取りやめ"], "保留"],
+  [["未着手", "未着手"], "未着手"],
+  [["未着手", "保留", "取りやめ"], "未着手"],
+  [["完了", "未着手"], "進行中"],
+  [["完了", "未着手", "保留"], "進行中"],
+  [["進行中", "保留"], "進行中"],
+] as const) {
+  test(`an aggregate of ${children.join("、")} is derived as ${derived}`, () => {
+    const dir = fixtureDir();
+    const rows = children.map((status, i) => `| C${i + 1} | ${status} | 実装 | — | x |`);
+    const deps = children.map((_, i) => `C${i + 1}`).join("、");
+    const aggregate = (status: string) => plan(...rows, `| G1 | ${status} | 集約 | ${deps} | g |`);
+    write(dir, "a.md", aggregate(derived));
+    assert.equal(run(["check", "--", "a.md"], { cwd: dir }).stdout, `${children.length + 1} 件の項目に違反なし\n`);
+    const wrong = derived === "進行中" ? "未着手" : "進行中";
+    write(dir, "a.md", aggregate(wrong));
+    assert.match(
+      run(["check", "--", "a.md"], { cwd: dir }).stderr,
+      new RegExp(`集約 G1 の状態は子から導くと "${derived}"（現在 "${wrong}"）`),
+    );
+  });
+}
+
+test("an open aggregate does not wait on its cancelled children", () => {
+  const dir = fixtureDir();
+  write(
+    dir,
+    "a.md",
+    plan("| C1 | 取りやめ | 実装 | — | x |", "| C2 | 未着手 | 実装 | — | y |", "| G1 | 未着手 | 集約 | C1、C2 | g |"),
+  );
+  const { status, stdout } = run(["status", "--", "a.md"], { cwd: dir });
+  assert.equal(status, 0);
+  assert.match(stdout, /^ {2}G1 {2}← C2 {2}a\.md:5 /m);
 });
 
 const FENCED = (open: string, inner: string, close: string): string =>

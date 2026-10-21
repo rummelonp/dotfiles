@@ -30,15 +30,19 @@ const ID_PARTS = /^([A-Za-zα-ω]+)([0-9]+)([a-z]?)$/;
 // Range ends are unsuffixed IDs with the same prefix. Only U+301C is accepted as 〜, because a
 // mix with U+FF5E (～) cannot be found by grep.
 const RANGE = /^([A-Za-zα-ω]+)([0-9]+)〜([A-Za-zα-ω]+)([0-9]+)$/;
-const STATUSES = ["未着手", "進行中", "完了", "見送り"] as const;
+const STATUSES = ["未着手", "進行中", "完了", "取りやめ", "保留"] as const;
 type Status = (typeof STATUSES)[number];
 const IMPLEMENTATION = "実装";
 const AGGREGATE = "集約";
 // A kind outside this list is a violation, so a typo cannot silently drop an item from the work
 // an agent picks up on its own. Extra kinds come from --kind and are never autonomous.
 const DEFAULT_KINDS = [IMPLEMENTATION, "人手", "判断", AGGREGATE];
-/** A dependent no longer waits for a dependency in one of these states */
-const SETTLED: ReadonlySet<Status> = new Set(["完了", "見送り"]);
+/**
+ * Items in these states are no longer worked on and drop out of every list. Only 完了 satisfies a
+ * dependency: 取りやめ does not, so cancelling an item forces a decision on its open dependents
+ * (check rejects them) instead of silently releasing them to ready.
+ */
+const CLOSED: ReadonlySet<Status> = new Set(["完了", "取りやめ"]);
 
 const SKILL_DOC = resolve(import.meta.dirname, "..", "SKILL.md");
 
@@ -267,10 +271,11 @@ function suffixedInRanges(item: Item, ids: Iterable<string>): string[] {
 
 /** State of an aggregate row (and of a whole file) derived from its parts */
 function derive(statuses: readonly Status[]): Status {
-  const live = statuses.filter((s) => s !== "見送り");
-  if (live.length === 0) return "見送り";
+  const live = statuses.filter((s) => s !== "取りやめ");
+  if (live.length === 0) return "取りやめ";
   if (live.every((s) => s === "完了")) return "完了";
-  if (live.every((s) => s === "未着手")) return "未着手";
+  if (live.every((s) => s === "完了" || s === "保留")) return "保留";
+  if (live.every((s) => s === "未着手" || s === "保留")) return "未着手";
   return "進行中";
 }
 
@@ -319,7 +324,17 @@ function load(files: readonly string[], kinds: readonly string[]): Model {
       const target = byId.get(dep);
       if (target === undefined) {
         violations.push(`${item.at}: ${item.id} の依存 "${dep}" が存在しない`);
-      } else if (item.status === "完了" && !SETTLED.has(target.status)) {
+        continue;
+      }
+      // An aggregate drops cancelled children and is checked against derive() below instead
+      if (item.kind === AGGREGATE || item.status === "取りやめ") continue;
+      if (target.status === "取りやめ") {
+        violations.push(
+          item.status === "完了"
+            ? `${item.at}: 完了した ${item.id} が取りやめの ${dep} に依存している（依存から外す）`
+            : `${item.at}: ${item.status}の ${item.id} が取りやめの ${dep} に依存している（${item.id} も取りやめにするか、依存から外す）`,
+        );
+      } else if (item.status === "完了" && target.status !== "完了") {
         violations.push(
           `${item.at}: 完了した ${item.id} が ${target.status} の ${dep} に依存している（再オープンは新しい ID で起こす）`,
         );
@@ -350,34 +365,49 @@ function printStatus({ items, byId, files }: Model): void {
     const own = items.filter((item) => item.file === file);
     const count = (s: Status) => own.filter((item) => item.status === s).length;
     const breakdown = STATUSES.map((s) => `${s} ${count(s)}`).join("、");
-    // derive([]) is 見送り for aggregates, which would misreport a file without a table
+    // derive([]) is 取りやめ for aggregates, which would misreport a file without a table
     const state = own.length === 0 ? "項目なし" : derive(own.map((item) => item.status));
     console.log(`${state}  ${display(file)}  ${breakdown}`);
   }
   // Aggregates are listed in both lists: the breakdown counts them, and a count the lists do not
-  // add up to leaves the reader guessing where the item went. With ready, every unsettled item
-  // then appears somewhere, since an unstarted aggregate always waits on an unsettled child.
+  // add up to leaves the reader guessing where the item went. With ready, every open item
+  // then appears somewhere, since an unstarted aggregate always waits on an unstarted child.
   // Kinds other than 実装 are marked because, unlike ready, these lists are not grouped by kind
   const mark = (item: Item) => (item.kind === IMPLEMENTATION ? "" : `（${item.kind}）`);
   const inProgress = items.filter((item) => item.status === "進行中");
   console.log(`\n進行中の項目: ${inProgress.length === 0 ? "なし" : ""}`);
   for (const item of inProgress) console.log(`  ${item.id}  ${item.at}  ${mark(item)}${item.summary}`);
-  const waiting = (item: Item) =>
-    item.deps.filter((dep) => {
-      const status = byId.get(dep)?.status;
-      return status !== undefined && !SETTLED.has(status);
-    });
+  const waiting = (item: Item) => openDeps(item, byId);
+  // A dependency on hold will not move by itself, unlike one that is merely unfinished
+  const onHold = (dep: string) => (byId.get(dep)?.status === "保留" ? "（保留）" : "");
   const blocked = items.filter((item) => item.status === "未着手" && waiting(item).length > 0);
   console.log(`\n依存待ちの項目（← 待っている未完了の項目）: ${blocked.length === 0 ? "なし" : ""}`);
-  for (const item of blocked)
-    console.log(`  ${item.id}  ← ${waiting(item).join("、")}  ${item.at}  ${mark(item)}${item.summary}`);
+  for (const item of blocked) {
+    const deps = waiting(item).map((dep) => `${dep}${onHold(dep)}`);
+    console.log(`  ${item.id}  ← ${deps.join("、")}  ${item.at}  ${mark(item)}${item.summary}`);
+  }
+  // Last, so the work that can move comes first
+  const held = items.filter((item) => item.status === "保留");
+  console.log(`\n保留の項目: ${held.length === 0 ? "なし" : ""}`);
+  for (const item of held) console.log(`  ${item.id}  ${item.at}  ${mark(item)}${item.summary}`);
 }
 
-/** Unsettled items that list each ID as a dependency */
+/**
+ * Dependencies not yet 完了 or 取りやめ. check leaves a 取りやめ dependency only on an aggregate or
+ * on another 取りやめ item, which are not waiting on it
+ */
+function openDeps(item: Item, byId: ReadonlyMap<string, Item>): string[] {
+  return item.deps.filter((dep) => {
+    const status = byId.get(dep)?.status;
+    return status !== undefined && !CLOSED.has(status);
+  });
+}
+
+/** Open items that list each ID as a dependency */
 function pendingDependents(items: readonly Item[]): Map<string, string[]> {
   const dependents = new Map<string, string[]>();
   for (const item of items) {
-    if (SETTLED.has(item.status)) continue;
+    if (CLOSED.has(item.status)) continue;
     for (const dep of item.deps) dependents.set(dep, [...(dependents.get(dep) ?? []), item.id]);
   }
   return dependents;
@@ -399,10 +429,10 @@ function reachable(
   return seen;
 }
 
-/** Unsettled items, narrowed to the ancestors and descendants of focus. A focus may be settled */
+/** Open items, narrowed to the ancestors and descendants of focus. A focus may be closed */
 function selectPending({ items, byId }: Model, focus: readonly string[]): Set<string> {
   const pendingIds = new Set(
-    items.filter((item) => !SETTLED.has(item.status)).map((item) => item.id),
+    items.filter((item) => !CLOSED.has(item.status)).map((item) => item.id),
   );
   if (focus.length === 0) return pendingIds;
   const unknown = focus.filter((id) => !byId.has(id));
@@ -420,24 +450,24 @@ function selectPending({ items, byId }: Model, focus: readonly string[]): Set<st
 
 function printReady({ items, byId }: Model, kinds: readonly string[]): void {
   const dependents = pendingDependents(items);
-  // Priority hint: unsettled items that cannot start until this one is done, transitively.
-  // Aggregates only bundle other items, so they are not counted.
+  const next = (x: string) => dependents.get(x) ?? [];
+  // Items on hold and everything behind them, even through another path, would not start anyway
+  const held = new Set(
+    items
+      .filter((item) => item.status === "保留")
+      .flatMap((item) => [item.id, ...reachable(item.id, next, () => true)]),
+  );
+  // Priority hint: open items that cannot start until this one is done, transitively.
+  // Aggregates only bundle other items, so they are not counted, and neither is anything held.
   const unblocks = (item: Item) =>
-    [
-      ...reachable(
-        item.id,
-        (x) => dependents.get(x) ?? [],
-        () => true,
-      ),
-    ].filter((id) => byId.get(id)?.kind !== AGGREGATE).length;
+    [...reachable(item.id, next, (x) => !held.has(x))].filter(
+      (id) => byId.get(id)?.kind !== AGGREGATE,
+    ).length;
   const ready = items.filter(
     (item) =>
       item.status === "未着手" &&
       item.kind !== AGGREGATE &&
-      item.deps.every((dep) => {
-        const status = byId.get(dep)?.status;
-        return status !== undefined && SETTLED.has(status);
-      }),
+      item.deps.every((dep) => byId.get(dep)?.status === "完了"),
   );
   for (const kind of kinds.filter((k) => k !== AGGREGATE)) {
     const group = ready
@@ -467,12 +497,8 @@ function printDeps(model: Model, focus: readonly string[]): void {
       file = item.file;
       console.log(`## ${display(file)}`);
     }
-    const waiting = item.deps.filter((dep) => {
-      const status = byId.get(dep)?.status;
-      return status !== undefined && !SETTLED.has(status);
-    });
     console.log(
-      `${item.id} ${item.status}/${item.kind} ← ${list(waiting)} → ${list(dependents.get(item.id) ?? [])}  ${truncate(item.summary, 30)}`,
+      `${item.id} ${item.status}/${item.kind} ← ${list(openDeps(item, byId))} → ${list(dependents.get(item.id) ?? [])}  ${truncate(item.summary, 30)}`,
     );
   }
 }
