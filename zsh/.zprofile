@@ -113,8 +113,11 @@ if (( $+commands[fvm] )); then
 fi
 
 # Rust
-if [ -f $HOME/.cargo/env ]; then
-    source $HOME/.cargo/env
+if [ -d $HOMEBREW_PREFIX/opt/rustup/bin ]; then
+    path=($HOMEBREW_PREFIX/opt/rustup/bin $path)
+fi
+if [ -d $HOME/.cargo/bin ]; then
+    path=($HOME/.cargo/bin $path)
 fi
 
 # Go
