@@ -29,7 +29,8 @@ description: Use before launching a subagent, to choose its role, the model and 
 - レビューの段は、`risk-based-review` で決めた強度に対応する役割と、作成側の一段上のうち高い方にする。同じ段のレビューは、作成時の誤った前提を引き継ぎやすい。
 - 作成側の段は、委譲した場合は起動した役割の段（割り当て表と異なるモデルで起動した場合はそのモデルの段）とし、メインセッションが自分で作成した場合は同じ作業を委譲するときに上の表で選ぶ役割の段とする。
 - 作成側に一段上の段がない場合は、同じ段の新規サブエージェントに依頼し、コンテキストを分けて独立性を保つ。高リスク以上では、一段上げられない代わりに観点 A / B の 2 本に分けて依頼する（観点の定義は `risk-based-review`）。
-- 委譲時は、作成に使った役割を記録する（記録先は plan ファイルやコミット trailer など、リポジトリの慣習に従う）。段は役割から割り当て表で引けるので、モデルを記録するのは割り当て表と異なるモデルで起動した場合（代替の起動や例外）だけでよい。レビューの段を決めるときに必要になる。
+- 委譲時は、作成に使った役割を記録する（記録先は plan ファイルやコミット trailer など、リポジトリの慣習に従う）。
+  段は役割から割り当て表で引けるので、モデルを記録するのは割り当て表と異なるモデルで起動した場合（代替の起動や例外）だけでよい。レビューの段を決めるときに必要になる。
 
 ## 依頼と報告の受け取り
 
@@ -59,17 +60,23 @@ description: Use before launching a subagent, to choose its role, the model and 
 
 - 役割（エージェント名）の指定が、モデルの指定に当たる。モデルを直接指定するのは、役割指定が使えない場合と、下記の例外で TOML と異なる設定を使う場合に限る。カスタムエージェントの TOML に書かれたモデルと effort は起動時の指定より優先される。
 - 委譲ツールが役割指定に対応しない（または利用できない）場合は、対象 TOML の `model` と `model_reasoning_effort` に対応する effort 引数を両方明示し、`developer_instructions` の行動制約を依頼文に含める。
-- `sandbox_mode` を指定できる環境では TOML と同じ値を渡す。指定できない場合は、対象の役割の TOML にある `developer_instructions` に従う制約を依頼文に明記する。read-only の役割では編集と再委譲の禁止を明記し、それが技術的な書き込み制限ではない旨を結果に記録する。
+- `sandbox_mode` を指定できる環境では TOML と同じ値を渡す。指定できない場合は、対象の役割の TOML にある `developer_instructions` に従う制約を依頼文に明記する。
+  read-only の役割では編集と再委譲の禁止を明記し、それが技術的な書き込み制限ではない旨を結果に記録する。
 - 独立レビューと empirical 評価の実行者は `fork_turns="none"` で起動し、必要な文脈と完了条件を依頼文に明記する。その他の委譲でも、履歴継承とモデル上書きを併用できないツールでは同じ方法を使う。
 - 作成に使った役割を記録するときは effort も記録する。モデルを明示的に上書きしたときは effort も指定する。
 
 ## 例外と制約（Codex）
 
-- `architect` には実装させない。実装が複数回失敗したときだけ、組み込みの `worker` に `architect` の TOML のモデルと `senior_implementer` の TOML の effort を明示して実装を委譲する。役割は上位実装として記録し、`senior_implementer` の `developer_instructions` を依頼文に含める。`sandbox_mode` は同じ TOML に指定があればそれに従い、なければ親の設定を継承する。
+- `architect` には実装させない。実装が複数回失敗したときだけ、組み込みの `worker` に `architect` の TOML のモデルと `senior_implementer` の TOML の effort を明示して実装を委譲する。
+  役割は上位実装として記録し、`senior_implementer` の `developer_instructions` を依頼文に含める。
+  `sandbox_mode` は同じ TOML に指定があればそれに従い、なければ親の設定を継承する。
 - `architect` と同じモデルの成果物は、新規の `frontier_reviewer` にレビューを依頼する（同じモデルでもコンテキストは必ず分ける。高リスク以上では選択の原則どおり 2 本に分ける）。
-- `frontier_reviewer` は TOML の effort を既定とする。超高リスクな変更、複雑な論理や境界条件の検証、初回の判断が不確かな場合だけ、組み込みの `default` に `frontier_reviewer` の TOML のモデルと effort `high` を明示し、同 TOML の `developer_instructions` を依頼文に含める。read-only の制約は上記の `sandbox_mode` の規則に従う。
+- `frontier_reviewer` は TOML の effort を既定とする。
+  超高リスクな変更、複雑な論理や境界条件の検証、初回の判断が不確かな場合だけ、組み込みの `default` に `frontier_reviewer` の TOML のモデルと effort `high` を明示し、同 TOML の `developer_instructions` を依頼文に含める。
+  read-only の制約は上記の `sandbox_mode` の規則に従う。
 - 該当する TOML がない環境（現在のエージェント一覧にも `~/.codex/agents/`、`.codex/agents/` にもない）では、レビューを組み込みの `explorer` の新規起動で代替する。
   - 起動 API で sandbox を指定できれば read-only にし、できなければ編集と再委譲の禁止を依頼文に明記する。
   - モデルや effort を確実に指定できない場合はセッションの値を継承し、強度は新規コンテキストと観点の特化、非常に高リスクでの 2 本立てで担保する。
 - 別系列のモデルが使える場合はセカンドオピニオンも検討するが、Claude Code の自動起動は前提としない。
-- このルーティングは Plus プランを前提とする。Pro に移っても自動では切り替えず、必要に応じて `implementer.toml` と `reviewer.toml` のモデルを一段引き上げ、上の段の並びも合わせて直す。上位モデルの利用拡大は、利用枠と課題の難度を確かめてから判断する。
+- このルーティングは Plus プランを前提とする。Pro に移っても自動では切り替えず、必要に応じて `implementer.toml` と `reviewer.toml` のモデルを一段引き上げ、上の段の並びも合わせて直す。
+  上位モデルの利用拡大は、利用枠と課題の難度を確かめてから判断する。
