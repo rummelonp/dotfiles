@@ -64,8 +64,6 @@ description: Use when deciding whether a change needs independent review, how st
   - 障害や不具合が発生した際にロールバックや切り戻しができるか（可逆性）。
   - セキュリティ境界、権限昇格、意図しない外部書き込み、認証・認可の穴がないか。
 
----
-
 ## 独立レビューの前提原則
 
 実装時のコンテキストを引き継ぐ自己レビューは常に行う。その上で、上記のリスク分類に従って独立レビューの強度を決定する。
@@ -77,13 +75,13 @@ description: Use when deciding whether a change needs independent review, how st
 ## 依頼手順
 
 1. **diff range を決める**:
-初回は今回の作業全体を対象とする。再レビュー時は修正コミットのみに絞る（再レビューの規定は `<この skill のディレクトリ>/references/re-review.md` にある）。
-base の取り込みより前に依頼する（取り込み後は base 側の変更が範囲に混ざる）。
+   初回は今回の作業全体を対象とする。再レビュー時は修正コミットのみに絞る（再レビューの規定は `<この skill のディレクトリ>/references/re-review.md` にある）。
+   base の取り込みより前に依頼する（取り込み後は base 側の変更が範囲に混ざる）。
 
-```bash
-HEAD_SHA=$(git rev-parse HEAD)
-BASE_SHA=<開始時の HEAD>  # 初回
-```
+   ```bash
+   HEAD_SHA=$(git rev-parse HEAD)
+   BASE_SHA=<開始時の HEAD>  # 初回
+   ```
 
 2. **レビュアーに依頼する**: 新規サブエージェントに以下を渡す。
    - 作業内容の概要（DESCRIPTION）
