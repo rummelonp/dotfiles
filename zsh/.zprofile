@@ -126,6 +126,11 @@ if (( $+commands[go] )); then
     path=($GOPATH/bin $path)
 fi
 
+# PostgreSQL
+if [ -d $HOMEBREW_PREFIX/opt/libpq/bin ]; then
+    path=($HOMEBREW_PREFIX/opt/libpq/bin $path)
+fi
+
 # Rancher
 if [ -d $HOME/.rd/bin ]; then
     path=($HOME/.rd/bin $path)
