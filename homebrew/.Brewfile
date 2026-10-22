@@ -1,6 +1,5 @@
 tap "cloudflare/cloudflare"
 tap "kayac/tap"
-tap "leoafarias/fvm"
 tap "messense/macos-cross-toolchains"
 tap "oven-sh/bun"
 tap "reviewdog/tap"
@@ -13,8 +12,6 @@ brew "shellcheck"
 brew "actionlint"
 # Access Log Profiler
 brew "alp"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # Library for command-line editing
 brew "readline"
 # Client for Amazon Elastic Beanstalk web service
@@ -23,6 +20,8 @@ brew "aws-elasticbeanstalk"
 brew "aws-vault"
 # Official Amazon AWS command-line interface
 brew "awscli"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Powerful, enterprise-ready, open source web server with automatic HTTPS
@@ -31,6 +30,8 @@ brew "caddy"
 brew "carthage"
 # Official command-line tool for CircleCI
 brew "circleci"
+# Utility for connecting securely to your Cloud SQL instances
+brew "cloud-sql-proxy"
 # Cross-platform make
 brew "cmake"
 # Migemo is a tool that supports Japanese incremental search with Romaji
@@ -65,6 +66,8 @@ brew "figlet"
 brew "firebase-cli"
 # Manage Procfile-based applications
 brew "foreman"
+# Manage Flutter SDK versions per project
+brew "fvm"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GitHub command-line tool
@@ -113,6 +116,8 @@ brew "kotlin-language-server"
 brew "ktlint"
 # Template-free customization of Kubernetes YAML manifests
 brew "kustomize"
+# Postgres C API library
+brew "libpq"
 # Mac App Store command-line interface
 brew "mas"
 # Yet another part-of-speech and morphological analyzer
@@ -209,8 +214,6 @@ brew "zsh-completions"
 brew "cloudflare/cloudflare/cf-terraforming", trusted: true
 # ecspresso is a deployment tool for Amazon ECS
 brew "kayac/tap/ecspresso", trusted: true
-# Simple cli to manage Flutter SDK versions per project
-brew "leoafarias/fvm/fvm", trusted: true
 # aarch64-unknown-linux-gnu Toolchain
 brew "messense/macos-cross-toolchains/aarch64-unknown-linux-gnu", trusted: true
 # x86_64-unknown-linux-gnu Toolchain
@@ -264,10 +267,8 @@ cask "google-japanese-ime"
 cask "karabiner-elements"
 # Open-source keystroke visualiser
 cask "keycastr"
-# Music services manager
-cask "lastfm"
-# Open-source Markdown editor
-cask "macdown"
+# Markdown editor with live preview and syntax highlighting
+cask "macdown-3000"
 # Intercept, modify, replay, save HTTP/S traffic
 cask "mitmproxy"
 # Reverse proxy, secure introspectable tunnels to localhost
