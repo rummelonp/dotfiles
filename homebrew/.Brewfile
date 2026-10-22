@@ -304,5 +304,8 @@ mas "Skitch", id: 425955336
 mas "Spark", id: 1176895641
 mas "TestFlight", id: 899247664
 mas "Xcode", id: 497799835
+vscode "ms-ceintl.vscode-language-pack-ja"
 go "github.com/fujimura/git-gsub"
 go "golang.org/x/tools/gopls"
+cargo "cccc-cli"
+cargo "coldsnap"
