@@ -19,7 +19,6 @@ description: Use after finishing changes to files and before reporting the work 
    - コメントは、ユーザー設定の指示（`~/.claude/CLAUDE.md`、`~/.codex/AGENTS.md`、`~/.gemini/config/GEMINI.md` に当たるもの）のコア原則にあるコメントの規範に照らす。
    - 日本語の文章（文書、コミットメッセージ、PR 本文、コード内のコメント）は、同じくコア原則の日本語の規範に照らす。
    - 日本語の散文ドキュメント（README、SKILL.md、設計文書など）には、加えて `japanese-tech-writing` skill を適用する。
-     一文一行や脚注などの原稿向けの整形がリポジトリの既存の書式と食い違う場合は、既存の書式を優先する。
    - リポジトリの規約がコメントやコミットの言語・形式を定めていれば、それを優先する。
      定めがなければ、周囲の既存コメントと既存のコミットメッセージの言語・形式に合わせる。
      コメントの量と内容は周囲に合わせず、上のコメントの規範に従う。
