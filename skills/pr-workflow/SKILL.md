@@ -20,6 +20,8 @@ force push は `--force-with-lease --force-if-includes` で行う。
    3. repo の規約（`CLAUDE.md`、`AGENTS.md`、`CONTRIBUTING.md` など）が定めるブランチ。
    4. 既定ブランチ（`gh repo view --json defaultBranchRef --jq .defaultBranchRef.name`）。
 2. `git merge-base HEAD origin/<base>` が `origin/<base>` の先端と異なれば取り込む。
+   - 書き換えてよいかが PR の Draft か Ready かで決まる場合、base が 1 の 1 で決まっていても、取り込み方を決める前に 1 の 2 の `gh pr view` で開いた PR の有無と isDraft を引く。
+     引けなかった場合（認証やネットワークのエラー）と、開いた PR が Draft でない場合は、ユーザーが書き換えを承認していなければ merge する。
    - 書き換えてよければ rebase し（リポジトリに規約があればそれに従う）、書き換えない場合は merge する（rebase は force push が必要になる）。
    - 競合は両側の意図が読み取れる場合だけ解消する。読み取れなければ中断（`--abort`）して報告する。
    - 取り込んだら、テストなどの検証をやり直す。
