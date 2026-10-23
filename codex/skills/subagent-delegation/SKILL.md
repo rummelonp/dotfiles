@@ -76,7 +76,7 @@ description: Use before launching a subagent, to choose its role, the model and 
   read-only の制約は上記の `sandbox_mode` の規則に従う。
 - 該当する TOML がない環境（現在のエージェント一覧にも `~/.codex/agents/`、`.codex/agents/` にもない）では、レビューを組み込みの `explorer` の新規起動で代替する。
   - 起動 API で sandbox を指定できれば read-only にし、できなければ編集と再委譲の禁止を依頼文に明記する。
-  - モデルや effort を確実に指定できない場合はセッションの値を継承し、強度は新規コンテキストと観点の特化、非常に高リスクでの 2 本立てで担保する。
+  - モデルや effort を確実に指定できない場合はセッションの値を継承し、強度は新規コンテキストと観点の特化、高リスク以上での 2 本立てで担保する。
 - 別系列のモデルが使える場合はセカンドオピニオンも検討するが、Claude Code の自動起動は前提としない。
 - このルーティングは Plus プランを前提とする。Pro に移っても自動では切り替えず、必要に応じて `implementer.toml` と `reviewer.toml` のモデルを一段引き上げ、上の段の並びも合わせて直す。
   上位モデルの利用拡大は、利用枠と課題の難度を確かめてから判断する。
