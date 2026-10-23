@@ -15,17 +15,10 @@ force push は `--force-with-lease --force-if-includes` で行う。
    既定ブランチと決めつけず、次の順で最初に決まったものを使う。
    1. ユーザーや呼び出し元の skill が指定したブランチ。
    2. このブランチの開いた PR の base。
-      `gh pr view --json state,baseRefName --jq 'select(.state == "OPEN") | .baseRefName'` で引く（マージ済みや閉じた PR の base も返るため、開いたものに絞る）。
-      成功して出力が空か、エラーの文言が `no pull requests found` で始まれば次へ進む（終了コードだけでは、PR がないこととネットワークなどの失敗を見分けられないため）。
-      ほかの文言のエラー（認証やネットワークなど）なら、base を決めずに報告する。
+      `gh pr view --json state,baseRefName --jq 'select(.state == "OPEN") | .baseRefName'` で引く。
+      出力が空か `no pull requests found` のエラーなら次へ進み、ほかのエラー（認証やネットワークなど）なら base を決めずに報告する。
    3. repo の規約（`CLAUDE.md`、`AGENTS.md`、`CONTRIBUTING.md` など）が定めるブランチ。
-   4. 直近にマージされた PR の過半数が base にしている、既定ブランチ以外のブランチ。
-      `gh pr list --state merged --limit 20 --json baseRefName --jq '.[].baseRefName' | sort | uniq -c | sort -rn` で数え、各行の件数を足した数を、取得した件数とする。
-      次をすべて満たすときだけ当て、どれかを満たさなければ次へ進む。
-      - 取得した件数が 5 件以上ある。
-      - そのブランチが取得した件数の過半数を占める（件数の下限とあわせて、機能ブランチ宛の PR が数本混ざるだけで base を動かさないため）。
-      - `git rev-parse --verify origin/<ブランチ>` で、そのブランチが今もあると確かめられる。
-   5. 既定ブランチ（`gh repo view --json defaultBranchRef --jq .defaultBranchRef.name`）。
+   4. 既定ブランチ（`gh repo view --json defaultBranchRef --jq .defaultBranchRef.name`）。
 2. `git merge-base HEAD origin/<base>` が `origin/<base>` の先端と異なれば取り込む。
    - 書き換えてよければ rebase し（リポジトリに規約があればそれに従う）、書き換えない場合は merge する（rebase は force push が必要になる）。
    - 競合は両側の意図が読み取れる場合だけ解消する。読み取れなければ中断（`--abort`）して報告する。
