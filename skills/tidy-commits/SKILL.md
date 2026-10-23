@@ -1,18 +1,19 @@
 ---
 name: tidy-commits
-description: Use when asked to tidy, squash, fold, split, reorder, or rebuild the commits on a branch (コミット整理, 畳み直し, 畳み込み, まとめて, 分割し直し, 粒度を整える, fixup で直して), or when the user is in the middle of their own interactive rebase and asks you to check or adjust a commit. Covers whether history may be rewritten, where to draw commit boundaries, keeping unrelated changes out, and proving the final tree is unchanged.
+description: Use when asked to tidy, squash, fold, split, reorder, amend, or rebuild the commits on a branch (コミット整理, 畳み直し, 畳み込み, まとめて, 分割し直し, 粒度を整える, fixup で直して, amend して), including amending commits that are already pushed, or when the user is in the middle of their own interactive rebase and asks you to check or adjust a commit. Covers where to draw commit boundaries, keeping unrelated changes out, and proving the final tree is unchanged.
 ---
 
 # コミットの整理
 
 作業ブランチの `<起点>..HEAD` にあるコミット列を組み直す。
 `<起点>` は書き換えない最後のコミットのハッシュで、次のように決める。
-- `final-pass` から使うときは、`risk-based-review` の開始時の HEAD にする。
-- ユーザーが範囲を示したら、その起点にする。
+- ユーザーか呼び出し元が範囲を示したら、その起点にする。
+- 特定のコミットを直す（amend など）ときは、直すコミットのうち最も古いものの親にする。
 - ブランチ全体を整理するときは、`git merge-base HEAD origin/<base>` にする。
 
 `<起点>` にブランチ名を渡さない。`git rebase -i origin/<base>` は base の先端への追従を兼ねるうえ、`<起点>` より前のコミットも書き換えることがある。
-base への追従（rebase や merge）と push は `pr-workflow` に従う。
+base への追従（rebase や merge）と push は、この skill では行わない。
+書き換えた履歴を後で push するときは、`--force-with-lease --force-if-includes` で force push する。
 
 ## 着手前の判定
 
@@ -23,21 +24,8 @@ base への追従（rebase や merge）と push は `pr-workflow` に従う。
    - `--continue`、`--skip`、`--abort` は実行しない。
    - 手直しを評価するときは、元のコミット（`done` の末尾にある SHA）との差分、メッセージとの整合、そのコミットの時点のツリーで成り立つか（検査があればその場で実行し、なければ参照先がそのツリーにあるかを確かめる）を見る。
      手直しが、`git-rebase-todo` に残っている後のコミットの変更を先取りしていないかも確かめる。
-2. 書き換えてよいかを決める。
-   次の表を上の行から順に当て、最初に当たった行に従う。
-
-   | 状態 | 明示がないとき | 書き換える前の確認 | force push |
-   |---|---|---|---|
-   | 書き換えるコミット（SHA が変わるもの。fixup なら、直すコミットのうち最も古いものから先端まで）がすべて未 push | 書き換える | しない | 要らない |
-   | 既定ブランチ、ほかの開いた PR の base、Ready の PR | 積む | 書き換えるならする | 確認で得た承認か、force push の明示で行う |
-   | Draft PR、PR のない作業ブランチ | 書き換える | しない | push か PR 更新の指示で行う |
-
-   - ユーザーの明示（「amend して」「squash して」「積んで」「fixup で」）は「明示がないとき」の列より優先する。
-     確認が要る行では、書き換えを明示されても確認は省かず、force push と明示されたときだけ省く（push の指示だけでは、force push がほかの人の作業に及ぶと承知しているか分からないため）。
-   - 確認では force push が要ることを伝える。承認は、この判定に続く書き換え（`final-pass` なら 4 の fixup から 5 の整理まで）と、その後の force push に効く。得られなければ積む。
-     依頼が畳み込み、分割、並べ替えなどの整理そのものなら、何もせずに報告する。
-   - ほかの開いた PR の base かは `gh pr list --base <ブランチ> --state open` で確かめる（書き換えると、その PR の差分が崩れる）。
-   - 書き換えてよい状態で「任せる」と言われたら、積まずに畳む。
+2. push 済みのコミットを書き換えるのは、規則ファイル（`CLAUDE.md` / `AGENTS.md` / `GEMINI.md`）が許している場合か、force push が要ることを伝えてユーザーが承認した場合だけにする。
+   書き換えないと決まったときに、依頼が整理そのもの（畳み込み、分割、並べ替えなど）なら、何もせずに報告する。
 3. 範囲にマージコミットがあれば、組み直す前に方針を確認する。
    rebase はマージコミットを落とすので、マージで解消した競合や取り込んだ変更が失われることがある。
 4. 未コミットの変更を仕分ける。
@@ -97,5 +85,3 @@ base への追従（rebase や merge）と push は `pr-workflow` に従う。
 - 新しいコミット列（ハッシュと件名）
 - 元の先端のハッシュ
 - ツリー差分の結果と、実行した検査
-- push 済みのコミットを書き換えたときは、force push について書く。判定 2 の表の force push の列で行う条件を満たしていれば force push まで行ってその結果を書き、満たしていなければ force push が要ることを書く。
-- force push 以外の push は `pr-workflow` に従い、指示か承認を得てから行う。行ったときは結果を書く。push 済みのコミットを書き換えず、push もしていなければ、push について書かない。
