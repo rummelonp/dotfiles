@@ -6,7 +6,7 @@ description: Use right before claiming a task is complete, fixed, or passing - r
 # 検証チェックリスト
 
 タスク完了を宣言する前の自己検証ゲート。
-独立レビュアーによる出荷可否判定（リリースゲート）ではなく、作業者自身による検証手順を定める。判定は「完了」または「要修正」の 2 値のみとし、SHIP / SHIP WITH FIXES / DO NOT SHIP 等の多値判定は用いない。
+独立レビュアーによる出荷可否判定（リリースゲート）ではなく、作業者自身による検証手順を定める。判定は「完了」または「要修正」の 2 値とする。
 
 ## Iron Law
 
