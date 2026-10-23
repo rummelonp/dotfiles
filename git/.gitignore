@@ -126,6 +126,7 @@ Sessionx.vim
 # plansDirectory is relative to the project root
 .claude/settings.local.json
 .claude/plans/
+.claude/backlog/
 .claude/worktrees/
 
 ### Agent skills ###
