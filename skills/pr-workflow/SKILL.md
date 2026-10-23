@@ -27,7 +27,7 @@ force push は `--force-with-lease --force-if-includes` で行う。
 
 ## 作成
 
-- 作成・更新の前の 1 で決めた base を明示して作成する（`gh` なら `--base <base>`。省略すると既定ブランチ向けになりうるため）。
+- 「作成・更新の前」の 1 で決めた base を明示して作成する（`gh` なら `--base <base>`。省略すると既定ブランチ向けになりうるため）。
 - 「Ready で」などの明示指示がない限り、Draft で作成する（`gh` なら `--draft`）。Ready への切り替えはユーザーの指示があるときだけ行う。
 - PR テンプレート（`.github/pull_request_template.md` や `.github/PULL_REQUEST_TEMPLATE/` など）があれば、その構成を厳守する。
 - 本文には目的と変更内容を書き、作業の経緯やコミット一覧を並べない。
