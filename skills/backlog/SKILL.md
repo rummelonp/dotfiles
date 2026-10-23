@@ -83,8 +83,9 @@ description: Use when setting up, reading, or updating a project's work-item bac
 そのため状態の更新は、作業者の報告を受けたメインセッションが行う。
 GitHub の issue へ書き込む（状態を変える、コメントする）のは外部への書き込みなので、ユーザーの指示か承認を得てから行う。
 
-どこを使うかは、repo の指示ファイル（`AGENTS.md`、`CLAUDE.md` など）の「バックログ」節の宣言で決まる。
-宣言がないとき、置き場所を作るとき、宣言を書き直すとき、宣言に follow-up 用の別の種別（`--kind=follow-up` など）があるときは、`<この skill のディレクトリ>/references/setup.md` を読む。
+どこを使うかは、repo の指示ファイル（`AGENTS.md`、`CLAUDE.md` など）かエージェントのメモリの「バックログ」節の宣言で決まる。
+宣言がないときは、既定の場所（追跡する文書は `docs/backlog/`、追跡しないファイルは `.claude/backlog/`）のうち、計画のあるものをすべて使う。
+宣言も既定の場所の計画もないとき、置き場所を作るとき、宣言を書き直すとき、宣言に follow-up 用の別の種別（`--kind=follow-up` など）があるときは、`<この skill のディレクトリ>/references/setup.md` を読む。
 置き場所が GitHub の issue なら、`<この skill のディレクトリ>/references/github-issues.md` も読む（宣言に書くこと、引き方、issue への書き込み）。
 
 ## 引く
@@ -120,7 +121,7 @@ node <この skill のディレクトリ>/scripts/plans.ts <コマンド> [--kin
   repo が古い Node に固定されていても repo の設定は変えず、版を管理するツールの exec などで 22.18 以上の Node を指定して実行する。
 - バックログを見せるときは `status` と `ready` を引く。
   閉じていない項目（未着手、進行中、保留）はすべて、この 2 つのどちらかに内容ごと出るので、表を読み直さない。
-- 1 つの計画だけを見せるときも、宣言した置き場所の全体を渡し、出力からその計画の項目を抜き出す。
+- 1 つの計画だけを見せるときも、使っている置き場所の全体を渡し、出力からその計画の項目を抜き出す。
   計画をまたぐ依存は、渡さなかった計画の ID が存在しないという違反になる。
 - 1 項目だけ見たいときは `rg -n '^\| <ID> \|' <ファイル>` で行を引き、計画を全文読まない。
 - CI や pre-commit で `check` を走らせる repo は、`references/setup.md` の「CI で `check` を走らせる」に従う。
