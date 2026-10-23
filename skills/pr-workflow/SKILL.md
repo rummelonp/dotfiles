@@ -15,7 +15,7 @@ force push は `--force-with-lease --force-if-includes` で行う。
    既定ブランチと決めつけず、次の順で最初に決まったものを使う。
    1. ユーザーや呼び出し元の skill が指定したブランチ。
    2. このブランチの開いた PR の base。
-      `gh pr view --json state,baseRefName --jq 'select(.state == "OPEN") | .baseRefName'` で引く。
+      `gh pr view --json state,baseRefName,isDraft --jq 'select(.state == "OPEN") | {baseRefName, isDraft}'` で引く。
       出力が空か `no pull requests found` のエラーなら次へ進み、ほかのエラー（認証やネットワークなど）なら base を決めずに報告する。
    3. repo の規約（`CLAUDE.md`、`AGENTS.md`、`CONTRIBUTING.md` など）が定めるブランチ。
    4. 既定ブランチ（`gh repo view --json defaultBranchRef --jq .defaultBranchRef.name`）。
