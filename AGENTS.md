@@ -6,7 +6,7 @@
 ## 規約
 
 - コード内のコメントと git コミットメッセージは**英語**で書く。
-- 日本語は散文ドキュメント（`AGENTS.md`、`skills/README.md`、`claude/CLAUDE.md`、`codex/AGENTS.md`、`gemini/GEMINI.md`、各 `SKILL.md`）に限る。
+- 日本語は散文ドキュメント（`AGENTS.md`、`skills/README.md`、`docs/skills.md`、`claude/CLAUDE.md`、`codex/AGENTS.md`、`gemini/GEMINI.md`、各 `SKILL.md`）に限る。
 - コミットメッセージは `<領域>: 簡潔な要約` の 1 行（例 `git: ignore claude plans`）とし、body は書かない。
 - コメントはセクション見出し（`# homebrew`）に留め、意図が読み取れない箇所だけ英語 1 行で補う。
 
@@ -16,5 +16,6 @@
 - `claude/CLAUDE.md` と `claude/settings.json` は `~/.claude/` へ配られる**ユーザー設定**で、このリポジトリ自身の設定ではない。
 - `codex/AGENTS.md` と `codex/agents/*.toml` は `~/.codex/` へ配られる**ユーザー設定**で、このリポジトリ自身の設定ではない。
 - `gemini/` ディレクトリは `~/.gemini/config/` へ配られる**ユーザー設定**で、このリポジトリ自身の設定ではない。
+- skill を作る・直すときは、`docs/skills.md` の方針に従う。
 - `CLAUDE.md` は `@AGENTS.md` の 1 行だけにし、規則はこのファイルに書く。
 - このリポジトリ自身の設定はこのファイルである。

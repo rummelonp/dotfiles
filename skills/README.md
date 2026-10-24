@@ -17,6 +17,8 @@ Antigravity 固有のスキルは [`../gemini/skills/`](../gemini/skills/) に�
 `subagent-delegation` は役割の定義と選び方を 3 つで同じ文面にし、モデルの割り当てだけを書き分ける。
 共有スキルはモデル名を持たず、`subagent-delegation` の役割名で参照する。
 
+スキルを作る・直すときの方針は [`../docs/skills.md`](../docs/skills.md) にある。
+
 ## 出所
 
 | スキル | 上流 | ライセンス | 取得日 |
