@@ -16,5 +16,5 @@
 - `claude/CLAUDE.md` と `claude/settings.json` は `~/.claude/` へ配られる**ユーザー設定**で、このリポジトリ自身の設定ではない。
 - `codex/AGENTS.md` と `codex/agents/*.toml` は `~/.codex/` へ配られる**ユーザー設定**で、このリポジトリ自身の設定ではない。
 - `gemini/` ディレクトリは `~/.gemini/config/` へ配られる**ユーザー設定**で、このリポジトリ自身の設定ではない。
-- `CLAUDE.md` はこのファイルへの symlink として保ち、実体ファイルに置き換えない。
+- `CLAUDE.md` は `@AGENTS.md` の 1 行だけにし、規則はこのファイルに書く。
 - このリポジトリ自身の設定はこのファイルである。
