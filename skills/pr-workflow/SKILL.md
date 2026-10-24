@@ -20,8 +20,9 @@ force push は `--force-with-lease --force-if-includes` で行う。
    3. repo の規約（`CLAUDE.md`、`AGENTS.md`、`CONTRIBUTING.md` など）が定めるブランチ。
    4. 既定ブランチ（`gh repo view --json defaultBranchRef --jq .defaultBranchRef.name`）。
 2. `git merge-base HEAD origin/<base>` が `origin/<base>` の先端と異なれば取り込む。
-   - 書き換えてよいかが PR の Draft か Ready かで決まる場合、base が 1 の 1 で決まっていても、取り込み方を決める前に 1 の 2 の `gh pr view` で開いた PR の有無と isDraft を引く。
+   - 書き換えてよいかが PR の Draft か Ready かで決まる場合、base がユーザーや呼び出し元の指定（1 の 1）で決まっていても、取り込み方を決める前に 1 の 2 の `gh pr view` で開いた PR の有無と isDraft を引く。
      引けなかった場合（認証やネットワークのエラー）と、開いた PR が Draft でない場合は、ユーザーが書き換えを承認していなければ merge する。
+     開いた PR がなければ、書き換えてよいかを PR のないブランチとしてファイル冒頭の条件（規則ファイルの許可か、ユーザーの承認）で決める。
    - 書き換えてよければ rebase し（リポジトリに規約があればそれに従う）、書き換えない場合は merge する（rebase は force push が必要になる）。
    - 競合は両側の意図が読み取れる場合だけ解消する。読み取れなければ中断（`--abort`）して報告する。
    - 取り込んだら、テストなどの検証をやり直す。
@@ -37,6 +38,10 @@ force push は `--force-with-lease --force-if-includes` で行う。
 
 ## 更新
 
+- 書き換えてよいかが PR の Draft か Ready かで決まる場合は、push 済みのコミットを書き換える前と、書き換えた履歴を force push する前に、開いた PR の有無と isDraft を引く。
+  base がユーザーや呼び出し元の指定で決まっていても、「作成・更新の前」の 1 の 2 の `gh pr view` で引く。
+  引けなかった場合（認証やネットワークのエラー）と、開いた PR が Draft でない場合は、ユーザーが書き換えを承認していなければ書き換えず、書き換えた後なら force push せず、force push が要ることを伝えて承認を得る。
+  開いた PR がなければ、書き換えてよいかを PR のないブランチとしてファイル冒頭の条件（規則ファイルの許可か、ユーザーの承認）で決める。
 - push 済みのコミットを書き換えない場合は、修正を新規コミットとして積み、force push しない。
 
 ## 片付け
