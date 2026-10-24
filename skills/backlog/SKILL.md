@@ -124,8 +124,8 @@ node <この skill のディレクトリ>/scripts/plans.ts <コマンド> [--kin
 - 1 つの計画だけを見せるときも、使っている置き場所の全体を渡し、出力からその計画の項目を抜き出す。
   計画をまたぐ依存は、渡さなかった計画の ID が存在しないという違反になる。
 - 1 項目だけ見たいときは `rg -n '^\| <ID> \|' <ファイル>` で行を引き、計画を全文読まない。
-- CI や pre-commit で `check` を走らせる repo は、`references/setup.md` の「CI で `check` を走らせる」に従う。
-- GitHub の issue のバックログは、スクリプトを使わず `references/github-issues.md` の「引く」に従って引く。
+- CI や pre-commit で `check` を走らせる repo は、`<この skill のディレクトリ>/references/setup.md` の「CI で `check` を走らせる」に従う。
+- GitHub の issue のバックログは、スクリプトを使わず `<この skill のディレクトリ>/references/github-issues.md` の「引く」に従って引く。
 
 ## 足す、更新する
 
@@ -137,9 +137,9 @@ node <この skill のディレクトリ>/scripts/plans.ts <コマンド> [--kin
 - **follow-up を残す**：レビューの non-blocking な指摘など、後回しにした作業は、新しい項目として足すか、既存の項目の `### <ID>` 節に追記する。
   新しい項目の種別は改善候補にする（実装にすると、ユーザーが選ぶ前に `ready` に出て自律の作業の対象になる）。
   未着手か進行中の実装の項目の節には追記しない。
-  `### <ID>` 節の書き方と依存の決め方は、`references/updating.md` の同名の節を読む。
+  `### <ID>` 節の書き方と依存の決め方は、`<この skill のディレクトリ>/references/updating.md` の同名の節を読む。
 - **重い問題を知らせる**：作業の範囲外で見つけた問題のうち、データの消失や破損、セキュリティ、主要な場面で使えなくなるものは、判断の項目として足し、完了報告の先頭に書く。
-  種別を改善候補にしない。`### <ID>` 節の書き方は、`references/updating.md` の同名の節を読む。
+  種別を改善候補にしない。`### <ID>` 節の書き方は、`<この skill のディレクトリ>/references/updating.md` の同名の節を読む。
 
 ## 常に守ること
 
