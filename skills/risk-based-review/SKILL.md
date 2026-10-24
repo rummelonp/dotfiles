@@ -16,6 +16,7 @@ description: Use when deciding whether a change needs independent review, how st
 - **開始時の HEAD**：ファイルを変更する作業に着手したときの HEAD。規則ファイル（`CLAUDE.md` / `AGENTS.md` / `GEMINI.md`）の指示で、着手時に記録する。
   記録がなく、ブランチ全体が今回の作業なら `git merge-base HEAD origin/<base>` で代える。
   どちらでもなければ、範囲をユーザーに確かめる。
+  レビューの範囲は、開始時の HEAD から HEAD までと、未コミットの変更・未追跡ファイル。
 - **作成側**：レビュー対象を作った主体（人間、メインセッション、サブエージェント）。
 - **依頼者**：レビューを依頼し、指摘への対応と範囲外の論点の扱いを決める主体。
 - **blocking / non-blocking**：レビュアーが付ける指摘の分類。blocking は受け入れる前に直す指摘、non-blocking は記録して後回しにしてよい指摘。
