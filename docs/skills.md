@@ -22,7 +22,6 @@ skill は次の 3 つに分ける。
 今の区分は次のとおり。
 - 単体（本文だけ）：tidy-commits、pr-workflow、completion-verification、grilling、japanese-tech-writing、title
 - 単体（ディレクトリごと）：risk-based-review、backlog、empirical-prompt-tuning
-  ただし risk-based-review と empirical-prompt-tuning は、ほかの skill を差し込み口なしに使っていて、今の判定では「組で使う」になる。どちらも単体で使われやすいので、差し込み口を足す前提で単体に置く。
 - 組で使う：final-pass、parallel-lanes、subagent-delegation、learn
 
 ## 分割の判定
