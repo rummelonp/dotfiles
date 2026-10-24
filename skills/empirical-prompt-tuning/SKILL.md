@@ -169,9 +169,7 @@ iter 2 で「最小完成例 inline」や「いつ references を読むかの指
 
 ## 関連
 
-- `superpowers:writing-skills`（外部発想）— skill 作成時の TDD アプローチ。本 skill の「subagent で baseline → 修正 → 再実行」と本質的に同じ。
 - `learn`（Claude 環境のみ）— タスク後の学びの固定化。本 skill はプロンプト開発中、learn はタスク終了後、と使い分ける。
-- `waxa-eval`（外部ツール）— `waxa` CLI の運用マニュアル。eval / iterate ループを YAML scenario と永続 ledger で外部プロセスに自動化する。
 
 ## License
 
