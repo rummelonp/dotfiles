@@ -69,7 +69,7 @@ description: Use when deciding whether a change needs independent review, how st
 
 独立レビューを依頼するとき、その指摘に対応するとき、再レビューを行うとき、観点別の自己点検に切り替えるときは、先に `<この skill のディレクトリ>/references/dispatch.md` を読む。
 中身は、レビュアーの選び方、依頼手順（diff range、依頼文の項目、返却フォーマット）、指摘への対応である。
-読めない環境でも、レビュアーには read-only（コードを変更しない）で、さらにサブエージェントを起動しないよう依頼する。
+レビュアーには、常に read-only（コードを変更しない）で、さらにサブエージェントを起動しないよう依頼する。
 blocking の指摘は直してから受け入れ、non-blocking は記録して後回しにする。
 PR 本文や issue への書き込みは外部への書き込みなので、ユーザーから明示的に指示されていなければ承認を得てから行う。
 
