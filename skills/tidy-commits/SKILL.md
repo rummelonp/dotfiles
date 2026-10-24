@@ -55,6 +55,14 @@ base への追従（rebase や merge）と push は、この skill では行わ�
   commit の前に `git diff --cached` の本文を読み、そのコミットに入れる変更だけになっていることを確かめる。
 - **並べ替え、drop**：todo を書き換えるスクリプトを `GIT_SEQUENCE_EDITOR` に渡す。
   `sed -i` は GNU と BSD で構文が違うので、`perl -i -pe` を使う。
+  スクリプトを書く前に、本番と同じ `<起点>` とオプションの `git rebase -i` を、`GIT_SEQUENCE_EDITOR='cp "$1" <退避先>; false'` を付けて実行し、todo を退避して行の書式を確かめる。
+  `<退避先>` は worktree の外の絶対パスにする。rebase はエディタのエラーで中止され、途中の状態は残らない。
+  git のバージョンによってはハッシュの後に `# <件名>` が付く（例 `pick 4302f32 # add a`。空のコミットでは件名の後に ` # empty` も付く）ので、行は件名でなくハッシュで照合する。
+  `rebase.autosquash` が有効だと `--autosquash` なしでも、`fixup`、`fixup -C`、`squash` の行が pick の間に入る。
+  `-x` を付けると `exec` の行が、`rebase.updateRefs` が有効だと `update-ref` の行が入る。
+  pick だけを拾うと、fixup などの変更が失われ、`exec` のコマンドも `update-ref` によるブランチの更新も行われない。行頭のコマンドの種類を問わず、todo のすべての行を残す。
+  fixup などは畳み先の pick に続けて動かし、その pick を drop するときは一緒に drop する。ハッシュのない行（`exec`、`update-ref`）は直前の pick との位置関係を保つ。
+  drop する pick の直後に `update-ref` の行があれば、残すとそのブランチからも drop したコミットの変更が消えるので、扱いをユーザーに確かめる。
 - **共通の注意**：
   - `git add` はパスを明示し、`-a`、`-A`、`.` を使わない。commit の前に `git diff --cached --stat` を見る。
   - エディタが開く操作には `GIT_EDITOR=true` か `commit -F` を使う。
