@@ -74,11 +74,11 @@ description: Use before launching a subagent, to choose its role, the model and 
 
 - `architect` には実装させない。実装が複数回失敗したときだけ、組み込みの `worker` に `architect` の TOML のモデルと `senior_implementer` の TOML の effort を明示して委譲する。
   役割は上位実装として記録し、`senior_implementer` の `developer_instructions` を依頼文に含める。
-  `sandbox_mode` は同じ TOML に指定があれば従い、なければ親の設定を継承する。
+  `sandbox_mode` は `senior_implementer` の TOML に指定があれば従い、なければ親の設定を継承する（`architect` の TOML の read-only に従うと `worker` が実装できないため）。
 - `architect` と同じモデルの成果物は、新規の `frontier_reviewer` にレビューを依頼する（同じモデルでもコンテキストは必ず分け、高リスク以上では選択の原則どおり 2 本に分ける）。
 - `frontier_reviewer` は TOML の effort を既定とする。
   非常に高リスクな変更、複雑な論理や境界条件の検証、初回の判断が不確かな場合だけ、組み込みの `default` に `frontier_reviewer` の TOML のモデルと effort `high` を明示する。
-  このときは同 TOML の `developer_instructions` を依頼文に含め、read-only の制約は上の `sandbox_mode` の規則に従う。
+  このときは同 TOML の `developer_instructions` を依頼文に含め、`sandbox_mode` は「割り当て（Codex）」の規則に `frontier_reviewer` の TOML を当てはめて扱う（指定できれば同じ値を渡し、できなければ制約を依頼文に明記する）。
 - 該当する TOML がない環境（現在のエージェント一覧にも `~/.codex/agents/`、`.codex/agents/` にもない）では、レビューを組み込みの `explorer` の新規起動で代替する。
   - 起動 API で sandbox を指定できれば read-only にし、できなければ編集と再委譲の禁止を依頼文に明記する。
   - モデルや effort を確実に指定できなければセッションの値を継承し、強度は新規コンテキスト、観点の特化、高リスク以上での 2 本立てで担保する。
