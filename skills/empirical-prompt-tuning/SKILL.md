@@ -26,10 +26,12 @@ description: Empirically evaluate agent-facing instructions with fresh subagents
 
 ## 実行者の起動
 
-実行者は評価対象の指示を実際に読んで動く立場なので、その指示の利用者に当たる役割（`subagent-delegation`）で起動する。
-レビュアーの役割（「標準レビュー」）に固定しない。たとえば実装手順の指示なら「実装」、レビュー手順の指示なら「標準レビュー」にする。
+実行者は評価対象の指示を実際に読んで動く立場なので、その指示の利用者に当たる役割で起動する。
+`subagent-delegation` skill があれば、役割の選び方はそちらに従い、実装手順の指示なら「実装」、レビュー手順の指示なら「標準レビュー」にする。
+`subagent-delegation` skill がない環境では、その指示の利用者に近い仕事を任せるサブエージェントで起動する（汎用のサブエージェントにし、どの立場で指示を使うかを依頼文で伝える）。
+どちらの環境でも、レビュアーの役割に固定しない。
 
-- **Claude Code**: `Agent`（`subagent_type` に役割名を指定）。usage meta から `tool_uses` と `duration_ms` が取れる。
+- **Claude Code**: `Agent`（`subagent-delegation` があれば `subagent_type` に役割のエージェント名を、なければ `general-purpose` を指定）。usage meta から `tool_uses` と `duration_ms` が取れる。
 - **OpenAI Codex**: `spawn_agent`（該当する TOML がなければ汎用エージェント）。標準化されたメトリクスは返らない。
 - **Antigravity (Gemini)**: `invoke_subagent`。親に返るのはテキストメッセージのみで、メトリクスは返らない。
 

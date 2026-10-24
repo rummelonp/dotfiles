@@ -71,6 +71,9 @@ description: Use when deciding whether a change needs independent review, how st
 中身は、レビュアーの選び方、依頼手順（diff range、依頼文の項目、返却フォーマット）、指摘への対応である。
 レビュアーには、常に read-only（コードを変更しない）で、さらにサブエージェントを起動しないよう依頼する。
 blocking の指摘は直してから受け入れ、non-blocking は記録して後回しにする。
+再レビューの上限が 0 回のときは、修正を確かめて受け入れる。
+`completion-verification` skill があればそれで確かめ、なければ修正で問題が解消したことを今実行した結果（テスト、コマンド出力、差分の確認）で確かめる。
+どちらの環境でも、同種の問題が別の箇所に残っていないかを見てから受け入れる。
 PR 本文や issue への書き込みは外部への書き込みなので、ユーザーから明示的に指示されていなければ承認を得てから行う。
 
 ## Red Flags
