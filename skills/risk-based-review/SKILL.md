@@ -71,7 +71,8 @@ description: Use when deciding whether a change needs independent review, how st
 中身は、レビュアーの選び方、依頼手順（diff range、依頼文の項目、返却フォーマット）、指摘への対応である。
 レビュアーには、常に read-only（コードを変更しない）で、さらにサブエージェントを起動しないよう依頼する。
 blocking の指摘は直してから受け入れ、non-blocking は記録して後回しにする。
-ただし、起こりにくく損害の小さいエッジケースへの指摘は、blocking と付いていても non-blocking に下げてよい（判定の基準は `dispatch.md` の「結果に対応する」にある）。
+ただし、データの損失や脆弱性につながる指摘は、non-blocking と付いていても blocking として扱う。
+起こりにくく損害の小さいエッジケースへの指摘は、blocking と付いていても non-blocking に下げてよい（どちらも判定の基準は `dispatch.md` の「結果に対応する」にある）。
 再レビューの上限が 0 回のときは、修正を確かめて受け入れる。
 `completion-verification` skill があればそれで確かめ、なければ修正で問題が解消したことを今実行した結果（テスト、コマンド出力、差分の確認）で確かめる。
 どちらの環境でも、同種の問題が別の箇所に残っていないかを見てから受け入れる。
