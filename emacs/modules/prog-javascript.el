@@ -50,6 +50,20 @@
                   '(:system "tsserver")
                   '(:npm :package "typescript" :path "tsserver" :version "6")))
 
+;; lsp-astro looks for astroserver, a bin no @astrojs/language-server release
+;; has shipped (it is astro-ls), and starts the server from PATH only, so the
+;; copy lsp-install-server puts in its cache is never found.  The slot is
+;; looked up at run time: setf on the accessor would bake lsp-mode's slot
+;; order into the .elc, or need lsp-mode loaded at startup to expand.
+(with-eval-after-load 'lsp-astro
+  (lsp-dependency 'astro-language-server
+                  '(:system "astro-ls")
+                  '(:npm :package "@astrojs/language-server" :path "astro-ls"))
+  (aset (gethash 'astro-ls lsp-clients)
+        (cl-struct-slot-offset 'lsp--client 'new-connection)
+        (lsp-stdio-connection
+         (lambda () (list (lsp-package-path 'astro-language-server) "--stdio")))))
+
 ;; JSON
 (add-to-list 'auto-mode-alist '("\\.jsonc\\'" . jsonc-mode))
 (add-to-list 'auto-mode-alist '("\\.json5\\'" . jsonc-mode))
