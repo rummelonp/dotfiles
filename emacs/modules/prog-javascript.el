@@ -29,13 +29,26 @@
     (insert-file-contents (expand-file-name "package.json" dir))
     (string-to-number (gethash "version" (json-parse-buffer)))))
 
+(defun rmp/project-node-bin (name)
+  (let ((bin (concat "node_modules/.bin/" name)))
+    (when-let* ((root (locate-dominating-file default-directory bin)))
+      (expand-file-name bin root))))
+
+;; Linters start only in projects that install them, so a project gets the
+;; linters, versions and rules its own scripts use.  Each server id is also the
+;; name of the bin that marks a project as using it.
+(defconst rmp/javascript-linters '(eslint biome oxlint))
+
 (defun rmp/setup-typescript-mode ()
   (let* ((dir (rmp/project-typescript-dir))
          (native (and dir (>= (rmp/typescript-major-version dir) 7))))
     (when native
       (setq-local lsp-clients-tsgo-path (expand-file-name "bin/tsc" dir)))
     (setq-local lsp-enabled-clients
-                (list (if native 'tsgo 'ts-ls) 'astro-ls 'eslint)))
+                (append (list (if native 'tsgo 'ts-ls) 'astro-ls)
+                        (seq-filter (lambda (id)
+                                      (rmp/project-node-bin (symbol-name id)))
+                                    rmp/javascript-linters))))
   (lsp)
   (setq-local company-backends '(company-capf)))
 (add-hook 'typescript-mode-hook 'rmp/setup-typescript-mode)
@@ -63,6 +76,22 @@
         (cl-struct-slot-offset 'lsp--client 'new-connection)
         (lsp-stdio-connection
          (lambda () (list (lsp-package-path 'astro-language-server) "--stdio")))))
+
+;; lsp-mode ships no client for biome or oxlint; both serve LSP from their CLI.
+(with-eval-after-load 'lsp-mode
+  (pcase-dolist (`(,id . ,args) '((biome "lsp-proxy") (oxlint "--lsp")))
+    (let ((name (symbol-name id)))
+      (lsp-register-client
+       (make-lsp-client
+        :new-connection (lsp-stdio-connection
+                         (lambda () (cons (rmp/project-node-bin name) args))
+                         (lambda () (rmp/project-node-bin name)))
+        :activation-fn (lsp-activate-on "javascript" "javascriptreact"
+                                        "typescript" "typescriptreact"
+                                        "astro" "vue" "svelte")
+        :add-on? t
+        :priority -1
+        :server-id id)))))
 
 ;; JSON
 (add-to-list 'auto-mode-alist '("\\.jsonc\\'" . jsonc-mode))
