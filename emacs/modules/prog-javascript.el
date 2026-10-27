@@ -35,7 +35,7 @@
     (when native
       (setq-local lsp-clients-tsgo-path (expand-file-name "bin/tsc" dir)))
     (setq-local lsp-enabled-clients
-                (list (if native 'tsgo 'ts-ls) 'vls 'astro-ls 'eslint)))
+                (list (if native 'tsgo 'ts-ls) 'astro-ls 'eslint)))
   (lsp)
   (setq-local company-backends '(company-capf)))
 (add-hook 'typescript-mode-hook 'rmp/setup-typescript-mode)
