@@ -183,8 +183,8 @@
     "i-have-adhd@i-have-adhd": true,
     "explainer@explainer": true,
     "codex@openai-codex": true,
-    "cloudflare@cloudflare": true,
-    "claude-security@claude-plugins-official": true
+    "cloudflare@cloudflare": false,
+    "claude-security@claude-plugins-official": false
   },
   "extraKnownMarketplaces": {
     "i-have-adhd": {
