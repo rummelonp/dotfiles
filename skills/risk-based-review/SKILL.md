@@ -17,6 +17,7 @@ description: Use when deciding whether a change needs independent review, how st
     - ロジックの正確さ、型・シグネチャ・契約の整合性。
     - エッジケース、境界値、異常系・エラーハンドリングの妥当性。
     - race condition、デッドロック、並行処理の安全性。
+    - テストが、変更後に成り立つはずの挙動を実際にアサートしているか（モックが引数を無視していないか、期待値が変更前の挙動でも通る値になっていないか）。
   - **観点 B: 設計・安全性・可逆性 (Architecture, Safety & Reversibility)**:
     - 既存アーキテクチャや設計方針と整合しているか、過剰設計や責務違反がないか。
     - 他のモジュールや外部システムへの波及影響・後方互換性破壊がないか。
