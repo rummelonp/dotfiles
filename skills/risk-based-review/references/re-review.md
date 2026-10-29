@@ -24,6 +24,7 @@
   初回の依頼にある判定を見送った挙動や論点の列挙も求めず、気づいた点は follow-up 候補に含めさせる。
 - **返却フォーマットは初回と同じ**（Strengths / Issues / Recommendations / Assessment）にする。
   Issues には、前回の blocking と自己発見の修正の番号ごとに判定（解消 / 未解消、妥当 / 要修正）を書かせ、新たな blocking には前回の続きの番号を振らせる。
+  新たな blocking には、初回と同じく箇所と何が起きるかを書かせる。
   未解消と要修正は blocking として扱わせる。自己発見の修正そのものの欠陥はその S 番号で要修正とし、新たな blocking として重ねて数えさせない。
   Recommendations は blocking として扱うもの（未解消、要修正、新たな blocking）の直し方に限らせ、follow-up 候補は Assessment の直前に別の見出しを立てて 1 行ずつ挙げさせる。
   Assessment では受け入れてよいかと、残っている blocking の番号（#n と S 番号）だけを答えさせる。上限に達したかの判断とその後の対応は依頼者が行うので、レビュアーには求めない。
