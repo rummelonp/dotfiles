@@ -64,7 +64,8 @@ description: Use before launching a subagent, to choose its role, the model and 
 | 標準レビュー | `reviewer` |
 | 高強度レビュー | `reviewer` |
 
-- Agent ツールの `subagent_type` に役割のエージェント名を指定し、`model` は渡さない（呼び出し時の `model` は定義より優先され、定義と食い違っても気づけない）。
+- Agent ツールの `subagent_type` に役割のエージェント名を指定し、`model` は渡さない（下記の代替時を除く）。
+  呼び出し時の `model` は定義より優先され、定義と食い違っても気づけない。
 - 組み込みの `Explore`、`Plan`、`general-purpose` は使わない（下記の代替時を除く）。どれもセッションのモデルを継承し、役割と関係なくモデルが決まる。
 - 高強度レビュー専用の定義はないので、選択の原則の「作成側に一段上の段がなければ」の項に従い、新規の `reviewer` に依頼する。
 - 役割のエージェントが現在のエージェント一覧になければ、`general-purpose` で代替する（定義はセッション開始時に読まれるので、`~/.claude/agents/` に置いた直後もこれに当たる）。
