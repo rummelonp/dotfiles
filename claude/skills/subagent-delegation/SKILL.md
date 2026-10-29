@@ -68,6 +68,6 @@ description: Use before launching a subagent, to choose its role, the model and 
 - 組み込みの `Explore`、`Plan`、`general-purpose` は使わない（下記の代替時を除く）。どれもセッションのモデルを継承し、役割と関係なくモデルが決まる。
 - 高強度レビュー専用の定義はないので、選択の原則の「作成側に一段上の段がなければ」の項に従い、新規の `reviewer` に依頼する。
 - 役割のエージェントが現在のエージェント一覧になければ、`general-purpose` で代替する（定義はセッション開始時に読まれるので、`~/.claude/agents/` に置いた直後もこれに当たる）。
-  - `~/.claude/agents/<name>.md` があれば、その `model` を Agent ツールの `model` に明示し、本文の制約を依頼文に含める。
-  - 定義ファイルもなければ、モデルはセッションの値を継承し、強度は新規コンテキストと観点の特化で担保する。
-  - effort は Agent ツールで渡せないので、どちらでもセッションの値を継承する。
+  - `~/.claude/agents/<name>.md` があれば、その `model` と `effort` を Agent ツールの同名の引数で渡し、本文の制約を依頼文に含める。
+    Agent ツールに `effort` の引数がないか、定義に `effort` がなければ、effort はセッションの値を継承する。
+  - 定義ファイルもなければ、モデルと effort はセッションの値を継承し、強度は新規コンテキストと観点の特化で担保する。
