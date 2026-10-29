@@ -27,7 +27,7 @@ description: Use after finishing changes to files and before reporting the work 
          範囲のファイルは名前を挙げて渡し、diff にあるほかのファイル（英語のコメントを含むスクリプトなど）は点検しないと伝える。
        - リポジトリの書式（規約やメモリにある行の規則、既存ファイルの整形）。一文一行や脚注などの原稿向けの整形と食い違う指摘は、リポジトリの書式を優先させる。
        - 返し方：指摘ごとに 1 行で、箇所（ファイルと行番号。行番号は作業ツリーのファイル全体での行で、diff の行ではない）、当たる規範、直し方の案。
-         メインは指摘ごとに採否を決めてファイルを直すだけなので、`risk-based-review` の返却フォーマット（Strengths / Issues / Recommendations / Assessment）は使わせない。
+         メインは指摘ごとに採否を決めてファイルを直すだけなので、`risk-based-review` の返却フォーマット（Issues / 範囲外の論点と見なかった範囲 / Assessment）は使わせない。
          役割の定義（Claude Code の `reviewer` など）が返却フォーマットを定めていても、それに代えてこの形式で返すよう依頼文に明記する。
      - 指摘のどれを直すかはメインが決める。
      - 散文の変更が誤字や言い換えだけなら、任せずに同 skill での点検を飛ばす（`risk-based-review` の「軽微」に当たる）。

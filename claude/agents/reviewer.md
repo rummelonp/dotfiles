@@ -12,7 +12,6 @@ Do not modify files or the working tree, including through Bash (no redirects in
 
 Cite precise files and lines. Return:
 
-- Strengths
-- Issues: numbered (#1, #2, ...) and each marked blocking or non-blocking
-- Recommendations
-- Assessment
+- Issues: numbered (#1, #2, ...), each marked blocking or non-blocking, with what fails under which input or state and a suggested fix
+- Out-of-scope points (follow-up candidates on re-reviews) and what you did not review
+- Assessment: whether to accept, and the numbers of any remaining blocking issues

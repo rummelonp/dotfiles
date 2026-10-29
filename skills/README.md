@@ -47,6 +47,7 @@ Antigravity 固有のスキルは [`../gemini/skills/`](../gemini/skills/) に�
 `risk-based-review`
 - 依頼手順（git SHA の取得コマンド含む）、返却フォーマット、Red Flags を移植して日本語化し、Red Flags には項目を追加。
 - 返却フォーマットの指摘を blocking / non-blocking に分ける。
+- 返却フォーマットから Strengths と Recommendations を外し、直し方の案は Issues の各項目に添えさせる。Assessment は、受け入れてよいかと、残っている blocking の番号に限る。
 - `code-reviewer.md` は持ち込まず、その規則（read-only など）を依頼手順に取り込み。
 - 要否の判定を 4 つのリスク分類に、レビュアーの選び方を `subagent-delegation` の役割に置き換え。
 - 用語、観点 A / B への分割、観点別の自己点検、再レビューの節を新設。
