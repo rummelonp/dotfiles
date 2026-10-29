@@ -199,7 +199,7 @@ worktree、ブランチ（下の照合規則で項目と結び付ける）、動
    レビューを立てた後で、差し戻すときと、レーンの履歴を書き換える（3 の rebase、fixup の畳み込み）ときは、`<この skill のディレクトリ>/references/re-review-range.md` を読む。
    再レビューの範囲、記録したハッシュの書き直し、fixup コミットを畳む時期は、それに従う。
    レーンが残した fixup コミットは、レビューの有無によらず、取り込む前に統括が `tidy-commits` skill で畳む（再レビューを立てた場合はそれが通ってから）。
-   レーンの見立ては参考にとどめる。blocking の指摘は差し戻すか、統括が別のコミットで直す。
+   レーンの見立ては参考にとどめる。blocking の指摘は差し戻すか、統括が別のコミットで直すか、`risk-based-review` skill のとおり反論する。
 3. ローカルで取り込む repo では、試しにマージする（no-ff なら `git merge --no-ff --no-commit <ブランチ>`、fast-forward なら基準ブランチの上に rebase させてから確かめる）。
    4 から 6 は、no-ff ならこの試しのマージの状態で、fast-forward なら rebase した後のレーンの worktree で行う（基準ブランチの今の先端と合わせた結果を確かめるため）。
 4. lockfile が変わっていれば、lockfile を書き換えない方法で依存を入れる。
