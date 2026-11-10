@@ -1,8 +1,9 @@
 ---
 name: architect
 description: Design and analysis role from the subagent-delegation skill. Analyze difficult design decisions and root causes before implementation. Use only when subagent-delegation selects this role.
-model: opus
-effort: high
+# pinned: the "fable" alias still resolves to 5.1 on older Claude Code builds
+model: claude-fable-5-2
+effort: medium
 disallowedTools: Edit, Write, NotebookEdit, Agent
 ---
 

@@ -1,8 +1,9 @@
 ---
 name: reviewer
 description: Review role from the subagent-delegation skill, for both standard and high-strength reviews. Independently review changes, text, or prompts and return actionable findings. Use only when subagent-delegation selects this role.
-model: opus
-effort: high
+# pinned: the "fable" alias still resolves to 5.1 on older Claude Code builds
+model: claude-fable-5-2
+effort: low
 disallowedTools: Edit, Write, NotebookEdit, Agent
 ---
 
