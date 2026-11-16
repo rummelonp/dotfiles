@@ -1,6 +1,6 @@
 ---
 name: risk-based-review
-description: Use when deciding whether a change needs independent review, how strong it should be, which reviewer role must run it, and how to dispatch the reviewer and any re-review with a git diff range, read-only constraints, and a structured output format, or how to self-check per perspective when subagents cannot be launched.
+description: Use when deciding whether a change or a plan for one needs independent review, how strong it should be, which reviewer role must run it, and how to dispatch the reviewer and any re-review with a git diff range (or the plan itself), read-only constraints, and a structured output format, or how to self-check per perspective when subagents cannot be launched.
 ---
 
 # リスクに応じたレビュー依頼
@@ -57,6 +57,8 @@ description: Use when deciding whether a change needs independent review, how st
 テスト、型検査、lint のどれも、作成側が変えたものに当たるかを決めきれないときは、数えない側に入れる。
 分類の決定根拠は具体的な例示ではなく判定軸とし、表中の例は目安とする。
 文章では、意味を変えない修正（誤字、表記の統一、同じ意味の言い換え）を軽微とし、主張・規則・手順の内容が 1 文でも変わる修正は通常以上とする。
+計画をレビューするときは、計画の文章ではなく、予定している変更のリスク分類で要否と強度を決める（文章の重さで決めると、ほぼ常に軽微になるため）。
+計画のレビューは、実装したあとの差分の独立レビューの代わりにしない。
 
 ## 独立レビューの前提原則
 
@@ -69,7 +71,7 @@ description: Use when deciding whether a change needs independent review, how st
 ## 独立レビューを依頼するとき
 
 独立レビューを依頼するとき、その指摘に対応するとき、再レビューを行うとき、観点別の自己点検に切り替えるときは、先に `<この skill のディレクトリ>/references/dispatch.md` を読む。
-中身は、レビュアーの選び方、依頼手順（diff range、依頼文の項目、返却フォーマット）、指摘への対応である。
+中身は、レビュアーの選び方、依頼手順（diff range、依頼文の項目、返却フォーマット）、指摘への対応、実装前の計画をレビューするときの読み替えである。
 レビュアーには、常に read-only（コードを変更しない）で、さらにサブエージェントを起動しないよう依頼する。
 blocking の指摘は、直すか、指摘の問題が起きないことを示して反論するかしてから受け入れ、non-blocking は記録して後回しにする。
 ただし、データの損失や脆弱性につながる指摘は、non-blocking と付いていても blocking として扱う。
