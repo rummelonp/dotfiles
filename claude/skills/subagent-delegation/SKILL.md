@@ -69,6 +69,7 @@ description: Use before launching a subagent, to choose its role, the model and 
 - Agent ツールの `subagent_type` に役割のエージェント名を指定し、`model` は渡さない（下記の代替時を除く）。
   呼び出し時の `model` は定義より優先され、定義と食い違っても気づけない。
 - 組み込みの `Explore`、`Plan`、`general-purpose` は使わない（下記の代替時を除く）。どれもセッションのモデルを継承し、役割と関係なくモデルが決まる。
+  Plan モードのシステム指示が `Explore` を指定していても、調査は `explorer` で起動する。
 - 役割のエージェントが現在のエージェント一覧になければ、`general-purpose` で代替する（定義はセッション開始時に読まれるので、`~/.claude/agents/` に置いた直後もこれに当たる）。
   - `~/.claude/agents/<name>.md` があれば、その `model` と `effort` を Agent ツールの同名の引数で渡し、本文の制約を依頼文に含める。
     Agent ツールに `effort` の引数がないか、定義に `effort` がなければ、effort はセッションの値を継承する。
