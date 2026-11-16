@@ -43,7 +43,7 @@ description: Use when deciding whether a change or a plan for one needs independ
 
 | リスク | 例（コード / 文章） | 独立レビュー | レビュアー強度 | 再レビューの上限 |
 |---|---|---|---|---|
-| 軽微 | 文言、CSS、明白な小修正 / 誤字、言い換え | 依頼しない（自分で確認する） | — | — |
+| 軽微 | 意味を変えない文言、CSS、明白な小修正 / 誤字、言い換え | 依頼しない（自分で確認する） | — | — |
 | 通常 | 一般的な feature、refactor、test / 記事 1 本、章の部分改稿 | 誤りがすぐ検知できなければ 1 本 | 標準レビュアー (Standard) | 0 回 |
 | 高リスク | DB schema、migration、認証・認可、データ整合性 / 他が依存する章の構成変更 | 1 本（上位のモデルがなく、観点を分けて 2 本にする場合を除く） | 高強度レビュアー (Strong) | 1 回 |
 | 非常に高リスク | データ損失、race condition、security boundary / 撤回できない公開物 | 観点を分けて 2 本 | 高強度レビュアー 2 本（観点 A / B） | 2 回 |
