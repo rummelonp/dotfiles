@@ -16,8 +16,9 @@ description: Use before launching a subagent, to choose its role, the model and 
 | 実装 | 機械的な修正、通常の実装、執筆の起草・書き換え、直し方が依頼文で確定しているレビュー指摘の反映、設計判断の要らない rebase や積み直し（元の変更が高リスクでも） |
 | 上位実装 | `risk-based-review` の高リスク以上の実装、複数パッケージにまたがる実装、難度の高い実装・原稿、「実装」が複数回失敗したタスク |
 | 設計・分析 | 設計判断（高リスク変更の事前検討と、計画の段階でメインとは別に出す案を含む）、構成の検討、難度の高い原因分析（複数回の失敗、原因の特定不能など）。大量生成や定型作業には使わない |
-| 標準レビュー | レビュー（skill や prompt の検証を含む）、指摘だけを返す推敲（原稿を書き換える推敲は起草と同じ扱い） |
+| 標準レビュー | レビュー（skill や prompt の検証を含む）、指摘だけを返す推敲（原稿を書き換える推敲は起草と同じ扱い）。日本語の規範に照らす点検もここに含める |
 | 高強度レビュー | 高リスク以上の変更のレビュー、上位の段が作った成果物のレビュー |
+| スクリーニング | 判定の基準を依頼文で渡しきれる有無の確認（PR を出す前に、秘密情報や生成物が差分に混ざっていないかを見るなど）。指摘だけを返す。`risk-based-review` の独立レビューの代わりにしない |
 
 ## 選択の原則
 
@@ -55,7 +56,7 @@ description: Use before launching a subagent, to choose its role, the model and 
 ## 割り当て（Claude Code）
 
 段は `~/.claude/agents/*.md` の `model` の価格順で決まる（モデルと effort はエージェント定義だけで管理し、この skill には書かない）。
-現在の定義では `explorer` と `implementer` が最も安価な段、`senior_implementer` がその上、`architect` と `reviewer` が最上位の段になる。
+現在の定義では `explorer`、`implementer`、`screener` が最も安価な段、`senior_implementer` がその上、`architect` と `reviewer` が最上位の段になる。
 
 | 役割 | エージェント |
 |---|---|
@@ -65,6 +66,7 @@ description: Use before launching a subagent, to choose its role, the model and 
 | 設計・分析 | `architect` |
 | 標準レビュー | `reviewer` |
 | 高強度レビュー | `reviewer` |
+| スクリーニング | `screener` |
 
 - Agent ツールの `subagent_type` に役割のエージェント名を指定し、`model` は渡さない（下記の代替時を除く）。
   呼び出し時の `model` は定義より優先され、定義と食い違っても気づけない。
