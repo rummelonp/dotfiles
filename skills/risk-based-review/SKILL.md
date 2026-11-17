@@ -24,7 +24,6 @@ description: Use when deciding whether a change or a plan for one needs independ
     - 障害や不具合が発生した際にロールバックや切り戻しができるか（可逆性）。
     - セキュリティ境界、権限昇格、意図しない外部書き込み、認証・認可の穴がないか。
 - **観点別の自己点検**：サブエージェント（Task / Agent / Subagent 相当のツール）を起動できない環境で、独立レビューの代わりに、観点 A / B ごとに自分で点検すること。独立レビューとは称さない。
-  手順は `<この skill のディレクトリ>/references/self-check.md` に従う。
 - **開始時の HEAD**：ファイルを変更する作業に着手したときの HEAD。規則ファイル（`CLAUDE.md` / `AGENTS.md` / `GEMINI.md`）の指示で、着手時に記録する。
   記録がなく、ブランチ全体が今回の作業なら `git merge-base HEAD origin/<base>` で代える。
   どちらでもなければ、範囲をユーザーに確かめる。
@@ -70,10 +69,23 @@ description: Use when deciding whether a change or a plan for one needs independ
 1 つの作業（開始時の HEAD からの範囲）で依頼した独立レビューが 6 本を超えたら、完了報告に理由を 1 行書く（リスクに見合わない本数を、後から見直すため）。
 数えるのは、初回、再レビュー、見なかった範囲の依頼、計画のレビューで、規範との照合だけを頼む点検は数えない。
 
+## 読むファイル
+
+次の場面では、先に該当するファイルを読む。
+
+- 独立レビューを依頼するとき、その指摘に対応するとき：
+  `<この skill のディレクトリ>/references/dispatch.md`
+- 実装の前に計画をレビューするとき：
+  `<この skill のディレクトリ>/references/dispatch.md` と `<この skill のディレクトリ>/references/plan-review.md`
+- 再レビューの上限が 1 回以上で、blocking の修正か、反論して直さなかった blocking か、レビュー後に自分で見つけて直した意味の変わる修正があるとき：
+  `<この skill のディレクトリ>/references/dispatch.md` と `<この skill のディレクトリ>/references/re-review.md`
+- 観点別の自己点検に切り替えるとき：
+  `<この skill のディレクトリ>/references/dispatch.md` と `<この skill のディレクトリ>/references/self-check.md`
+- レビュアーのモデル（価格の段）と、上位のモデルがないときに 2 本に分けるかを決めるとき：
+  `subagent-delegation` skill があればそれに従い、なければ `<この skill のディレクトリ>/references/choose-reviewer.md`
+
 ## 独立レビューを依頼するとき
 
-独立レビューを依頼するとき、その指摘に対応するとき、再レビューを行うとき、観点別の自己点検に切り替えるときは、先に `<この skill のディレクトリ>/references/dispatch.md` を読む。
-中身は、レビュアーの選び方、依頼手順（diff range、依頼文の項目、返却フォーマット）、指摘への対応、実装前の計画をレビューするときの読み替えである。
 レビュアーには、常に read-only（コードを変更しない）で、さらにサブエージェントを起動しないよう依頼する。
 blocking の指摘は、直すか、指摘の問題が起きないことを示して反論するかしてから受け入れ、non-blocking は記録して後回しにする。
 ただし、データの損失や脆弱性につながる指摘は、non-blocking と付いていても blocking として扱う。
