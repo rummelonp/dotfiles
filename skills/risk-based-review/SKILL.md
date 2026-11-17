@@ -88,12 +88,11 @@ description: Use when deciding whether a change or a plan for one needs independ
 - レビュアーのモデル（価格の段）と、上位のモデルがないときに 2 本に分けるかを決めるとき：
   `subagent-delegation` skill があればそれに従い、なければ `<この skill のディレクトリ>/references/choose-reviewer.md`
 
-## 独立レビューを依頼するとき
+## 依頼と受け入れの既定
 
 レビュアーには、常に read-only（コードを変更しない）で、さらにサブエージェントを起動しないよう依頼する。
 blocking の指摘は、直すか、指摘の問題が起きないことを示して反論するかしてから受け入れ、non-blocking は記録して後回しにする。
 ただし、データの損失や脆弱性につながる指摘は、non-blocking と付いていても blocking として扱う。
-エッジケースへの備えを求める指摘は、頻度と被害の採点で扱いを決め、点数が低ければ blocking と付いていても non-blocking に下げる。下げた指摘は、残っている blocking に数えない（どちらも判定の基準は `dispatch.md` の「結果に対応する」にある）。
 再レビューの上限が 0 回のときは、修正を確かめて受け入れる。
 `completion-verification` skill があればそれで確かめ、なければ修正で問題が解消したことを今実行した結果（テスト、コマンド出力、差分の確認）で確かめる。
 どちらの環境でも、同種の問題が別の箇所に残っていないかを見てから受け入れる。
