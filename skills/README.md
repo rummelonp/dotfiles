@@ -28,6 +28,7 @@ Antigravity 固有のスキルは [`../gemini/skills/`](../gemini/skills/) に�
 | `completion-verification` | [obra/superpowers](https://github.com/obra/superpowers) `skills/verification-before-completion` | MIT（[LICENSE](completion-verification/LICENSE) 同梱） | 2026-09-14 |
 | `risk-based-review` | [obra/superpowers](https://github.com/obra/superpowers) `skills/requesting-code-review` | MIT（[LICENSE](risk-based-review/LICENSE) 同梱） | 2026-09-14 |
 | `empirical-prompt-tuning` | [mizchi/skills](https://github.com/mizchi/skills) `empirical-prompt-tuning`（日本語の原本 `SKILL-ja.md`） | MIT 扱い（上流に個別 LICENSE はなく、上流の README に「明示ライセンスのないスキルは MIT 扱い」とある） | 2026-09-03 |
+| `design-postgres-tables` | [timescale/pg-aiguide](https://github.com/timescale/pg-aiguide) `skills/design-postgres-tables` | Apache-2.0（[LICENSE](design-postgres-tables/LICENSE) と [NOTICE](design-postgres-tables/NOTICE) 同梱） | 2026-11-19（上流 `0da8f4e`） |
 | `learn`（`../claude/skills/`） | [mizchi/skills](https://github.com/mizchi/skills) `retrospective-codify`（2026-09-16 までは `meta/` 配下） | MIT 扱い（同上） | 2026-09-14 |
 
 ### 改変
@@ -36,6 +37,9 @@ Antigravity 固有のスキルは [`../gemini/skills/`](../gemini/skills/) に�
 - 本文は無改変。末尾に License 節を追加。
 
 `japanese-tech-writing`
+- なし。
+
+`design-postgres-tables`
 - なし。
 
 `completion-verification`
