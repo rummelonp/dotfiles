@@ -1,6 +1,6 @@
 ---
 name: learn
-description: 'Pair "what failed first" with "what finally worked" and codify the should-have-known-it insight as a memory entry, a CLAUDE.md rule, or a new skill. Meta-skill: invoke ONLY when the user explicitly says "codify today''s lessons," "make it a skill," or asks to extract a reusable rule from a trial-and-error fix. Do NOT auto-invoke at every task completion.'
+description: 'Pair "what failed first" with "what finally worked" and codify the should-have-known-it insight as a memory entry, a CLAUDE.md rule, or a new skill. User-invoked only.'
 disable-model-invocation: true
 ---
 
