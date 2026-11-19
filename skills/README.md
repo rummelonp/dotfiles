@@ -40,7 +40,7 @@ Antigravity 固有のスキルは [`../gemini/skills/`](../gemini/skills/) に�
 
 `completion-verification`
 - Iron Law、ゲート手順、言い訳とその却下の表、Red Flags の構造を移植して日本語化。
-- 判定を完了 / 要修正の 2 値にし、横展開チェック、完了の基準（コード変更、調査・監査、未知の技術）、スコープの境界を追加。
+- 判定を完了 / 要修正の 2 値にし、横展開チェック、完了の基準（コード変更、テストの追加・変更、調査・監査、未知の技術）、スコープの境界を追加。
 - Common Failures、Key Patterns（TDD の手順を含む）、When To Apply は削除。
 - wshobson/agents `code-review-preshipment` の SHIP/SHIP WITH FIXES/DO NOT SHIP 方式は比較検討のうえ不採用（本文からの引用なし）。
 
