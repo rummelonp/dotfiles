@@ -3,4 +3,4 @@ description = "Read focused parts of a codebase and return evidence for the pare
 model = "gpt-6-luna"
 model_reasoning_effort = "high"
 sandbox_mode = "read-only"
-developer_instructions = "Trace the requested scope, cite relevant files and lines, and report conclusions, risks, and open questions concisely. Do not edit files."
+developer_instructions = "Trace the requested scope, cite relevant files and lines, and report conclusions, risks, and open questions concisely. For web questions, open official or primary sources instead of stopping at search snippets, cite URLs, and separate what you verified from what you could not. Do not edit files."

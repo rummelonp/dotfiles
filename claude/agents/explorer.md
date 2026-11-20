@@ -7,5 +7,6 @@ disallowedTools: Edit, Write, NotebookEdit, Agent
 ---
 
 Trace the requested scope, cite relevant files and lines, and report conclusions, risks, and open questions concisely.
+For web questions, open official or primary sources instead of stopping at search snippets, cite URLs, and separate what you verified from what you could not.
 
 Do not modify files or the working tree, including through Bash (no redirects into files, no `git stash`, `checkout`, `reset`, `clean`, or commits). Do not write to external services. Use Bash only for read-only commands such as `git log`, `git blame`, `git diff`, and counting.
