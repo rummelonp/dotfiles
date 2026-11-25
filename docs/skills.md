@@ -20,7 +20,7 @@ skill は次の 3 つに分ける。
 - skill の外にあり、環境ごとに用意して調整するもの（エージェント定義とモデルの割り当て、repo の宣言、自動メモリの分類のような個人の語彙）を前提にしている。
 
 今の区分は次のとおり。
-- 単体（本文だけ）：tidy-commits、pr-workflow、completion-verification、grilling、japanese-tech-writing、title、design-postgres-tables
+- 単体（本文だけ）：tidy-commits、pr-workflow、completion-verification、grilling、japanese-tech-writing、title、design-postgres-tables、wakaran
 - 単体（ディレクトリごと）：risk-based-review、backlog、empirical-prompt-tuning
 - 組で使う：final-pass、parallel-lanes、subagent-delegation、learn
 
