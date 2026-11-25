@@ -57,7 +57,7 @@ Antigravity 固有のスキルは [`../gemini/skills/`](../gemini/skills/) に�
 - 要否の判定を 4 つのリスク分類に、レビュアーの選び方を `subagent-delegation` の役割に置き換え。
 - 用語、観点 A / B への分割、観点別の自己点検、再レビューの節を新設。
 - 上流の Example と Common Rationalizations は削除。
-- レビュアーの選び方、依頼手順、観点別の自己点検、再レビュー、計画のレビューは `references/` に分割し、どの場面でどれを読むかを本文の一覧に集約。
+- レビュアーの選び方、依頼手順、観点別の自己点検、再レビュー、計画のレビュー、計画のうち手戻りが高くつく箇所の採点は `references/` に分割し、どの場面でどれを読むかを本文の一覧に集約。
 - 2026-10-16 に上流 `5bf4e78` の Declined to judge を依頼手順に追加。
 
 `empirical-prompt-tuning`
