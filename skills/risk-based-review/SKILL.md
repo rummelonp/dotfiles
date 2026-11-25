@@ -84,7 +84,7 @@ description: Use when deciding whether a change or a plan for one needs independ
   `<この skill のディレクトリ>/references/dispatch.md`
 - 実装の前に計画をレビューするとき：
   `<この skill のディレクトリ>/references/dispatch.md` と `<この skill のディレクトリ>/references/plan-review.md`
-- 再レビューの上限が 1 回以上で、blocking の修正か、反論して直さなかった blocking か、レビュー後に自分で見つけて直した意味の変わる修正があるとき：
+- 再レビューの上限が 1 回以上で、blocking の修正か、反論して直さなかった blocking か、レビュー後に自分で見つけて直した意味の変わる修正があるとき（計画のレビューを除く）：
   `<この skill のディレクトリ>/references/dispatch.md` と `<この skill のディレクトリ>/references/re-review.md`
 - 観点別の自己点検に切り替えるとき：
   `<この skill のディレクトリ>/references/dispatch.md` と `<この skill のディレクトリ>/references/self-check.md`
