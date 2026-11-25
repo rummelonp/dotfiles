@@ -55,22 +55,23 @@ description: Use before launching a subagent, to choose its role, the model and 
 
 ## 割り当て（Antigravity）
 
-段は Gemini 3.8 Flash (Medium) の 1 つだけで、メインセッションとサブエージェントで共通とする（`flash_lite` は下記の例外に限る）。
-そのため、レビューには常に選択の原則の「作成側に一段上の段がなければ」の項を適用する。
+段は `invoke_subagent` の `Model` 引数のティア（`flash_lite` < `flash` < `inherit`）で決める（具体的なモデル世代名は書かず、Antigravity の現行割り当てに従う）。
+メインセッションは中位モデルまたはそれを Planner にした Orchestrator を前提とする。実装・設計・レビューはいずれも最上位の `inherit` に置くため、レビューには選択の原則の「作成側に一段上の段がなければ」を適用する。
 
 | 役割 | `TypeName` | `Model` |
 |---|---|---|
-| 調査 | `research` | `inherit` |
+| 調査 | `research` | `flash` |
 | 実装 | `self` | `inherit` |
 | 上位実装 | `self` | `inherit` |
 | 設計・分析 | メインセッションで行うか、`research`（コマンド実行が必要なら `self`） | `inherit` |
-| 標準レビュー | `self` | `inherit` |
-| 高強度レビュー | `self` | `inherit` |
-| スクリーニング | `research`（コマンド実行が必要なら `self`） | `inherit` |
+| 標準レビュー | `self`（実行不要なら `research`） | `inherit` |
+| 高強度レビュー | `self`（実行不要なら `research`） | `inherit` |
+| スクリーニング | `research`（コマンド実行が必要なら `self`） | `flash_lite` |
 
 ## 例外と制約（Antigravity）
 
-- `Model` に `flash_lite` を指定するのは、機械的な修正や定型の大量 fan-out で、速度やトークン消費を最優先する場合に限る。
-- 役割の違いはモデルでは表せないので、`TypeName` と依頼文で担当範囲を厳密に定める。
+- `flash_lite` はスクリーニングのほか、機械的な修正や定型の大量 fan-out で所要時間やクォータ消費を抑えたい場合にも使ってよい。
+- `Model` の `pro` は使わない（現行環境では上位モデルではなく軽量系の高思考設定に割り当てられ、`inherit` の上位段にならないため）。
+- クォータ消費を抑えるため、観点 A / B の 2 本立ては高リスクには適用せず、`risk-based-review` の「非常に高リスク」に限る。
+- 役割の違いがモデルで表せない場合は、`TypeName` と依頼文で担当範囲を厳密に定める。
 - レビューを `self` で起動するのは、テストやコマンドの実行が要るため。read-only は依頼文で編集と再委譲を禁じて守り、その禁止が技術的な書き込み制限ではないことを結果に記録する。実行が不要なら `research` を使ってよい。
-- 段が 1 つしかないので、観点 A / B の 2 本立ては高リスクには適用せず、`risk-based-review` の「非常に高リスク」に限る。
