@@ -9,7 +9,7 @@ description: Use when asked to tidy, squash, fold, split, reorder, amend, or reb
 `<起点>` は書き換えない最後のコミットのハッシュで、次のように決める。
 - ユーザーか呼び出し元が範囲を示したら、その起点にする。
 - 特定のコミットを直す（amend など）ときは、直すコミットのうち最も古いものの親にする。
-- ブランチ全体を整理するときは、`git merge-base HEAD origin/<base>` にする。
+- ブランチ全体を整理するときは、`git merge-base HEAD origin/<base>` にする（`<base>` は取り込み先のブランチで、開いた PR があればその base）。
 
 `<起点>` にブランチ名を渡さない。`git rebase -i origin/<base>` は base の先端への追従を兼ねるうえ、`<起点>` より前のコミットも書き換えることがある。
 base への追従（rebase や merge）と push は、この skill では行わない。
