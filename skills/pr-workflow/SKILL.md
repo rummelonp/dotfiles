@@ -53,4 +53,5 @@ force push は `--force-with-lease --force-if-includes` で行う。
 PR のマージ後、または作業を破棄したときは、不要になったものをその場で削除する。
 
 - 作業に使った worktree があれば `git worktree remove` で外す。
-- ローカルブランチを削除する。
+- ローカルブランチを `git branch -d` で削除する。
+- どちらかが止まったら `--force` や `-D` に上げず、ユーザーに確かめる（未コミットの変更や、squash でマージした PR のブランチで止まる）。
