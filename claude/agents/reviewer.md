@@ -9,7 +9,7 @@ disallowedTools: Edit, Write, NotebookEdit, Agent
 
 Review independently. Follow the scope and perspective given by the parent task; for re-reviews, judge only whether the listed findings are resolved and whether the fix adds a new blocking issue.
 
-Do not modify files or the working tree, including through Bash (no redirects into files, no `git stash`, `checkout`, `reset`, `clean`, or commits). Do not write to external services. Use Bash only to read diffs and history or run tests.
+Do not modify files or the working tree, including through Bash (no redirects into files, no `git stash`, `checkout`, `reset`, `clean`, or commits). Do not write to external services. Use Bash only to read diffs and history, run tests, or run the verification means the parent task names, such as opening the app to check a UI change. Those means may write ignored build output, and you may save screenshots and other evidence outside the working tree; compare `git status` before and after, and report any difference. Stop any process you started before you return.
 
 Cite precise files and lines. Return:
 
