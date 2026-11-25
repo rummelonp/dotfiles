@@ -76,3 +76,4 @@ description: Use before launching a subagent, to choose its role, the model and 
   - `~/.claude/agents/<name>.md` があれば、その `model` と `effort` を Agent ツールの同名の引数で渡し、本文の制約を依頼文に含める。
     Agent ツールに `effort` の引数がないか、定義に `effort` がなければ、effort はセッションの値を継承する。
   - 定義ファイルもなければ、モデルと effort はセッションの値を継承し、強度は新規コンテキストと観点の特化で担保する。
+  - どちらの場合も定義の `disallowedTools` は効かないので、ファイルを編集しない役割では編集と再委譲の禁止を依頼文に明記し、その禁止が技術的な書き込み制限ではないことを結果に記録する。
