@@ -188,13 +188,14 @@ test("ready groups by kind and lists only unblocked, unstarted items", () => {
   assert.equal(
     stdout,
     [
-      "[実装] 1 件（解放 = 片付くまで着手できない未完了の項目数）",
+      "解放 = 片付くまで着手できない未完了の項目数",
+      "[実装] 1 件",
       "  A2  解放 0  a.md:10  second",
-      "[人手] 1 件（解放 = 片付くまで着手できない未完了の項目数）",
+      "[人手] 1 件",
       "  A3  解放 0  a.md:11  manual step",
-      "[判断] 1 件（解放 = 片付くまで着手できない未完了の項目数）",
+      "[判断] 1 件",
       "  A4  解放 0  a.md:12  decide this",
-      "[改善候補] 0 件（解放 = 片付くまで着手できない未完了の項目数）",
+      "[改善候補] 0 件",
       "",
     ].join("\n"),
   );
@@ -576,15 +577,15 @@ test("ready --only splits 解放 by scope and lists the outside items it waits o
   write(dir, "b.md", OUTSIDE);
   const { status, stdout } = run(["ready", "--only=a.md", "--", "."], { cwd: dir });
   assert.equal(status, 0);
-  const note = "（解放 = 片付くまで着手できない未完了の項目数。括弧内はそのうち --only の範囲外の数）";
   assert.equal(
     stdout,
     [
-      `[実装] 1 件${note}`,
+      "解放 = 片付くまで着手できない未完了の項目数。括弧内はそのうち --only の範囲外の数",
+      "[実装] 1 件",
       "  A1  解放 2（範囲外 1）  a.md:3  base",
-      `[人手] 0 件${note}`,
-      `[判断] 0 件${note}`,
-      `[改善候補] 0 件${note}`,
+      "[人手] 0 件",
+      "[判断] 0 件",
+      "[改善候補] 0 件",
       "[範囲外で待たれている項目] 2 件（--only の項目が待っている、着手できる範囲外の項目）",
       "  B3  解放 2（範囲外 1）  b.md:5  （判断）decide b3",
       "  B1  解放 1（範囲外 0）  b.md:3  （判断）decide b1",

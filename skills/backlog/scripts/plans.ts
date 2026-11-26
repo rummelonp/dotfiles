@@ -535,15 +535,16 @@ function printReady({ items, byId }: Model, kinds: readonly string[], scope: Sco
       item.kind !== AGGREGATE &&
       item.deps.every((dep) => byId.get(dep)?.status === "完了"),
   );
-  const note =
+  console.log(
     scope === undefined
-      ? "（解放 = 片付くまで着手できない未完了の項目数）"
-      : "（解放 = 片付くまで着手できない未完了の項目数。括弧内はそのうち --only の範囲外の数）";
+      ? "解放 = 片付くまで着手できない未完了の項目数"
+      : "解放 = 片付くまで着手できない未完了の項目数。括弧内はそのうち --only の範囲外の数",
+  );
   for (const kind of kinds.filter((k) => k !== AGGREGATE)) {
     const group = rank(
       ready.filter((item) => item.kind === kind && (scope === undefined || scope.ids.has(item.id))),
     );
-    console.log(`[${kind}] ${group.length} 件${note}`);
+    console.log(`[${kind}] ${group.length} 件`);
     // The whole 内容, unlike deps and graph: an agent shows these to the user and would otherwise
     // read the rows again from the table
     for (const { item, label } of group) console.log(`  ${item.id}  ${label}  ${item.at}  ${item.summary}`);
