@@ -529,9 +529,123 @@ test("a dependency given both in a range and explicitly is listed once", () => {
   assert.match(stdout, /^ {2}D1 {2}← C1、C2、C2a {2}/m);
 });
 
+const SCOPED = plan(
+  "| A1 | 未着手 | 実装 | — | base |",
+  "| A2 | 未着手 | 実装 | A1、B1 | after base |",
+  "| A3 | 進行中 | 実装 | B2 | in progress |",
+);
+const OUTSIDE = plan(
+  "| B1 | 未着手 | 判断 | — | decide b1 |",
+  "| B2 | 未着手 | 判断 | B3 | decide b2 |",
+  "| B3 | 未着手 | 判断 | — | decide b3 |",
+  "| B4 | 未着手 | 実装 | A1 | other work |",
+  "| B5 | 未着手 | 判断 | — | unrelated |",
+);
+
+test("status --only shows the named plans and the outside items they wait on", () => {
+  const dir = fixtureDir();
+  write(dir, "a.md", SCOPED);
+  write(dir, "b.md", OUTSIDE);
+  const { status, stdout } = run(["status", "--only=a.md", "--", "."], { cwd: dir });
+  assert.equal(status, 0);
+  assert.equal(
+    stdout,
+    [
+      "進行中  a.md  未着手 2、進行中 1、完了 0、取りやめ 0、保留 0",
+      "",
+      "進行中の項目: ",
+      "  A3  a.md:5  in progress",
+      "",
+      "依存待ちの項目（← 待っている未完了の項目）: ",
+      "  A2  ← A1、B1  a.md:4  after base",
+      "",
+      "範囲外で待たれている項目（→ 直接待っている項目）: ",
+      "  B1  未着手  → A2  b.md:3  （判断）decide b1",
+      "  B2  未着手  → A3  b.md:4  （判断）decide b2",
+      "  B3  未着手  → B2  b.md:5  （判断）decide b3",
+      "",
+      "保留の項目: なし",
+      "",
+    ].join("\n"),
+  );
+});
+
+test("ready --only splits 解放 by scope and lists the outside items it waits on apart", () => {
+  const dir = fixtureDir();
+  write(dir, "a.md", SCOPED);
+  write(dir, "b.md", OUTSIDE);
+  const { status, stdout } = run(["ready", "--only=a.md", "--", "."], { cwd: dir });
+  assert.equal(status, 0);
+  const note = "（解放 = 片付くまで着手できない未完了の項目数。括弧内はそのうち --only の範囲外の数）";
+  assert.equal(
+    stdout,
+    [
+      `[実装] 1 件${note}`,
+      "  A1  解放 2（範囲外 1）  a.md:3  base",
+      `[人手] 0 件${note}`,
+      `[判断] 0 件${note}`,
+      `[改善候補] 0 件${note}`,
+      "[範囲外で待たれている項目] 2 件（--only の項目が待っている、着手できる範囲外の項目）",
+      "  B3  解放 2（範囲外 1）  b.md:5  （判断）decide b3",
+      "  B1  解放 1（範囲外 0）  b.md:3  （判断）decide b1",
+      "",
+    ].join("\n"),
+  );
+});
+
+test("--only takes IDs too, and is repeatable", () => {
+  const dir = fixtureDir();
+  write(dir, "a.md", SCOPED);
+  write(dir, "b.md", OUTSIDE);
+  const { status, stdout } = run(["ready", "--only=B5", "--only=B4", "--", "."], { cwd: dir });
+  assert.equal(status, 0);
+  assert.match(stdout, /^\[判断\] 1 件.*\n {2}B5 {2}解放 0（範囲外 0） {2}b\.md:7 {2}unrelated$/m);
+  assert.match(stdout, /^\[範囲外で待たれている項目\] 1 件.*\n {2}A1 {2}解放 2（範囲外 1） {2}a\.md:3 {2}base$/m);
+  // B4 waits on A1, which is outside, so its status has no file line but lists A1
+  const statusOut = run(["status", "--only=B4", "--", "."], { cwd: dir }).stdout;
+  assert.match(statusOut, /^依存待ちの項目.*\n {2}B4 {2}← A1 /m);
+  assert.match(statusOut, /^ {2}A1 {2}未着手 {2}→ B4 {2}a\.md:3 {2}base$/m);
+  assert.doesNotMatch(statusOut, /b\.md {2}未着手/);
+});
+
+test("--only skips closed items in scope and follows outside items on hold", () => {
+  const dir = fixtureDir();
+  write(
+    dir,
+    "a.md",
+    plan(
+      "| A1 | 完了 | 実装 | B1 | done |",
+      "| A2 | 取りやめ | 実装 | B2 | dropped |",
+      "| A3 | 未着手 | 実装 | B3 | after hold |",
+    ),
+  );
+  write(
+    dir,
+    "b.md",
+    plan(
+      "| B1 | 完了 | 判断 | — | settled |",
+      "| B2 | 未着手 | 判断 | — | not needed |",
+      "| B3 | 保留 | 判断 | B4 | parked |",
+      "| B4 | 未着手 | 判断 | — | before hold |",
+    ),
+  );
+  const status = run(["status", "--only=a.md", "--", "."], { cwd: dir }).stdout;
+  assert.match(
+    status,
+    /^範囲外で待たれている項目.*\n {2}B3 {2}保留 {2}→ A3 {2}b\.md:5 {2}（判断）parked\n {2}B4 {2}未着手 {2}→ B3 {2}b\.md:6 {2}（判断）before hold\n\n/m,
+  );
+  const ready = run(["ready", "--only=a.md", "--", "."], { cwd: dir }).stdout;
+  // B2 waits only for the cancelled A2, and nothing is counted past the held B3
+  assert.match(ready, /^\[範囲外で待たれている項目\] 1 件.*\n {2}B4 {2}解放 0（範囲外 0） /m);
+  const closed = run(["status", "--only=A1", "--", "."], { cwd: dir }).stdout;
+  assert.match(closed, /^範囲外で待たれている項目（→ 直接待っている項目）: なし$/m);
+});
+
 test("usage errors exit 2", () => {
   const dir = fixtureDir();
   write(dir, "a.md", plan("| A1 | 未着手 | 実装 | — | x |"));
+  write(dir, "b.md", plan("| B1 | 未着手 | 実装 | — | y |"));
+  mkdirSync(join(dir, "empty"));
   const cases: ReadonlyArray<readonly [string, string[], RegExp]> = [
     ["missing --", ["check", "a.md"], /`--` が要る/],
     ["no paths", ["check", "--"], /パスが無い/],
@@ -542,6 +656,11 @@ test("usage errors exit 2", () => {
     ["empty --kind", ["check", "--kind=", "--", "a.md"], /--kind に種別が無い/],
     ["unknown ID", ["deps", "Z9", "--", "a.md"], /存在しない ID: Z9/],
     ["ID given to ready", ["ready", "A1", "--", "a.md"], /ready は ID を取らない/],
+    ["empty --only", ["ready", "--only=", "--", "a.md"], /--only に計画のパスか ID が無い/],
+    ["--only on deps", ["deps", "--only=a.md", "--", "a.md"], /--only は status と ready にだけ付ける/],
+    ["--only outside the paths", ["ready", "--only=b.md", "--", "a.md"], /--only のパス b\.md は `--` の後ろのパスに含まれない/],
+    ["--only with a directory without plans", ["ready", "--only=empty", "--", "a.md"], /--only のパス empty に計画が無い/],
+    ["--only with an unknown ID",["ready", "--only=Z9", "--", "a.md"], /存在しない ID: Z9/],
   ];
   for (const [name, args, message] of cases) {
     const { status, stderr, stdout } = run(args, { cwd: dir });

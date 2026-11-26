@@ -84,6 +84,19 @@ interface Cli {
   readonly ids: readonly string[];
   readonly kinds: readonly string[];
   readonly files: readonly string[];
+  readonly only: { readonly ids: readonly string[]; readonly files: readonly string[] };
+}
+
+/**
+ * What --only narrows status and ready to. Validation and 解放 still cover every plan, so a
+ * dependency across plans is neither a violation nor dropped from the count.
+ */
+interface Scope {
+  /** Plans named by path. status summarizes only these */
+  readonly files: ReadonlySet<string>;
+  readonly ids: ReadonlySet<string>;
+  /** Open items outside ids that an open item in ids waits on, directly or through others */
+  readonly blockers: ReadonlySet<string>;
 }
 
 class UsageError extends Error {}
@@ -360,8 +373,14 @@ function load(files: readonly string[], kinds: readonly string[]): Model {
   return { items, byId, files, violations };
 }
 
-function printStatus({ items, byId, files }: Model): void {
-  for (const file of files) {
+// Kinds other than 実装 are marked where a list is not grouped by kind, unlike ready
+function mark(item: Item): string {
+  return item.kind === IMPLEMENTATION ? "" : `（${item.kind}）`;
+}
+
+function printStatus({ items, byId, files }: Model, scope: Scope | undefined): void {
+  const summarized = scope === undefined ? files : files.filter((file) => scope.files.has(file));
+  for (const file of summarized) {
     const own = items.filter((item) => item.file === file);
     const count = (s: Status) => own.filter((item) => item.status === s).length;
     const breakdown = STATUSES.map((s) => `${s} ${count(s)}`).join("、");
@@ -369,26 +388,42 @@ function printStatus({ items, byId, files }: Model): void {
     const state = own.length === 0 ? "項目なし" : derive(own.map((item) => item.status));
     console.log(`${state}  ${display(file)}  ${breakdown}`);
   }
+  let first = scope !== undefined && summarized.length === 0;
+  const heading = (title: string, empty: boolean) => {
+    console.log(`${first ? "" : "\n"}${title}: ${empty ? "なし" : ""}`);
+    first = false;
+  };
+  const shown = items.filter((item) => scope === undefined || scope.ids.has(item.id));
   // Aggregates are listed in both lists: the breakdown counts them, and a count the lists do not
   // add up to leaves the reader guessing where the item went. With ready, every open item
   // then appears somewhere, since an unstarted aggregate always waits on an unstarted child.
-  // Kinds other than 実装 are marked because, unlike ready, these lists are not grouped by kind
-  const mark = (item: Item) => (item.kind === IMPLEMENTATION ? "" : `（${item.kind}）`);
-  const inProgress = items.filter((item) => item.status === "進行中");
-  console.log(`\n進行中の項目: ${inProgress.length === 0 ? "なし" : ""}`);
+  const inProgress = shown.filter((item) => item.status === "進行中");
+  heading("進行中の項目", inProgress.length === 0);
   for (const item of inProgress) console.log(`  ${item.id}  ${item.at}  ${mark(item)}${item.summary}`);
   const waiting = (item: Item) => openDeps(item, byId);
   // A dependency on hold will not move by itself, unlike one that is merely unfinished
   const onHold = (dep: string) => (byId.get(dep)?.status === "保留" ? "（保留）" : "");
-  const blocked = items.filter((item) => item.status === "未着手" && waiting(item).length > 0);
-  console.log(`\n依存待ちの項目（← 待っている未完了の項目）: ${blocked.length === 0 ? "なし" : ""}`);
+  const blocked = shown.filter((item) => item.status === "未着手" && waiting(item).length > 0);
+  heading("依存待ちの項目（← 待っている未完了の項目）", blocked.length === 0);
   for (const item of blocked) {
     const deps = waiting(item).map((dep) => `${dep}${onHold(dep)}`);
     console.log(`  ${item.id}  ← ${deps.join("、")}  ${item.at}  ${mark(item)}${item.summary}`);
   }
+  if (scope !== undefined) {
+    const blockers = items.filter((item) => scope.blockers.has(item.id));
+    const related = (id: string) => scope.ids.has(id) || scope.blockers.has(id);
+    const dependents = pendingDependents(items);
+    heading("範囲外で待たれている項目（→ 直接待っている項目）", blockers.length === 0);
+    for (const item of blockers) {
+      const waiters = (dependents.get(item.id) ?? []).filter(related);
+      console.log(
+        `  ${item.id}  ${item.status}  → ${waiters.join("、")}  ${item.at}  ${mark(item)}${item.summary}`,
+      );
+    }
+  }
   // Last, so the work that can move comes first
-  const held = items.filter((item) => item.status === "保留");
-  console.log(`\n保留の項目: ${held.length === 0 ? "なし" : ""}`);
+  const held = shown.filter((item) => item.status === "保留");
+  heading("保留の項目", held.length === 0);
   for (const item of held) console.log(`  ${item.id}  ${item.at}  ${mark(item)}${item.summary}`);
 }
 
@@ -448,7 +483,28 @@ function selectPending({ items, byId }: Model, focus: readonly string[]): Set<st
   return selected;
 }
 
-function printReady({ items, byId }: Model, kinds: readonly string[]): void {
+function resolveScope({ items, byId }: Model, only: Cli["only"]): Scope {
+  const unknown = only.ids.filter((id) => !byId.has(id));
+  if (unknown.length > 0) throw new UsageError(`存在しない ID: ${unknown.join(", ")}`);
+  const files = new Set(only.files);
+  const ids = new Set([
+    ...items.filter((item) => files.has(item.file)).map((item) => item.id),
+    ...only.ids,
+  ]);
+  const isOpen = (id: string) => {
+    const status = byId.get(id)?.status;
+    return status !== undefined && !CLOSED.has(status);
+  };
+  const blockers = new Set<string>();
+  for (const id of ids) {
+    if (!isOpen(id)) continue;
+    for (const dep of reachable(id, (x) => byId.get(x)?.deps ?? [], isOpen))
+      if (!ids.has(dep)) blockers.add(dep);
+  }
+  return { files, ids, blockers };
+}
+
+function printReady({ items, byId }: Model, kinds: readonly string[], scope: Scope | undefined): void {
   const dependents = pendingDependents(items);
   const next = (x: string) => dependents.get(x) ?? [];
   // Items on hold and everything behind them, even through another path, would not start anyway
@@ -462,25 +518,43 @@ function printReady({ items, byId }: Model, kinds: readonly string[]): void {
   const unblocks = (item: Item) =>
     [...reachable(item.id, next, (x) => !held.has(x))].filter(
       (id) => byId.get(id)?.kind !== AGGREGATE,
-    ).length;
+    );
+  // Ranked by the whole count; the outside share tells whose work an item in scope holds up
+  const rank = (group: readonly Item[]) =>
+    group
+      .map((item) => {
+        const ids = unblocks(item);
+        const outside = scope === undefined ? "" : `（範囲外 ${ids.filter((id) => !scope.ids.has(id)).length}）`;
+        return { item, count: ids.length, label: `解放 ${ids.length}${outside}` };
+      })
+      // Array.prototype.sort is stable, so ties keep file order and then row order
+      .sort((a, b) => b.count - a.count);
   const ready = items.filter(
     (item) =>
       item.status === "未着手" &&
       item.kind !== AGGREGATE &&
       item.deps.every((dep) => byId.get(dep)?.status === "完了"),
   );
+  const note =
+    scope === undefined
+      ? "（解放 = 片付くまで着手できない未完了の項目数）"
+      : "（解放 = 片付くまで着手できない未完了の項目数。括弧内はそのうち --only の範囲外の数）";
   for (const kind of kinds.filter((k) => k !== AGGREGATE)) {
-    const group = ready
-      .filter((item) => item.kind === kind)
-      .map((item) => ({ item, count: unblocks(item) }))
-      // Array.prototype.sort is stable, so ties keep file order and then row order
-      .sort((a, b) => b.count - a.count);
-    console.log(`[${kind}] ${group.length} 件（解放 = 片付くまで着手できない未完了の項目数）`);
+    const group = rank(
+      ready.filter((item) => item.kind === kind && (scope === undefined || scope.ids.has(item.id))),
+    );
+    console.log(`[${kind}] ${group.length} 件${note}`);
     // The whole 内容, unlike deps and graph: an agent shows these to the user and would otherwise
     // read the rows again from the table
-    for (const { item, count } of group)
-      console.log(`  ${item.id}  解放 ${count}  ${item.at}  ${item.summary}`);
+    for (const { item, label } of group) console.log(`  ${item.id}  ${label}  ${item.at}  ${item.summary}`);
   }
+  if (scope === undefined) return;
+  const blockers = rank(ready.filter((item) => scope.blockers.has(item.id)));
+  console.log(
+    `[範囲外で待たれている項目] ${blockers.length} 件（--only の項目が待っている、着手できる範囲外の項目）`,
+  );
+  for (const { item, label } of blockers)
+    console.log(`  ${item.id}  ${label}  ${item.at}  ${mark(item)}${item.summary}`);
 }
 
 /** Dependencies for agents: one line per item, no diagram syntax or labels */
@@ -540,12 +614,14 @@ function printGraph(model: Model, focus: readonly string[]): void {
 
 const COMMANDS = ["status", "ready", "deps", "graph", "check"];
 const KIND_OPTION = "--kind=";
+const ONLY_OPTION = "--only=";
 
 function usage(): string {
   return [
-    "使い方: node plans.ts <status | ready | deps [ID...] | graph [ID...] | check> [--kind=<種別>]... -- <path>...",
+    "使い方: node plans.ts <status | ready | deps [ID...] | graph [ID...] | check> [--kind=<種別>]... [--only=<path か ID>]... -- <path>...",
     "  path: ファイル、または直下の *.md を読むディレクトリ（README.md と _ で始まる名前は除く）",
     `  --kind: ${DEFAULT_KINDS.join(" / ")} に足す、自律作業でない種別`,
+    "  --only: status と ready の表示をこの計画と項目、それが待っている範囲外の項目に絞る（検証と解放は全体で計算する）",
     `  文法は backlog skill の SKILL.md（${display(SKILL_DOC)}）を参照`,
   ].join("\n");
 }
@@ -588,12 +664,17 @@ function parseArgs(argv: readonly string[]): Cli {
   if (pathArgs.length === 0) throw new UsageError("パスが無い");
 
   const extraKinds: string[] = [];
+  const onlyArgs: string[] = [];
   const positional: string[] = [];
   for (const arg of argv.slice(0, dashes)) {
     if (arg.startsWith(KIND_OPTION)) {
       const kind = arg.slice(KIND_OPTION.length).trim();
       if (kind === "") throw new UsageError("--kind に種別が無い");
       extraKinds.push(kind);
+    } else if (arg.startsWith(ONLY_OPTION)) {
+      const target = arg.slice(ONLY_OPTION.length).trim();
+      if (target === "") throw new UsageError("--only に計画のパスか ID が無い");
+      onlyArgs.push(target);
     } else if (arg.startsWith("--")) {
       throw new UsageError(`未知のオプション "${arg}"`);
     } else {
@@ -606,12 +687,31 @@ function parseArgs(argv: readonly string[]): Cli {
   if (ids.length > 0 && command !== "deps" && command !== "graph")
     throw new UsageError(`${command} は ID を取らない`);
 
+  if (onlyArgs.length > 0 && command !== "status" && command !== "ready")
+    throw new UsageError("--only は status と ready にだけ付ける");
+
   const files = [...new Set(pathArgs.flatMap(expandPath))].sort();
-  return { command, ids, kinds: [...new Set([...DEFAULT_KINDS, ...extraKinds])], files };
+  const only = { ids: [] as string[], files: [] as string[] };
+  for (const target of onlyArgs) {
+    if (ID.test(target)) {
+      only.ids.push(target);
+      continue;
+    }
+    const targetFiles = expandPath(target);
+    // Otherwise --only would be dropped and every plan shown as if it were not given
+    if (targetFiles.length === 0) throw new UsageError(`--only のパス ${target} に計画が無い`);
+    // A plan outside the paths would not be validated, and its items would not be found
+    for (const file of targetFiles) {
+      if (!files.includes(file))
+        throw new UsageError(`--only のパス ${target} は \`--\` の後ろのパスに含まれない`);
+      only.files.push(file);
+    }
+  }
+  return { command, ids, kinds: [...new Set([...DEFAULT_KINDS, ...extraKinds])], files, only };
 }
 
 function run(argv: readonly string[]): number {
-  const { command, ids, kinds, files } = parseArgs(argv);
+  const { command, ids, kinds, files, only } = parseArgs(argv);
   const model = load(files, kinds);
   if (model.violations.length > 0) {
     for (const violation of model.violations) console.error(violation);
@@ -620,15 +720,17 @@ function run(argv: readonly string[]): number {
     );
     return 1;
   }
+  const scope =
+    only.ids.length + only.files.length === 0 ? undefined : resolveScope(model, only);
   switch (command) {
     case "check":
       console.log(`${model.items.length} 件の項目に違反なし`);
       break;
     case "status":
-      printStatus(model);
+      printStatus(model, scope);
       break;
     case "ready":
-      printReady(model, kinds);
+      printReady(model, kinds, scope);
       break;
     case "deps":
       printDeps(model, ids);
