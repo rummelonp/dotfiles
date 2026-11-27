@@ -565,6 +565,9 @@ test("status --only shows the named plans and the outside items they wait on", (
       "  B2  未着手  → A3  b.md:4  （判断）decide b2",
       "  B3  未着手  → B2  b.md:5  （判断）decide b3",
       "",
+      "範囲の項目を待っている範囲外の項目（← 待っている未完了の項目）: ",
+      "  B4  未着手  ← A1  b.md:6  other work",
+      "",
       "保留の項目: なし",
       "",
     ].join("\n"),
@@ -640,6 +643,54 @@ test("--only skips closed items in scope and follows outside items on hold", () 
   assert.match(ready, /^\[範囲外で待たれている項目\] 1 件.*\n {2}B4 {2}解放 0（範囲外 0） /m);
   const closed = run(["status", "--only=A1", "--", "."], { cwd: dir }).stdout;
   assert.match(closed, /^範囲外で待たれている項目（→ 直接待っている項目）: なし$/m);
+});
+
+test("status --only lists outside items waiting on the scope, whatever the scope item waits on", () => {
+  const dir = fixtureDir();
+  write(
+    dir,
+    "a.md",
+    plan(
+      "| A1 | 未着手 | 実装 | B1 | waits outside |",
+      "| A2 | 保留 | 実装 | — | parked |",
+      "| A3 | 未着手 | 実装 | — | ready |",
+      "| A4 | 完了 | 実装 | — | done |",
+      "| A5 | 未着手 | 実装 | B8 | after b8 |",
+    ),
+  );
+  write(
+    dir,
+    "b.md",
+    plan(
+      "| B1 | 未着手 | 判断 | — | before a1 |",
+      "| B2 | 未着手 | 実装 | A1 | after a1 |",
+      "| B3 | 未着手 | 実装 | A2 | after hold |",
+      "| B4 | 保留 | 判断 | — | held outside |",
+      "| B5 | 未着手 | 実装 | A3、B4 | after a3 and hold |",
+      "| B6 | 未着手 | 実装 | B2、B1 | through b2 |",
+      "| B7 | 未着手 | 実装 | A4 | after done |",
+      "| B8 | 未着手 | 実装 | A3 | between a3 and a5 |",
+    ),
+  );
+  const { status, stdout } = run(["status", "--only=a.md", "--", "."], { cwd: dir });
+  assert.equal(status, 0);
+  // B1 is upstream only, B7 waits on nothing open, and B8 sits on both sides of the scope
+  const sections = [
+    "範囲外で待たれている項目（→ 直接待っている項目）: ",
+    "  B1  未着手  → A1  b.md:3  （判断）before a1",
+    "  B8  未着手  → A5  b.md:10  between a3 and a5",
+    "",
+    "範囲の項目を待っている範囲外の項目（← 待っている未完了の項目）: ",
+    "  B2  未着手  ← A1  b.md:4  after a1",
+    "  B3  未着手  ← A2（保留）  b.md:5  after hold",
+    "  B5  未着手  ← A3、B4（保留）  b.md:7  after a3 and hold",
+    "  B6  未着手  ← B2、B1  b.md:8  through b2",
+    "  B8  未着手  ← A3  b.md:10  between a3 and a5",
+    "",
+  ];
+  assert.ok(stdout.includes(sections.join("\n")), stdout);
+  const closed = run(["status", "--only=A4", "--", "."], { cwd: dir }).stdout;
+  assert.match(closed, /^範囲の項目を待っている範囲外の項目（← 待っている未完了の項目）: なし$/m);
 });
 
 test("usage errors exit 2", () => {

@@ -97,6 +97,8 @@ interface Scope {
   readonly ids: ReadonlySet<string>;
   /** Open items outside ids that an open item in ids waits on, directly or through others */
   readonly blockers: ReadonlySet<string>;
+  /** Open items outside ids that wait on an open item in ids, directly or through others */
+  readonly waiters: ReadonlySet<string>;
 }
 
 class UsageError extends Error {}
@@ -420,6 +422,14 @@ function printStatus({ items, byId, files }: Model, scope: Scope | undefined): v
         `  ${item.id}  ${item.status}  → ${waiters.join("、")}  ${item.at}  ${mark(item)}${item.summary}`,
       );
     }
+    const downstream = items.filter((item) => scope.waiters.has(item.id));
+    heading("範囲の項目を待っている範囲外の項目（← 待っている未完了の項目）", downstream.length === 0);
+    for (const item of downstream) {
+      const deps = waiting(item).map((dep) => `${dep}${onHold(dep)}`);
+      console.log(
+        `  ${item.id}  ${item.status}  ← ${deps.join("、")}  ${item.at}  ${mark(item)}${item.summary}`,
+      );
+    }
   }
   // Last, so the work that can move comes first
   const held = shown.filter((item) => item.status === "保留");
@@ -495,13 +505,17 @@ function resolveScope({ items, byId }: Model, only: Cli["only"]): Scope {
     const status = byId.get(id)?.status;
     return status !== undefined && !CLOSED.has(status);
   };
+  const dependents = pendingDependents(items);
   const blockers = new Set<string>();
+  const waiters = new Set<string>();
   for (const id of ids) {
     if (!isOpen(id)) continue;
     for (const dep of reachable(id, (x) => byId.get(x)?.deps ?? [], isOpen))
       if (!ids.has(dep)) blockers.add(dep);
+    for (const dependent of reachable(id, (x) => dependents.get(x) ?? [], isOpen))
+      if (!ids.has(dependent)) waiters.add(dependent);
   }
-  return { files, ids, blockers };
+  return { files, ids, blockers, waiters };
 }
 
 function printReady({ items, byId }: Model, kinds: readonly string[], scope: Scope | undefined): void {
@@ -622,7 +636,7 @@ function usage(): string {
     "使い方: node plans.ts <status | ready | deps [ID...] | graph [ID...] | check> [--kind=<種別>]... [--only=<path か ID>]... -- <path>...",
     "  path: ファイル、または直下の *.md を読むディレクトリ（README.md と _ で始まる名前は除く）",
     `  --kind: ${DEFAULT_KINDS.join(" / ")} に足す、自律作業でない種別`,
-    "  --only: status と ready の表示をこの計画と項目、それが待っている範囲外の項目に絞る（検証と解放は全体で計算する）",
+    "  --only: status と ready の表示をこの計画と項目、それが待っている範囲外の項目に絞る（status は、この計画と項目を待っている範囲外の項目も出す。検証と解放は全体で計算する）",
     `  文法は backlog skill の SKILL.md（${display(SKILL_DOC)}）を参照`,
   ].join("\n");
 }
